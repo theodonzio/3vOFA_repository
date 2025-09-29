@@ -2,9 +2,9 @@
   include '../php/tools/head.php';
 ?>
 
-<a href="../php/usuarios/adscripta.php"><button type="button" class="btn btn-primary btn-lg">Adscripta</button></a>
+<a href="../php/usuarios/adscripta.php"><button type="button" class="btn btn-primary btn-lg"><img src="../img/icons/faceid_icon.png" alt="">Adscripta</button></a>
 
-<button id="btnEstudiante" type="button" class="btn btn-secondary btn-lg">Estudiante</button>
+<button id="btnEstudiante" type="button" class="btn btn-secondary btn-lg"><img src="../img/icons/student_icon.png" alt="">Estudiante</button>
 
 <div id="selectContainer" style="display:none; margin-top:20px;">
   <select id="opcionesEstudiante" class="form-select">
