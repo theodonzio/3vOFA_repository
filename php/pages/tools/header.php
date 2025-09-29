@@ -12,10 +12,25 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">General</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Horarios</a></li>
-            <li><a class="dropdown-item" href="#">Espacios</a></li>
-            <li><a class="dropdown-item" href="#">Docentes</a></li>
-            <li><a class="dropdown-item" href="#">Grupos</a></li>
+            <li><a class="dropdown-item" href="#"><img src="../../../img/icons/timetable_icon.png" class="icono">Horarios</a></li>
+            <li><a class="dropdown-item" href="#"><img src="../../../img/icons/space_icon.png" class="icono">Espacios</a></li>
+            <li><a class="dropdown-item" href="#"><img src="../../../img/icons/teach_icon.png" class="icono">Docentes</a></li>
+            <li><a class="dropdown-item" href="#"><img src="../../../img/icons/class_icon.png" class="icono">Grupos</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Herramientas</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Tema</a></li>
+            <li><a class="dropdown-item" href="#">Lenguaje</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
           </ul>
         </li>
       </ul>
