@@ -15,7 +15,7 @@
 
 .indexlogo{
     filter: invert(100);
-    width: 5rem;
+    width: 4rem;
 }
 
 .selector{
@@ -25,6 +25,9 @@
 
 .selector button{
     padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icono{
@@ -43,4 +46,8 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+}
+
+a{
+    text-decoration: none;
 }
