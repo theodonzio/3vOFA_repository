@@ -13,6 +13,10 @@
     margin-right: 15px;
 }
 
+.indexlogo{
+    filter: invert(100);
+}
+
 .icono{
     filter: invert(100);
     width: 25px;
@@ -22,4 +26,11 @@
 .navbar-nav{
     display: flex;
     gap: 10px;
+}
+
+.selector{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
