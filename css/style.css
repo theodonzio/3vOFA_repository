@@ -20,7 +20,7 @@
 
 .selector{
     display: flex;
-    gap: 10px;
+    flex-direction: column;
 }
 
 .selector button{
@@ -57,4 +57,16 @@ a{
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
+}
+
+.botones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.bienvenida{
+    padding: 20px;
+    text-align: center;
 }

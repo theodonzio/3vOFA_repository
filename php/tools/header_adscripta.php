@@ -30,7 +30,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+            <li><a class="dropdown-item" href="../index.php">Cerrar Sesión</a></li>
           </ul>
         </li>
       </ul>
