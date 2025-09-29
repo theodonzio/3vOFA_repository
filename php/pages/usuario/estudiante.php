@@ -16,5 +16,5 @@
 </head>
 
 <?php
-  include '../tools/header.php';
+  include '../tools/header_estudiante.php';
 ?>
