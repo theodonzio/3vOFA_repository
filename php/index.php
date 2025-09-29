@@ -5,14 +5,14 @@
 
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-      <div class="logo">
+    <div class="container-fluid">
+    <div class="logo" style="display: flex; justify-content: center; align-items: center; width: 100%;">
       <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra">
     </div>
 </header>
 
 <main class="selector">
-<button type="button" class="btn btn-primary btn-lg"><img src="../img/icons/faceid_icon.png" class="indexlogo">Adscripta</button>
+<a href="../php/usuarios/adscripta.php"><button type="button" class="btn btn-primary btn-lg"><img src="../img/icons/faceid_icon.png" class="indexlogo">Adscripta</button></a>
 <button id="btnEstudiante" type="button" class="btn btn-secondary btn-lg"><img src="../img/icons/student_icon.png" class="indexlogo">Estudiante</button>
 </main>
 

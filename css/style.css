@@ -15,6 +15,16 @@
 
 .indexlogo{
     filter: invert(100);
+    width: 5rem;
+}
+
+.selector{
+    display: flex;
+    gap: 10px;
+}
+
+.selector button{
+    padding: 30px;
 }
 
 .icono{
