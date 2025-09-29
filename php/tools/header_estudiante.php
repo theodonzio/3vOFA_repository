@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
       <div class="logo">
-      <img src="../../../img/ofalogos/fulltextnegativo.png" id="logo-barra">
+      <img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra">
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,10 +12,9 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">General</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"><img src="../../../img/icons/timetable_icon.png" class="icono">Horarios</a></li>
-            <li><a class="dropdown-item" href="#"><img src="../../../img/icons/space_icon.png" class="icono">Espacios</a></li>
-            <li><a class="dropdown-item" href="#"><img src="../../../img/icons/teach_icon.png" class="icono">Docentes</a></li>
-            <li><a class="dropdown-item" href="#"><img src="../../../img/icons/class_icon.png" class="icono">Grupos</a></li>
+            <li><a class="dropdown-item" href="#"><img src="../../img/icons/timetable_icon.png" class="icono">Horarios</a></li>
+            <li><a class="dropdown-item" href="#"><img src="../../img/icons/space_icon.png" class="icono">Espacios</a></li>
+            <li><a class="dropdown-item" href="#"><img src="../../img/icons/teach_icon.png" class="icono">Docentes</a></li>
           </ul>
         </li>
 
@@ -30,7 +29,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+            <li><a class="dropdown-item" href="#" id="exit">Cerrar Sesión</a></li>
           </ul>
         </li>
       </ul>
@@ -46,5 +45,3 @@
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     const tooltipList = [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
 </script>
-
-<script src="../js/app.js"></script>
