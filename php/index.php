@@ -10,6 +10,7 @@
     <div class="logo" style="display: flex; justify-content: center; align-items: center; width: 100%;">
       <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra">
     </div>
+    </nav>
 </header>
 
 <body class="body_index">

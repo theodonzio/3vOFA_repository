@@ -5,11 +5,15 @@
     font-weight: 600 !important; 
 }
 
+#navbarNavDropdown{
+    margin-left: 20px !important;
+}
+
 .logo img{
     display: flex;
     justify-content: center;
     width: 15rem;
-    padding: 10px;
+    padding: 20px;
 }
 
 .indexlogo{
@@ -18,8 +22,11 @@
 }
 
 .selector{
-    display: flex;
-    flex-direction: column;
+flex: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .selector button{
@@ -38,14 +45,6 @@
 .navbar-nav{
     display: flex;
     gap: 10px;
-}
-
-.selector{
-    flex: 1; /* ocupa todo el espacio restante */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 90px;
 }
 
 a{

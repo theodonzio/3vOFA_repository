@@ -15,9 +15,6 @@
   </button>
 </div>
 
-
-
-
 <!-- Modal Login (para Adscripta y Docente) -->
 <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -65,18 +62,17 @@
         <form id="formEstudiante" action="../php/usuarios/estudiante.php" method="GET">
           <div class="mb-3">
             <label for="opcionEstudiante" class="form-label">Elige una opción</label>
-            <select class="form-select" id="opcionEstudiante" name="opcion">
-              <option value="" selected disabled>-</option>
-              <option value="#">1ºMC (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)</option>
-              <option value="#">1ºMD (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)</option>
-              <option value="#">2ºMA (TECNOLOGÍAS DE LA INFORMACIÓN)</option>
-              <option value="#">2ºMB (TECNOLOGÍAS DE LA INFORMACIÓN)</option>
-              <option value="#">2ºMD (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)</option>
-              <option value="#">3ºMA (TECNOLOGÍAS DE LA INFORMACIÓN)</option>
-              <option value="#">3ºMB (TECNOLOGÍAS DE LA INFORMACIÓN)</option>
-              <option value="#">3ºMD (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)</option>
-              <option value="#">3ºBA (ROBOTICA Y TELECOMUNICACIONES)</option>
-            </select>
+                <select class="form-select" id="opcionEstudiante" name="opcion">
+                <option value="1MC">1ºMC (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)</option>
+                <option value="1MD">1ºMD (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)</option>
+                <option value="2MA">2ºMA (TECNOLOGÍAS DE LA INFORMACIÓN)</option>
+                <option value="2MB">2ºMB (TECNOLOGÍAS DE LA INFORMACIÓN)</option>
+                <option value="2MD">2ºMD (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)</option>
+                <option value="3MA">3ºMA (TECNOLOGÍAS DE LA INFORMACIÓN)</option>
+                <option value="3MB">3ºMB (TECNOLOGÍAS DE LA INFORMACIÓN)</option>
+                <option value="3MD">3ºMD (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)</option>
+                <option value="3BA">3ºBA (ROBOTICA Y TELECOMUNICACIONES)</option>
+              </select>
           </div>
         </form>
       </div>
