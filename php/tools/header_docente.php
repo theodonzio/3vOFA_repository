@@ -13,8 +13,8 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">General</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#"><img src="../../img/icons/timetable_icon.png" class="icono">Horarios</a></li>
-            <li><a class="dropdown-item" href="#"><img src="../../img/icons/space_icon.png" class="icono">Espacios</a></li>
-            <li><a class="dropdown-item" href="#"><img src="../../img/icons/teach_icon.png" class="icono">Docentes</a></li>
+            <li><a class="dropdown-item" href="#"><img src="../../img/icons/space_icon.png" class="icono">Grupos</a></li>
+            <li><a class="dropdown-item" href="#"><img src="../../img/icons/bookmark_icon.png" class="icono">Reservar</a></li>
           </ul>
         </li>
 
