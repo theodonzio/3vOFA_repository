@@ -50,12 +50,12 @@
       <div class="modal-body">
         <form id="formLogin" method="POST">
           <div class="mb-3">
-            <label for="usuario" class="form-label">Usuario</label>
-            <input type="text" class="form-control" id="usuario" name="usuario" required>
+            <label for="usuario" class="form-label">C.I | Email</label>
+            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="tuemail@gmail.com" required >
           </div>
           <div class="mb-3">
             <label for="contrasena" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+            <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" required>
           </div>
           <!-- campo oculto para saber a dónde enviar -->
           <input type="hidden" id="rol" name="rol">
@@ -86,10 +86,16 @@
           <div class="mb-3">
             <label for="opcionEstudiante" class="form-label">Elige una opción</label>
             <select class="form-select" id="opcionEstudiante" name="opcion">
-              <option value="" selected disabled>-- Selecciona --</option>
-              <option value="primaria">Primaria</option>
-              <option value="secundaria">Secundaria</option>
-              <option value="terciaria">Terciaria</option>
+              <option value="" selected disabled>-</option>
+              <option value="#">1ºMC (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)</option>
+              <option value="#">1ºMD (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)</option>
+              <option value="#">2ºMA (TECNOLOGÍAS DE LA INFORMACIÓN)</option>
+              <option value="#">2ºMB (TECNOLOGÍAS DE LA INFORMACIÓN)</option>
+              <option value="#">2ºMD (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)</option>
+              <option value="#">3ºMA (TECNOLOGÍAS DE LA INFORMACIÓN)</option>
+              <option value="#">3ºMB (TECNOLOGÍAS DE LA INFORMACIÓN)</option>
+              <option value="#">3ºMD (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)</option>
+              <option value="#">3ºBA (ROBOTICA Y TELECOMUNICACIONES)</option>
             </select>
           </div>
         </form>
