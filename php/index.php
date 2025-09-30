@@ -17,8 +17,8 @@
 <main class="selector">
 
     <div class="bienvenida">
-    <h2 class="font-weight-bold">Bienvenid@</h2>
-    <h5>¿Quién eres?</h5>
+    <h2 class="font-weight-bold">¿Quién eres?</h2>
+    <h5>Ingresa a tu perfil</h5>
     </div>
 
 <?php

@@ -69,3 +69,25 @@ a{
     padding: 20px;
     text-align: center;
 }
+
+input::placeholder {
+  opacity: 0.5 !important;        /* opcional, por defecto es 0.5 en algunos navegadores */
+}
+
+.dropdown-item:focus,
+.dropdown-item:active {
+  background-color: transparent; /* o el color que quieras */
+  color: inherit;               /* mantiene el color original del texto */
+  box-shadow: none;             /* evita el borde azul en algunos navegadores */
+}
+
+
+.form-select:focus {
+  box-shadow: none; 
+  border-color: #dee2e6;
+}
+
+.form-control:focus{
+    border-color: #dee2e6 !important;
+      box-shadow: none;
+}
