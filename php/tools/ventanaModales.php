@@ -79,7 +79,6 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
         <button type="submit" form="formEstudiante" class="btn btn-danger">Continuar</button>
       </div>
-
     </div>
   </div>
 </div>
