@@ -67,7 +67,7 @@ $_SESSION['id_rol']     = isset($u['id_rol']) ? (int)$u['id_rol'] : null;
 $_SESSION['Rol']        = $rol;
 
 // Redirigir según el rol
-if ($_SESSION['id_usuario'] === '1') {
+if ($rol === 'adscripta') {
   header('Location: /../php/usuarios/adscripta.php');
 } elseif ($rol === 'docente') {
   header('Location: /../php/usuarios/docente.php');
