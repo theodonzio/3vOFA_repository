@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-require_once __DIR__ . '/../conexion_bd.php';
+require_once __DIR__ . '/conexion_bd.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
   header('Location: /../tools/ventanaModales.php?error=Acceso no permitido');

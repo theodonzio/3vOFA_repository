@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modalLogin.addEventListener("show.bs.modal", function (event) {
       const button = event.relatedTarget;
       const rol = button.getAttribute("data-role");
-      const inputRol = modalLogin.querySelector("#rol");
+      const inputRol = modalLogin.querySelector("rol");
       const formLogin = document.getElementById("formLogin");
 
       if (rol === "adscripta") {
