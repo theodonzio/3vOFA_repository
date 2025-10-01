@@ -10,11 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (rol === "adscripta") {
         inputRol.value = "adscripta";
-        formLogin.action = "../php/usuarios/adscripta.php";
       } else if (rol === "docente") {
         inputRol.value = "docente";
-        formLogin.action = "../php/usuarios/docente.php";
       }
+
+      // ✅ Siempre apuntar al archivo correcto
+      formLogin.action = "php/login/validar_login.php";
     });
   }
 });
