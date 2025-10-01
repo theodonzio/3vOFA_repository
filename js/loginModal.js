@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // ✅ Siempre apuntar al archivo correcto
-      formLogin.action = "php/login/validar_login.php";
+      formLogin.action = "../php/login/validar_login.php";
     });
   }
 });

@@ -25,7 +25,7 @@
       </div>
 
       <div class="modal-body">
-        <form id="formLogin" method="POST" action="../php/validarlogin.php">
+        <form id="formLogin" method="POST" action="../php/login/validar_login.php">
             <div class="mb-3">
         <label for="usuario" class="form-label">C.I | Email</label>
         <input type="text" class="form-control" id="usuario" name="usuario" placeholder="tuemail@gmail.com" required>

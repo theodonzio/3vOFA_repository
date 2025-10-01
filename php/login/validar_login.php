@@ -1,29 +1,30 @@
+
 <?php
 session_start();
-require_once __DIR__ . '/conexion_bd.php';
+require_once __DIR__ . '/../conexion_bd.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  header('Location: ../../ventanaModales.php?error=Acceso no permitido');
+  header('Location: /../tools/ventanaModales.php?error=Acceso no permitido');
   exit;
 }
 
 $usuarioRaw = trim($_POST['usuario'] ?? '');
 $passInput  = trim($_POST['contrasena'] ?? '');
-$rol        = trim($_POST['rol'] ?? '');
+$rol        = trim($_POST['Rol'] ?? '');
 
 if ($usuarioRaw === '' || $passInput === '') {
-  header('Location: ../../ventanaModales.php?error=Complete usuario y contraseña');
+  header('Location: /../tools/ventanaModales.php?error=Complete usuario y contraseña');
   exit;
 }
 
 // Buscar por email o cédula
 if (filter_var($usuarioRaw, FILTER_VALIDATE_EMAIL)) {
-  $sql = "SELECT id_usuario, nombre, apellido, contrasena, id_rol FROM Usuario WHERE email=? LIMIT 1";
+  $sql = "SELECT id_usuario, nombre, apellido, contrasena FROM Usuario WHERE email=? LIMIT 1";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param('s', $usuarioRaw);
 } else {
   $cedulaNorm = preg_replace('/\D+/', '', $usuarioRaw);
-  $sql = "SELECT id_usuario, nombre, apellido, contrasena, id_rol FROM Usuario WHERE cedula=? LIMIT 1";
+  $sql = "SELECT id_usuario, nombre, apellido, contrasena FROM Usuario WHERE cedula=? LIMIT 1";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param('s', $cedulaNorm);
 }
@@ -32,7 +33,7 @@ $stmt->execute();
 $res = $stmt->get_result();
 
 if ($res->num_rows === 0) {
-  header('Location: ../../ventanaModales.php?error=Usuario no encontrado');
+  header('Location: /../tools/ventanaModales.php?error=Usuario no encontrado');
   exit;
 }
 
@@ -53,7 +54,7 @@ if ($ok && !(preg_match('/^\$2y\$/', $hash) || strlen($hash) >= 50)) {
 }
 
 if (!$ok) {
-  header('Location: ../../ventanaModales.php?error=Contraseña incorrecta');
+  header('Location: /../tools/ventanaModales.php?error=Contraseña incorrecta');
   exit;
 }
 
@@ -63,15 +64,15 @@ $_SESSION['id_usuario'] = (int)$u['id_usuario'];
 $_SESSION['nombre']     = $u['nombre'];
 $_SESSION['apellido']   = $u['apellido'];
 $_SESSION['id_rol']     = isset($u['id_rol']) ? (int)$u['id_rol'] : null;
-$_SESSION['rol']        = $rol;
+$_SESSION['Rol']        = $rol;
 
 // Redirigir según el rol
-if ($rol === 'adscripta') {
-  header('Location: ../../usuarios/adscripta.php');
+if ($_SESSION['id_usuario'] === '1') {
+  header('Location: /../php/usuarios/adscripta.php');
 } elseif ($rol === 'docente') {
-  header('Location: ../../usuarios/docente.php');
+  header('Location: /../php/usuarios/docente.php');
 } else {
-  header('Location: ../../ventanaModales.php?error=Rol no válido');
+  header('Location: /../tools/ventanaModales.php?error=Rol no válido');
 }
 exit;
 ?>
