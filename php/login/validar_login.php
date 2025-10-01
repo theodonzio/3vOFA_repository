@@ -1,10 +1,9 @@
-
 <?php
 session_start();
 require_once __DIR__ . '/conexion_bd.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  header('Location: /../tools/ventanaModales.php?error=Acceso no permitido');
+  header('Location: ../tools/ventanaModales.php?error=Acceso no permitido');
   exit;
 }
 
@@ -13,7 +12,7 @@ $passInput  = trim($_POST['contrasena'] ?? '');
 $rol        = trim($_POST['Rol'] ?? '');
 
 if ($usuarioRaw === '' || $passInput === '') {
-  header('Location: /../tools/ventanaModales.php?error=Complete usuario y contraseña');
+  header('Location: ../tools/ventanaModales.php?error=Complete usuario y contraseña');
   exit;
 }
 
@@ -33,7 +32,7 @@ $stmt->execute();
 $res = $stmt->get_result();
 
 if ($res->num_rows === 0) {
-  header('Location: /../tools/ventanaModales.php?error=Usuario no encontrado');
+  header('Location: ../tools/ventanaModales.php?error=Usuario no encontrado');
   exit;
 }
 
@@ -54,7 +53,7 @@ if ($ok && !(preg_match('/^\$2y\$/', $hash) || strlen($hash) >= 50)) {
 }
 
 if (!$ok) {
-  header('Location: /../tools/ventanaModales.php?error=Contraseña incorrecta');
+  header('Location: ../tools/ventanaModales.php?error=Contraseña incorrecta');
   exit;
 }
 
@@ -65,14 +64,14 @@ $_SESSION['nombre']     = $u['nombre'];
 $_SESSION['apellido']   = $u['apellido'];
 $_SESSION['id_rol']     = isset($u['id_rol']) ? (int)$u['id_rol'] : null;
 $_SESSION['Rol']        = $rol;
-
+$id_usr = (int)$u['id_usuario'];
 // Redirigir según el rol
-if ($rol === 'adscripta') {
-  header('Location: /../php/usuarios/adscripta.php');
-} elseif ($rol === 'docente') {
-  header('Location: /../php/usuarios/docente.php');
+if ($id_usr === 1)  {
+  header('Location: ../usuarios/adscripta.php');
+} elseif ($id_usr === 2)  {
+  header('Location: ../usuarios/docente.php');
 } else {
-  header('Location: /../tools/ventanaModales.php?error=Rol no válido');
+  header('Location: ../tools/ventanaModales.php?error=Rol no válido');
 }
 exit;
 ?>
