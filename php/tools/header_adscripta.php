@@ -31,8 +31,8 @@
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="../index.php">Cerrar Sesión</a></li>
+          <ul class="dropdown-menu" id="cerrar_sesion">
+            <li><a id="exit" class="dropdown-item" href="../index.php"><img src="../../img/icons/exit_icon.png" class="icono invert_color">Salir</a></li>
           </ul>
         </li>
       </ul>
