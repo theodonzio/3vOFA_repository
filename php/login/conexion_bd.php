@@ -1,9 +1,9 @@
 <?php
 // index.php
 $servername = "localhost";
-$username = "OFA";
-$password = "ofametamate";
-$dbname = "db_OFA";
+$username = "root";
+$password = "";
+$dbname = "db_ofa";
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
