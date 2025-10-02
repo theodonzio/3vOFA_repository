@@ -3,7 +3,7 @@ session_start();
 require_once __DIR__ . '/conexion_bd.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  header('Location: ../tools/ventanaModales.php?error=Acceso no permitido');
+  header('Location: ../tools/ventanaModales.php?error=Contraseña incorrecta');
   exit;
 }
 
@@ -65,6 +65,7 @@ $_SESSION['apellido']   = $u['apellido'];
 $_SESSION['id_rol']     = isset($u['id_rol']) ? (int)$u['id_rol'] : null;
 $_SESSION['Rol']        = $rol;
 $id_usr = (int)$u['id_usuario'];
+
 // Redirigir según el rol
 if ($id_usr === 1)  {
   header('Location: ../usuarios/adscripta.php');

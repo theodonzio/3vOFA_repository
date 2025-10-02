@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../../css/style.css">
+
 <div class="botones">
   <!-- Botón Adscripta -->
   <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalLogin" data-role="adscripta">
@@ -50,6 +52,7 @@
               </div>
               <input type="hidden" id="rol" name="rol">
             </form>
+            <div id="alertErrorLogin" class="alert alert-danger d-none" role="alert"></div>
           </div>
 
           <!-- Registro -->
