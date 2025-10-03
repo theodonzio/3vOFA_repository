@@ -74,6 +74,10 @@ input::placeholder {
   opacity: 0.5 !important;        /* opcional, por defecto es 0.5 en algunos navegadores */
 }
 
+#navbarNavDropdown {
+    margin: 10px;    /* Más espacio interno */
+}
+
 .dropdown-item{
     display: flex;
     align-items: center;
@@ -113,6 +117,7 @@ input::placeholder {
 
 .titulo-adscripta {
     padding: 50px 20px; /* más espacio alrededor */
+    margin: 40px;
     background-color: #e6f3ff; /* opcional, color de fondo */
     border-radius: 20px;       /* opcional, bordes redondeados */
 }

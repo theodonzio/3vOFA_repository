@@ -42,6 +42,8 @@
         <div id="alertErrorLogin" class="alert alert-danger d-none" role="alert"></div>
       </div>
 
+      <div id="loginErrorMsg" class="alert alert-danger" style="display:block;"></div>
+
       <div class="modal-footer">
         <!-- Botones -->
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

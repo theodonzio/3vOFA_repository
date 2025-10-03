@@ -4,7 +4,7 @@
 ?>
 
 <!-- Título Superior -->
-<div class="container text-center my-5 titulo-adscripta">
+<div class="text-center titulo-adscripta">
   <img src="../../img/ofalogos/blue-logo.png" class="tinylogo"> 
     <img src="../../img/blueicons/adscriptablue.png" class="blue_icon"> 
   <h1 class="display-4 fw-bold text-primary">Sistema de Gestión OFA</h1>
