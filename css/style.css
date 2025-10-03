@@ -9,10 +9,6 @@ header .navbar{
     background-color: #f2f2f2 !important;
 }
 
-#navbarNavDropdown{
-    margin-left: 20px !important;
-}
-
 .logo img{
     display: flex;
     justify-content: center;
@@ -91,7 +87,6 @@ input::placeholder {
   box-shadow: none;             /* evita el borde azul en algunos navegadores */
 }
 
-
 .form-select:focus {
   box-shadow: none; 
   border-color: #dee2e6;
@@ -102,22 +97,22 @@ input::placeholder {
       box-shadow: none;
 }
 
-#cerrar_sesion{
-    background-color: #DC3444;
+.tinylogo {
+    width: 10rem;
+    margin: 10px;
+    height: auto;
 }
 
-#cerrar_sesion:hover{
-    background-color: #ff3f52;
+.blue_icon{
+    width: 5rem;
 }
 
-#exit{
-    color: white;
+.modal-footer .btn {
+    padding: 2rem 2rem; /* reduce el tamaño */
 }
 
-#exit:hover{
-    background-color: #ff3f52;
-}
-
-#exit .icono.invert_color {
-  filter: brightness(0) invert(1) !important;
+.titulo-adscripta {
+    padding: 50px 20px; /* más espacio alrededor */
+    background-color: #e6f3ff; /* opcional, color de fondo */
+    border-radius: 20px;       /* opcional, bordes redondeados */
 }
