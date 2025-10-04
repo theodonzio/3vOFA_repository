@@ -7,8 +7,9 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-    <div class="logo" style="display: flex; justify-content: center; align-items: center; width: 100%;">
+    <div class="logo">
       <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra">
+      <a href="#" id="boton-tema">Tema</a>
     </div>
     </nav>
 </header>
