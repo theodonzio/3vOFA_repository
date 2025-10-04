@@ -16,14 +16,14 @@ if ($usuarioRaw === '' || $passInput === '') {
   exit;
 }
 
-// Buscar por email o cédula
+// Buscar por email o cédula (incluyendo el rol)
 if (filter_var($usuarioRaw, FILTER_VALIDATE_EMAIL)) {
-  $sql = "SELECT id_usuario, nombre, apellido, contrasena FROM Usuario WHERE email=? LIMIT 1";
+  $sql = "SELECT id_usuario, nombre, apellido, contrasena, id_rol FROM Usuario WHERE email=? LIMIT 1";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param('s', $usuarioRaw);
 } else {
   $cedulaNorm = preg_replace('/\D+/', '', $usuarioRaw);
-  $sql = "SELECT id_usuario, nombre, apellido, contrasena FROM Usuario WHERE cedula=? LIMIT 1";
+  $sql = "SELECT id_usuario, nombre, apellido, contrasena, id_rol FROM Usuario WHERE cedula=? LIMIT 1";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param('s', $cedulaNorm);
 }
@@ -62,17 +62,26 @@ session_regenerate_id(true);
 $_SESSION['id_usuario'] = (int)$u['id_usuario'];
 $_SESSION['nombre']     = $u['nombre'];
 $_SESSION['apellido']   = $u['apellido'];
-$_SESSION['id_rol']     = isset($u['id_rol']) ? (int)$u['id_rol'] : null;
+$_SESSION['id_rol']     = (int)$u['id_rol'];
 $_SESSION['Rol']        = $rol;
-$id_usr = (int)$u['id_usuario'];
 
 // Redirigir según el rol
-if ($id_usr === 1)  {
-  header('Location: ../usuarios/adscripta.php');
-} elseif ($id_usr === 2)  {
-  header('Location: ../usuarios/docente.php');
-} else {
-  header('Location: ../tools/ventanaModales.php?error=Rol no válido');
+$id_rol = (int)$u['id_rol'];
+
+switch ($id_rol) {
+  case 1:
+    header('Location: ../usuarios/adscripta.php');
+    break;
+  case 2:
+    header('Location: ../usuarios/docente.php');
+    break;
+  case 3:
+    header('Location: ../usuarios/estudiante.php');
+    break;
+  default:
+    header('Location: ../tools/ventanaModales.php?error=Rol no válido');
+    break;
 }
+
 exit;
 ?>
