@@ -121,3 +121,32 @@ input::placeholder {
     background-color: #e6f3ff; /* opcional, color de fondo */
     border-radius: 20px;       /* opcional, bordes redondeados */
 }
+
+
+
+/* ===== Modo oscuro ===== */
+body.oscuro {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+  transition: all 0.3s ease;
+}
+
+/* Navbar */
+body.oscuro .navbar {
+  background-color: #2b2b2b !important;
+}
+
+/* Dropdowns */
+body.oscuro .dropdown-menu {
+  background-color: #333;
+  border-color: #444;
+}
+
+body.oscuro .dropdown-item {
+  color: #f5f5f5;
+}
+
+body.oscuro .dropdown-item:hover {
+  background-color: #444;
+}
+

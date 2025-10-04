@@ -29,7 +29,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Herramientas</a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="#">Tema</a></li>
+              <li><a class="dropdown-item" href="#" id="boton-tema">Tema</a></li>
               <li><a class="dropdown-item" href="#">Lenguaje</a></li>
             </ul>
           </li>
@@ -50,8 +50,12 @@
 
 <!-- Bootstrap Bundle JS (dropdown y tooltip) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous" ></script>
+
 <!-- Inicialización de tooltips -->
 <script>
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     const tooltipList = [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
 </script>
+
+<!-- Modo claro / oscuro -->
+ <script src="../../js/modoClaroOscuro.js"></script>
