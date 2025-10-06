@@ -25,10 +25,18 @@
               <li><a class="dropdown-item" href="#"><img src="../../img/icons/teach_icon.png" class="icono">Docentes</a></li>
               <li><a class="dropdown-item" href="#"><img src="../../img/icons/class_icon.png" class="icono">Grupos</a></li>
             </ul>
-          </li>
+          </li>         
 
           <li class="nav-item dropdown">
-<div class="dropdown theme">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta</a>
+            <ul class="dropdown-menu dropdown-menu-end" id="cerrar_sesion">
+              <li><a id="exit" class="dropdown-item" href="../index.php"><img src="../../img/icons/exit_icon.png" class="icono invert_color">Salir</a></li>
+            </ul>
+          </li>
+
+
+          <li class="nav-item dropdown">
+          <div class="dropdown theme">
           <img 
             src="../../img/icons/config_icon(black).png"
             class="theme_icon_mode dropdown-toggle"
@@ -46,14 +54,7 @@
             <li><a class="dropdown-item" href="#" id="lenguaje-es" data-traducible="Español">Español</a></li>
             <li><a class="dropdown-item" href="#" id="lenguaje-en" data-traducible="Inglés">Inglés</a></li>
           </ul>
-        </div>            
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta</a>
-            <ul class="dropdown-menu dropdown-menu-end" id="cerrar_sesion">
-              <li><a id="exit" class="dropdown-item" href="../index.php"><img src="../../img/icons/exit_icon.png" class="icono invert_color">Salir</a></li>
-            </ul>
-          </li>
+        </div>   
         </ul>
       </div>
 

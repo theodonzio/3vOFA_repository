@@ -51,6 +51,7 @@ flex: 0.8;
 .navbar-nav{
     display: flex;
     gap: 10px;
+    align-items: center;
 }
 
 a{
@@ -74,6 +75,8 @@ a{
 .bienvenida{
     padding: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: column !important;
 }
 
 input::placeholder {
@@ -138,12 +141,11 @@ input::placeholder {
   width: 80px;
   height: auto;
   margin-right: 5px;
+  padding: 0px;
 }
 
 /* Estilo base */
 .theme_icon_mode {
-  width: 28px;
-  height: 28px;
   cursor: pointer;
   transition: transform 0.4s ease, filter 0.3s ease !important;
 }
@@ -344,11 +346,6 @@ body.oscuro .dropdown-header {
   color: #ccc;
 }
 
-/* Añadir estilos para los elementos traducibles */
-[data-traducible] {
-  display: inline-block;
-  position: relative;
-}
 
 [data-traducible]:after {
   content: attr(data-traducible);
@@ -363,4 +360,7 @@ body.oscuro .dropdown-header {
   visibility: hidden;
 }
 
-
+#boton-tema{
+  width: 40px;
+  height: auto;
+}
