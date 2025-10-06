@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="../../css/style.css">
+              <a class="dropdown-item" href="#" id="boton-tema"></a>
 
 <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -29,7 +30,6 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Herramientas</a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="#" id="boton-tema">Tema</a></li>
               <li><a class="dropdown-item" href="#">Lenguaje</a></li>
             </ul>
           </li>

@@ -134,21 +134,60 @@ input::placeholder {
   justify-content: center;
 }
 
-#sun_moon{
+#boton-tema{
   width: 80px;
   height: auto;
 }
 
-/* ===== Modo oscuro ===== */
+/* Estilo base */
+.theme_icon_mode {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: transform 0.4s ease, filter 0.3s ease !important;
+}
+
+/* Modo claro: normal */
+body:not(.oscuro) .theme_icon_mode {
+  filter: brightness(1);
+}
+
+/* Hover modo claro */
+body:not(.oscuro) .theme_icon_mode:hover {
+  transform: rotate(25deg) scale(1.25);
+  filter: brightness(1.2);
+}
+
+/* Modo oscuro: invertido por defecto */
+body.oscuro .theme_icon_mode {
+  filter: invert(1) brightness(1); /* invert siempre fijo */
+}
+
+/* Hover modo oscuro */
+body.oscuro .theme_icon_mode:hover {
+  transform: rotate(25deg) scale(1.25);
+  filter: invert(1) brightness(1.2); /* solo aumenta brillo, invert queda fijo */
+}
+
+/* ===== Modo oscuro completo ===== */
 body.oscuro {
   background-color: #1e1e1e;
   color: #f5f5f5;
   transition: all 0.3s ease;
 }
 
-/* Navbar */
+/* ===== Header / Navbar ===== */
 body.oscuro .navbar {
   background-color: #2b2b2b !important;
+}
+
+body.oscuro .navbar-nav .nav-link {
+  color: #ffffff !important;
+}
+
+body.oscuro .navbar-nav .nav-link:hover,
+body.oscuro .navbar-nav .nav-link:focus {
+  color: #f0f0f0 !important;
 }
 
 /* Dropdowns */
@@ -158,10 +197,130 @@ body.oscuro .dropdown-menu {
 }
 
 body.oscuro .dropdown-item {
-  color: #f5f5f5;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-body.oscuro .dropdown-item:hover {
+body.oscuro .dropdown-item:hover,
+body.oscuro .dropdown-item:focus {
   background-color: #444;
+  color: #ffffff;
 }
 
+/* Logo e íconos */
+body.oscuro #logo-barra,
+body.oscuro .icono,
+body.oscuro #boton-tema,
+body.oscuro .dropdown-item .icono {
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+/* ===== Botones principales (panel index) ===== */
+body.oscuro .botones .btn {
+  background-color: #0062cc; /* azul oscuro destacado */
+  color: #fff;
+  border-color: #0056b3;
+  transition: all 0.3s ease;
+}
+
+body.oscuro .botones .btn:hover {
+  background-color: #0056b3;
+}
+
+body.oscuro .botones .btn img.indexlogo {
+  filter: brightness(0) invert(1);
+}
+
+/* ===== Modales ===== */
+body.oscuro .modal-content {
+  background-color: #2b2b2b;
+  color: #f5f5f5;
+  border-color: #444;
+}
+
+body.oscuro .modal-header,
+body.oscuro .modal-footer {
+  background-color: #2b2b2b;
+  border-color: #444;
+}
+
+/* Inputs y selects dentro de modales */
+body.oscuro .modal-content .form-control,
+body.oscuro .modal-content .form-select {
+  background-color: #333;
+  color: #f5f5f5;
+  border-color: #555;
+}
+
+body.oscuro .modal-content .form-control:focus,
+body.oscuro .modal-content .form-select:focus {
+  background-color: #333;
+  color: #f5f5f5;
+  border-color: #777;
+  box-shadow: none;
+}
+
+/* Placeholders */
+body.oscuro ::placeholder {
+  color: #ccc;
+  opacity: 1;
+}
+
+/* Botones dentro de modales */
+body.oscuro .modal-content .btn {
+  background-color: #0062cc; /* azul destacado */
+  color: #fff;
+  border-color: #0056b3;
+  transition: all 0.3s ease;
+}
+
+body.oscuro .modal-content .btn:hover {
+  background-color: #0056b3;
+}
+
+/* Botón Cancelar dentro de modales */
+body.oscuro .modal-content .btn.btn-secondary {
+  background-color: #6c757d; /* gris */
+  color: #fff;
+  border-color: #5a6268;
+}
+
+body.oscuro .modal-content .btn.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Ajuste general de textos dentro de li y listas */
+body.oscuro li {
+  color: #f5f5f5 !important;
+}
+
+/* Hover: mantener fondo transparente */
+#boton-tema:hover {
+  background: none;
+}
+
+/* Dropdown items en modo oscuro */
+body.oscuro .dropdown-menu .dropdown-item {
+  color: #ffffff !important;   /* texto blanco */
+  background: none;             /* fondo transparente */
+}
+
+/* Hover: fondo transparente también */
+body.oscuro .dropdown-menu .dropdown-item:hover {
+  background: none;
+  color: #ffffff !important;
+}
+
+/* Botón de tema específico */
+body.oscuro #boton-tema {
+  color: #ffffff !important;   /* fuerza blanco */
+  background: none;
+}
+
+body.oscuro #boton-tema:hover {
+  background: none;
+  color: #ffffff !important;
+}

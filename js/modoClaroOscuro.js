@@ -9,10 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const path = window.location.pathname;
   const indexRoot = path.indexOf('/3vOFA/');
   let relativePath = path.substring(indexRoot + '/3vOFA/'.length);
-  const segments = relativePath.split('/').filter(Boolean); // elimina vacíos
+  const segments = relativePath.split('/').filter(Boolean);
 
-  // Si el archivo está dentro de php/, php/login/, php/PaginasDocentes/, etc.
-  // contamos cuántos niveles tiene y generamos "../" en consecuencia
   let basePath = '';
   if (segments.length > 1) {
     basePath = '../'.repeat(segments.length - 1);
@@ -21,11 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function aplicarModo(modo) {
     if (modo === 'oscuro') {
       cuerpo.classList.add('oscuro');
-      botonTema.textContent = 'Oscuro';
+      botonTema.src = `${basePath}img/icons/moon_icon.png`;
+      botonTema.style.filter = 'invert(1)'; // Aplicar invert al ícono
       logoBarra.src = `${basePath}img/ofalogos/fulltextpositivo.png`;
     } else {
       cuerpo.classList.remove('oscuro');
-      botonTema.textContent = 'Claro';
+      botonTema.src = `${basePath}img/icons/sun_icon.png`;
+      botonTema.style.filter = 'invert(0)'; // Quitar invert
       logoBarra.src = `${basePath}img/ofalogos/fulltextnegativo.png`;
     }
   }
@@ -42,4 +42,3 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('modo', nuevoModo);
   });
 });
-
