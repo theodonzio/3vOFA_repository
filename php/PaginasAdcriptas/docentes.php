@@ -1,7 +1,11 @@
+<link rel="stylesheet" href="../../css/style.css">
+              <a class="dropdown-item" href="#" id="boton-tema"></a>
+
+
 <?php
   include '../tools/head.php';
-  include '../tools/header_adscripta.php';
-include '../login/conexion_bd.php';
+  include '../tools/header_docente.php';
+  include '../login/conexion_bd.php';
 
 // Obtener todos los docentes (id_rol = 2)
 $sql = "SELECT id_usuario, nombre, apellido, cedula, email FROM Usuario WHERE id_rol = 2";
@@ -16,9 +20,9 @@ $result = $conn->query($sql);
   <title>Lista de Docentes</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-dark text-light">
+<body>
 
-<div class="container py-5">
+<div class="container py-5" id="docentetable">
   <h1 class="text-center mb-4">Lista de Docentes Registrados</h1>
 
   <div class="text-center mb-3">
@@ -36,7 +40,6 @@ $result = $conn->query($sql);
           <th>Email</th>
         </tr>
       </thead>
-      <tbody>
         <?php
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
@@ -54,10 +57,9 @@ $result = $conn->query($sql);
 
         $conn->close();
         ?>
-      </tbody>
     </table>
   </div>
 </div>
-
+<script src="../../js/modoClaroOscuro.js"></script>
 </body>
 </html>
