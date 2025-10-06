@@ -21,10 +21,25 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Herramientas</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Lenguaje</a></li>
+          <div class="dropdown theme">
+          <img 
+            src="../../img/icons/config_icon(black).png"
+            class="theme_icon_mode dropdown-toggle"
+            id="boton-tema"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-tema">
+            <li><h6 class="dropdown-header" data-traducible="Tema">Tema</h6></li>
+            <li><a class="dropdown-item" href="#" id="tema-claro" data-traducible="Claro">Claro</a></li>
+            <li><a class="dropdown-item" href="#" id="tema-oscuro" data-traducible="Oscuro">Oscuro</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><h6 class="dropdown-header" data-traducible="Lenguaje">Lenguaje</h6></li>
+            <li><a class="dropdown-item" href="#" id="lenguaje-es" data-traducible="Español">Español</a></li>
+            <li><a class="dropdown-item" href="#" id="lenguaje-en" data-traducible="Inglés">Inglés</a></li>
           </ul>
+        </div>
         </li>
 
         <li class="nav-item dropdown">
@@ -48,3 +63,5 @@
 </script>
 <!-- Modo claro / oscuro -->
  <script src="../../js/modoClaroOscuro.js"></script>
+
+ <script src="../../js/traductor.js"></script>
