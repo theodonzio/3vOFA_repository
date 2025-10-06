@@ -75,3 +75,72 @@
     </div>
   </div>
 </div>
+<!-- Hero Espacios -->
+<div class="hero-espacios">
+  <div class="overlay"></div>
+  <div class="container text-center hero-content">
+    <h2>Gestión de Espacios</h2>
+    <p>Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos</p>
+    <div class="d-flex justify-content-center gap-3">
+      <button class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#agregarEspacioModal">
+        ➕ Agregar Espacio
+      </button>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- Modal Agregar Espacio -->
+<div class="modal fade" id="agregarEspacioModal" tabindex="-1" aria-labelledby="agregarEspacioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="../funciones/agregar_espacio.php" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" id="agregarEspacioLabel">Agregar Espacio</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Tipo de salón -->
+          <div class="mb-3">
+            <label class="form-label">Tipo de Salón</label>
+            <select name="tipo_salon" class="form-select" required>
+              <option value="">Seleccione un tipo</option>
+              <option value="Aula">Aula</option>
+              <option value="Laboratorio">Laboratorio</option>
+              <option value="Salón">Salón</option>
+              <option value="SUM">SUM</option>
+            </select>
+          </div>
+
+          <!-- Descripción del salón -->
+          <div class="mb-3">
+            <label class="form-label">Descripción o nombre del espacio</label>
+            <input type="text" name="descripcion" class="form-control" placeholder="Ej: Laboratorio de Informática 2" required>
+          </div>
+
+          <!-- Recursos -->
+          <label>Selecciona los recursos que contiene:</label><br>
+          <div class="ms-3">
+            <input type="checkbox" id="television" name="opciones[]" value="Televisión">
+            <label for="television">Televisión</label><br>
+            <input type="checkbox" id="cableHDMI" name="opciones[]" value="Cable HDMI">
+            <label for="cableHDMI">Cable HDMI</label><br>
+            <input type="checkbox" id="aireAcondicionado" name="opciones[]" value="Aire Acondicionado">
+            <label for="aireAcondicionado">Aire Acondicionado</label><br>
+            <input type="checkbox" id="proyector" name="opciones[]" value="Proyector">
+            <label for="proyector">Proyector</label><br>
+            <input type="checkbox" id="alargue" name="opciones[]" value="Alargue">
+            <label for="alargue">Alargue</label><br>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
