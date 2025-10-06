@@ -364,3 +364,12 @@ body.oscuro .dropdown-header {
   width: 40px;
   height: auto;
 }
+
+.card{
+  border-width: 3px !important;
+}
+
+body.oscuro .dropdown-item:hover {
+  background-color: #494949 !important; /* un poco más oscuro al pasar el mouse */
+  color: #000 !important;
+}
