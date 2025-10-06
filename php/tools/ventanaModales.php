@@ -5,7 +5,7 @@
     <img src="../img/icons/faceid_icon.png" class="indexlogo"> <span data-traducible="Adscripto">Adscripto</span>
   </button>
 
-  <button id="btnEstudiante" type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#modalEstudiante">
+  <button id="btnEstudiante" type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#modalEstudiante">
     <img src="../img/icons/student_icon.png" class="indexlogo"> <span data-traducible="Estudiante">Estudiante</span>
   </button>
 
@@ -72,7 +72,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
-        <button type="submit" form="formEstudiante" class="btn btn-danger" data-traducible="Continuar">Continuar</button>
+        <button type="submit" form="formEstudiante" class="btn btn-success" data-traducible="Continuar">Continuar</button>
       </div>
     </div>
   </div>
