@@ -12,7 +12,7 @@ $passInput  = trim($_POST['contrasena'] ?? '');
 $rol        = trim($_POST['Rol'] ?? '');
 
 if ($usuarioRaw === '' || $passInput === '') {
-  header('Location: ../tools/ventanaModales.php?error=Complete usuario y contraseña');
+  header('Location: ../index.php?error=Complete usuario y contraseña');
   exit;
 }
 
@@ -32,7 +32,7 @@ $stmt->execute();
 $res = $stmt->get_result();
 
 if ($res->num_rows === 0) {
-  header('Location: ../tools/ventanaModales.php?error=Usuario no encontrado');
+  header('Location: ../index.php?error=Usuario no encontrado');
   exit;
 }
 
@@ -53,7 +53,7 @@ if ($ok && !(preg_match('/^\$2y\$/', $hash) || strlen($hash) >= 50)) {
 }
 
 if (!$ok) {
-  header('Location: ../tools/ventanaModales.php?error=Contraseña incorrecta');
+  header('Location: ../index.php?error=Contraseña incorrecta');
   exit;
 }
 
@@ -79,7 +79,7 @@ switch ($id_rol) {
     header('Location: ../usuarios/estudiante.php');
     break;
   default:
-    header('Location: ../tools/ventanaModales.php?error=Rol no válido');
+    header('Location: ../index.php?error=Rol no válido');
     break;
 }
 
