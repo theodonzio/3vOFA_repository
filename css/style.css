@@ -363,6 +363,4 @@ body.oscuro .dropdown-header {
   visibility: hidden;
 }
 
-[data-traducible]:hover:after {
-  visibility: visible;
-}
+

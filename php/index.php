@@ -10,7 +10,6 @@
       <div class="logo">
         <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra">
 
-        <!-- Dropdown del icono de tema -->
         <div class="dropdown theme">
           <img 
             src="../img/icons/sun_icon.png"
@@ -21,13 +20,13 @@
           >
 
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-tema">
-            <li><h6 class="dropdown-header">Tema</h6></li>
-            <li><a class="dropdown-item" href="#" id="tema-claro">Claro</a></li>
-            <li><a class="dropdown-item" href="#" id="tema-oscuro">Oscuro</a></li>
+            <li><h6 class="dropdown-header" data-traducible="Tema">Tema</h6></li>
+            <li><a class="dropdown-item" href="#" id="tema-claro" data-traducible="Claro">Claro</a></li>
+            <li><a class="dropdown-item" href="#" id="tema-oscuro" data-traducible="Oscuro">Oscuro</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><h6 class="dropdown-header">Lenguaje</h6></li>
-            <li><a class="dropdown-item" href="#" id="lenguaje-es">Español</a></li>
-            <li><a class="dropdown-item" href="#" id="lenguaje-en">Inglés</a></li>
+            <li><h6 class="dropdown-header" data-traducible="Lenguaje">Lenguaje</h6></li>
+            <li><a class="dropdown-item" href="#" id="lenguaje-es" data-traducible="Español">Español</a></li>
+            <li><a class="dropdown-item" href="#" id="lenguaje-en" data-traducible="Inglés">Inglés</a></li>
           </ul>
         </div>
       </div>
@@ -39,8 +38,8 @@
 <main class="selector">
 
     <div class="bienvenida">
-      <h2 class="font-weight-bold" id="titulo">¿Quién eres?</h2>
-      <h5 id="subtitulo">Ingresa a tu perfil</h5>
+      <h2 class="font-weight-bold" id="titulo" data-traducible="¿Quién eres?">¿Quién eres?</h2>
+      <h5 id="subtitulo" data-traducible="Ingresa a tu perfil">Ingresa a tu perfil</h5>
     </div>
 
 <?php
