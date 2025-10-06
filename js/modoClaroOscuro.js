@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Detectar ruta base según profundidad desde 3vOFA ---
   const path = window.location.pathname;
-  const indexRoot = path.indexOf('/3vOFA/');
-  let relativePath = path.substring(indexRoot + '/3vOFA/'.length);
+  const indexRoot = path.indexOf('/3vOFA_repository/');
+  let relativePath = path.substring(indexRoot + '/3vOFA_repository/'.length);
   const segments = relativePath.split('/').filter(Boolean);
 
   let basePath = '';
