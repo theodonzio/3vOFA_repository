@@ -1,4 +1,6 @@
 <?php
+  include '../tools/head.php';
+  include '../tools/header_adscripta.php';
 include '../login/conexion_bd.php';
 
 // Obtener todos los docentes (id_rol = 2)
@@ -20,7 +22,7 @@ $result = $conn->query($sql);
   <h1 class="text-center mb-4">Lista de Docentes Registrados</h1>
 
   <div class="text-center mb-3">
-    <a href="adscripta.php" class="btn btn-outline-light">⬅ Volver</a>
+    <a href="../usuarios/adscripta.php" class="btn btn-outline-light">⬅ Volver</a>
   </div>
 
   <div class="table-responsive">
