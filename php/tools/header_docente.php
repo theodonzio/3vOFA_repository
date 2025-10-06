@@ -23,7 +23,6 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Herramientas</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#" id="boton-tema">Tema</a></li>
             <li><a class="dropdown-item" href="#">Lenguaje</a></li>
           </ul>
         </li>

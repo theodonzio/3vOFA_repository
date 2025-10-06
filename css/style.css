@@ -137,6 +137,7 @@ input::placeholder {
 #boton-tema{
   width: 80px;
   height: auto;
+  margin-right: 5px;
 }
 
 /* Estilo base */
