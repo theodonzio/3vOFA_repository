@@ -1,13 +1,10 @@
 <?php
+  session_start();
   include '../tools/head.php';
   include '../tools/header_docente.php';
   include '../login/conexion_bd.php';
-?>
-
-  <?php
-  session_start();
   $id_docente = $_SESSION['id_usuario'];
-  ?>
+?>
 
 <!-- Hero Docente -->
 <div class="hero-docente">
