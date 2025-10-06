@@ -6,28 +6,27 @@
 <!-- Título Superior -->
 <div class="text-center titulo-adscripta">
   <img src="../../img/ofalogos/blue-logo.png" class="tinylogo"> 
-    <img src="../../img/blueicons/adscriptablue.png" class="blue_icon"> 
-  <h1 class="display-4 fw-bold text-primary">Sistema de Gestión OFA</h1>
-  <p class="lead text-muted">Panel exclusivo para Adscripta</p>
+  <img src="../../img/blueicons/adscriptablue.png" class="blue_icon"> 
+  <h1 data-traducible="Sistema de Gestión OFA" class="display-4 fw-bold text-primary">Sistema de Gestión OFA</h1>
+  <p data-traducible="Panel exclusivo para Adscripta" class="lead text-muted">Panel exclusivo para Adscripta</p>
 </div>
 
 <!-- Hero Section con imagen de fondo -->
 <div class="hero text-white py-5 d-flex align-items-center justify-content-center" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center; position: relative; min-height: 400px;">
   
-  <!-- Overlay para mejorar legibilidad del texto -->
   <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4);"></div>
 
   <div class="container text-center" style="position: relative; z-index: 1;">
 
-    <h2 class="display-6 fw-semibold">Docentes del Sistema</h2>
-    <p class="mb-4">Desde aquí puedes gestionar a los docentes registrados en el sistema</p>
+    <h2 data-traducible="Docentes del Sistema" class="display-6 fw-semibold">Docentes del Sistema</h2>
+    <p data-traducible="Desde aquí puedes gestionar a los docentes registrados en el sistema" class="mb-4">Desde aquí puedes gestionar a los docentes registrados en el sistema</p>
 
     <!-- Botones juntos -->
     <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#registrarDocenteModal">
+      <button data-traducible="Registrar Docente" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#registrarDocenteModal">
         Registrar Docente
       </button>
-      <a href="docentes.php" class="btn btn-outline-light btn-lg">
+      <a data-traducible="Ver Docentes" href="docentes.php" class="btn btn-outline-light btn-lg">
         Ver Docentes
       </a>
     </div>
@@ -35,54 +34,54 @@
   </div>
 </div>
 
-
 <!-- Modal Registrar Docente -->
 <div class="modal fade" id="registrarDocenteModal" tabindex="-1" aria-labelledby="registrarDocenteLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <form action="../funciones/registrar_docente.php" method="POST">
         <div class="modal-header">
-          <h5 class="modal-title" id="registrarDocenteLabel">Registrar Docente</h5>
+          <h5 data-traducible="Registrar Docente" class="modal-title" id="registrarDocenteLabel">Registrar Docente</h5>
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <label class="form-label">Nombre</label>
+            <label data-traducible="Nombre" class="form-label">Nombre</label>
             <input type="text" name="nombre" class="form-control" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Apellido</label>
+            <label data-traducible="Apellido" class="form-label">Apellido</label>
             <input type="text" name="apellido" class="form-control" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Cédula</label>
+            <label data-traducible="Cédula" class="form-label">Cédula</label>
             <input type="text" name="cedula" class="form-control" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Email</label>
+            <label data-traducible="Email" class="form-label">Email</label>
             <input type="email" name="email" class="form-control" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Contraseña</label>
+            <label data-traducible="Contraseña" class="form-label">Contraseña</label>
             <input type="password" name="contrasena" class="form-control" required>
           </div>
-          <input type="hidden" name="id_rol" value="2"> <!-- Rol docente -->
+          <input type="hidden" name="id_rol" value="2">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-success">Guardar</button>
+          <button data-traducible="Cancelar" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button data-traducible="Guardar" type="submit" class="btn btn-success">Guardar</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+
 <!-- Hero Espacios -->
 <div class="hero-espacios">
   <div class="overlay"></div>
   <div class="container text-center hero-content">
-    <h2>Gestión de Espacios</h2>
-    <p>Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos</p>
+    <h2 data-traducible="Gestión de Espacios">Gestión de Espacios</h2>
+    <p data-traducible="Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos">Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos</p>
     <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#agregarEspacioModal">
+      <button data-traducible="➕ Agregar Espacio" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#agregarEspacioModal">
         ➕ Agregar Espacio
       </button>
     </div>
@@ -97,56 +96,54 @@
     <div class="modal-content">
       <form action="../funciones/agregar_espacio.php" method="POST">
         <div class="modal-header">
-          <h5 class="modal-title" id="agregarEspacioLabel">Agregar Espacio</h5>
+          <h5 data-traducible="Agregar Espacio" class="modal-title" id="agregarEspacioLabel">Agregar Espacio</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
 
         <div class="modal-body">
-          <!-- Tipo de salón -->
           <div class="mb-3">
-            <label class="form-label">Tipo de Salón</label>
+            <label data-traducible="Tipo de Salón" class="form-label">Tipo de Salón</label>
             <select name="tipo_salon" class="form-select" required>
-              <option value="">Seleccione un tipo</option>
-              <option value="Aula">Aula</option>
-              <option value="Laboratorio">Laboratorio</option>
-              <option value="Salón">Salón</option>
-              <option value="SUM">SUM</option>
+              <option data-traducible="Seleccione un tipo" value="">Seleccione un tipo</option>
+              <option data-traducible="Aula" value="Aula">Aula</option>
+              <option data-traducible="Laboratorio" value="Laboratorio">Laboratorio</option>
+              <option data-traducible="Salón" value="Salón">Salón</option>
+              <option data-traducible="SUM" value="SUM">SUM</option>
             </select>
           </div>
 
-          <!-- Descripción del salón -->
           <div class="mb-3">
-            <label class="form-label">Descripción o nombre del espacio</label>
+            <label data-traducible="Descripción o nombre del espacio" class="form-label">Descripción o nombre del espacio</label>
             <input type="text" name="descripcion" class="form-control" placeholder="Ej: Laboratorio de Informática 2" required>
           </div>
 
-          <!-- Recursos -->
-          <label>Selecciona los recursos que contiene:</label><br>
+          <label data-traducible="Selecciona los recursos que contiene:">Selecciona los recursos que contiene:</label><br>
           <div class="ms-3">
             <input type="checkbox" id="television" name="opciones[]" value="Televisión">
-            <label for="television">Televisión</label><br>
+            <label data-traducible="Televisión" for="television">Televisión</label><br>
             <input type="checkbox" id="cableHDMI" name="opciones[]" value="Cable HDMI">
-            <label for="cableHDMI">Cable HDMI</label><br>
+            <label data-traducible="Cable HDMI" for="cableHDMI">Cable HDMI</label><br>
             <input type="checkbox" id="aireAcondicionado" name="opciones[]" value="Aire Acondicionado">
-            <label for="aireAcondicionado">Aire Acondicionado</label><br>
+            <label data-traducible="Aire Acondicionado" for="aireAcondicionado">Aire Acondicionado</label><br>
             <input type="checkbox" id="proyector" name="opciones[]" value="Proyector">
-            <label for="proyector">Proyector</label><br>
+            <label data-traducible="Proyector" for="proyector">Proyector</label><br>
             <input type="checkbox" id="alargue" name="opciones[]" value="Alargue">
-            <label for="alargue">Alargue</label><br>
+            <label data-traducible="Alargue" for="alargue">Alargue</label><br>
           </div>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-success">Guardar</button>
+          <button data-traducible="Cancelar" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button data-traducible="Guardar" type="submit" class="btn btn-success">Guardar</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+
 <!-- Sección de Reservas -->
 <div class="container my-5">
-    <h2 class="mb-4 text-center">Reservas Realizadas por los Docentes</h2>
+    <h2 data-traducible="Reservas Realizadas por los Docentes" class="mb-4 text-center">Reservas Realizadas por los Docentes</h2>
     <div class="row">
         <?php
         include '../login/conexion_bd.php';
@@ -165,7 +162,6 @@
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                // Color según estado
                 $color = ($row['estado'] == 'Pendiente') ? 'warning' : 'success';
                 ?>
                 <div class="col-md-4 mb-4">
@@ -173,17 +169,17 @@
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $row['nombre_docente'] . ' ' . $row['apellido_docente']; ?></h5>
                             <p class="card-text">
-                                <strong>Salón:</strong> <?php echo $row['nombre_espacio'] . ' (' . $row['tipo_salon'] . ')'; ?><br>
-                                <strong>Fecha:</strong> <?php echo $row['fecha']; ?><br>
-                                <strong>Horario:</strong> <?php echo $row['hora_inicio'] . ' - ' . $row['hora_fin']; ?><br>
-                                <strong>Estado:</strong> <?php echo $row['estado']; ?>
+                                <strong data-traducible="Salón:">Salón:</strong> <?php echo $row['nombre_espacio'] . ' (' . $row['tipo_salon'] . ')'; ?><br>
+                                <strong data-traducible="Fecha:">Fecha:</strong> <?php echo $row['fecha']; ?><br>
+                                <strong data-traducible="Horario:">Horario:</strong> <?php echo $row['hora_inicio'] . ' - ' . $row['hora_fin']; ?><br>
+                                <strong data-traducible="Estado:">Estado:</strong> <?php echo $row['estado']; ?>
                             </p>
 
                             <?php if($row['estado'] == 'Pendiente'){ ?>
                             <form action="../funciones/aprobar_reserva.php" method="POST" class="d-flex gap-2">
                                 <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
-                                <button type="submit" name="accion" value="Aprobar" class="btn btn-success btn-sm">Aprobar</button>
-                                <button type="submit" name="accion" value="Rechazar" class="btn btn-danger btn-sm">No aprobar</button>
+                                <button type="submit" name="accion" value="Aprobar" data-traducible="Aprobar" class="btn btn-success btn-sm">Aprobar</button>
+                                <button type="submit" name="accion" value="Rechazar" data-traducible="No aprobar" class="btn btn-danger btn-sm">No aprobar</button>
                             </form>
                             <?php } ?>
                         </div>
@@ -192,10 +188,11 @@
                 <?php
             }
         } else {
-            echo '<div class="col-12"><p class="text-center">No hay reservas registradas aún.</p></div>';
+            echo '<div class="col-12"><p data-traducible="No hay reservas registradas aún." class="text-center">No hay reservas registradas aún.</p></div>';
         }
 
         $conn->close();
         ?>
     </div>
 </div>
+<script src="../../js/traductor.js"></script>
