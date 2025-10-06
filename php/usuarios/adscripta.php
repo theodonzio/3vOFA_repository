@@ -2,7 +2,7 @@
   include '../tools/head.php';
   include '../tools/header_adscripta.php';
 ?>
-
+<body class="<?php echo isset($_SESSION['modoOscuro']) && $_SESSION['modoOscuro'] ? 'oscuro' : ''; ?>">
 <!-- Título Superior -->
 <div class="text-center titulo-adscripta">
   <img src="../../img/ofalogos/blue-logo.png" class="tinylogo"> 
@@ -158,8 +158,9 @@
     </div>
   </div>
 </div>
+
 <!-- Sección de Reservas -->
-<div class="container my-5">
+<div id="tabla_reservas_adscripta" class="container my-5">
     <h2 class="mb-4 text-center">Reservas Realizadas por los Docentes</h2>
     <div class="row">
   <?php
@@ -246,5 +247,5 @@
   $conn->close();
   ?>
 </div>
-
 </div>
+</body>
