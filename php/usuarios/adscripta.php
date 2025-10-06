@@ -162,54 +162,89 @@
 <div class="container my-5">
     <h2 class="mb-4 text-center">Reservas Realizadas por los Docentes</h2>
     <div class="row">
-        <?php
-        include '../login/conexion_bd.php';
+  <?php
+  include '../login/conexion_bd.php';
 
-        $sql = "SELECT r.id_reserva, e.nombre_espacio, e.tipo AS tipo_salon,
-                       DATE(r.fecha_inicio) AS fecha,
-                       TIME(r.fecha_inicio) AS hora_inicio,
-                       TIME(r.fecha_fin) AS hora_fin,
-                       u.nombre AS nombre_docente, u.apellido AS apellido_docente,
-                       r.estado
-                FROM reserva r
-                JOIN espacio e ON r.id_espacio = e.id_espacio
-                JOIN usuario u ON r.id_docente = u.id_usuario
-                ORDER BY r.fecha_inicio DESC";
-        $result = $conn->query($sql);
+  $sql = "SELECT r.id_reserva, e.nombre_espacio, e.tipo AS tipo_salon,
+                 DATE(r.fecha_inicio) AS fecha,
+                 TIME(r.fecha_inicio) AS hora_inicio,
+                 TIME(r.fecha_fin) AS hora_fin,
+                 u.nombre AS nombre_docente, u.apellido AS apellido_docente,
+                 r.estado
+          FROM reserva r
+          JOIN espacio e ON r.id_espacio = e.id_espacio
+          JOIN usuario u ON r.id_docente = u.id_usuario
+          ORDER BY r.fecha_inicio DESC";
+  $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                // Color según estado
-                $color = ($row['estado'] == 'Pendiente') ? 'warning' : 'success';
-                ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm h-100 border-<?php echo $color; ?>">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $row['nombre_docente'] . ' ' . $row['apellido_docente']; ?></h5>
-                            <p class="card-text">
-                                <strong>Salón:</strong> <?php echo $row['nombre_espacio'] . ' (' . $row['tipo_salon'] . ')'; ?><br>
-                                <strong>Fecha:</strong> <?php echo $row['fecha']; ?><br>
-                                <strong>Horario:</strong> <?php echo $row['hora_inicio'] . ' - ' . $row['hora_fin']; ?><br>
-                                <strong>Estado:</strong> <?php echo $row['estado']; ?>
-                            </p>
+  if ($result->num_rows > 0) {
+      while ($row = $result->fetch_assoc()) {
 
-                            <?php if($row['estado'] == 'Pendiente'){ ?>
-                            <form action="../funciones/aprobar_reserva.php" method="POST" class="d-flex gap-2">
-                                <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
-                                <button type="submit" name="accion" value="Aprobar" class="btn btn-success btn-sm">Aprobar</button>
-                                <button type="submit" name="accion" value="Rechazar" class="btn btn-danger btn-sm">No aprobar</button>
-                            </form>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
-                <?php
-            }
-        } else {
-            echo '<div class="col-12"><p class="text-center">No hay reservas registradas aún.</p></div>';
-        }
+          $estado = $row['estado'];
+          $colorEstado = 'secondary';
+          $icono = 'question-circle';
+          $textoColor = 'text-dark';
 
-        $conn->close();
-        ?>
-    </div>
+          // 🎨 Colores e íconos según estado
+          if ($estado == 'Pendiente') {
+              $colorEstado = 'warning';
+              $icono = 'clock';
+              $textoColor = 'text-warning';
+          } elseif ($estado == 'Aprobada') {
+              $colorEstado = 'success';
+              $icono = 'check-circle';
+              $textoColor = 'text-success';
+          } elseif ($estado == 'No aprobada' || $estado == 'Rechazada' || $estado == 'Rechazado') {
+              $colorEstado = 'danger';
+              $icono = 'x-circle';
+              $textoColor = 'text-danger';
+          }
+  ?>
+          <div class="col-md-4 mb-4">
+              <div class="card border-0 shadow-lg h-100 rounded-4 overflow-hidden">
+                  <div class="card-header bg-<?php echo $colorEstado; ?> bg-gradient text-white d-flex justify-content-between align-items-center">
+                      <h5 class="mb-0 d-flex align-items-center gap-2">
+                          <i class="bi bi-<?php echo $icono; ?>"></i>
+                          <?php echo $row['nombre_docente'] . ' ' . $row['apellido_docente']; ?>
+                      </h5>
+                      <span class="badge bg-light <?php echo $textoColor; ?> fw-bold">
+                          <?php echo strtoupper($estado); ?>
+                      </span>
+                  </div>
+
+                  <div class="card-body">
+                      <ul class="list-unstyled mb-3">
+                          <li><strong>Salón:</strong> <?php echo $row['nombre_espacio'] . ' (' . $row['tipo_salon'] . ')'; ?></li>
+                          <li><strong>Fecha:</strong> <?php echo $row['fecha']; ?></li>
+                          <li><strong>Horario:</strong> <?php echo $row['hora_inicio'] . ' - ' . $row['hora_fin']; ?></li>
+                      </ul>
+
+                      <?php if($estado == 'Pendiente'){ ?>
+                      <form action="../funciones/aprobar_reserva.php" method="POST" class="d-flex justify-content-between">
+                          <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
+                          <button type="submit" name="accion" value="Aprobar" class="btn btn-success w-50 me-2">
+                              <i class="bi bi-check-lg"></i> Aprobar
+                          </button>
+                          <button type="submit" name="accion" value="Rechazar" class="btn btn-danger w-50">
+                              <i class="bi bi-x-lg"></i> No aprobar
+                          </button>
+                      </form>
+                      <?php } ?>
+                  </div>
+
+                  <div class="card-footer text-muted text-center small bg-light">
+                      ID Reserva: <?php echo $row['id_reserva']; ?>
+                  </div>
+              </div>
+          </div>
+  <?php
+      }
+  } else {
+      echo '<div class="col-12"><p class="text-center text-muted fs-5">No hay reservas registradas aún.</p></div>';
+  }
+
+  $conn->close();
+  ?>
+</div>
+
 </div>

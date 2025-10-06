@@ -1,18 +1,19 @@
 <link rel="stylesheet" href="../../css/style.css">
 
 <div class="botones">
-  <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalLogin" data-role="adscripta">
-    <img src="../img/icons/faceid_icon.png" class="indexlogo"> <span data-traducible="Adscripto">Adscripto</span>
+  <!-- Botón unificado: Docente / Adscripto -->
+  <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalLogin" data-role="docente_adscripto">
+    <img src="../img/icons/faceid_icon.png" class="indexlogo">
+    <span data-traducible="Docente / Adscripto">Personal</span>
   </button>
 
+  <!-- Botón Estudiante (sin cambios) -->
   <button id="btnEstudiante" type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#modalEstudiante">
-    <img src="../img/icons/student_icon.png" class="indexlogo"> <span data-traducible="Estudiante">Estudiante</span>
-  </button>
-
-  <button type="button" class="btn btn-secondary btn-lg text-white" data-bs-toggle="modal" data-bs-target="#modalLogin" data-role="docente">
-    <img src="../img/icons/book_icon.png" class="indexlogo"> <span data-traducible="Docente">Docente</span>
+    <img src="../img/icons/student_icon.png" class="indexlogo">
+    <span data-traducible="Estudiante">Estudiante</span>
   </button>
 </div>
+
 
 <!-- Modal Login -->
 <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
