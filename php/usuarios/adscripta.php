@@ -75,20 +75,35 @@
 </div>
 
 <!-- Hero Espacios -->
-<div class="hero-espacios">
-  <div class="overlay"></div>
-  <div class="container text-center hero-content">
-    <h2 data-traducible="Gestión de Espacios">Gestión de Espacios</h2>
-    <p data-traducible="Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos">Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos</p>
+<div class="hero text-white py-5 d-flex align-items-center justify-content-center"
+  style="background-image: url('https://images.unsplash.com/photo-1635424239131-32dc44986b56?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
+         background-size: cover; 
+         background-position: center; 
+         position: relative; 
+         min-height: 400px;">
+
+  <!-- Capa oscura -->
+  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4);"></div>
+
+  <!-- Contenido del Hero -->
+  <div class="container text-center" style="position: relative; z-index: 1;">
+
+    <h2 data-traducible="Gestión de Espacios" class="display-6 fw-semibold">
+      Gestión de Espacios
+    </h2>
+    <p data-traducible="Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos" class="mb-4">
+      Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos
+    </p>
+
     <div class="d-flex justify-content-center gap-3">
       <button data-traducible="➕ Agregar Espacio" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#agregarEspacioModal">
         ➕ Agregar Espacio
       </button>
     </div>
+
   </div>
 </div>
 
-<hr>
 
 <!-- Modal Agregar Espacio -->
 <div class="modal fade" id="agregarEspacioModal" tabindex="-1" aria-labelledby="agregarEspacioLabel" aria-hidden="true">
@@ -97,7 +112,6 @@
       <form action="../funciones/agregar_espacio.php" method="POST">
         <div class="modal-header">
           <h5 data-traducible="Agregar Espacio" class="modal-title" id="agregarEspacioLabel">Agregar Espacio</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
 
         <div class="modal-body">

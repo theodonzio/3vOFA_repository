@@ -10,7 +10,7 @@
       <div class="logo">
         <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra">
 
-        <div class="dropdown theme">
+        <div class="dropdown">
           <img 
             src="../img/icons/config_icon(black).png"
             class="theme_icon_mode dropdown-toggle"
