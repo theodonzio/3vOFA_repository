@@ -22,7 +22,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fecha_inicio = $fecha_reserva . ' ' . $hora_inicio;
     $fecha_fin = $fecha_reserva . ' ' . $hora_fin;
 
-    // Guardar reserva
+    // ⏰ VALIDACIÓN DE FECHA Y HORA
+    date_default_timezone_set('America/Montevideo'); // ajustá si usás otro país
+    $fecha_actual = new DateTime(); // fecha y hora actuales
+    $fecha_inicio_dt = new DateTime($fecha_inicio);
+
+    if ($fecha_inicio_dt <= $fecha_actual) {
+        echo "<script>
+            alert('No puedes realizar una reserva en una fecha u hora pasada.');
+            window.location='../usuarios/docente.php';
+        </script>";
+        exit;
+    }
+
+    // Guardar reserva (solo si pasa la validación)
     $sql = "INSERT INTO reserva (fecha_inicio, fecha_fin, tipo_reserva, estado, id_docente, id_espacio)
             VALUES (?, ?, 'Clase', 'Pendiente', ?, ?)";
     $stmt = $conn->prepare($sql);
@@ -31,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         echo "<script>alert('Reserva realizada con éxito'); window.location='../usuarios/docente.php';</script>";
     } else {
-        echo "Error: " . $stmt->error;
+        echo "Error al realizar la reserva: " . $stmt->error;
     }
 
     $stmt->close();
