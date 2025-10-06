@@ -7,7 +7,7 @@
 <div class="text-center titulo-adscripta">
   <img src="../../img/ofalogos/blue-logo.png" class="tinylogo"> 
     <img src="../../img/blueicons/adscriptablue.png" class="blue_icon"> 
-  <h1 class="display-4 fw-bold text-primary">Sistema de Gestión OFA</h1>
+  <h1 class="display-4 fw-bold text-primary">Sistema de Gestión</h1>
   <p class="lead text-muted">Panel exclusivo para Adscripta</p>
 </div>
 
@@ -79,7 +79,7 @@
 
 <!-- Hero Espacios -->
 <div class="hero text-white py-5 d-flex align-items-center justify-content-center"
-  style="background-image: url('https://images.unsplash.com/photo-1596495577886-d920f1fb7238?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0'); 
+  style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
          background-size: cover; 
          background-position: center; 
          position: relative; 
@@ -99,9 +99,7 @@
     </p>
 
     <div class="d-flex justify-content-center gap-3">
-      <button data-traducible="➕ Agregar Espacio" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#agregarEspacioModal">
-        ➕ Agregar Espacio
-      </button>
+      <button data-traducible="Agregar Espacio" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#agregarEspacioModal">Agregar Espacio</button>
     </div>
 
   </div>

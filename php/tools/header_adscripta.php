@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../../css/style.css">
-              <a class="dropdown-item" href="#" id="boton-tema"></a>
+<a class="dropdown-item" href="#" id="boton-tema"></a>
 
 <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -74,5 +74,5 @@
 
 <!-- Modo claro / oscuro -->
  <script src="../../js/modoClaroOscuro.js"></script>
-
+<script src="../../js/activdorHover.js"></script>
  <script src="../../js/traductor.js"></script>

@@ -50,5 +50,6 @@
 <script src="../js/traductor.js"></script>
 <script src="../js/loginModal.js"></script>
 <script src="../js/modoClaroOscuro.js"></script>
+<script src="../../js/activadorHover.js"></script>
 
 </body>

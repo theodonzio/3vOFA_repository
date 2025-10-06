@@ -6,21 +6,47 @@
   $id_docente = $_SESSION['id_usuario'];
 ?>
 
-<!-- Hero Docente -->
-<div class="hero-docente">
-  <div class="overlay"></div>
-  <div class="container text-center hero-content">
-    <h2>Bienvenido al Sistema de Reservas</h2>
-    <p>Desde aquí podés realizar nuevas reservas</p>
+<!-- Título Superior -->
+<div class="text-center titulo-adscripta">
+  <img src="../../img/ofalogos/blue-logo.png" class="tinylogo"> 
+    <img src="../../img/blueicons/docenteblue.png" class="blue_icon"> 
+  <h1 class="display-4 fw-bold text-primary">Sistema de Gestión</h1>
+  <p class="lead text-muted">Panel exclusivo para Docentes</p>
+</div>
+
+<!-- Hero Docente estilizado con imagen de fondo -->
+<div class="hero-docente text-white d-flex align-items-center justify-content-center py-5"
+  style="
+    background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 420px;
+  "
+>
+  <!-- Overlay semitransparente -->
+  <div class="overlay" 
+    style="
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(2px);
+    "
+  ></div>
+
+  <!-- Contenido del Hero -->
+  <div class="container text-center hero-content" style="position: relative; z-index: 1;">
+    <h2 class="display-6 fw-semibold mb-3">Sistema de Reservas</h2>
+    <p class="mb-4 fs-5">Desde aquí podés solicitar espacios</p>
+
     <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#realizarReservaModal">
-        ➕ Realizar Reserva
+      <button class="btn btn-success btn-lg shadow-sm" data-bs-toggle="modal" data-bs-target="#realizarReservaModal">
+        Realizar Reserva
       </button>
     </div>
   </div>
 </div>
 
-<hr>
 
 <!-- Modal Realizar Reserva -->
 <div class="modal fade" id="realizarReservaModal" tabindex="-1" aria-labelledby="realizarReservaLabel" aria-hidden="true">
@@ -29,7 +55,6 @@
       <form action="../funciones/realizar_reserva.php" method="POST">
         <div class="modal-header">
           <h5 class="modal-title" id="realizarReservaLabel">Realizar Reserva</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
           <div class="mb-3">
@@ -90,13 +115,12 @@
   </div>
 </div>
 
-<hr>
-
+<div class="padre_tabla">
 <!-- Tabla de Reservas -->
-<div class="container my-4">
+<div class="container" id="tabla_reservas_docente">
   <h3>Mis Reservas</h3>
   <table class="table table-bordered table-striped">
-    <thead class="table-dark">
+    <thead>
       <tr>
         <th>Salón</th>
         <th>Tipo</th>
@@ -138,6 +162,19 @@
     </tbody>
   </table>
 </div>
+</div>
 
+<!-- Bootstrap Bundle JS (incluye Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Inicialización de tooltips -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
+  });
+</script>
+
+<!-- Scripts locales -->
 <script src="../../js/modoClaroOscuro.js"></script>
+<script src="../../js/traductor.js"></script>

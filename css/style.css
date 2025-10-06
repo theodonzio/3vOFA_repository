@@ -157,7 +157,7 @@ body:not(.oscuro) .theme_icon_mode {
 
 /* Hover modo claro */
 body:not(.oscuro) .theme_icon_mode:hover {
-  transform: rotate(25deg) scale(1.25);
+  transform: rotate(100deg) scale(1.25);
   filter: brightness(1.2);
 }
 
@@ -168,7 +168,7 @@ body.oscuro .theme_icon_mode {
 
 /* Hover modo oscuro */
 body.oscuro .theme_icon_mode:hover {
-  transform: rotate(25deg) scale(1.25);
+  transform: rotate(100deg) scale(1.25);
   filter: invert(1) brightness(1.2); /* solo aumenta brillo, invert queda fijo */
 }
 
@@ -375,5 +375,131 @@ body.oscuro .dropdown-item:hover {
 }
 
 #docentetable{
-  background-color: white !important;
+  background-color: rgb(255, 255, 255) !important;
+}
+
+body.oscuro select{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: #fff;            /* texto blanco */
+  padding: 0.5rem 2rem 0.5rem 0.5rem;
+  border: 1px solid #fff;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1rem;
+}
+
+body.oscuro input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+body.oscuro input[type="date"] {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+#tabla_reservas_docente{
+  margin: 0px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 0px;
+}
+
+#tabla_reservas_docente h3{
+  padding-block: 30px;
+  margin: 0px;
+}
+
+.padre_tabla{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px;
+}
+
+/* ===== Estilo base de la tabla (modo claro y oscuro) ===== */
+
+#tabla_reservas_docente .table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 20px;         /* bordes redondeados */
+    overflow: hidden;
+    width: 100%;
+    max-width: 1000px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;      /* borde exterior solo */
+}
+
+/* Texto y padding para todas las celdas */
+#tabla_reservas_docente .table td,
+#tabla_reservas_docente .table th {
+    text-align: center;
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+    border: none;                /* sin bordes internos */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== Modo claro ===== */
+body:not(.oscuro) #tabla_reservas_docente .table {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Encabezado azul en modo claro */
+body:not(.oscuro) #tabla_reservas_docente .table thead th{
+    background-color: #1a73e8 !important;  /* azul */
+    color: #ffffff !important;             /* texto blanco */
+    font-weight: 700;
+}
+
+body:not(.oscuro) #tabla_reservas_docente .table tbody td {
+    background-color: #fff;
+}
+
+/* Filas alternadas (striped) en modo claro */
+body:not(.oscuro) #tabla_reservas_docente .table-striped tbody tr:nth-of-type(odd) td {
+    background-color: #f9f9f9;
+}
+
+/* Hover filas modo claro */
+body:not(.oscuro) #tabla_reservas_docente .table tbody tr:hover td {
+    background-color: #e6f3ff;
+}
+
+/* ===== Modo oscuro ===== */
+body.oscuro #tabla_reservas_docente .table {
+    background-color: #2b2b2b;
+    color: #f5f5f5 !important;
+    border: 1px solid #444;
+}
+
+/* Encabezado azul en modo oscuro */
+body.oscuro #tabla_reservas_docente .table thead th {
+    background-color: #1565c0 !important;  /* azul más oscuro */
+    color: #ffffff !important;             /* texto blanco */
+    font-weight: 700;
+}
+
+body.oscuro #tabla_reservas_docente .table tbody td {
+    background-color: #3a3a3a;
+    color: #f5f5f5 !important;
+}
+
+/* Filas alternadas en modo oscuro */
+body.oscuro #tabla_reservas_docente .table-striped tbody tr:nth-of-type(odd) td {
+    background-color: #383838;
+    color: #f5f5f5 !important;
+}
+
+/* Hover filas modo oscuro */
+body.oscuro #tabla_reservas_docente .table tbody tr:hover td {
+    background-color: #505050;
+    color: #fff !important;
 }
