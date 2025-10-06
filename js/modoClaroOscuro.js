@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function aplicarModo(modo) {
     if (modo === 'oscuro') {
       cuerpo.classList.add('oscuro');
-      botonTema.src = `${basePath}img/icons/moon_icon.png`;
+      botonTema.src = `${basePath}img/icons/config_icon(white).png`;
       logoBarra.src = `${basePath}img/ofalogos/fulltextpositivo.png`;
     } else {
       cuerpo.classList.remove('oscuro');
-      botonTema.src = `${basePath}img/icons/sun_icon.png`;
+      botonTema.src = `${basePath}img/icons/config_icon(black).png`;
       logoBarra.src = `${basePath}img/ofalogos/fulltextnegativo.png`;
     }
   }

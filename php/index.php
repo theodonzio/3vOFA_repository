@@ -12,7 +12,7 @@
 
         <div class="dropdown theme">
           <img 
-            src="../img/icons/sun_icon.png"
+            src="../img/icons/config_icon(black).png"
             class="theme_icon_mode dropdown-toggle"
             id="boton-tema"
             data-bs-toggle="dropdown"
