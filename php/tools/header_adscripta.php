@@ -6,7 +6,7 @@
       
       <!-- Logo a la izquierda -->
       <div class="logo me-auto">
-        <img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra">
+          <img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra">
       </div>
 
       <!-- Botón toggler (para mobile) -->

@@ -9,7 +9,10 @@
     <div class="container-fluid">
     <div class="logo">
       <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra">
+      <div class="theme">
       <a href="#" id="boton-tema">Tema</a>
+      <img src="../img/icons/sun_icon.png" class="theme_icon_mode" id="sun_moon">
+      </div>
     </div>
     </nav>
 </header>

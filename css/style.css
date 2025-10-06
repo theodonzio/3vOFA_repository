@@ -128,7 +128,16 @@ input::placeholder {
     border-radius: 20px;       /* opcional, bordes redondeados */
 }
 
+.theme{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+#sun_moon{
+  width: 80px;
+  height: auto;
+}
 
 /* ===== Modo oscuro ===== */
 body.oscuro {
