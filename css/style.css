@@ -325,3 +325,44 @@ body.oscuro #boton-tema:hover {
   background: none;
   color: #ffffff !important;
 }
+
+/* Estilo del menú desplegable desde el ícono del tema */
+.dropdown-menu {
+  min-width: 180px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  text-align: left;
+}
+
+.dropdown-header {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+body.oscuro .dropdown-header {
+  color: #ccc;
+}
+
+/* Añadir estilos para los elementos traducibles */
+[data-traducible] {
+  display: inline-block;
+  position: relative;
+}
+
+[data-traducible]:after {
+  content: attr(data-traducible);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 0.8em;
+  padding: 0.2em;
+  border-radius: 0.2em;
+  visibility: hidden;
+}
+
+[data-traducible]:hover:after {
+  visibility: visible;
+}

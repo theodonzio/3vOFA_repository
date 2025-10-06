@@ -16,16 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
     basePath = '../'.repeat(segments.length - 1);
   }
 
+  // --- Aplicar modo claro/oscuro ---
   function aplicarModo(modo) {
     if (modo === 'oscuro') {
       cuerpo.classList.add('oscuro');
       botonTema.src = `${basePath}img/icons/moon_icon.png`;
-      botonTema.style.filter = 'invert(1)'; // Aplicar invert al ícono
       logoBarra.src = `${basePath}img/ofalogos/fulltextpositivo.png`;
     } else {
       cuerpo.classList.remove('oscuro');
       botonTema.src = `${basePath}img/icons/sun_icon.png`;
-      botonTema.style.filter = 'invert(0)'; // Quitar invert
       logoBarra.src = `${basePath}img/ofalogos/fulltextnegativo.png`;
     }
   }
@@ -34,11 +33,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const modoGuardado = localStorage.getItem('modo');
   aplicarModo(modoGuardado || 'claro');
 
-  // Cambiar tema al hacer clic
-  botonTema.addEventListener('click', (e) => {
+  // === OPCIONES DEL MENÚ DROPDOWN ===
+
+  // Cambiar a modo claro
+  document.getElementById('tema-claro').addEventListener('click', (e) => {
     e.preventDefault();
-    const nuevoModo = cuerpo.classList.contains('oscuro') ? 'claro' : 'oscuro';
-    aplicarModo(nuevoModo);
-    localStorage.setItem('modo', nuevoModo);
+    aplicarModo('claro');
+    localStorage.setItem('modo', 'claro');
+  });
+
+  // Cambiar a modo oscuro
+  document.getElementById('tema-oscuro').addEventListener('click', (e) => {
+    e.preventDefault();
+    aplicarModo('oscuro');
+    localStorage.setItem('modo', 'oscuro');
   });
 });
