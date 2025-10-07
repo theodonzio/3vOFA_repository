@@ -249,6 +249,26 @@ document.getElementById("formEspacio").addEventListener("submit", function(e) {
   </div>
 </div>
 
+<a href="#top" id="scrollTopBtn" class="btn btn-secondary shadow-lg position-fixed bottom-0 end-0 m-4" 
+   style="z-index:999; font-size:28px; opacity:0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s;">
+  <i class="bi bi-caret-up-fill"></i>
+</a>
+
+<script>
+  const btn = document.getElementById('scrollTopBtn');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) { // aparece después de 500px de scroll
+      btn.style.opacity = '1';
+      btn.style.transform = 'translateY(0)';
+    } else {
+      btn.style.opacity = '0';
+      btn.style.transform = 'translateY(20px)';
+    }
+  });
+</script>
+
+
 <?php include '../tools/footer.php'; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
