@@ -9,3 +9,7 @@
 <?php
   include '../tools/footer.php';
 ?>
+
+<?php
+include '../tools/reloj.php';
+?>

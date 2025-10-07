@@ -12,6 +12,10 @@
     <img src="../../img/blueicons/docenteblue.png" class="blue_icon"> 
   <h1 class="display-4 fw-bold text-primary">Sistema de Gestión</h1>
   <p class="lead text-muted">Panel exclusivo para Docentes</p>
+
+    <?php
+  include '../tools/reloj.php';
+  ?>
 </div>
 
 <!-- Hero Docente estilizado con imagen de fondo -->

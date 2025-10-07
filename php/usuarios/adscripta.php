@@ -9,6 +9,10 @@
     <img src="../../img/blueicons/adscriptablue.png" class="blue_icon"> 
   <h1 class="display-4 fw-bold text-primary">Sistema de Gestión</h1>
   <p class="lead text-muted">Panel exclusivo para Adscripta</p>
+
+  <?php
+  include '../tools/reloj.php';
+  ?>
 </div>
 
 <!-- Hero Section con imagen de fondo -->
