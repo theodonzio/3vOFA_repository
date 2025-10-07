@@ -1,6 +1,48 @@
 <?php
   include '../php/tools/head.php';
-?>
+
+if (isset($_GET['login'])): ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  <?php if ($_GET['login'] === 'success'): ?>
+    const rol = "<?php echo $_GET['rol'] ?? ''; ?>";
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Inicio de sesión correcto',
+      text: 'Bienvenido/a al sistema.',
+      timer: 1800,
+      showConfirmButton: false
+    }).then(() => {
+      // Redirige según el rol
+      if (rol === '1') {
+        window.location.href = 'usuarios/adscripta.php';
+      } else if (rol === '2') {
+        window.location.href = 'usuarios/docente.php';
+      } else {
+        window.location.href = 'usuarios/estudiante.php';
+      }
+    });
+  <?php elseif ($_GET['login'] === 'error_pass'): ?>
+    Swal.fire({
+      icon: 'error',
+      title: 'Contraseña incorrecta',
+      text: 'Verifica tu contraseña e inténtalo de nuevo.',
+      confirmButtonText: 'Intentar de nuevo'
+    });
+  <?php elseif ($_GET['login'] === 'error_user'): ?>
+    Swal.fire({
+      icon: 'warning',
+      title: 'Usuario no encontrado',
+      text: 'No existe una cuenta con ese correo o cédula.',
+      confirmButtonText: 'OK'
+    });
+  <?php endif; ?>
+});
+</script>
+<?php endif; ?>
+
 
 <link rel="stylesheet" href="../css/style.css">
 
@@ -45,7 +87,7 @@
 <?php
   include '../php/tools/ventanaModales.php';
 ?>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/traductor.js"></script>
 <script src="../js/loginModal.js"></script>
