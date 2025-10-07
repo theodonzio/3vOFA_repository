@@ -143,9 +143,16 @@ document.addEventListener('DOMContentLoaded', () => {
               <option value="SUM" data-traducible="SUM">SUM</option>
             </select>
           </div>
+          <!-- Descripción del salón -->
           <div class="mb-3">
-            <label data-traducible="Descripción o nombre del espacio" class="form-label">Descripción o nombre del espacio</label>
-            <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Ej: 2" data-traducible="Descripción o nombre del espacio" required>
+            <label class="form-label">Nº de Espacio</label>
+            <input 
+              type="number" 
+              name="descripcion" 
+              id="descripcion" 
+              class="form-control" 
+              placeholder="Ej: 2" 
+              required>
           </div>
           <label data-traducible="Selecciona los recursos que contiene:" class="form-label">Selecciona los recursos que contiene:</label><br>
           <div class="recursos">
