@@ -31,7 +31,7 @@
           </div>
           <div class="mb-3">
             <label for="contrasena" class="form-label" data-traducible="Contraseña">Contraseña</label>
-            <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="••••••" required>
+            <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="•••••••••" required>
           </div>
           <input type="hidden" id="rol" name="rol">
         </form>
