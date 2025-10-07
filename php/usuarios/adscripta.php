@@ -247,4 +247,19 @@
   ?>
 </div>
 </div>
+
+<!-- Bootstrap Bundle JS (incluye Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Inicialización de tooltips -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
+  });
+</script>
+
+<!-- Scripts locales -->
+<script src="../../js/modoClaroOscuro.js"></script>
+<script src="../../js/traductor.js"></script>
 </body>

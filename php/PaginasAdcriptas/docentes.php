@@ -1,6 +1,6 @@
 <?php
 include '../tools/head.php';
-include '../tools/header_docente.php';
+include '../tools/header_adscripta.php';
 include '../login/conexion_bd.php';
 
 // Obtener todos los docentes (id_rol = 2)

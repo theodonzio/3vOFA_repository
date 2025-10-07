@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="../css/style.css">
 
 <header>
+
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <div class="logo">
@@ -50,6 +51,4 @@
 <script src="../js/traductor.js"></script>
 <script src="../js/loginModal.js"></script>
 <script src="../js/modoClaroOscuro.js"></script>
-<script src="../../js/activadorHover.js"></script>
-
 </body>
