@@ -15,11 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssssi", $nombre, $apellido, $cedula, $email, $contrasena, $id_rol);
 
-    if ($stmt->execute()) {
-        echo "<script>alert('Docente registrado con éxito'); window.location='../usuarios/adscripta.php';</script>";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
+if ($stmt->execute()) {
+    header("Location: ../usuarios/adscripta.php?docente=success");
+    exit;
+} else {
+    header("Location: ../usuarios/adscripta.php?docente=error");
+}
 
     $stmt->close();
     $conn->close();

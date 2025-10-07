@@ -1,7 +1,55 @@
 <?php
   include '../tools/head.php';
   include '../tools/header_adscripta.php';
-?>
+
+if (isset($_GET['docente'])): ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  <?php if ($_GET['docente'] === 'success'): ?>
+    Swal.fire({
+      icon: 'success',
+      title: '¡Docente agregado correctamente!',
+      text: 'El nuevo docente ha sido registrado en el sistema.',
+      confirmButtonColor: '#198754',
+      confirmButtonText: 'Aceptar'
+    });
+  <?php elseif ($_GET['docente'] === 'error'): ?>
+    Swal.fire({
+      icon: 'error',
+      title: 'Error al registrar',
+      text: 'No se pudo agregar el docente. Intenta nuevamente.',
+      confirmButtonColor: '#dc3545',
+      confirmButtonText: 'Aceptar'
+    });
+  <?php endif; ?>
+});
+</script>
+<?php endif; ?>
+<?php if (isset($_GET['espacio'])): ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  <?php if ($_GET['espacio'] === 'success'): ?>
+    Swal.fire({
+      icon: 'success',
+      title: '¡Espacio agregado correctamente!',
+      text: 'El nuevo espacio ha sido registrado en el sistema.',
+      confirmButtonColor: '#198754',
+      confirmButtonText: 'Aceptar'
+    });
+  <?php elseif ($_GET['espacio'] === 'error'): ?>
+    Swal.fire({
+      icon: 'error',
+      title: 'Error al registrar',
+      text: 'No se pudo agregar el espacio. Intenta nuevamente.',
+      confirmButtonColor: '#dc3545',
+      confirmButtonText: 'Aceptar'
+    });
+  <?php endif; ?>
+});
+</script>
+<?php endif; ?>
 <body class="<?php echo isset($_SESSION['modoOscuro']) && $_SESSION['modoOscuro'] ? 'oscuro' : ''; ?>">
 
 <div class="text-center titulo-adscripta">

@@ -4,6 +4,39 @@
   include '../tools/header_docente.php';
   include '../login/conexion_bd.php';
   $id_docente = $_SESSION['id_usuario'];
+
+if (isset($_GET['reserva'])): ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  <?php if ($_GET['reserva'] === 'success'): ?>
+    Swal.fire({
+      icon: 'success',
+      title: '¡Reserva realizada!',
+      text: 'Tu reserva fue registrada correctamente.',
+      confirmButtonColor: '#198754',
+      confirmButtonText: 'Aceptar'
+    });
+  <?php elseif ($_GET['reserva'] === 'error_fecha'): ?>
+    Swal.fire({
+      icon: 'error',
+      title: 'Fecha u hora inválida',
+      text: 'No puedes reservar en una fecha u hora pasada.',
+      confirmButtonColor: '#dc3545',
+      confirmButtonText: 'Aceptar'
+    });
+  <?php elseif ($_GET['reserva'] === 'error'): ?>
+    Swal.fire({
+      icon: 'error',
+      title: 'Error al reservar',
+      text: 'Ocurrió un error al registrar tu reserva. Intenta nuevamente.',
+      confirmButtonColor: '#dc3545',
+      confirmButtonText: 'Aceptar'
+    });
+  <?php endif; ?>
+});
+</script>
+<?php endif; ?>
 ?>
 
 <!-- Título Superior -->

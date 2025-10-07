@@ -1,5 +1,5 @@
 <?php
-include '../login/conexion_bd.php'; // tu archivo de conexión a la BD
+include '../login/conexion_bd.php'; // Conexión a la BD
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tipo_salon = $_POST['tipo_salon'];
@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Insertar el nuevo espacio
     $sql = "INSERT INTO espacio (nombre_espacio, tipo) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("is", $descripcion, $tipo_salon);
+    $stmt->bind_param("ss", $descripcion, $tipo_salon);
 
     if ($stmt->execute()) {
         $id_espacio = $stmt->insert_id;
@@ -25,10 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_rec->close();
         }
 
-        echo "<script>alert('Espacio agregado con éxito'); window.location='../usuarios/adscripta.php';</script>";
+        // Redirigir con parámetro de éxito para SweetAlert
+        header("Location: ../usuarios/adscripta.php?espacio=success");
         exit;
+
     } else {
-        echo "Error al guardar el espacio: " . $stmt->error;
+        // Redirigir con parámetro de error para SweetAlert
+        header("Location: ../usuarios/adscripta.php?espacio=error");
     }
 
     $stmt->close();

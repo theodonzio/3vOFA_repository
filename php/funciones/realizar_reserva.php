@@ -23,15 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fecha_fin = $fecha_reserva . ' ' . $hora_fin;
 
     // ⏰ VALIDACIÓN DE FECHA Y HORA
-    date_default_timezone_set('America/Montevideo'); // ajustá si usás otro país
-    $fecha_actual = new DateTime(); // fecha y hora actuales
+    date_default_timezone_set('America/Montevideo');
+    $fecha_actual = new DateTime();
     $fecha_inicio_dt = new DateTime($fecha_inicio);
 
     if ($fecha_inicio_dt <= $fecha_actual) {
-        echo "<script>
-            alert('No puedes realizar una reserva en una fecha u hora pasada.');
-            window.location='../usuarios/docente.php';
-        </script>";
+        // Redirigir con parámetro de error
+        header("Location: ../usuarios/docente.php?reserva=error_fecha");
         exit;
     }
 
@@ -42,9 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssii", $fecha_inicio, $fecha_fin, $id_docente, $id_espacio);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Reserva realizada con éxito'); window.location='../usuarios/docente.php';</script>";
+        // Redirigir con parámetro de éxito
+        header("Location: ../usuarios/docente.php?reserva=success");
+        exit;
     } else {
-        echo "Error al realizar la reserva: " . $stmt->error;
+        // Redirigir con parámetro de error general
+        header("Location: ../usuarios/docente.php?reserva=error");
     }
 
     $stmt->close();
