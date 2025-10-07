@@ -263,14 +263,8 @@ body.oscuro .dropdown-item .icono {
 
 /* ===== Botones principales (panel index) ===== */
 body.oscuro .botones .btn {
-  background-color: #0062cc; /* azul oscuro destacado */
   color: #fff;
-  border-color: #0056b3;
   transition: all 0.3s ease;
-}
-
-body.oscuro .botones .btn:hover {
-  background-color: #0056b3;
 }
 
 body.oscuro .botones .btn img.indexlogo {
@@ -314,14 +308,8 @@ body.oscuro ::placeholder {
 
 /* Botones dentro de modales */
 body.oscuro .modal-content .btn {
-  background-color: #0062cc; /* azul destacado */
   color: #fff;
-  border-color: #0056b3;
   transition: all 0.3s ease;
-}
-
-body.oscuro .modal-content .btn:hover {
-  background-color: #0056b3;
 }
 
 /* Botón Cancelar dentro de modales */
