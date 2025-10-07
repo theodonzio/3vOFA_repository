@@ -15,7 +15,7 @@
 <div class="hero text-white py-5 d-flex align-items-center justify-content-center" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center; position: relative; min-height: 400px;">
   
   <!-- Overlay para mejorar legibilidad del texto -->
-  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4);"></div>
+  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
 
   <div class="container text-center" style="position: relative; z-index: 1;">
 
@@ -86,7 +86,7 @@
          min-height: 400px;">
 
   <!-- Capa oscura -->
-  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4);"></div>
+  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
 
   <!-- Contenido del Hero -->
   <div class="container text-center" style="position: relative; z-index: 1;">
@@ -112,7 +112,6 @@
       <form action="../funciones/agregar_espacio.php" method="POST">
         <div class="modal-header">
           <h5 class="modal-title" id="agregarEspacioLabel">Agregar Espacio</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
 
         <div class="modal-body">
@@ -136,17 +135,17 @@
 
           <!-- Recursos -->
           <label>Selecciona los recursos que contiene:</label><br>
-          <div class="ms-3">
+          <div class="recursos">
             <input type="checkbox" id="television" name="opciones[]" value="Televisión">
-            <label for="television">Televisión</label><br>
+            <label for="television"><img src="../../img/icons/tv_icon.png" class="icono">Televisión</label><br>
             <input type="checkbox" id="cableHDMI" name="opciones[]" value="Cable HDMI">
-            <label for="cableHDMI">Cable HDMI</label><br>
+            <label for="cableHDMI"><img src="../../img/icons/hdmi_icon.png" class="icono">Cable HDMI</label><br>
             <input type="checkbox" id="aireAcondicionado" name="opciones[]" value="Aire Acondicionado">
-            <label for="aireAcondicionado">Aire Acondicionado</label><br>
+            <label for="aireAcondicionado"><img src="../../img/icons/air_icon.png" class="icono">Aire Acondicionado</label><br>
             <input type="checkbox" id="proyector" name="opciones[]" value="Proyector">
-            <label for="proyector">Proyector</label><br>
+            <label for="proyector"><img src="../../img/icons/proyector_icon.png" class="icono">Proyector</label><br>
             <input type="checkbox" id="alargue" name="opciones[]" value="Alargue">
-            <label for="alargue">Alargue</label><br>
+            <label for="alargue"><img src="../../img/icons/alargue_icon.png" class="icono">Alargue</label><br>
           </div>
         </div>
 

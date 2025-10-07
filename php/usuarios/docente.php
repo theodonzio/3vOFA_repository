@@ -15,7 +15,7 @@
 </div>
 
 <!-- Hero Docente estilizado con imagen de fondo -->
-<div class="hero-docente text-white d-flex align-items-center justify-content-center py-5"
+<div class="hero hero-docente text-white d-flex align-items-center justify-content-center py-5"
   style="
     background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
@@ -24,6 +24,7 @@
     min-height: 420px;
   "
 >
+
   <!-- Overlay semitransparente -->
   <div class="overlay" 
     style="
@@ -31,6 +32,7 @@
       top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(2px);
+      border-radius: 20px;
     "
   ></div>
 

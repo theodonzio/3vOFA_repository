@@ -586,3 +586,17 @@ body.oscuro #tabla_reservas_adscripta .card-footer {
     margin-bottom: 2rem;
 }
 
+.hero{
+    margin: 40px;
+    border-radius: 20px;
+}
+
+.recursos{
+  margin: 10px;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.5); /* 1.5 = 150% del tamaño original */
+  cursor: pointer;
+  margin-right: 10px;
+}

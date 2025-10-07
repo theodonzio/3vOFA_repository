@@ -9,18 +9,17 @@ $result = $conn->query($sql);
 ?>
 
 <!-- CONTENIDO DE LA PÁGINA -->
-<div class="container py-5" id="docentetable">
-    <h1 class="text-center mb-4">Lista de Docentes Registrados</h1>
+    <h1 class="text-center">Lista de Docentes Registrados</h1>
 
     <div class="text-center mb-4">
-        <a href="../usuarios/adscripta.php" class="btn btn-outline-light">
-            ⬅ Volver
+        <a href="../usuarios/adscripta.php" class="btn">
+            Volver
         </a>
     </div>
 
     <div class="table-responsive">
         <table class="table table-hover align-middle text-center rounded">
-            <thead class="table-dark">
+            <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
