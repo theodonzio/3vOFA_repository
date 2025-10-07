@@ -46,7 +46,7 @@
     <p class="mb-4 fs-5">Desde aquí podés solicitar espacios</p>
 
     <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-success btn-lg shadow-sm" data-bs-toggle="modal" data-bs-target="#realizarReservaModal">
+      <button class="btn btn-success btn-lg shadow-sm btn_wicon" data-bs-toggle="modal" data-bs-target="#realizarReservaModal"><i class="bi bi-bookmark-fill"></i>
         Realizar Reserva
       </button>
     </div>
@@ -114,7 +114,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-success">Reservar</button>
+          <button type="submit" class="btn btn-success submit_btn">Reservar</button>
         </div>
       </form>
     </div>

@@ -28,7 +28,7 @@
 
     <!-- Botones juntos -->
     <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#registrarDocenteModal">
+      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#registrarDocenteModal"><i class="bi bi-person-plus-fill"></i>
         Registrar Docente
       </button>
       <a href="../PaginasAdcriptas/docentes.php" class="btn btn-outline-light btn-lg">
@@ -99,7 +99,7 @@
     </p>
 
     <div class="d-flex justify-content-center gap-3">
-      <button data-traducible="Agregar Espacio" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#agregarEspacioModal">Agregar Espacio</button>
+      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarEspacioModal"><i class="bi bi-clipboard-plus-fill"></i>Agregar Espacio</button>
     </div>
 
   </div>

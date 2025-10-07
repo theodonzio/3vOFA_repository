@@ -720,3 +720,14 @@ footer{
 #cerrar_sesion #exit {
     color: #dc3545 !important; /* Texto rojo de Bootstrap */
 }
+
+.btn_wicon{
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 10px;
+}
+
+.submit_btn{
+  background-color: #157347 !important;
+  border: none;
+}
