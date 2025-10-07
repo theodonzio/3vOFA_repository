@@ -22,6 +22,11 @@ header .navbar{
     padding: 20px;
 }
 
+.btn-lg{
+  display: flex !important;
+  flex-direction: column !important;
+}
+
 .indexlogo{
     filter: invert(100);
     width: 4rem;
@@ -451,6 +456,7 @@ body.oscuro input[type="date"] {
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border: 1px solid #ddd;      /* borde exterior solo */
+    margin-bottom: 50px !important;
 }
 
 /* Texto y padding para todas las celdas */
@@ -641,4 +647,17 @@ input[type="checkbox"]:checked::after {
   border: solid #ffffff; /* tick blanco */
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
+}
+
+#title_reserva{
+  margin-bottom: 40px !important; 
+}
+
+#title_reservasdocente{
+    margin-bottom: 40px !important; 
+    padding: 0px !important;
+}
+
+footer{
+  background-color: #3A3A3A;
 }

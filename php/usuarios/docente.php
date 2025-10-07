@@ -120,7 +120,7 @@
 <div class="padre_tabla">
 <!-- Tabla de Reservas -->
 <div class="container" id="tabla_reservas_docente">
-  <h3>Mis Reservas</h3>
+  <h3 id="title_reservasdocente">Mis Reservas</h3>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -165,6 +165,10 @@
   </table>
 </div>
 </div>
+
+<?php
+  include '../tools/footer.php';
+?>
 
 <!-- Bootstrap Bundle JS (incluye Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>

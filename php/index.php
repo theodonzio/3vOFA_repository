@@ -51,4 +51,8 @@
 <script src="../js/traductor.js"></script>
 <script src="../js/loginModal.js"></script>
 <script src="../js/modoClaroOscuro.js"></script>
+
+<?php
+  include '../tools/footer.php';
+?>
 </body>

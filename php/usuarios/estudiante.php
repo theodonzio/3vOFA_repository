@@ -5,3 +5,7 @@
 <?php
   include '../tools/header_estudiante.php';
 ?>
+
+<?php
+  include '../tools/footer.php';
+?>

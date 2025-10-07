@@ -156,7 +156,7 @@
 
 <!-- Sección de Reservas -->
 <div id="tabla_reservas_adscripta" class="container my-5">
-    <h2 class="mb-4 text-center">Reservas Realizadas por los Docentes</h2>
+    <h2 class="mb-4 text-center" id="title_reserva">Reservas de los Docentes</h2>
     <div class="row">
   <?php
   include '../login/conexion_bd.php';
@@ -243,6 +243,10 @@
   ?>
 </div>
 </div>
+
+<?php
+  include '../tools/footer.php';
+?>
 
 <!-- Bootstrap Bundle JS (incluye Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>

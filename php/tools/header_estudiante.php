@@ -13,7 +13,7 @@
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">General</a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item" href="#"><img src="../../img/icons/timetable_icon.png" class="icono">Horarios</a></li>
             <li><a class="dropdown-item" href="#"><img src="../../img/icons/space_icon.png" class="icono">Espacios</a></li>
             <li><a class="dropdown-item" href="#"><img src="../../img/icons/teach_icon.png" class="icono">Docentes</a></li>
@@ -21,6 +21,13 @@
         </li>
 
         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta</a>
+          <ul class="dropdown-menu dropdown-menu-end" id="cerrar_sesion">
+            <li><a class="dropdown-item" href="../index.php" id="exit"><img src="../../img/icons/exit_icon.png" class="icono invert_color">Salir</a></li>
+          </ul>
+        </li>
+
+                <li class="nav-item dropdown">
           <div class="dropdown theme">
           <img 
             src="../../img/icons/config_icon(black).png"
@@ -40,13 +47,6 @@
             <li><a class="dropdown-item" href="#" id="lenguaje-en" data-traducible="Inglés">Inglés</a></li>
           </ul>
         </div>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta</a>
-          <ul class="dropdown-menu" id="cerrar_sesion">
-            <li><a class="dropdown-item" href="../index.php" id="exit"><img src="../../img/icons/exit_icon.png" class="icono invert_color">Salir</a></li>
-          </ul>
         </li>
       </ul>
     </div>
