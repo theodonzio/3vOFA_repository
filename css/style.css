@@ -731,3 +731,31 @@ footer{
   background-color: #157347 !important;
   border: none;
 }
+
+.en-construccion {
+  height: 90vh !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* ===== Colores según modo ===== */
+
+/* Modo claro (por defecto) */
+body:not(.oscuro) .en-construccion h2,
+body:not(.oscuro) .en-construccion p {
+  color: #000; /* negro */
+}
+
+/* Modo oscuro */
+body.oscuro .en-construccion h2,
+body.oscuro .en-construccion p {
+  color: #fff; /* blanco */
+}
+
+/* Color del ícono (opcional: mismo en ambos modos) */
+.en-construccion i {
+  color: #f0ad4e; /* tono amarillo Bootstrap */
+}
+
