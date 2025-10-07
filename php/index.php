@@ -43,9 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <?php endif; ?>
 
-
-
-
 <link rel="stylesheet" href="../css/style.css">
 
 <header>

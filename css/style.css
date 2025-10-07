@@ -1008,3 +1008,86 @@ body.oscuro #tabla_docentes .table tbody tr:hover td {
 .navbar-nav .nav-item .nav-link.dropdown-toggle {
     transition: color 0.2s;
 }
+
+/* ===== 🎨 Modo claro (por defecto) ===== */
+body:not(.oscuro) .swal2-popup {
+  background-color: transparent !important;
+  color: #212529 !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+body:not(.oscuro) .swal2-title,
+body:not(.oscuro) .swal2-content {
+  color: #212529 !important;
+}
+
+body:not(.oscuro) .swal2-styled {
+  background-color: #1a73e8 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 0.5rem !important;
+}
+
+body:not(.oscuro) .swal2-styled:hover {
+  background-color: #1666c1 !important;
+}
+
+/* ===== 🌙 Modo oscuro ===== */
+body.oscuro .swal2-popup {
+  background-color: #2c2c2c !important;
+  color: #f5f5f5 !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+body.oscuro .swal2-title,
+body.oscuro .swal2-content {
+  color: #f5f5f5 !important;
+}
+
+body.oscuro .swal2-styled {
+  background-color: #0d6efd !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 0.5rem !important;
+}
+
+body.oscuro .swal2-styled:hover {
+  background-color: #0b5ed7 !important;
+}
+
+/* ===== ✅ Iconos y animaciones ===== */
+body.oscuro .swal2-success,
+body.oscuro .swal2-success svg,
+body.oscuro .swal2-icon.swal2-warning,
+body.oscuro .swal2-icon.swal2-error {
+  background-color: transparent !important;
+}
+
+body.oscuro .swal2-success .swal2-success-ring,
+body.oscuro .swal2-success .swal2-success-line-tip,
+body.oscuro .swal2-success .swal2-success-line-long,
+body.oscuro .swal2-success-circular-line {
+  stroke: #0d6efd !important;
+}
+
+/* ===== 🎨 Corrección total del tick SweetAlert2 en modo oscuro ===== */
+body.oscuro .swal2-icon.swal2-success {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Quita cualquier fondo blanco interno del SVG */
+.swal2-success svg {
+  background: transparent !important;
+  fill: none !important;
+}
+
+/* También cubrimos los círculos y paths del SVG */
+body.oscuro .swal2-icon.swal2-success circle,
+body.oscuro .swal2-icon.swal2-success path {
+  fill: #000 !important;
+  stroke: none !important;
+}
+
