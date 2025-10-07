@@ -27,6 +27,19 @@ header .navbar{
   flex-direction: column !important;
 }
 
+.btn:active {
+  transform: scale(0.95);
+}
+
+.indexlogo {
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .indexlogo {
+  transform: scale(1.1);
+}
+
+
 .indexlogo{
     filter: invert(100);
     width: 4rem;
@@ -650,7 +663,7 @@ input[type="checkbox"]:checked::after {
 }
 
 #title_reserva{
-  margin-bottom: 40px !important; 
+  margin-bottom: 50px !important; 
 }
 
 #title_reservasdocente{
@@ -660,4 +673,9 @@ input[type="checkbox"]:checked::after {
 
 footer{
   background-color: #3A3A3A;
+}
+
+#metamatelogo{
+  width: 200px;
+  height: auto;
 }

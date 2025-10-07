@@ -26,7 +26,7 @@
       <div class="modal-body">
         <form id="formLogin" method="POST" action="../php/login/validar_login.php">
           <div class="mb-3">
-            <label for="usuario" class="form-label" data-traducible="C.I | Email">C.I | Email</label>
+            <label for="usuario" class="form-label" data-traducible="C.I - Email">C.I - Email</label>
             <input type="text" class="form-control" id="usuario" name="usuario" placeholder="tuemail@gmail.com" required>
           </div>
           <div class="mb-3">

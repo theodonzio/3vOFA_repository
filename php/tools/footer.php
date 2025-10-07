@@ -2,7 +2,7 @@
 <footer class="text-light py-4">
   <div class="container text-center">
 
-    <h5 class="mb-3">Contacto</h5>
+    <h5 class="mb-3"><img src="../../img/ofalogos/metamate_logo.png" id="metamatelogo"></h5>
 
     <!-- Enlaces -->
     <a href="https://instagram.com/theodonzio" target="_blank" class="text-light mx-2">
