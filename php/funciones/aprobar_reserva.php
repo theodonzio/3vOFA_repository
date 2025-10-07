@@ -14,11 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("si", $nuevo_estado, $id_reserva);
         $mensaje = "Reserva aprobada con éxito";
     } else {
-        // Rechazar = eliminar la reserva
-        $sql = "DELETE FROM reserva WHERE id_reserva = ?";
+        // Solo cambiar estado a Rechazada (no eliminar todavía)
+        $nuevo_estado = 'No aprobada';
+        $sql = "UPDATE reserva SET estado = ? WHERE id_reserva = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $id_reserva);
-        $mensaje = "Reserva rechazada y eliminada";
+        $stmt->bind_param("si", $nuevo_estado, $id_reserva);
+        $mensaje = "Reserva marcada como no aprobada (se eliminará automáticamente después de 1 día)";
     }
 
     if($stmt->execute()){

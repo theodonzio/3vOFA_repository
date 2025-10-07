@@ -63,19 +63,9 @@
           <h5 class="modal-title" id="realizarReservaLabel">Realizar Reserva</h5>
         </div>
         <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label">Tipo de Salón</label>
-            <select name="tipo_salon" id="tipo_salon" class="form-select" required>
-              <option value="">Seleccione un tipo</option>
-              <option value="Aula">Aula</option>
-              <option value="Laboratorio">Laboratorio</option>
-              <option value="Salón">Salón</option>
-              <option value="SUM">SUM</option>
-            </select>
-          </div>
 
           <div class="mb-3">
-            <label class="form-label">Nombre del Salón</label>
+            <label class="form-label">Selecciona un Espacio</label>
             <select name="id_espacio" id="nombre_salon" class="form-select" required>
               <option value="">Seleccione un salón</option>
               <?php
