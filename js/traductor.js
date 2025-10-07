@@ -30,7 +30,7 @@ const diccionario = {
 "3ºMD (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)": { en: "3rd MD (INFORMATION TECHNOLOGIES - BIL)", es: "3ºMD (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)" },
 "3ºBA (ROBOTICA Y TELECOMUNICACIONES)": { en: "3rd BA (ROBOTICS AND TELECOMMUNICATIONS)", es: "3ºBA (ROBOTICA Y TELECOMUNICACIONES)" },
 
-// Adscripta.php
+// Adscripta.php y Docentes.php
 "Sistema de Gestión OFA": { en: "OFA Management System", es: "Sistema de Gestión OFA" },
 "Panel exclusivo para Adscripta": { en: "Exclusive Panel for Adscripta", es: "Panel exclusivo para Adscripta" },
 "Docentes del Sistema": { en: "System Teachers", es: "Docentes del Sistema" },
@@ -75,7 +75,8 @@ const diccionario = {
 "Horarios": { en:"Schedules", es: "Horarios" },
 "General": { en:"General", es:"General" },
 "Cuenta": { en:"Account", es: "Cuenta" },
-"Salir": { en:"Log out", es: "Salir" }
+"Salir": { en:"Log out", es: "Salir" },
+"Reservas": { en:"Reservations", es: "Reservas" }
 
 };
 
