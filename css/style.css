@@ -927,3 +927,69 @@ body.oscuro #tabla_docentes .table tbody tr:hover td {
     background-color: #505050;
     color: #fff !important;
 }
+/* ===== Media Queries ===== */
+
+/* Pantallas grandes - 1200px y menos */
+@media (max-width: 1200px) {
+    .logo img { width: 12rem; }
+    .btn-lg { width: 220px; padding: 20px; }
+    .hero-docentes h1 { font-size: 2.2rem; }
+    .hero-docentes p { font-size: 1.1rem; }
+    .navbar-nav { gap: 8px; }
+}
+
+/* Tablets - 992px y menos */
+@media (max-width: 992px) {
+    .logo { flex-direction: column; align-items: center; }
+    .navbar-nav { flex-direction: column; gap: 5px; }
+    .btn-lg { width: 200px; padding: 18px; }
+    .botones { flex-direction: column; gap: 15px; }
+    .hero-docentes h1 { font-size: 2rem; }
+    .hero-docentes p { font-size: 1rem; }
+    .tinylogo { width: 8rem; }
+}
+
+/* Móviles grandes - 768px y menos */
+@media (max-width: 768px) {
+    .logo img { width: 10rem; }
+    .btn-lg { width: 100%; padding: 15px; font-size: 0.9rem; }
+    .botones { flex-direction: column; gap: 12px; }
+    .hero-docentes h1 { font-size: 1.8rem; }
+    .hero-docentes p { font-size: 0.95rem; }
+    #tabla_reservas_docente .table,
+    #tabla_docentes .table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* Móviles medianos - 576px y menos */
+@media (max-width: 576px) {
+    .logo img { width: 8rem; padding: 10px; }
+    .btn-lg { font-size: 0.85rem; padding: 12px; }
+    .botones { gap: 10px; }
+    .hero-docentes h1 { font-size: 1.5rem; }
+    .hero-docentes p { font-size: 0.85rem; }
+    #tabla_reservas_docente h3,
+    #title_reserva,
+    #title_reservasdocente { font-size: 1rem; }
+    #tabla_reservas_docente .table td,
+    #tabla_reservas_docente .table th,
+    #tabla_docentes .table td,
+    #tabla_docentes .table th { padding: 0.4rem 0.6rem; font-size: 0.8rem; }
+}
+
+/* Móviles pequeños - 400px y menos */
+@media (max-width: 400px) {
+    .logo img { width: 6rem; }
+    .btn-lg { font-size: 0.75rem; padding: 10px; }
+    .hero-docentes h1 { font-size: 1.3rem; }
+    .hero-docentes p { font-size: 0.8rem; }
+    .botones button { width: 100%; padding: 10px; font-size: 0.75rem; }
+    #tabla_reservas_docente .table td,
+    #tabla_reservas_docente .table th,
+    #tabla_docentes .table td,
+    #tabla_docentes .table th { padding: 0.3rem 0.4rem; font-size: 0.7rem; }
+    #scrollTopBtn { bottom: 10px; right: 10px; }
+}
