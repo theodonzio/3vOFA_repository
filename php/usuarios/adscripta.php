@@ -109,7 +109,7 @@
 <div class="modal fade" id="agregarEspacioModal" tabindex="-1" aria-labelledby="agregarEspacioLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <form action="../funciones/agregar_espacio.php" method="POST">
+      <form id="formEspacio" action="../funciones/agregar_espacio.php" method="POST">
         <div class="modal-header">
           <h5 class="modal-title" id="agregarEspacioLabel">Agregar Espacio</h5>
         </div>
@@ -130,7 +130,13 @@
           <!-- Descripción del salón -->
           <div class="mb-3">
             <label class="form-label">Descripción o nombre del espacio</label>
-            <input type="text" name="descripcion" class="form-control" placeholder="Ej: Laboratorio de Informática 2" required>
+            <input 
+              type="text" 
+              name="descripcion" 
+              id="descripcion" 
+              class="form-control" 
+              placeholder="Ej: 2" 
+              required>
           </div>
 
           <!-- Recursos -->
@@ -157,6 +163,19 @@
     </div>
   </div>
 </div>
+
+<!-- 🔒 Validación con JavaScript -->
+<script>
+document.getElementById("formEspacio").addEventListener("submit", function(e) {
+  const descripcion = document.getElementById("descripcion").value.trim();
+
+  // Verifica si no es un número entero positivo
+  if (!/^\d+$/.test(descripcion)) {
+    e.preventDefault();
+    alert("Por favor, indica solo el número del espacio (sin letras ni símbolos).");
+  }
+});
+</script>
 
 <!-- Sección de Reservas -->
 <div id="tabla_reservas_adscripta" class="container my-5">

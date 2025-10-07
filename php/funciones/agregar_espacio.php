@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Insertar el nuevo espacio
     $sql = "INSERT INTO espacio (nombre_espacio, tipo) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $descripcion, $tipo_salon);
+    $stmt->bind_param("is", $descripcion, $tipo_salon);
 
     if ($stmt->execute()) {
         $id_espacio = $stmt->insert_id;
