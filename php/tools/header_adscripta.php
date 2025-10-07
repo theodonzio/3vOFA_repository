@@ -20,10 +20,10 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-traducible="General">General</a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="#"><img src="../../img/icons/timetable_icon.png" class="icono" data-traducible="Horarios">Horarios</a></li>
-              <li><a class="dropdown-item" href="#"><img src="../../img/icons/space_icon.png" class="icono" data-traducible="Espacios">Espacios</a></li>
-              <li><a class="dropdown-item" href="#"><img src="../../img/icons/teach_icon.png" class="icono" data-traducible="Docentes">Docentes</a></li>
-              <li><a class="dropdown-item" href="#"><img src="../../img/icons/class_icon.png" class="icono" data-traducible="Grupos">Grupos</a></li>
+              <li><a class="dropdown-item" href="#" data-traducible="Horarios">Horarios</a></li>
+              <li><a class="dropdown-item" href="#" data-traducible="Espacios">Espacios</a></li>
+              <li><a class="dropdown-item" href="#" data-traducible="Docentes">Docentes</a></li>
+              <li> <a class="dropdown-item" href="#" data-traducible="Grupos">Grupos</a></li>
             </ul>
           </li>         
 
