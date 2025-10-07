@@ -46,24 +46,19 @@
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <label class="form-label">Nombre</label>
-            <input type="text" name="nombre" class="form-control" required>
+            <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Apellido</label>
-            <input type="text" name="apellido" class="form-control" required>
+            <input type="text" name="apellido" class="form-control" placeholder="Apellido" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Cédula</label>
-            <input type="text" name="cedula" class="form-control" required>
+            <input type="text" name="cedula" class="form-control" placeholder="Cédula" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" required>
+            <input type="email" name="email" class="form-control" placeholder="Email" required>
           </div>
           <div class="mb-3">
-            <label class="form-label">Contraseña</label>
-            <input type="password" name="contrasena" class="form-control" required>
+            <input type="password" name="contrasena" class="form-control" placeholder="Contraseña" required>
           </div>
           <input type="hidden" name="id_rol" value="2"> <!-- Rol docente -->
         </div>
@@ -75,6 +70,7 @@
     </div>
   </div>
 </div>
+
 
 
 <!-- Hero Espacios -->
