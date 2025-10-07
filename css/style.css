@@ -1011,10 +1011,18 @@ body.oscuro #tabla_docentes .table tbody tr:hover td {
 
 /* ===== 🎨 Modo claro (por defecto) ===== */
 body:not(.oscuro) .swal2-popup {
-  background-color: transparent !important;
+  background-color: white;
   color: #212529 !important;
   border-radius: 1rem !important;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== ✅ Iconos y animaciones ===== */
+body:not(.oscuro) .swal2-success,
+body:not(.oscuro) .swal2-success svg,
+body:not(.oscuro) .swal2-icon.swal2-warning,
+body:not(.oscuro) .swal2-icon.swal2-error {
+  background-color: transparent !important;
 }
 
 body:not(.oscuro) .swal2-title,
@@ -1091,3 +1099,9 @@ body.oscuro .swal2-icon.swal2-success path {
   stroke: none !important;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

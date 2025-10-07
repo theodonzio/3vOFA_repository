@@ -117,8 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
     <h2 data-traducible="Gestión de Espacios" class="display-6 fw-semibold">Gestión de Espacios</h2>
     <p data-traducible="Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos" class="mb-4">Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos</p>
     <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarEspacioModal" data-traducible="➕ Agregar Espacio">
-        <i class="bi bi-clipboard-plus-fill"></i> Agregar Espacio
+      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarEspacioModal" data-traducible="Agregar Espacio">
+        <i class="bi bi-clipboard-plus-fill"></i>Agregar Espacio
       </button>
     </div>
   </div>
