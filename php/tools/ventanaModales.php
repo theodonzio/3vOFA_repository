@@ -27,11 +27,11 @@
         <form id="formLogin" method="POST" action="../php/login/validar_login.php">
           <div class="mb-3">
             <label for="usuario" class="form-label" data-traducible="C.I - Email">C.I - Email</label>
-            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="tuemail@gmail.com" required>
+            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="email@gmail.com" required>
           </div>
           <div class="mb-3">
             <label for="contrasena" class="form-label" data-traducible="Contraseña">Contraseña</label>
-            <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+            <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="••••••" required>
           </div>
           <input type="hidden" id="rol" name="rol">
         </form>

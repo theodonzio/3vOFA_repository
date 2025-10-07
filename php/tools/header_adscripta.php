@@ -30,7 +30,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cuenta</a>
             <ul class="dropdown-menu dropdown-menu-end" id="cerrar_sesion">
-              <li><a id="exit" class="dropdown-item" href="../index.php"><img src="../../img/icons/exit_icon.png" class="icono invert_color">Salir</a></li>
+              <li><a id="exit" class="dropdown-item" href="../index.php">Salir</a></li>
             </ul>
           </li>
 
