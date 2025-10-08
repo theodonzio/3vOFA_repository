@@ -76,7 +76,9 @@ const diccionario = {
 "General": { en:"General", es:"General" },
 "Cuenta": { en:"Account", es: "Cuenta" },
 "Salir": { en:"Log out", es: "Salir" },
-"Reservas": { en:"Reservations", es: "Reservas" }
+"Reservas": { en:"Reservations", es: "Reservas" },
+"Cursos": { en:"Courses", es: "Cursos" }
+
 
 };
 

@@ -1,7 +1,41 @@
+<link rel="stylesheet" href="../../css/style.css">
+
+<header>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <div class="logo">
+        <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra">
+
+        
+        <div class="dropdown">
+
+          <img 
+            src="../img/icons/config_icon(black).png"
+            class="theme_icon_mode dropdown-toggle"
+            id="boton-tema"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+          
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-tema">
+            <li><h6 class="dropdown-header" data-traducible="Tema">Tema</h6></li>
+            <li><a class="dropdown-item" href="#" id="tema-claro" data-traducible="Claro"><img class="icono">Claro</a></li>
+            <li><a class="dropdown-item" href="#" id="tema-oscuro" data-traducible="Oscuro"><img class="icono">Oscuro</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><h6 class="dropdown-header" data-traducible="Lenguaje">Lenguaje</h6></li>
+            <li><a class="dropdown-item" href="#" id="lenguaje-es" data-traducible="Español">Español</a></li>
+            <li><a class="dropdown-item" href="#" id="lenguaje-en" data-traducible="Inglés">Inglés</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <?php
 include '../tools/head.php';
-include '../tools/header_adscripta.php';
 include '../login/conexion_bd.php';
+
 
 // Obtener todos los docentes (id_rol = 2)
 $sql = "SELECT id_usuario, nombre, apellido, cedula, email FROM Usuario WHERE id_rol = 2";

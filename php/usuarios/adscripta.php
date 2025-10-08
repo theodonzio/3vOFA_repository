@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <!-- Hero Docentes -->
-<div class="hero text-white py-5 d-flex align-items-center justify-content-center" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; position: relative; min-height: 400px;">
+<div id="HeroDocentes" class="hero text-white py-5 d-flex align-items-center justify-content-center" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop'); background-size: cover; background-position: center; position: relative; min-height: 400px;">
   <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
   <div class="container text-center" style="position: relative; z-index: 1;">
     <h2 data-traducible="Docentes del Sistema" class="display-6 fw-semibold">Docentes del Sistema</h2>
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <!-- Hero Cursos -->
-<div class="hero text-white py-5 d-flex align-items-center justify-content-center" 
+<div id="HeroCursos" class="hero text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1581091215368-3cce33a3f14f?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover; background-position: center; position: relative; min-height: 400px;">
   <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <!-- Hero Grupos -->
-<div class="hero text-white py-5 d-flex align-items-center justify-content-center" 
+<div id="HeroGrupos" class="hero text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1596496057661-105f360e1b55?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover; background-position: center; position: relative; min-height: 400px;">
   <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
@@ -316,7 +316,7 @@ if (isset($conn)) {
 ?>
 
 <div class="container my-5">
-  <h2 class="text-center mb-4">Gestión de Horarios por Grupo</h2>
+  <h2 class="text-center mb-4" id="GestionHorarios">Gestión de Horarios por Grupo</h2>
 
   <div class="d-flex justify-content-end mb-3">
     <label for="grupoSelect" class="me-2 fw-bold">Seleccionar grupo:</label>
@@ -449,7 +449,7 @@ if (isset($conn)) {
 
 
 <!-- Hero Espacios -->
-<div class="hero text-white py-5 d-flex align-items-center justify-content-center" style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop'); background-size: cover; background-position: center; position: relative; min-height: 400px;">
+<div id="HeroEspacios" class="hero text-white py-5 d-flex align-items-center justify-content-center" style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop'); background-size: cover; background-position: center; position: relative; min-height: 400px;">
   <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
   <div class="container text-center" style="position: relative; z-index: 1;">
     <h2 data-traducible="Gestión de Espacios" class="display-6 fw-semibold">Gestión de Espacios</h2>
