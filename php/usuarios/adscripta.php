@@ -184,9 +184,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
  <!-- Sección Horarios -->
 <?php
-// <-- IMPORTANTE: si $conn aún no está definido en este punto, incluimos la conexión
 if (!isset($conn)) {
   include_once '../login/conexion_bd.php';
+}
+
+// Traemos todas las asignaturas
+$asignaturas = [];
+if (isset($conn)) {
+  $resAsig = $conn->query("SELECT id_asignatura, nombre_asignatura FROM asignatura ORDER BY nombre_asignatura");
+  if ($resAsig) {
+    while ($a = $resAsig->fetch_assoc()) {
+      $asignaturas[] = $a;
+    }
+  }
 }
 ?>
 
@@ -198,13 +208,10 @@ if (!isset($conn)) {
     <select id="grupoSelect" class="form-select w-auto">
       <option value="">-- Seleccionar grupo --</option>
       <?php
-      // Cargamos los grupos (si la conexión existe)
       if (isset($conn)) {
         $resGr = $conn->query("SELECT id_grupo, nombre_grupo FROM grupo ORDER BY nombre_grupo");
-        if ($resGr) {
-          while ($g = $resGr->fetch_assoc()) {
-            echo "<option value='{$g['id_grupo']}'>{$g['nombre_grupo']}</option>";
-          }
+        while ($g = $resGr->fetch_assoc()) {
+          echo "<option value='{$g['id_grupo']}'>{$g['nombre_grupo']}</option>";
         }
       }
       ?>
@@ -225,44 +232,31 @@ if (!isset($conn)) {
       </thead>
       <tbody id="horarioBody">
         <?php
-        // Intentamos leer los horarios desde la BD; si falla, usamos un fallback estático
-        $horarios = null;
+        // Traemos los horarios
+        $horarios = [];
         if (isset($conn)) {
-          $horarios = $conn->query("SELECT * FROM horario ORDER BY id_horario");
+          $resHor = $conn->query("SELECT * FROM horario ORDER BY id_horario");
+          if ($resHor) {
+            while ($h = $resHor->fetch_assoc()) {
+              $horarios[] = $h;
+            }
+          }
         }
 
-        if ($horarios && $horarios->num_rows > 0) {
-          while ($fila = $horarios->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td><strong>{$fila['nombre_horario']}</strong><br>{$fila['hora_inicio']} - {$fila['hora_fin']}</td>";
-            for ($i = 1; $i <= 5; $i++) {
-              echo "<td contenteditable='true' data-dia='{$i}' data-hora='{$fila['id_horario']}'></td>";
+        foreach ($horarios as $fila) {
+          echo "<tr>";
+          echo "<td><strong>{$fila['nombre_horario']}</strong><br>{$fila['hora_inicio']} - {$fila['hora_fin']}</td>";
+          for ($i = 1; $i <= 5; $i++) {
+            echo "<td>";
+            echo "<select class='form-select selectHorario' data-dia='{$i}' data-hora='{$fila['id_horario']}'>";
+            echo "<option value=''>-- Vacío --</option>";
+            foreach ($asignaturas as $a) {
+              echo "<option value='{$a['id_asignatura']}'>{$a['nombre_asignatura']}</option>";
             }
-            echo "</tr>";
+            echo "</select>";
+            echo "</td>";
           }
-        } else {
-          // Fallback para que la tabla siempre se vea aunque haya un problema de BD
-          $defaults = [
-            ['id_horario'=>1,'nombre_horario'=>'1era','hora_inicio'=>'07:00:00','hora_fin'=>'07:45:00'],
-            ['id_horario'=>2,'nombre_horario'=>'2da','hora_inicio'=>'07:50:00','hora_fin'=>'08:35:00'],
-            ['id_horario'=>3,'nombre_horario'=>'3era','hora_inicio'=>'08:40:00','hora_fin'=>'09:25:00'],
-            ['id_horario'=>4,'nombre_horario'=>'4ta','hora_inicio'=>'09:30:00','hora_fin'=>'10:15:00'],
-            ['id_horario'=>5,'nombre_horario'=>'5ta','hora_inicio'=>'10:20:00','hora_fin'=>'11:05:00'],
-            ['id_horario'=>6,'nombre_horario'=>'6ta','hora_inicio'=>'11:10:00','hora_fin'=>'11:55:00'],
-            ['id_horario'=>7,'nombre_horario'=>'7ma','hora_inicio'=>'12:00:00','hora_fin'=>'12:45:00'],
-            ['id_horario'=>8,'nombre_horario'=>'8va','hora_inicio'=>'12:50:00','hora_fin'=>'13:35:00'],
-            ['id_horario'=>9,'nombre_horario'=>'9na','hora_inicio'=>'13:40:00','hora_fin'=>'14:25:00'],
-            ['id_horario'=>10,'nombre_horario'=>'10ma','hora_inicio'=>'14:30:00','hora_fin'=>'15:15:00'],
-            ['id_horario'=>11,'nombre_horario'=>'11va','hora_inicio'=>'15:20:00','hora_fin'=>'16:05:00'],
-          ];
-          foreach ($defaults as $fila) {
-            echo "<tr>";
-            echo "<td><strong>{$fila['nombre_horario']}</strong><br>{$fila['hora_inicio']} - {$fila['hora_fin']}</td>";
-            for ($i = 1; $i <= 5; $i++) {
-              echo "<td contenteditable='true' data-dia='{$i}' data-hora='{$fila['id_horario']}'></td>";
-            }
-            echo "</tr>";
-          }
+          echo "</tr>";
         }
         ?>
       </tbody>
@@ -274,40 +268,28 @@ if (!isset($conn)) {
   </div>
 </div>
 
-<!-- estilos pequeños para que las celdas editables se vean bien -->
-<style>
-  #tablaHorarios td[contenteditable="true"] { min-height:48px; vertical-align: middle; }
-</style>
-
-<!-- JS: carga/guardado (si no tenés ../funciones/obtener_horario.php y guardar_horario.php, la carga/guardado fallará pero la tabla se mostrará) -->
+<!-- JS: carga/guardado de select -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   const grupoSelect = document.getElementById("grupoSelect");
   const guardarBtn = document.getElementById("guardarCambios");
-  const tabla = document.getElementById("horarioBody");
 
   grupoSelect.addEventListener("change", () => {
     const idGrupo = grupoSelect.value;
-    if (!idGrupo) {
-      // limpiamos
-      tabla.querySelectorAll("td[contenteditable]").forEach(td => td.textContent = "");
-      return;
-    }
+    document.querySelectorAll(".selectHorario").forEach(sel => sel.value = "");
+
+    if (!idGrupo) return;
 
     fetch(`../funciones/obtener_horario.php?id_grupo=${idGrupo}`)
       .then(res => res.ok ? res.json() : [])
       .then(data => {
-        tabla.querySelectorAll("td[contenteditable]").forEach(td => td.textContent = "");
-        if (!data || !Array.isArray(data)) return;
+        if (!Array.isArray(data)) return;
         data.forEach(item => {
-          const celda = tabla.querySelector(`td[data-dia='${item.dia_semana}'][data-hora='${item.id_horario}']`);
-          if (celda) celda.textContent = item.contenido;
+          const sel = document.querySelector(`.selectHorario[data-dia='${item.dia_semana}'][data-hora='${item.id_horario}']`);
+          if (sel) sel.value = item.id_asignatura; // Ajustar según la respuesta JSON
         });
       })
-      .catch(err => {
-        // No hacemos nada; tabla sigue visible con celdas vacías
-        console.log('Error al obtener horarios:', err);
-      });
+      .catch(err => console.log('Error al obtener horarios:', err));
   });
 
   guardarBtn.addEventListener("click", () => {
@@ -328,14 +310,12 @@ if (!isset($conn)) {
     }).then((result) => {
       if (result.isConfirmed) {
         const datos = [];
-        tabla.querySelectorAll("td[contenteditable]").forEach(td => {
-          if (td.textContent.trim() !== "") {
-            datos.push({
-              id_horario: td.dataset.hora,
-              dia_semana: td.dataset.dia,
-              contenido: td.textContent.trim()
-            });
-          }
+        document.querySelectorAll(".selectHorario").forEach(sel => {
+          datos.push({
+            id_horario: sel.dataset.hora,
+            dia_semana: sel.dataset.dia,
+            id_asignatura: sel.value || null
+          });
         });
 
         fetch("../funciones/guardar_horario.php", {
@@ -344,14 +324,13 @@ if (!isset($conn)) {
           body: JSON.stringify({id_grupo: grupoSelect.value, horarios: datos})
         })
         .then(res => res.ok ? res.json() : Promise.reject('error'))
-        .then(resp => {
-          Swal.fire(resp.titulo, resp.mensaje, resp.icono);
-        })
+        .then(resp => Swal.fire(resp.titulo, resp.mensaje, resp.icono))
         .catch(() => Swal.fire("Error", "No se pudieron guardar los cambios.", "error"));
       }
     });
   });
 </script>
+
 
 
 <!-- Hero Espacios -->
