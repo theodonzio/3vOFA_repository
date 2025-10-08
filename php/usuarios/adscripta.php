@@ -111,8 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
       Desde aquí puedes agregar nuevos cursos al sistema
     </p>
     <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarCursoModal" data-traducible="Agregar Curso">
-        <i class="bi bi-journal-plus"></i> Agregar Curso
+      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarCursoModal">
+        <i class="bi bi-journal-plus"></i>  <div data-traducible="Agregar Curso">Agregar Curso</div>
       </button>
       <a href="../PaginasAdcriptas/cursos.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Cursos">Ver Cursos</a>
     </div>
@@ -161,8 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
       Desde aquí puedes agregar nuevos grupos al sistema
     </p>
     <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarGrupoModal" data-traducible="Agregar Grupo">
-        <i class="bi bi-people-fill"></i> Agregar Grupo
+      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarGrupoModal">
+        <i class="bi bi-people-fill"></i> <div  data-traducible="Agregar Grupo">Agregar Grupo</div>
       </button>
       <a href="../PaginasAdcriptas/grupos.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Grupos">Ver Grupos</a>
     </div>
@@ -237,8 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
       Desde aquí puedes gestionar las asignaturas registradas en el sistema
     </p>
     <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarAsignaturaModal" data-traducible="Agregar Asignatura">
-        <i class="bi bi-journal-plus"></i> Agregar Asignatura
+      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarAsignaturaModal">
+        <i class="bi bi-journal-plus"></i>  <div data-traducible="Agregar Asignatura">Agregar Asignatura</div>
       </button>
     </div>
   </div>
