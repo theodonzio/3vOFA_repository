@@ -5,8 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!botonTema || !logoBarra) return;
 
-  // --- Ruta base relativa ---
-  const basePath = '../../';
+  // --- Detección automática de nivel de ruta ---
+  const currentPath = window.location.pathname;
+
+  // Si el archivo actual NO es /php/index.php → estamos en una subcarpeta
+  const isSubfolder = !currentPath.endsWith('/php/index.php') && !currentPath.endsWith('/php/index');
+
+  // Ruta base dinámica
+  const basePath = isSubfolder ? '../../' : '../';
 
   function aplicarModo(modo) {
     if (modo === 'oscuro') {
@@ -24,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modoGuardado = localStorage.getItem('modo');
   aplicarModo(modoGuardado || 'claro');
 
-  // === Opciones del menú ===
+  // === Eventos del menú ===
   document.getElementById('tema-claro').addEventListener('click', (e) => {
     e.preventDefault();
     aplicarModo('claro');
