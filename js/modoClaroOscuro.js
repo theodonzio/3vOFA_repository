@@ -5,18 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!botonTema || !logoBarra) return;
 
-  // --- Detectar ruta base según profundidad desde 3vOFA ---
-  const path = window.location.pathname;
-  const indexRoot = path.indexOf('/3vOFA_repository/');
-  let relativePath = path.substring(indexRoot + '/3vOFA_repository/'.length);
-  const segments = relativePath.split('/').filter(Boolean);
+  // --- Ruta base relativa ---
+  const basePath = '../../';
 
-  let basePath = '';
-  if (segments.length > 1) {
-    basePath = '../'.repeat(segments.length - 1);
-  }
-
-  // --- Aplicar modo claro/oscuro ---
   function aplicarModo(modo) {
     if (modo === 'oscuro') {
       cuerpo.classList.add('oscuro');
@@ -33,16 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const modoGuardado = localStorage.getItem('modo');
   aplicarModo(modoGuardado || 'claro');
 
-  // === OPCIONES DEL MENÚ DROPDOWN ===
-
-  // Cambiar a modo claro
+  // === Opciones del menú ===
   document.getElementById('tema-claro').addEventListener('click', (e) => {
     e.preventDefault();
     aplicarModo('claro');
     localStorage.setItem('modo', 'claro');
   });
 
-  // Cambiar a modo oscuro
   document.getElementById('tema-oscuro').addEventListener('click', (e) => {
     e.preventDefault();
     aplicarModo('oscuro');
