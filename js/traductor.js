@@ -77,9 +77,10 @@ const diccionario = {
 "Cuenta": { en:"Account", es: "Cuenta" },
 "Salir": { en:"Log out", es: "Salir" },
 "Reservas": { en:"Reservations", es: "Reservas" },
-"Cursos": { en:"Courses", es: "Cursos" }
-
-
+"Cursos": { en:"Courses", es: "Cursos" },
+"Agregar Grupo": { en:"Add Groups", es: "Agregar Grupo" },
+"Agregar Asignatura": {en:"Add Subject", es: "Agregar Asignatura"},
+"Agregar Curso":{en: "Add Courses", es:"Agregar Cursos"}
 };
 
 // Función para traducir todos los elementos con data-traducible
