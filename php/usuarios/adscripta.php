@@ -92,8 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
     <h2 data-traducible="Docentes del Sistema" class="display-6 fw-semibold">Docentes del Sistema</h2>
     <p data-traducible="Desde aquí puedes gestionar a los docentes registrados en el sistema" class="mb-4">Desde aquí puedes gestionar a los docentes registrados en el sistema</p>
     <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#registrarDocenteModal" data-traducible="Registrar Docente">
-        <i class="bi bi-person-plus-fill"></i> Registrar Docente
+      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#registrarDocenteModal">
+        <i class="bi bi-person-plus-fill"></i>
+        <div data-traducible="Registrar Docente"></div>
       </button>
       <a href="../PaginasAdcriptas/docentes.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Docentes">Ver Docentes</a>
     </div>
@@ -112,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </p>
     <div class="d-flex justify-content-center gap-3">
       <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarCursoModal">
-        <i class="bi bi-journal-plus"></i>  <div data-traducible="Agregar Curso">Agregar Curso</div>
+        <i class="bi bi-file-earmark-plus-fill"></i>  <div data-traducible="Agregar Curso">Agregar Curso</div>
       </button>
       <a href="../PaginasAdcriptas/cursos.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Cursos">Ver Cursos</a>
     </div>
