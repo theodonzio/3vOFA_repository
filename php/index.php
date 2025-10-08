@@ -12,7 +12,7 @@
 
         <div class="dropdown">
           <img 
-            src="../img/icons/config_icon(black).png"
+            src="https://dbitsp.tailff9876.ts.net/OFA/3vOFA/img/icons/config_icon(black).png"
             class="theme_icon_mode dropdown-toggle"
             id="boton-tema"
             data-bs-toggle="dropdown"
