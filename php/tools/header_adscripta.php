@@ -20,15 +20,15 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-traducible="General">General</a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><img src="../../img/icons/timetable_icon.png" class="icono">
+              <li class="AlinearBotones"><img src="../../img/icons/timetable_icon.png" class="icono">
                 <a class="dropdown-item" href="#GestionHorarios" data-traducible="Horarios">Horarios</a></li>
-              <li><img src="../../img/icons/space_icon.png" class="icono">
+              <li class="AlinearBotones"><img src="../../img/icons/space_icon.png" class="icono">
                 <a class="dropdown-item" href="#HeroEspacios" data-traducible="Espacios">Espacios</a></li>
-              <li><img src="../../img/icons/teach_icon.png" class="icono">
+              <li class="AlinearBotones"><img src="../../img/icons/teach_icon.png" class="icono">
                 <a class="dropdown-item" href="#HeroDocentes" data-traducible="Docentes">Docentes</a></li>
-              <li><img src="../../img/icons/class_icon.png" class="icono">
+              <li class="AlinearBotones"><img src="../../img/icons/class_icon.png" class="icono">
                 <a class="dropdown-item" href="#HeroCursos" data-traducible="Cursos">Cursos</a></li>
-              <li><img src="../../img/icons/abc_icon.png" class="icono">
+              <li class="AlinearBotones"><img src="../../img/icons/abc_icon.png" class="icono">
                 <a class="dropdown-item" href="#HeroGrupos" data-traducible="Grupos">Grupos</a></li>
             </ul>
           </li>         

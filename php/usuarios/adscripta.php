@@ -126,6 +126,40 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
+<!-- Modal Registrar Docente -->
+<div class="modal fade" id="registrarDocenteModal" tabindex="-1" aria-labelledby="registrarDocenteLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="../funciones/registrar_docente.php" method="POST">
+        <div class="modal-header">
+          <h5 data-traducible="Registrar Docente" class="modal-title" id="registrarDocenteLabel">Registrar Docente</h5>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <input type="text" name="nombre" class="form-control" placeholder="Nombre" data-traducible="Nombre" required>
+          </div>
+          <div class="mb-3">
+            <input type="text" name="apellido" class="form-control" placeholder="Apellido" data-traducible="Apellido" required>
+          </div>
+          <div class="mb-3">
+            <input type="text" name="cedula" class="form-control" placeholder="Cédula" data-traducible="Cédula" required>
+          </div>
+          <div class="mb-3">
+            <input type="email" name="email" class="form-control" placeholder="Email" data-traducible="Email" required>
+          </div>
+          <div class="mb-3">
+            <input type="password" name="contrasena" class="form-control" placeholder="Contraseña" data-traducible="Contraseña" required>
+          </div>
+          <input type="hidden" name="id_rol" value="2">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-success" data-traducible="Guardar">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <!-- Modal Agregar Curso -->
 <div class="modal fade" id="agregarCursoModal" tabindex="-1" aria-labelledby="agregarCursoLabel" aria-hidden="true" style="background-image: url('https://images.unsplash.com/photo-1581091215368-3cce33a3f14f?q=80&w=2070&auto=format&fit=crop'); 

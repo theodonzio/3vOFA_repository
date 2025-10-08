@@ -68,7 +68,6 @@ flex: 0.8;
 .icono{
     filter: invert(100);
     width: 25px;
-    margin-right: 5px;
 }
 
 /* ===== Íconos dentro de recursos (checkboxes) ===== */
@@ -127,11 +126,6 @@ input::placeholder {
     margin: 10px;    /* Más espacio interno */
 }
 
-.dropdown-item{
-    display: flex;
-    align-items: center;
-    justify-content: left;
-}
 
 .dropdown-item:focus,
 .dropdown-item:active {
@@ -234,6 +228,13 @@ body.oscuro .navbar-nav .nav-link:focus {
 }
 
 /* Dropdowns */
+
+.AlinearBotones{
+  display: flex;
+  align-items: center;
+}
+
+
 body.oscuro .dropdown-menu {
   background-color: #333;
   border-color: #444;
@@ -243,7 +244,6 @@ body.oscuro .dropdown-item {
   color: #ffffff;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
 }
 
 body.oscuro .dropdown-item:hover,
@@ -1017,7 +1017,7 @@ body:not(.oscuro) .swal2-popup {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== ✅ Iconos y animaciones ===== */
+/* =====  Iconos y animaciones ===== */
 body:not(.oscuro) .swal2-success,
 body:not(.oscuro) .swal2-success svg,
 body:not(.oscuro) .swal2-icon.swal2-warning,
@@ -1065,7 +1065,7 @@ body.oscuro .swal2-styled:hover {
   background-color: #0b5ed7 !important;
 }
 
-/* ===== ✅ Iconos y animaciones ===== */
+/* =====  Iconos y animaciones ===== */
 body.oscuro .swal2-success,
 body.oscuro .swal2-success svg,
 body.oscuro .swal2-icon.swal2-warning,
