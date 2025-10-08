@@ -412,7 +412,12 @@ document.getElementById("formEspacio").addEventListener("submit", function(e) {
 
 <!-- Sección Reservas -->
 <div id="tabla_reservas_adscripta" class="container my-5">
-  <h2 class="mb-4 text-center" data-traducible="Reservas Realizadas por los Docentes" id="title_reserva">Reservas de los Docentes</h2>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+  <h2 class="m-0" data-traducible="Reservas Realizadas por los Docentes" id="title_reserva">Reservas de los Docentes</h2>
+  <button id="btnRecargar" class="btn btn-outline-primary d-flex align-items-center gap-2">
+    <i class="bi bi-arrow-clockwise"></i> Recargar Página
+  </button>
+</div>
   <div class="row">
     <?php
     include '../login/conexion_bd.php';
@@ -504,3 +509,23 @@ document.getElementById("formEspacio").addEventListener("submit", function(e) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
+<script>
+  document.getElementById('btnRecargar').addEventListener('click', () => {
+    // Agregamos un pequeño efecto visual de recarga
+    const btn = document.getElementById('btnRecargar');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Recargando...';
+    setTimeout(() => location.reload(), 1000);
+  });
+</script>
+
+<style>
+  /* animación del icono girando */
+  .spin {
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
