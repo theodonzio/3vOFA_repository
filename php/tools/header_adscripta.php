@@ -9,7 +9,6 @@
           <img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra">
       </div>
 
-      <!-- Botón toggler (para mobile) -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
