@@ -2,6 +2,31 @@
   include '../tools/head.php';
   include '../tools/header_adscripta.php';
 
+if (isset($_GET['curso'])): ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  <?php if ($_GET['curso'] === 'success'): ?>
+    Swal.fire({
+      icon: 'success',
+      title: '¡Curso agregado correctamente!',
+      text: 'El nuevo curso ha sido registrado en el sistema.',
+      confirmButtonColor: '#198754',
+      confirmButtonText: 'Aceptar'
+    });
+  <?php elseif ($_GET['curso'] === 'error'): ?>
+    Swal.fire({
+      icon: 'error',
+      title: 'Error al registrar',
+      text: 'No se pudo agregar el curso. Intenta nuevamente.',
+      confirmButtonColor: '#dc3545',
+      confirmButtonText: 'Aceptar'
+    });
+  <?php endif; ?>
+});
+</script>
+<?php endif;
+
 if (isset($_GET['docente'])): ?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
@@ -75,31 +100,46 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
-<!-- Modal Registrar Docente -->
-<div class="modal fade" id="registrarDocenteModal" tabindex="-1" aria-labelledby="registrarDocenteLabel" aria-hidden="true">
+<!-- Hero Cursos -->
+<div class="hero text-white py-5 d-flex align-items-center justify-content-center" 
+     style="background-image: url('https://images.unsplash.com/photo-1581091215368-3cce33a3f14f?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover; background-position: center; position: relative; min-height: 400px;">
+  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
+  <div class="container text-center" style="position: relative; z-index: 1;">
+    <h2 data-traducible="Cursos" class="display-6 fw-semibold">Cursos</h2>
+    <p data-traducible="Desde aquí puedes agregar nuevos cursos al sistema" class="mb-4">
+      Desde aquí puedes agregar nuevos cursos al sistema
+    </p>
+    <div class="d-flex justify-content-center gap-3">
+      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarCursoModal" data-traducible="Agregar Curso">
+        <i class="bi bi-journal-plus"></i> Agregar Curso
+      </button>
+      <a href="../PaginasAdcriptas/cursos.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Cursos">Ver Cursos</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Agregar Curso -->
+<div class="modal fade" id="agregarCursoModal" tabindex="-1" aria-labelledby="agregarCursoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <form action="../funciones/registrar_docente.php" method="POST">
+      <form action="../funciones/agregar_curso.php" method="POST">
         <div class="modal-header">
-          <h5 data-traducible="Registrar Docente" class="modal-title" id="registrarDocenteLabel">Registrar Docente</h5>
+          <h5 class="modal-title" id="agregarCursoLabel" data-traducible="Agregar Curso">Agregar Curso</h5>
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <input type="text" name="nombre" class="form-control" placeholder="Nombre" data-traducible="Nombre" required>
+            <label class="form-label" data-traducible="Nombre del Curso">Nombre del Curso</label>
+            <input type="text" name="nombre_curso" class="form-control" placeholder="Ej: Técnico en Informática" required>
           </div>
           <div class="mb-3">
-            <input type="text" name="apellido" class="form-control" placeholder="Apellido" data-traducible="Apellido" required>
+            <label class="form-label" data-traducible="Descripción">Descripción</label>
+            <textarea name="descripcion" class="form-control" placeholder="Descripción del curso" rows="3"></textarea>
           </div>
           <div class="mb-3">
-            <input type="text" name="cedula" class="form-control" placeholder="Cédula" data-traducible="Cédula" required>
+            <label class="form-label" data-traducible="Duración en años">Duración en años</label>
+            <input type="number" name="duracion_anos" class="form-control" placeholder="Ej: 3" required>
           </div>
-          <div class="mb-3">
-            <input type="email" name="email" class="form-control" placeholder="Email" data-traducible="Email" required>
-          </div>
-          <div class="mb-3">
-            <input type="password" name="contrasena" class="form-control" placeholder="Contraseña" data-traducible="Contraseña" required>
-          </div>
-          <input type="hidden" name="id_rol" value="2">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
@@ -110,6 +150,81 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
+<!-- Hero Grupos -->
+<div class="hero text-white py-5 d-flex align-items-center justify-content-center" 
+     style="background-image: url('https://images.unsplash.com/photo-1596496057661-105f360e1b55?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover; background-position: center; position: relative; min-height: 400px;">
+  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
+  <div class="container text-center" style="position: relative; z-index: 1;">
+    <h2 data-traducible="Gestión de Grupos" class="display-6 fw-semibold">Gestión de Grupos</h2>
+    <p data-traducible="Desde aquí puedes agregar nuevos grupos al sistema" class="mb-4">
+      Desde aquí puedes agregar nuevos grupos al sistema
+    </p>
+    <div class="d-flex justify-content-center gap-3">
+      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarGrupoModal" data-traducible="Agregar Grupo">
+        <i class="bi bi-people-fill"></i> Agregar Grupo
+      </button>
+      <a href="../PaginasAdcriptas/grupos.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Grupos">Ver Grupos</a>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Agregar Grupo -->
+<div class="modal fade" id="agregarGrupoModal" tabindex="-1" aria-labelledby="agregarGrupoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="../funciones/agregar_grupo.php" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" id="agregarGrupoLabel" data-traducible="Agregar Grupo">Agregar Grupo</h5>
+        </div>
+        <div class="modal-body">
+
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Nombre del Grupo">Nombre del Grupo</label>
+            <input type="text" name="nombre_grupo" class="form-control" placeholder="Ej: 1A" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Año del Curso">Año del Curso</label>
+            <input type="number" name="anio_curso" class="form-control" placeholder="Ej: 1" required min="1">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Curso">Curso</label>
+            <select name="id_curso" class="form-select" required>
+              <option value="">Seleccionar curso...</option>
+              <?php
+              include '../login/conexion_bd.php';
+              $cursos = $conn->query("SELECT id_curso, nombre_curso FROM curso");
+              while ($c = $cursos->fetch_assoc()) {
+                echo "<option value='{$c['id_curso']}'>{$c['nombre_curso']}</option>";
+              }
+              ?>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Turno">Turno</label>
+            <select name="id_turno" class="form-select" required>
+              <option value="">Seleccionar turno...</option>
+              <?php
+              $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno");
+              while ($t = $turnos->fetch_assoc()) {
+                echo "<option value='{$t['id_turno']}'>{$t['nombre_turno']}</option>";
+              }
+              ?>
+            </select>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-success" data-traducible="Guardar">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <!-- Hero Asignaturas -->
 <div class="hero text-white py-5 d-flex align-items-center justify-content-center" 
@@ -412,12 +527,7 @@ document.getElementById("formEspacio").addEventListener("submit", function(e) {
 
 <!-- Sección Reservas -->
 <div id="tabla_reservas_adscripta" class="container my-5">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-  <h2 class="m-0" data-traducible="Reservas Realizadas por los Docentes" id="title_reserva">Reservas de los Docentes</h2>
-  <button id="btnRecargar" class="btn btn-outline-primary d-flex align-items-center gap-2">
-    <i class="bi bi-arrow-clockwise"></i> Recargar Reservas
-  </button>
-</div>
+  <h2 class="mb-4 text-center" data-traducible="Reservas Realizadas por los Docentes" id="title_reserva">Reservas de los Docentes</h2>
   <div class="row">
     <?php
     include '../login/conexion_bd.php';
@@ -509,23 +619,3 @@ document.getElementById("formEspacio").addEventListener("submit", function(e) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
-<script>
-  document.getElementById('btnRecargar').addEventListener('click', () => {
-    // Agregamos un pequeño efecto visual de recarga
-    const btn = document.getElementById('btnRecargar');
-    btn.disabled = true;
-    btn.innerHTML = '<i class="bi bi-arrow-repeat spin"></i> Recargando...';
-    setTimeout(() => location.reload(), 1000);
-  });
-</script>
-
-<style>
-  /* animación del icono girando */
-  .spin {
-    animation: spin 1s linear infinite;
-  }
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-</style>
