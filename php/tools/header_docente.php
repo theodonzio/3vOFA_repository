@@ -22,7 +22,7 @@
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="#" data-traducible="Horarios">Horarios</a></li>
               <li> <a class="dropdown-item" href="#" data-traducible="Grupos">Grupos</a></li>
-              <li><a class="dropdown-item" href="#" data-traducible="Reservas">Reservas</a></li>
+              <li><a class="dropdown-item" href="#tabla_reservas_docente" data-traducible="Reservas">Reservas</a></li>
             </ul>
           </li>         
 
