@@ -110,6 +110,250 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
+
+<!-- Hero Asignaturas -->
+<div class="hero text-white py-5 d-flex align-items-center justify-content-center" 
+     style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover; background-position: center; position: relative; min-height: 400px;">
+  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
+  <div class="container text-center" style="position: relative; z-index: 1;">
+    <h2 data-traducible="Asignaturas" class="display-6 fw-semibold">Asignaturas</h2>
+    <p data-traducible="Desde aquí puedes gestionar las asignaturas registradas en el sistema" class="mb-4">
+      Desde aquí puedes gestionar las asignaturas registradas en el sistema
+    </p>
+    <div class="d-flex justify-content-center gap-3">
+      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarAsignaturaModal" data-traducible="Agregar Asignatura">
+        <i class="bi bi-journal-plus"></i> Agregar Asignatura
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Agregar Asignatura -->
+<div class="modal fade" id="agregarAsignaturaModal" tabindex="-1" aria-labelledby="agregarAsignaturaLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="../funciones/agregar_asignatura.php" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" id="agregarAsignaturaLabel" data-traducible="Agregar Asignatura">Agregar Asignatura</h5>
+        </div>
+        <div class="modal-body">
+
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Nombre de la Asignatura">Nombre de la Asignatura</label>
+            <input type="text" name="nombre_asignatura" class="form-control" placeholder="Ej: Matemática" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Docente">Docente</label>
+            <select name="id_docente" class="form-select" required>
+              <option value="">Seleccionar docente...</option>
+              <?php
+              include '../login/conexion_bd.php';
+              $docentes = $conn->query("SELECT id_usuario, nombre, apellido FROM usuario WHERE id_rol = 2");
+              while ($d = $docentes->fetch_assoc()) {
+                echo "<option value='{$d['id_usuario']}'>{$d['nombre']} {$d['apellido']}</option>";
+              }
+              ?>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Grupo">Grupo</label>
+            <select name="id_grupo" class="form-select" required>
+              <option value="">Seleccionar grupo...</option>
+              <?php
+              $grupos = $conn->query("SELECT id_grupo, nombre_grupo FROM grupo");
+              while ($g = $grupos->fetch_assoc()) {
+                echo "<option value='{$g['id_grupo']}'>{$g['nombre_grupo']}</option>";
+              }
+              ?>
+            </select>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-success" data-traducible="Guardar">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+ <!-- Sección Horarios -->
+<?php
+// <-- IMPORTANTE: si $conn aún no está definido en este punto, incluimos la conexión
+if (!isset($conn)) {
+  include_once '../login/conexion_bd.php';
+}
+?>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Gestión de Horarios por Grupo</h2>
+
+  <div class="d-flex justify-content-end mb-3">
+    <label for="grupoSelect" class="me-2 fw-bold">Seleccionar grupo:</label>
+    <select id="grupoSelect" class="form-select w-auto">
+      <option value="">-- Seleccionar grupo --</option>
+      <?php
+      // Cargamos los grupos (si la conexión existe)
+      if (isset($conn)) {
+        $resGr = $conn->query("SELECT id_grupo, nombre_grupo FROM grupo ORDER BY nombre_grupo");
+        if ($resGr) {
+          while ($g = $resGr->fetch_assoc()) {
+            echo "<option value='{$g['id_grupo']}'>{$g['nombre_grupo']}</option>";
+          }
+        }
+      }
+      ?>
+    </select>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered text-center align-middle" id="tablaHorarios">
+      <thead class="table-primary">
+        <tr>
+          <th>Hora</th>
+          <th>Lunes</th>
+          <th>Martes</th>
+          <th>Miércoles</th>
+          <th>Jueves</th>
+          <th>Viernes</th>
+        </tr>
+      </thead>
+      <tbody id="horarioBody">
+        <?php
+        // Intentamos leer los horarios desde la BD; si falla, usamos un fallback estático
+        $horarios = null;
+        if (isset($conn)) {
+          $horarios = $conn->query("SELECT * FROM horario ORDER BY id_horario");
+        }
+
+        if ($horarios && $horarios->num_rows > 0) {
+          while ($fila = $horarios->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td><strong>{$fila['nombre_horario']}</strong><br>{$fila['hora_inicio']} - {$fila['hora_fin']}</td>";
+            for ($i = 1; $i <= 5; $i++) {
+              echo "<td contenteditable='true' data-dia='{$i}' data-hora='{$fila['id_horario']}'></td>";
+            }
+            echo "</tr>";
+          }
+        } else {
+          // Fallback para que la tabla siempre se vea aunque haya un problema de BD
+          $defaults = [
+            ['id_horario'=>1,'nombre_horario'=>'1era','hora_inicio'=>'07:00:00','hora_fin'=>'07:45:00'],
+            ['id_horario'=>2,'nombre_horario'=>'2da','hora_inicio'=>'07:50:00','hora_fin'=>'08:35:00'],
+            ['id_horario'=>3,'nombre_horario'=>'3era','hora_inicio'=>'08:40:00','hora_fin'=>'09:25:00'],
+            ['id_horario'=>4,'nombre_horario'=>'4ta','hora_inicio'=>'09:30:00','hora_fin'=>'10:15:00'],
+            ['id_horario'=>5,'nombre_horario'=>'5ta','hora_inicio'=>'10:20:00','hora_fin'=>'11:05:00'],
+            ['id_horario'=>6,'nombre_horario'=>'6ta','hora_inicio'=>'11:10:00','hora_fin'=>'11:55:00'],
+            ['id_horario'=>7,'nombre_horario'=>'7ma','hora_inicio'=>'12:00:00','hora_fin'=>'12:45:00'],
+            ['id_horario'=>8,'nombre_horario'=>'8va','hora_inicio'=>'12:50:00','hora_fin'=>'13:35:00'],
+            ['id_horario'=>9,'nombre_horario'=>'9na','hora_inicio'=>'13:40:00','hora_fin'=>'14:25:00'],
+            ['id_horario'=>10,'nombre_horario'=>'10ma','hora_inicio'=>'14:30:00','hora_fin'=>'15:15:00'],
+            ['id_horario'=>11,'nombre_horario'=>'11va','hora_inicio'=>'15:20:00','hora_fin'=>'16:05:00'],
+          ];
+          foreach ($defaults as $fila) {
+            echo "<tr>";
+            echo "<td><strong>{$fila['nombre_horario']}</strong><br>{$fila['hora_inicio']} - {$fila['hora_fin']}</td>";
+            for ($i = 1; $i <= 5; $i++) {
+              echo "<td contenteditable='true' data-dia='{$i}' data-hora='{$fila['id_horario']}'></td>";
+            }
+            echo "</tr>";
+          }
+        }
+        ?>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button id="guardarCambios" class="btn btn-success">Guardar Cambios</button>
+  </div>
+</div>
+
+<!-- estilos pequeños para que las celdas editables se vean bien -->
+<style>
+  #tablaHorarios td[contenteditable="true"] { min-height:48px; vertical-align: middle; }
+</style>
+
+<!-- JS: carga/guardado (si no tenés ../funciones/obtener_horario.php y guardar_horario.php, la carga/guardado fallará pero la tabla se mostrará) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  const grupoSelect = document.getElementById("grupoSelect");
+  const guardarBtn = document.getElementById("guardarCambios");
+  const tabla = document.getElementById("horarioBody");
+
+  grupoSelect.addEventListener("change", () => {
+    const idGrupo = grupoSelect.value;
+    if (!idGrupo) {
+      // limpiamos
+      tabla.querySelectorAll("td[contenteditable]").forEach(td => td.textContent = "");
+      return;
+    }
+
+    fetch(`../funciones/obtener_horario.php?id_grupo=${idGrupo}`)
+      .then(res => res.ok ? res.json() : [])
+      .then(data => {
+        tabla.querySelectorAll("td[contenteditable]").forEach(td => td.textContent = "");
+        if (!data || !Array.isArray(data)) return;
+        data.forEach(item => {
+          const celda = tabla.querySelector(`td[data-dia='${item.dia_semana}'][data-hora='${item.id_horario}']`);
+          if (celda) celda.textContent = item.contenido;
+        });
+      })
+      .catch(err => {
+        // No hacemos nada; tabla sigue visible con celdas vacías
+        console.log('Error al obtener horarios:', err);
+      });
+  });
+
+  guardarBtn.addEventListener("click", () => {
+    if (!grupoSelect.value) {
+      Swal.fire("Error", "Debes seleccionar un grupo antes de guardar.", "error");
+      return;
+    }
+
+    Swal.fire({
+      title: "¿Guardar cambios?",
+      text: "¿Estás seguro de guardar los cambios realizados en la tabla?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Aceptar",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#198754",
+      cancelButtonColor: "#dc3545"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const datos = [];
+        tabla.querySelectorAll("td[contenteditable]").forEach(td => {
+          if (td.textContent.trim() !== "") {
+            datos.push({
+              id_horario: td.dataset.hora,
+              dia_semana: td.dataset.dia,
+              contenido: td.textContent.trim()
+            });
+          }
+        });
+
+        fetch("../funciones/guardar_horario.php", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({id_grupo: grupoSelect.value, horarios: datos})
+        })
+        .then(res => res.ok ? res.json() : Promise.reject('error'))
+        .then(resp => {
+          Swal.fire(resp.titulo, resp.mensaje, resp.icono);
+        })
+        .catch(() => Swal.fire("Error", "No se pudieron guardar los cambios.", "error"));
+      }
+    });
+  });
+</script>
+
+
 <!-- Hero Espacios -->
 <div class="hero text-white py-5 d-flex align-items-center justify-content-center" style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop'); background-size: cover; background-position: center; position: relative; min-height: 400px;">
   <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
