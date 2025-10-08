@@ -103,25 +103,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- Hero Cursos -->
 <div id="HeroCursos" class="hero text-white py-5 d-flex align-items-center justify-content-center" 
-     style="background-image: url('https://images.unsplash.com/photo-1581091215368-3cce33a3f14f?q=80&w=2070&auto=format&fit=crop'); 
+     style="background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
             background-size: cover; background-position: center; position: relative; min-height: 400px;">
-  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
+  
+  <!-- Capa oscura con borde redondeado -->
+  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px;"></div>
+
+  <!-- Contenido centrado -->
   <div class="container text-center" style="position: relative; z-index: 1;">
     <h2 data-traducible="Cursos" class="display-6 fw-semibold">Cursos</h2>
     <p data-traducible="Desde aquí puedes agregar nuevos cursos al sistema" class="mb-4">
       Desde aquí puedes agregar nuevos cursos al sistema
     </p>
+
     <div class="d-flex justify-content-center gap-3">
       <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarCursoModal">
-        <i class="bi bi-file-earmark-plus-fill"></i>  <div data-traducible="Agregar Curso">Agregar Curso</div>
+        <i class="bi bi-file-earmark-plus-fill"></i>
+        <div data-traducible="Agregar Curso">Agregar Curso</div>
       </button>
       <a href="../PaginasAdcriptas/cursos.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Cursos">Ver Cursos</a>
     </div>
   </div>
 </div>
 
+
 <!-- Modal Agregar Curso -->
-<div class="modal fade" id="agregarCursoModal" tabindex="-1" aria-labelledby="agregarCursoLabel" aria-hidden="true">
+<div class="modal fade" id="agregarCursoModal" tabindex="-1" aria-labelledby="agregarCursoLabel" aria-hidden="true" style="background-image: url('https://images.unsplash.com/photo-1581091215368-3cce33a3f14f?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover; background-position: center; position: relative; min-height: 400px;">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <form action="../funciones/agregar_curso.php" method="POST">
@@ -153,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- Hero Grupos -->
 <div id="HeroGrupos" class="hero text-white py-5 d-flex align-items-center justify-content-center" 
-     style="background-image: url('https://images.unsplash.com/photo-1596496057661-105f360e1b55?q=80&w=2070&auto=format&fit=crop'); 
+     style="background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
             background-size: cover; background-position: center; position: relative; min-height: 400px;">
   <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
   <div class="container text-center" style="position: relative; z-index: 1;">
@@ -229,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- Hero Asignaturas -->
 <div class="hero text-white py-5 d-flex align-items-center justify-content-center" 
-     style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop'); 
+     style="background-image: url('https://images.unsplash.com/photo-1587691592099-24045742c181?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
             background-size: cover; background-position: center; position: relative; min-height: 400px;">
   <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
   <div class="container text-center" style="position: relative; z-index: 1;">
