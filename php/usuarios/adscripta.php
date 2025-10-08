@@ -415,7 +415,7 @@ document.getElementById("formEspacio").addEventListener("submit", function(e) {
   <div class="d-flex justify-content-between align-items-center mb-4">
   <h2 class="m-0" data-traducible="Reservas Realizadas por los Docentes" id="title_reserva">Reservas de los Docentes</h2>
   <button id="btnRecargar" class="btn btn-outline-primary d-flex align-items-center gap-2">
-    <i class="bi bi-arrow-clockwise"></i> Recargar Página
+    <i class="bi bi-arrow-clockwise"></i> Recargar Reservas
   </button>
 </div>
   <div class="row">
