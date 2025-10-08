@@ -162,28 +162,34 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <!-- Modal Agregar Curso -->
-<div class="modal fade" id="agregarCursoModal" tabindex="-1" aria-labelledby="agregarCursoLabel" aria-hidden="true" style="background-image: url('https://images.unsplash.com/photo-1581091215368-3cce33a3f14f?q=80&w=2070&auto=format&fit=crop'); 
-            background-size: cover; background-position: center; position: relative; min-height: 400px;">
+<!-- Modal Agregar Curso (Versión final coherente con otros modales) -->
+<div class="modal fade" id="agregarCursoModal" tabindex="-1" aria-labelledby="agregarCursoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+    <div class="modal-content shadow border-0 rounded-3">
       <form action="../funciones/agregar_curso.php" method="POST">
         <div class="modal-header">
-          <h5 class="modal-title" id="agregarCursoLabel" data-traducible="Agregar Curso">Agregar Curso</h5>
+          <h5 class="modal-title fw-semibold" id="agregarCursoLabel" data-traducible="Agregar Curso">
+            <i class="bi bi-file-earmark-plus-fill me-2 text-primary"></i>Agregar Curso
+          </h5>
         </div>
-        <div class="modal-body">
+
+        <div class="modal-body p-4">
           <div class="mb-3">
-            <label class="form-label" data-traducible="Nombre del Curso">Nombre del Curso</label>
+            <label class="form-label fw-semibold" data-traducible="Nombre del Curso">Nombre del Curso</label>
             <input type="text" name="nombre_curso" class="form-control" placeholder="Ej: Técnico en Informática" required>
           </div>
+
           <div class="mb-3">
-            <label class="form-label" data-traducible="Descripción">Descripción</label>
+            <label class="form-label fw-semibold" data-traducible="Descripción">Descripción</label>
             <textarea name="descripcion" class="form-control" placeholder="Descripción del curso" rows="3"></textarea>
           </div>
+
           <div class="mb-3">
-            <label class="form-label" data-traducible="Duración en años">Duración en años</label>
+            <label class="form-label fw-semibold" data-traducible="Duración en años">Duración en años</label>
             <input type="number" name="duracion_anos" class="form-control" placeholder="Ej: 3" required>
           </div>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
           <button type="submit" class="btn btn-success" data-traducible="Guardar">Guardar</button>
