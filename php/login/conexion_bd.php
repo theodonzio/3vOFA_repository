@@ -5,6 +5,7 @@ $username = "root";
 $password = "";
 $dbname = "db_ofa";
 
+
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
