@@ -209,17 +209,20 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="modal-body p-4">
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Nombre del Curso">Nombre del Curso</label>
-            <input type="text" name="nombre_curso" class="form-control" placeholder="Ej: Técnico en Informática" required>
+            <input type="text" name="nombre_curso" class="form-control" 
+                   placeholder="Ej: Técnico en Informática" data-traducible="Ej: Técnico en Informática" required>
           </div>
 
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Descripción">Descripción</label>
-            <textarea name="descripcion" class="form-control" placeholder="Descripción del curso" rows="3"></textarea>
+            <textarea name="descripcion" class="form-control" 
+                      placeholder="Descripción del curso" data-traducible="Descripción del curso" rows="3"></textarea>
           </div>
 
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Duración en años">Duración en años</label>
-            <input type="number" name="duracion_anos" class="form-control" placeholder="Ej: 3" required>
+            <input type="number" name="duracion_anos" class="form-control" 
+                   placeholder="Ej: 3" data-traducible="Ej: 3" required>
           </div>
         </div>
 
@@ -231,6 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 </div>
+
 
 <!-- Hero Grupos -->
 <div id="HeroGrupos" class="hero text-white py-5 d-flex align-items-center justify-content-center" 
@@ -254,51 +258,57 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- Modal Agregar Grupo -->
 <div class="modal fade" id="agregarGrupoModal" tabindex="-1" aria-labelledby="agregarGrupoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+    <div class="modal-content shadow border-0 rounded-3">
       <form action="../funciones/agregar_grupo.php" method="POST">
         <div class="modal-header">
-          <h5 class="modal-title" id="agregarGrupoLabel" data-traducible="Agregar Grupo">Agregar Grupo</h5>
+          <h5 class="modal-title fw-semibold" id="agregarGrupoLabel" data-traducible="Agregar Grupo">
+            <i class="bi bi-people-fill me-2 text-primary"></i>Agregar Grupo
+          </h5>
         </div>
-        <div class="modal-body">
 
+        <div class="modal-body p-4">
           <div class="mb-3">
-            <label class="form-label" data-traducible="Nombre del Grupo">Nombre del Grupo</label>
-            <input type="text" name="nombre_grupo" class="form-control" placeholder="Ej: 1A" required>
+            <label class="form-label fw-semibold" data-traducible="Nombre del Grupo">Nombre del Grupo</label>
+            <input type="text" name="nombre_grupo" class="form-control"
+                   placeholder="Ej: 1A" data-traducible="Ej: 1A" required>
           </div>
 
           <div class="mb-3">
-            <label class="form-label" data-traducible="Año del Curso">Año del Curso</label>
-            <input type="number" name="anio_curso" class="form-control" placeholder="Ej: 1" required min="1">
+            <label class="form-label fw-semibold" data-traducible="Año del Curso">Año del Curso</label>
+            <input type="number" name="anio_curso" class="form-control"
+                   placeholder="Ej: 1" data-traducible="Ej: 1" required min="1">
           </div>
 
           <div class="mb-3">
-            <label class="form-label" data-traducible="Curso">Curso</label>
+            <label class="form-label fw-semibold" data-traducible="Curso">Curso</label>
             <select name="id_curso" class="form-select" required>
-              <option value="">Seleccionar curso...</option>
+              <option value="" data-traducible="Seleccionar curso...">Seleccionar curso...</option>
               <?php
               include '../login/conexion_bd.php';
               $cursos = $conn->query("SELECT id_curso, nombre_curso FROM curso");
               while ($c = $cursos->fetch_assoc()) {
-                echo "<option value='{$c['id_curso']}'>{$c['nombre_curso']}</option>";
+                $nombre = htmlspecialchars($c['nombre_curso']);
+                echo "<option value='{$c['id_curso']}' data-traducible='{$nombre}'>{$nombre}</option>";
               }
               ?>
             </select>
           </div>
 
           <div class="mb-3">
-            <label class="form-label" data-traducible="Turno">Turno</label>
+            <label class="form-label fw-semibold" data-traducible="Turno">Turno</label>
             <select name="id_turno" class="form-select" required>
-              <option value="">Seleccionar turno...</option>
+              <option value="" data-traducible="Seleccionar turno...">Seleccionar turno...</option>
               <?php
               $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno");
               while ($t = $turnos->fetch_assoc()) {
-                echo "<option value='{$t['id_turno']}'>{$t['nombre_turno']}</option>";
+                $turno = htmlspecialchars($t['nombre_turno']);
+                echo "<option value='{$t['id_turno']}' data-traducible='{$turno}'>{$turno}</option>";
               }
               ?>
             </select>
           </div>
-
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
           <button type="submit" class="btn btn-success" data-traducible="Guardar">Guardar</button>
@@ -307,6 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 </div>
+
 
 <!-- Hero Asignaturas -->
 <div class="hero text-white py-5 d-flex align-items-center justify-content-center" 
@@ -326,6 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
+
 <!-- Modal Agregar Asignatura -->
 <div class="modal fade" id="agregarAsignaturaModal" tabindex="-1" aria-labelledby="agregarAsignaturaLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -338,18 +350,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
           <div class="mb-3">
             <label class="form-label" data-traducible="Nombre de la Asignatura">Nombre de la Asignatura</label>
-            <input type="text" name="nombre_asignatura" class="form-control" placeholder="Ej: Matemática" required>
+            <input type="text" name="nombre_asignatura" class="form-control" 
+                   placeholder="Ej: Matemática" data-traducible="Ej: Matemática" required>
           </div>
 
           <div class="mb-3">
             <label class="form-label" data-traducible="Docente">Docente</label>
             <select name="id_docente" class="form-select" required>
-              <option value="">Seleccionar docente...</option>
+              <option value="" data-traducible="Seleccionar docente...">Seleccionar docente...</option>
               <?php
               include '../login/conexion_bd.php';
               $docentes = $conn->query("SELECT id_usuario, nombre, apellido FROM usuario WHERE id_rol = 2");
               while ($d = $docentes->fetch_assoc()) {
-                echo "<option value='{$d['id_usuario']}'>{$d['nombre']} {$d['apellido']}</option>";
+                $nombreCompleto = htmlspecialchars($d['nombre'] . ' ' . $d['apellido']);
+                echo "<option value='{$d['id_usuario']}' data-traducible='{$nombreCompleto}'>{$nombreCompleto}</option>";
               }
               ?>
             </select>
@@ -358,11 +372,12 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="mb-3">
             <label class="form-label" data-traducible="Grupo">Grupo</label>
             <select name="id_grupo" class="form-select" required>
-              <option value="">Seleccionar grupo...</option>
+              <option value="" data-traducible="Seleccionar grupo...">Seleccionar grupo...</option>
               <?php
               $grupos = $conn->query("SELECT id_grupo, nombre_grupo FROM grupo");
               while ($g = $grupos->fetch_assoc()) {
-                echo "<option value='{$g['id_grupo']}'>{$g['nombre_grupo']}</option>";
+                $nombreGrupo = htmlspecialchars($g['nombre_grupo']);
+                echo "<option value='{$g['id_grupo']}' data-traducible='{$nombreGrupo}'>{$nombreGrupo}</option>";
               }
               ?>
             </select>

@@ -89,6 +89,7 @@ const diccionario = {
 "Ver Grupos":{en:"See Groups", es:"Ver Grupos"},
 "Asignaturas":{en:"Subjects", es:"Asignaturas"},
 "Desde aquí puedes gestionar las asignaturas registradas en el sistema":{en:"From here you can manage the subjects registered in the system", es:"Desde aquí puedes gestionar las asignaturas registradas en el sistema"},
+
 // --- Gestión de Horarios ---
 "Gestión de Horarios por Grupo": { en: "Schedule Management by Group", es: "Gestión de Horarios por Grupo" },
 "Seleccionar grupo:": { en: "Select group:", es: "Seleccionar grupo:" },
@@ -152,6 +153,48 @@ const diccionario = {
 "No aprobar": { en: "Reject", es: "No aprobar" },
 "ID Reserva:": { en: "Reservation ID:", es: "ID Reserva:" },
 "No hay reservas registradas aún.": { en: "No reservations registered yet.", es: "No hay reservas registradas aún." },
+
+
+//Modal agregar cursos
+"Agregar Curso": { en: "Add Course", es: "Agregar Curso" },
+"Nombre del Curso": { en: "Course Name", es: "Nombre del Curso" },
+"Descripción": { en: "Description", es: "Descripción" },
+"Duración en años": { en: "Duration in years", es: "Duración en años" },
+"Ej: Técnico en Informática": { en: "Ex: Computer Technician", es: "Ej: Técnico en Informática" },
+"Descripción del curso": { en: "Course description", es: "Descripción del curso" },
+"Ej: 3": { en: "Ex: 3", es: "Ej: 3" },
+"Cancelar": { en: "Cancel", es: "Cancelar" },
+"Guardar": { en: "Save", es: "Guardar" },
+
+//Modal agregar grupos
+
+"Agregar Grupo": { en: "Add Group", es: "Agregar Grupo" },
+"Nombre del Grupo": { en: "Group Name", es: "Nombre del Grupo" },
+"Año del Curso": { en: "Course Year", es: "Año del Curso" },
+"Curso": { en: "Course", es: "Curso" },
+"Turno": { en: "Shift", es: "Turno" },
+"Seleccionar curso...": { en: "Select course...", es: "Seleccionar curso..." },
+"Seleccionar turno...": { en: "Select shift...", es: "Seleccionar turno..." },
+"Ej: 1A": { en: "Ex: 1A", es: "Ej: 1A" },
+"Ej: 1": { en: "Ex: 1", es: "Ej: 1" },
+"Cancelar": { en: "Cancel", es: "Cancelar" },
+"Guardar": { en: "Save", es: "Guardar" },
+"Matutino": { en: "Morning", es: "Matutino" },
+"Vespertino": { en: "Afternoon", es: "Vespertino" },
+"Nocturno": { en: "Night", es: "Nocturno" },
+
+
+//Modal agregar adignaturas
+"Agregar Asignatura": { en: "Add Subject", es: "Agregar Asignatura" },
+"Nombre de la Asignatura": { en: "Subject Name", es: "Nombre de la Asignatura" },
+"Docente": { en: "Teacher", es: "Docente" },
+"Seleccionar docente...": { en: "Select teacher...", es: "Seleccionar docente..." },
+"Grupo": { en: "Group", es: "Grupo" },
+"Seleccionar grupo...": { en: "Select group...", es: "Seleccionar grupo..." },
+"Ej: Matemática": { en: "Ex: Math", es: "Ej: Matemática" },
+"Cancelar": { en: "Cancel", es: "Cancelar" },
+"Guardar": { en: "Save", es: "Guardar" },
+
 
 
 };
