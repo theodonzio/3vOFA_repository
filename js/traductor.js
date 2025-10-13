@@ -90,7 +90,7 @@ const diccionario = {
 "Asignaturas":{en:"Subjects", es:"Asignaturas"},
 "Desde aquí puedes gestionar las asignaturas registradas en el sistema":{en:"From here you can manage the subjects registered in the system", es:"Desde aquí puedes gestionar las asignaturas registradas en el sistema"},
 
-// --- Gestión de Horarios ---
+// Gestión de Horarios 
 "Gestión de Horarios por Grupo": { en: "Schedule Management by Group", es: "Gestión de Horarios por Grupo" },
 "Seleccionar grupo:": { en: "Select group:", es: "Seleccionar grupo:" },
 "-- Seleccionar grupo --": { en: "-- Select group --", es: "-- Seleccionar grupo --" },
@@ -103,7 +103,7 @@ const diccionario = {
 "-- Vacío --": { en: "-- Empty --", es: "-- Vacío --" },
 "Guardar Cambios": { en: "Save Changes", es: "Guardar Cambios" },
 
-// --- Nombres de Horarios ---
+// --- Nombres de Horarios 
 "1era": { en: "1st Hour", es: "1era" },
 "2da": { en: "2nd Hour", es: "2da" },
 "3era": { en: "3rd Hour", es: "3era" },
@@ -195,6 +195,34 @@ const diccionario = {
 "Cancelar": { en: "Cancel", es: "Cancelar" },
 "Guardar": { en: "Save", es: "Guardar" },
 
+
+//docente.php
+"Sistema de Gestión": { en: "Management System", es: "Sistema de Gestión" },
+"Panel exclusivo para Docentes": { en: "Exclusive Panel for Teachers", es: "Panel exclusivo para Docentes" },
+"Sistema de Reservas": { en: "Reservation System", es: "Sistema de Reservas" },
+"Desde aquí podés solicitar espacios": { en: "From here you can request spaces", es: "Desde aquí podés solicitar espacios" },
+"Realizar Reserva": { en: "Make Reservation", es: "Realizar Reserva" },
+"Seleccione un salón": { en: "Select a room", es: "Seleccione un salón" },
+"Fecha": { en: "Date", es: "Fecha" },
+"Horario": { en: "Schedule", es: "Horario" },
+"Cancelar": { en: "Cancel", es: "Cancelar" },
+"Reservar": { en: "Reserve", es: "Reservar" },
+"Mis Reservas": { en: "My Reservations", es: "Mis Reservas" },
+"Salón": { en: "Room", es: "Salón" },
+"Tipo": { en: "Type", es: "Tipo" },
+"Docente": { en: "Teacher", es: "Docente" },
+"Estado": { en: "Status", es: "Estado" },
+
+
+// Modal Realizar Reserva
+"Realizar Reserva": { en: "Make Reservation", es: "Realizar Reserva" },
+"Selecciona un Espacio": { en: "Select a Space", es: "Selecciona un Espacio" },
+"Seleccione un salón": { en: "Select a room", es: "Seleccione un salón" },
+"Fecha": { en: "Date", es: "Fecha" },
+"Horario": { en: "Schedule", es: "Horario" },
+"Seleccione un horario": { en: "Select a schedule", es: "Seleccione un horario" },
+"Cancelar": { en: "Cancel", es: "Cancelar" },
+"Reservar": { en: "Reserve", es: "Reservar" }
 };
 
 // Función para traducir todos los elementos con data-traducible

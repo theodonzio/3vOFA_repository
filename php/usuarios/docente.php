@@ -4,8 +4,9 @@
   include '../tools/header_docente.php';
   include '../login/conexion_bd.php';
   $id_docente = $_SESSION['id_usuario'];
+?>
 
-if (isset($_GET['reserva'])): ?>
+<?php if (isset($_GET['reserva'])): ?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,34 +42,28 @@ document.addEventListener('DOMContentLoaded', () => {
 <!-- Título Superior -->
 <div class="text-center titulo-adscripta">
   <img src="../../img/ofalogos/blue-logo.png" class="tinylogo"> 
-    <img src="../../img/blueicons/docenteblue.png" class="blue_icon"> 
-  <h1 class="display-4 fw-bold text-primary">Sistema de Gestión</h1>
-  <p class="lead text-muted">Panel exclusivo para Docentes</p>
+  <img src="../../img/blueicons/docenteblue.png" class="blue_icon"> 
+  <h1 class="display-4 fw-bold text-primary" data-traducible="Sistema de Gestión">Sistema de Gestión</h1>
+  <p class="lead text-muted" data-traducible="Panel exclusivo para Docentes">Panel exclusivo para Docentes</p>
 
-    <?php
-  include '../tools/reloj.php';
-  ?>
+  <?php include '../tools/reloj.php'; ?>
 </div>
 
 <!-- Hero Docente estilizado con imagen de fondo -->
 <div class="hero hero-docente text-white d-flex align-items-center justify-content-center py-5" style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center; position: relative; min-height: 420px;">
+  <div class="overlay" style="position: absolute;top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(2px); border-radius: 20px;"></div>
 
-  <!-- Overlay semitransparente -->
-<div class="overlay" style="position: absolute;top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(2px); border-radius: 20px;"></div>
-
-  <!-- Contenido del Hero -->
   <div class="container text-center hero-content" style="position: relative; z-index: 1;">
-    <h2 class="display-6 fw-semibold mb-3">Sistema de Reservas</h2>
-    <p class="mb-4 fs-5">Desde aquí podés solicitar espacios</p>
+    <h2 class="display-6 fw-semibold mb-3" data-traducible="Sistema de Reservas">Sistema de Reservas</h2>
+    <p class="mb-4 fs-5" data-traducible="Desde aquí podés solicitar espacios">Desde aquí podés solicitar espacios</p>
 
     <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-success btn-lg shadow-sm btn_wicon" data-bs-toggle="modal" data-bs-target="#realizarReservaModal"><i class="bi bi-bookmark-fill"></i>
-        Realizar Reserva
+      <button class="btn btn-success btn-lg shadow-sm btn_wicon" data-bs-toggle="modal" data-bs-target="#realizarReservaModal" data-traducible="Realizar Reserva">
+        <i class="bi bi-bookmark-fill"></i> Realizar Reserva
       </button>
     </div>
   </div>
 </div>
-
 
 <!-- Modal Realizar Reserva -->
 <div class="modal fade" id="realizarReservaModal" tabindex="-1" aria-labelledby="realizarReservaLabel" aria-hidden="true">
@@ -76,20 +71,21 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="modal-content">
       <form action="../funciones/realizar_reserva.php" method="POST">
         <div class="modal-header">
-          <h5 class="modal-title" id="realizarReservaLabel">Realizar Reserva</h5>
+          <h5 class="modal-title" id="realizarReservaLabel" data-traducible="Realizar Reserva">Realizar Reserva</h5>
         </div>
         <div class="modal-body">
 
           <div class="mb-3">
-            <label class="form-label">Selecciona un Espacio</label>
+            <label class="form-label" data-traducible="Selecciona un Espacio">Selecciona un Espacio</label>
             <select name="id_espacio" id="nombre_salon" class="form-select" required>
-              <option value="">Seleccione un salón</option>
+              <option value="" data-traducible="Seleccione un salón">Seleccione un salón</option>
               <?php
               $sql = "SELECT id_espacio, nombre_espacio, tipo FROM espacio ORDER BY nombre_espacio ASC";
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
                   while ($row = $result->fetch_assoc()) {
-                      echo "<option value='".$row['id_espacio']."'>".$row['nombre_espacio']." (".$row['tipo'].")</option>";
+                      $nombre = htmlspecialchars($row['nombre_espacio'] . ' (' . $row['tipo'] . ')');
+                      echo "<option value='".$row['id_espacio']."' data-traducible='{$nombre}'>{$nombre}</option>";
                   }
               }
               ?>
@@ -97,20 +93,21 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Fecha</label>
-            <input type="date" name="fecha_reserva" class="form-control" required>
+            <label class="form-label" data-traducible="Fecha">Fecha</label>
+            <input type="date" name="fecha_reserva" class="form-control" data-traducible="Fecha" required>
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Horario</label>
+            <label class="form-label" data-traducible="Horario">Horario</label>
             <select name="id_horario" class="form-select" required>
-              <option value="">Seleccione un horario</option>
+              <option value="" data-traducible="Seleccione un horario">Seleccione un horario</option>
               <?php
               $sql = "SELECT id_horario, nombre_horario, hora_inicio, hora_fin FROM horario ORDER BY id_horario ASC";
               $result = $conn->query($sql);
               if ($result->num_rows > 0) {
                   while ($row = $result->fetch_assoc()) {
-                      echo "<option value='".$row['id_horario']."'>".$row['nombre_horario']." (".$row['hora_inicio']." - ".$row['hora_fin'].")</option>";
+                      $horario = htmlspecialchars($row['nombre_horario'] . ' (' . $row['hora_inicio'] . ' - ' . $row['hora_fin'] . ')');
+                      echo "<option value='".$row['id_horario']."' data-traducible='{$horario}'>{$horario}</option>";
                   }
               }
               ?>
@@ -119,8 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-success submit_btn">Reservar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-success submit_btn" data-traducible="Reservar">Reservar</button>
         </div>
       </form>
     </div>
@@ -130,16 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="padre_tabla">
 <!-- Tabla de Reservas -->
 <div class="container" id="tabla_reservas_docente">
-  <h3 id="title_reservasdocente">Mis Reservas</h3>
+  <h3 id="title_reservasdocente" data-traducible="Mis Reservas">Mis Reservas</h3>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>Salón</th>
-        <th>Tipo</th>
-        <th>Fecha</th>
-        <th>Horario</th>
-        <th>Docente</th>
-        <th>Estado</th>
+        <th data-traducible="Salón">Salón</th>
+        <th data-traducible="Tipo">Tipo</th>
+        <th data-traducible="Fecha">Fecha</th>
+        <th data-traducible="Horario">Horario</th>
+        <th data-traducible="Docente">Docente</th>
+        <th data-traducible="Estado">Estado</th>
       </tr>
     </thead>
     <tbody>
@@ -159,13 +156,14 @@ document.addEventListener('DOMContentLoaded', () => {
       $stmt->execute();
       $result = $stmt->get_result();
       while ($row = $result->fetch_assoc()) {
+          $estado = htmlspecialchars($row['estado']);
           echo "<tr>
-                  <td>{$row['nombre_espacio']}</td>
-                  <td>{$row['tipo_salon']}</td>
-                  <td>{$row['fecha']}</td>
-                  <td>{$row['hora_inicio']} - {$row['hora_fin']}</td>
-                  <td>{$row['nombre_docente']} {$row['apellido_docente']}</td>
-                  <td>{$row['estado']}</td>
+                  <td data-traducible='{$row['nombre_espacio']}'>{$row['nombre_espacio']}</td>
+                  <td data-traducible='{$row['tipo_salon']}'>{$row['tipo_salon']}</td>
+                  <td data-traducible='{$row['fecha']}'>{$row['fecha']}</td>
+                  <td data-traducible='{$row['hora_inicio']} - {$row['hora_fin']}'>{$row['hora_inicio']} - {$row['hora_fin']}</td>
+                  <td data-traducible='{$row['nombre_docente']} {$row['apellido_docente']}'>{$row['nombre_docente']} {$row['apellido_docente']}</td>
+                  <td data-traducible='{$estado}'>{$estado}</td>
                 </tr>";
       }
       $stmt->close();
@@ -177,9 +175,11 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <a href="#top" id="scrollTopBtn" class="btn btn-secondary shadow-lg position-fixed bottom-0 end-0 m-4" 
-   style="z-index:999; font-size:28px; opacity:0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s;">
+   style="z-index:999; font-size:28px; opacity:0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s;" 
+   data-traducible="Ir Arriba">
   <i class="bi bi-caret-up-fill"></i>
 </a>
+
 
 <script>
   const btn = document.getElementById('scrollTopBtn');
