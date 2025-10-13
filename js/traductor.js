@@ -80,7 +80,80 @@ const diccionario = {
 "Cursos": { en:"Courses", es: "Cursos" },
 "Agregar Grupo": { en:"Add Groups", es: "Agregar Grupo" },
 "Agregar Asignatura": {en:"Add Subject", es: "Agregar Asignatura"},
-"Agregar Curso":{en: "Add Courses", es:"Agregar Cursos"}
+"Agregar Curso":{en: "Add Courses", es:"Agregar Cursos"},
+"Ver Cursos":{en: "See Courses", es:"Ver Cursos"},
+"Ver Cursos":{en: "See Courses", es:"Ver Cursos"},
+"Desde aquí puedes agregar nuevos cursos al sistema":{en:"From here you can add new courses to the system", es:"Desde aquí puedes agregar nuevos cursos al sistema"},
+"Gestión de Grupos": {en:"Group Management", es:"Gestión de Grupos"},
+"Desde aquí puedes agregar nuevos grupos al sistema": {en:"From here you can add new groups to the system", es:"Desde aquí puedes agregar nuevos grupos al sistema"},
+"Ver Grupos":{en:"See Groups", es:"Ver Grupos"},
+"Asignaturas":{en:"Subjects", es:"Asignaturas"},
+"Desde aquí puedes gestionar las asignaturas registradas en el sistema":{en:"From here you can manage the subjects registered in the system", es:"Desde aquí puedes gestionar las asignaturas registradas en el sistema"},
+// --- Gestión de Horarios ---
+"Gestión de Horarios por Grupo": { en: "Schedule Management by Group", es: "Gestión de Horarios por Grupo" },
+"Seleccionar grupo:": { en: "Select group:", es: "Seleccionar grupo:" },
+"-- Seleccionar grupo --": { en: "-- Select group --", es: "-- Seleccionar grupo --" },
+"Hora": { en: "Time", es: "Hora" },
+"Lunes": { en: "Monday", es: "Lunes" },
+"Martes": { en: "Tuesday", es: "Martes" },
+"Miércoles": { en: "Wednesday", es: "Miércoles" },
+"Jueves": { en: "Thursday", es: "Jueves" },
+"Viernes": { en: "Friday", es: "Viernes" },
+"-- Vacío --": { en: "-- Empty --", es: "-- Vacío --" },
+"Guardar Cambios": { en: "Save Changes", es: "Guardar Cambios" },
+
+// --- Nombres de Horarios ---
+"1era": { en: "1st Hour", es: "1era" },
+"2da": { en: "2nd Hour", es: "2da" },
+"3era": { en: "3rd Hour", es: "3era" },
+"4ta": { en: "4th Hour", es: "4ta" },
+"5ta": { en: "5th Hour", es: "5ta" },
+"6ta": { en: "6th Hour", es: "6ta" },
+"7ma": { en: "7th Hour", es: "7ma" },
+"8va": { en: "8th Hour", es: "8va" },
+"9na": { en: "9th Hour", es: "9na" },
+"10ma": { en: "10th Hour", es: "10ma" },
+"11va": { en: "11th Hour", es: "11va" },
+
+
+// Sección Hero - Gestión de Espacios
+"Gestión de Espacios": { en: "Space Management", es: "Gestión de Espacios" },
+"Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos": { en: "From here you can add new spaces to the system and assign them resources", es: "Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos" },
+"Agregar Espacio": { en: "Add Space", es: "Agregar Espacio" },
+
+// Modal Agregar Espacio
+"Tipo de Salón": { en: "Room Type", es: "Tipo de Salón" },
+"Seleccione un tipo": { en: "Select a type", es: "Seleccione un tipo" },
+"Aula": { en: "Classroom", es: "Aula" },
+"Laboratorio": { en: "Laboratory", es: "Laboratorio" },
+"Salón": { en: "Hall", es: "Salón" },
+"SUM": { en: "Multipurpose Room", es: "SUM" },
+"Nº de Espacio": { en: "Room Number", es: "Nº de Espacio" },
+"Ej: 2": { en: "Ex: 2", es: "Ej: 2" },
+"Selecciona los recursos que contiene:": { en: "Select the resources it contains:", es: "Selecciona los recursos que contiene:" },
+"Televisión": { en: "Television", es: "Televisión" },
+"Cable HDMI": { en: "HDMI Cable", es: "Cable HDMI" },
+"Aire Acondicionado": { en: "Air Conditioner", es: "Aire Acondicionado" },
+"Proyector": { en: "Projector", es: "Proyector" },
+"Alargue": { en: "Extension Cord", es: "Alargue" },
+"Cancelar": { en: "Cancel", es: "Cancelar" },
+"Guardar": { en: "Save", es: "Guardar" },
+
+// Sección Reservas
+"Reservas Realizadas por los Docentes": { en: "Reservations Made by Teachers", es: "Reservas Realizadas por los Docentes" },
+"Reservas de los Docentes": { en: "Teachers' Reservations", es: "Reservas de los Docentes" },
+"Pendiente": { en: "Pending", es: "Pendiente" },
+"Aprobada": { en: "Approved", es: "Aprobada" },
+"No aprobada": { en: "Not Approved", es: "No aprobada" },
+"Salón:": { en: "Room:", es: "Salón:" },
+"Fecha:": { en: "Date:", es: "Fecha:" },
+"Horario:": { en: "Schedule:", es: "Horario:" },
+"Aprobar": { en: "Approve", es: "Aprobar" },
+"No aprobar": { en: "Reject", es: "No aprobar" },
+"ID Reserva:": { en: "Reservation ID:", es: "ID Reserva:" },
+"No hay reservas registradas aún.": { en: "No reservations registered yet.", es: "No hay reservas registradas aún." },
+
+
 };
 
 // Función para traducir todos los elementos con data-traducible

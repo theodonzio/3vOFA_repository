@@ -135,31 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
-<!-- Hero Cursos -->
-<div id="HeroCursos" class="hero text-white py-5 d-flex align-items-center justify-content-center" 
-     style="background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
-            background-size: cover; background-position: center; position: relative; min-height: 400px;">
-  
-  <!-- Capa oscura con borde redondeado -->
-  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px;"></div>
-
-  <!-- Contenido centrado -->
-  <div class="container text-center" style="position: relative; z-index: 1;">
-    <h2 data-traducible="Cursos" class="display-6 fw-semibold">Cursos</h2>
-    <p data-traducible="Desde aquí puedes agregar nuevos cursos al sistema" class="mb-4">
-      Desde aquí puedes agregar nuevos cursos al sistema
-    </p>
-
-    <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarCursoModal">
-        <i class="bi bi-file-earmark-plus-fill"></i>
-        <div data-traducible="Agregar Curso">Agregar Curso</div>
-      </button>
-      <a href="../PaginasAdcriptas/cursos.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Cursos">Ver Cursos</a>
-    </div>
-  </div>
-</div>
-
 <!-- Modal Registrar Docente -->
 <div class="modal fade" id="registrarDocenteModal" tabindex="-1" aria-labelledby="registrarDocenteLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -195,8 +170,32 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
+
+<!-- Hero Cursos -->
+<div id="HeroCursos" class="hero text-white py-5 d-flex align-items-center justify-content-center" 
+     style="background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
+            background-size: cover; background-position: center; position: relative; min-height: 400px;">
+  
+  <!-- Capa oscura con borde redondeado -->
+  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px;"></div>
+
+  <!-- Contenido centrado -->
+  <div class="container text-center" style="position: relative; z-index: 1;">
+    <h2 data-traducible="Cursos" class="display-6 fw-semibold">Cursos</h2>
+    <p data-traducible="Desde aquí puedes agregar nuevos cursos al sistema" class="mb-4">Desde aquí puedes agregar nuevos cursos al sistema</p>
+
+    <div class="d-flex justify-content-center gap-3">
+      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarCursoModal">
+        <i class="bi bi-file-earmark-plus-fill"></i>
+        <div data-traducible="Agregar Curso">Agregar Curso</div>
+      </button>
+      <a href="../PaginasAdcriptas/cursos.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Cursos">Ver Cursos</a>
+    </div>
+  </div>
+</div>
+
+
 <!-- Modal Agregar Curso -->
-<!-- Modal Agregar Curso (Versión final coherente con otros modales) -->
 <div class="modal fade" id="agregarCursoModal" tabindex="-1" aria-labelledby="agregarCursoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content shadow border-0 rounded-3">
@@ -380,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 
- <!-- Sección Horarios -->
+<!-- Sección Horarios -->
 <?php
 if (!isset($conn)) {
   include_once '../login/conexion_bd.php';
@@ -399,17 +398,17 @@ if (isset($conn)) {
 ?>
 
 <div class="container my-5">
-  <h2 class="text-center mb-4" id="GestionHorarios">Gestión de Horarios por Grupo</h2>
+  <h2 class="text-center mb-4" id="GestionHorarios" data-traducible="Gestión de Horarios por Grupo">Gestión de Horarios por Grupo</h2>
 
   <div class="d-flex justify-content-end mb-3">
-    <label for="grupoSelect" class="me-2 fw-bold">Seleccionar grupo:</label>
+    <label for="grupoSelect" class="me-2 fw-bold" data-traducible="Seleccionar grupo:">Seleccionar grupo:</label>
     <select id="grupoSelect" class="form-select w-auto">
-      <option value="">-- Seleccionar grupo --</option>
+      <option value="" data-traducible="-- Seleccionar grupo --">-- Seleccionar grupo --</option>
       <?php
       if (isset($conn)) {
         $resGr = $conn->query("SELECT id_grupo, nombre_grupo FROM grupo ORDER BY nombre_grupo");
         while ($g = $resGr->fetch_assoc()) {
-          echo "<option value='{$g['id_grupo']}'>{$g['nombre_grupo']}</option>";
+          echo "<option value='{$g['id_grupo']}' data-traducible='{$g['nombre_grupo']}'>{$g['nombre_grupo']}</option>";
         }
       }
       ?>
@@ -420,12 +419,12 @@ if (isset($conn)) {
     <table class="table table-bordered text-center align-middle" id="tablaHorarios">
       <thead class="table-primary">
         <tr>
-          <th>Hora</th>
-          <th>Lunes</th>
-          <th>Martes</th>
-          <th>Miércoles</th>
-          <th>Jueves</th>
-          <th>Viernes</th>
+          <th data-traducible="Hora">Hora</th>
+          <th data-traducible="Lunes">Lunes</th>
+          <th data-traducible="Martes">Martes</th>
+          <th data-traducible="Miércoles">Miércoles</th>
+          <th data-traducible="Jueves">Jueves</th>
+          <th data-traducible="Viernes">Viernes</th>
         </tr>
       </thead>
       <tbody id="horarioBody">
@@ -443,13 +442,13 @@ if (isset($conn)) {
 
         foreach ($horarios as $fila) {
           echo "<tr>";
-          echo "<td><strong>{$fila['nombre_horario']}</strong><br>{$fila['hora_inicio']} - {$fila['hora_fin']}</td>";
+          echo "<td><strong data-traducible='{$fila['nombre_horario']}'>{$fila['nombre_horario']}</strong><br>{$fila['hora_inicio']} - {$fila['hora_fin']}</td>";
           for ($i = 1; $i <= 5; $i++) {
             echo "<td>";
             echo "<select class='form-select selectHorario' data-dia='{$i}' data-hora='{$fila['id_horario']}'>";
-            echo "<option value=''>-- Vacío --</option>";
+            echo "<option value='' data-traducible='-- Vacío --'>-- Vacío --</option>";
             foreach ($asignaturas as $a) {
-              echo "<option value='{$a['id_asignatura']}'>{$a['nombre_asignatura']}</option>";
+              echo "<option value='{$a['id_asignatura']}' data-traducible='{$a['nombre_asignatura']}'>{$a['nombre_asignatura']}</option>";
             }
             echo "</select>";
             echo "</td>";
@@ -462,9 +461,10 @@ if (isset($conn)) {
   </div>
 
   <div class="d-flex justify-content-end">
-    <button id="guardarCambios" class="btn btn-success">Guardar Cambios</button>
+    <button id="guardarCambios" class="btn btn-success" data-traducible="Guardar Cambios">Guardar Cambios</button>
   </div>
 </div>
+
 
 <!-- JS: carga/guardado de select -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -530,7 +530,6 @@ if (isset($conn)) {
 </script>
 
 
-
 <!-- Hero Espacios -->
 <div id="HeroEspacios" class="hero text-white py-5 d-flex align-items-center justify-content-center" style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop'); background-size: cover; background-position: center; position: relative; min-height: 400px;">
   <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
@@ -539,7 +538,7 @@ if (isset($conn)) {
     <p data-traducible="Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos" class="mb-4">Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos</p>
     <div class="d-flex justify-content-center gap-3">
       <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarEspacioModal" data-traducible="Agregar Espacio">
-        <i class="bi bi-clipboard-plus-fill"></i>Agregar Espacio
+        <i class="bi bi-clipboard-plus-fill"></i> <span data-traducible="Agregar Espacio">Agregar Espacio</span>
       </button>
     </div>
   </div>
@@ -564,31 +563,39 @@ if (isset($conn)) {
               <option value="SUM" data-traducible="SUM">SUM</option>
             </select>
           </div>
+
           <!-- Descripción del salón -->
           <div class="mb-3">
-            <label class="form-label">Nº de Espacio</label>
+            <label data-traducible="Nº de Espacio" class="form-label">Nº de Espacio</label>
             <input 
               type="number" 
               name="descripcion" 
               id="descripcion" 
               class="form-control" 
               placeholder="Ej: 2" 
+              data-traducible="Ej: 2"
               required>
           </div>
+
           <label data-traducible="Selecciona los recursos que contiene:" class="form-label">Selecciona los recursos que contiene:</label><br>
           <div class="recursos">
             <input type="checkbox" id="television" name="opciones[]" value="Televisión">
-            <label for="television"><img src="../../img/icons/tv_icon.png" class="icono" data-traducible="Televisión">Televisión</label><br>
+            <label for="television"><img src="../../img/icons/tv_icon.png" class="icono"> <span data-traducible="Televisión">Televisión</span></label><br>
+
             <input type="checkbox" id="cableHDMI" name="opciones[]" value="Cable HDMI">
-            <label for="cableHDMI"><img src="../../img/icons/hdmi_icon.png" class="icono" data-traducible="Cable HDMI">Cable HDMI</label><br>
+            <label for="cableHDMI"><img src="../../img/icons/hdmi_icon.png" class="icono"> <span data-traducible="Cable HDMI">Cable HDMI</span></label><br>
+
             <input type="checkbox" id="aireAcondicionado" name="opciones[]" value="Aire Acondicionado">
-            <label for="aireAcondicionado"><img src="../../img/icons/air_icon.png" class="icono" data-traducible="Aire Acondicionado">Aire Acondicionado</label><br>
+            <label for="aireAcondicionado"><img src="../../img/icons/air_icon.png" class="icono"> <span data-traducible="Aire Acondicionado">Aire Acondicionado</span></label><br>
+
             <input type="checkbox" id="proyector" name="opciones[]" value="Proyector">
-            <label for="proyector"><img src="../../img/icons/proyector_icon.png" class="icono" data-traducible="Proyector">Proyector</label><br>
+            <label for="proyector"><img src="../../img/icons/proyector_icon.png" class="icono"> <span data-traducible="Proyector">Proyector</span></label><br>
+
             <input type="checkbox" id="alargue" name="opciones[]" value="Alargue">
-            <label for="alargue"><img src="../../img/icons/alargue_icon.png" class="icono" data-traducible="Alargue">Alargue</label><br>
+            <label for="alargue"><img src="../../img/icons/alargue_icon.png" class="icono"> <span data-traducible="Alargue">Alargue</span></label><br>
           </div>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
           <button type="submit" class="btn btn-success" data-traducible="Guardar">Guardar</button>
@@ -654,16 +661,16 @@ document.getElementById("formEspacio").addEventListener("submit", function(e) {
                         <form action="../funciones/aprobar_reserva.php" method="POST" class="d-flex justify-content-between">
                             <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
                             <button type="submit" name="accion" value="Aprobar" class="btn btn-success w-50 me-2" data-traducible="Aprobar">
-                                <i class="bi bi-check-lg"></i> Aprobar
+                                <i class="bi bi-check-lg"></i> <span data-traducible="Aprobar">Aprobar</span>
                             </button>
                             <button type="submit" name="accion" value="Rechazar" class="btn btn-danger w-50" data-traducible="No aprobar">
-                                <i class="bi bi-x-lg"></i> No aprobar
+                                <i class="bi bi-x-lg"></i> <span data-traducible="No aprobar">No aprobar</span>
                             </button>
                         </form>
                         <?php } ?>
                     </div>
                     <div class="card-footer text-muted text-center small bg-light">
-                        ID Reserva: <?php echo $row['id_reserva']; ?>
+                        <span data-traducible="ID Reserva:">ID Reserva:</span> <?php echo $row['id_reserva']; ?>
                     </div>
                 </div>
             </div>
@@ -684,9 +691,8 @@ document.getElementById("formEspacio").addEventListener("submit", function(e) {
 
 <script>
   const btn = document.getElementById('scrollTopBtn');
-
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) { // aparece después de 500px de scroll
+    if (window.scrollY > 500) {
       btn.style.opacity = '1';
       btn.style.transform = 'translateY(0)';
     } else {
@@ -695,7 +701,6 @@ document.getElementById("formEspacio").addEventListener("submit", function(e) {
     }
   });
 </script>
-
 
 <?php include '../tools/footer.php'; ?>
 
