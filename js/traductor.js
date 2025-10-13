@@ -222,7 +222,13 @@ const diccionario = {
 "Horario": { en: "Schedule", es: "Horario" },
 "Seleccione un horario": { en: "Select a schedule", es: "Seleccione un horario" },
 "Cancelar": { en: "Cancel", es: "Cancelar" },
-"Reservar": { en: "Reserve", es: "Reservar" }
+"Reservar": { en: "Reserve", es: "Reservar" },
+
+//Headers
+"Lenguaje": { en: "Language", es: "Lenguaje" },
+"Español": { en: "Spanish", es: "Español" },
+"Inglés": { en: "English", es: "Inglés" },
+
 };
 
 // Función para traducir todos los elementos con data-traducible
