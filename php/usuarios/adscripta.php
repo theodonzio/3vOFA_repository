@@ -50,6 +50,40 @@ document.addEventListener('DOMContentLoaded', () => {
   <?php endif; ?>
 });
 </script>
+<?php if (isset($_GET['docente'])): ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const tipo = "<?php echo $_GET['docente']; ?>";
+  let mensaje = '';
+  let icono = 'error';
+
+  switch (tipo) {
+    case 'success':
+      mensaje = 'Docente registrado correctamente ✅';
+      icono = 'success';
+      break;
+    case 'cedula_invalida':
+      mensaje = 'La cédula debe tener exactamente 8 números.';
+      break;
+    case 'contrasena_invalida':
+      mensaje = 'La contraseña debe tener al menos una letra, un número y 6 caracteres.';
+      break;
+    case 'error':
+      mensaje = 'Ocurrió un error al registrar. Intente nuevamente.';
+      break;
+  }
+
+  Swal.fire({
+    title: mensaje,
+    icon: icono,
+    confirmButtonText: 'Aceptar',
+    background: document.body.classList.contains('dark-mode') ? '#1e1e1e' : '#fff',
+    color: document.body.classList.contains('dark-mode') ? '#fff' : '#000',
+  });
+});
+</script>
+<?php endif; ?>
 <?php endif; ?>
 <?php if (isset($_GET['espacio'])): ?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
