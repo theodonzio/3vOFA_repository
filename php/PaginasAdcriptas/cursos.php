@@ -6,9 +6,7 @@
       <div class="logo">
         <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra">
 
-        
         <div class="dropdown">
-
           <img 
             src="../img/icons/config_icon(black).png"
             class="theme_icon_mode dropdown-toggle"
@@ -19,8 +17,8 @@
           
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-tema">
             <li><h6 class="dropdown-header" data-traducible="Tema">Tema</h6></li>
-            <li><a class="dropdown-item" href="#" id="tema-claro" data-traducible="Claro"><img class="icono">Claro</a></li>
-            <li><a class="dropdown-item" href="#" id="tema-oscuro" data-traducible="Oscuro"><img class="icono">Oscuro</a></li>
+            <li><a class="dropdown-item" href="#" id="tema-claro" data-traducible="Claro">Claro</a></li>
+            <li><a class="dropdown-item" href="#" id="tema-oscuro" data-traducible="Oscuro">Oscuro</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><h6 class="dropdown-header" data-traducible="Lenguaje">Lenguaje</h6></li>
             <li><a class="dropdown-item" href="#" id="lenguaje-es" data-traducible="Español">Español</a></li>
@@ -36,46 +34,40 @@
 include '../tools/head.php';
 include '../login/conexion_bd.php';
 
-// Obtener todos los grupos (con su curso y turno)
-$sql = "SELECT g.id_grupo, g.nombre_grupo, g.anio_curso, c.nombre_curso, t.nombre_turno
-        FROM grupo g
-        LEFT JOIN curso c ON g.id_curso = c.id_curso
-        LEFT JOIN turno t ON g.id_turno = t.id_turno
-        ORDER BY g.id_grupo ASC";
+// Consulta para obtener todos los cursos
+$sql = "SELECT * FROM curso ORDER BY id_curso ASC";
 $result = $conn->query($sql);
 ?>
-<!-- Hero Grupos -->
+
+<!-- Hero Cursos -->
 <div class="hero text-white py-5 d-flex align-items-center justify-content-center"
-     style="background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
-            background-size: cover; 
-            background-position: center; 
-            position: relative; 
-            min-height: 400px; 
+     style="background-image: url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            min-height: 400px;
             border-radius: 20px;">
-  
-  <!-- Overlay oscuro -->
-  <div style="position: absolute; top:0; left:0; right:0; bottom:0; 
-              background: rgba(0,0,0,0.4); 
+
+  <div style="position: absolute; top:0; left:0; right:0; bottom:0;
+              background: rgba(0,0,0,0.4);
               border-radius: 20px;"></div>
 
-  <!-- Contenido del Hero -->
   <div class="container text-center" style="position: relative; z-index: 1; max-width: 900px;">
-    <h2 class="display-6 fw-semibold">Lista de Grupos Registrados</h2>
-    <p class="mb-4">Aquí puedes ver y gestionar los grupos del sistema</p>
+    <h2 class="display-6 fw-semibold">Lista de Cursos Registrados</h2>
+    <p class="mb-4">Aquí puedes ver los cursos del sistema</p>
 
     <div class="d-flex justify-content-center gap-3">
       <a href="../usuarios/adscripta.php" 
          class="btn btn-outline-light px-3 py-2"
          style="font-size: 0.95rem;">
-       Volver al Panel
+        Volver al Panel
       </a>
     </div>
   </div>
 </div>
 
-
 <div class="mb-5 hero">
-  <div class="shadow-lg border-0 rounded-4" id="tabla_grupos">
+  <div class="shadow-lg border-0 rounded-4" id="tabla_cursos">
     <div>
       <?php if ($result && $result->num_rows > 0): ?>
         <div class="table-responsive">
@@ -83,20 +75,18 @@ $result = $conn->query($sql);
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Nombre</th>
-                <th>Año</th>
-                <th>Curso</th>
-                <th>Turno</th>
+                <th>Nombre del Curso</th>
+                <th>Descripción</th>
+                <th>Duración (Años)</th>
               </tr>
             </thead>
             <tbody>
               <?php while ($row = $result->fetch_assoc()): ?>
                 <tr>
-                  <td><?= htmlspecialchars($row['id_grupo']) ?></td>
-                  <td><?= htmlspecialchars($row['nombre_grupo']) ?></td>
-                  <td><?= htmlspecialchars($row['anio_curso']) ?></td>
-                  <td><?= htmlspecialchars($row['nombre_curso'] ?? '—') ?></td>
-                  <td><?= htmlspecialchars($row['nombre_turno'] ?? '—') ?></td>
+                  <td><?= htmlspecialchars($row['id_curso']) ?></td>
+                  <td><?= htmlspecialchars($row['nombre_curso']) ?></td>
+                  <td><?= htmlspecialchars($row['descripcion'] ?: '—') ?></td>
+                  <td><?= htmlspecialchars($row['duracion_anos'] ?: '—') ?></td>
                 </tr>
               <?php endwhile; ?>
             </tbody>
@@ -105,7 +95,7 @@ $result = $conn->query($sql);
       <?php else: ?>
         <div class="text-center py-4">
           <i class="bi bi-exclamation-circle fs-1 text-secondary"></i>
-          <h5 class="mt-3">No hay grupos registrados</h5>
+          <h5 class="mt-3">No hay cursos registrados</h5>
         </div>
       <?php endif; ?>
     </div>
@@ -125,9 +115,7 @@ $result = $conn->query($sql);
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
 
-</body>
-
 <?php include '../tools/footer.php'; ?>
-</html>
-
 <?php $conn->close(); ?>
+</body>
+</html>
