@@ -195,8 +195,6 @@ const diccionario = {
 "Cancelar": { en: "Cancel", es: "Cancelar" },
 "Guardar": { en: "Save", es: "Guardar" },
 
-
-
 };
 
 // Función para traducir todos los elementos con data-traducible

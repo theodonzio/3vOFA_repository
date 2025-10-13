@@ -232,6 +232,7 @@ body.oscuro .navbar-nav .nav-link:focus {
 .AlinearBotones{
   display: flex;
   align-items: center;
+  margin-left: 1rem;
 }
 
 
