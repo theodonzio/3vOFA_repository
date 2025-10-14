@@ -101,4 +101,27 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <?php endif; ?>
+<?php if (isset($_GET['login']) && $_GET['login'] === 'required'): ?>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  Swal.fire({
+    icon: 'warning',
+    title: 'Inicia sesión primero',
+    text: 'Debes iniciar sesión para acceder al sistema.',
+    confirmButtonText: 'Entendido'
+  });
+});
+</script>
+<?php elseif (isset($_GET['login']) && $_GET['login'] === 'unauthorized'): ?>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  Swal.fire({
+    icon: 'error',
+    title: 'Acceso no autorizado',
+    text: 'No tienes permisos para acceder a esa página.',
+    confirmButtonText: 'OK'
+  });
+});
+</script>
+<?php endif; ?>
 </body>

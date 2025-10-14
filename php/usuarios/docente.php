@@ -1,5 +1,19 @@
 <?php
-  session_start();
+session_start();
+
+// Si no hay sesión activa, redirigir al index
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: ../index.php?login=required");
+    exit;
+}
+
+// Si el rol no es adscripta, redirigir también
+if ($_SESSION['id_rol'] != 2) {
+    header("Location: ../index.php?login=unauthorized");
+    exit;
+}
+?>
+<?php
   include '../tools/head.php';
   include '../tools/header_docente.php';
   include '../login/conexion_bd.php';
