@@ -196,44 +196,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <!-- Modal Agregar Curso -->
+<!-- Modal Agregar Curso -->
 <div class="modal fade" id="agregarCursoModal" tabindex="-1" aria-labelledby="agregarCursoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content shadow border-0 rounded-3">
       <form action="../funciones/agregar_curso.php" method="POST">
         <div class="modal-header">
-          <h5 class="modal-title fw-semibold" id="agregarCursoLabel" data-traducible="Agregar Curso">
-            <i class="bi bi-file-earmark-plus-fill me-2 text-primary"></i>Agregar Curso
+          <h5 class="modal-title fw-semibold" id="agregarCursoLabel">
+            Agregar Curso
           </h5>
         </div>
 
         <div class="modal-body p-4">
+          <!-- Nombre del curso -->
           <div class="mb-3">
-            <label class="form-label fw-semibold" data-traducible="Nombre del Curso">Nombre del Curso</label>
-            <input type="text" name="nombre_curso" class="form-control" 
-                   placeholder="Ej: Técnico en Informática" data-traducible="Ej: Técnico en Informática" required>
+            <label class="form-label fw-semibold">Nombre del Curso</label>
+            <input type="text" name="nombre_curso" class="form-control" placeholder="Ejemplo: Informática 1°" required>
           </div>
 
+          <!-- Descripción -->
           <div class="mb-3">
-            <label class="form-label fw-semibold" data-traducible="Descripción">Descripción</label>
-            <textarea name="descripcion" class="form-control" 
-                      placeholder="Descripción del curso" data-traducible="Descripción del curso" rows="3"></textarea>
+            <label class="form-label fw-semibold">Descripción</label>
+            <textarea name="descripcion" class="form-control" rows="3" placeholder="Breve descripción del curso..."></textarea>
           </div>
 
+          <!-- Duración -->
           <div class="mb-3">
-            <label class="form-label fw-semibold" data-traducible="Duración en años">Duración en años</label>
-            <input type="number" name="duracion_anos" class="form-control" 
-                   placeholder="Ej: 3" data-traducible="Ej: 3" required>
+            <label class="form-label fw-semibold">Duración en años</label>
+            <input type="number" name="duracion_anos" class="form-control" min="1" max="10" placeholder="Ejemplo: 3" required>
+          </div>
+
+          <!-- Selección de horarios -->
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Seleccionar Horarios</label>
+            <div class="p-3 border rounded bg-light" style="max-height: 200px; overflow-y: auto;">
+              <?php
+              include '../login/conexion_bd.php';
+              $query = "SELECT id_horario, nombre_horario, hora_inicio, hora_fin FROM horario";
+              $result = $conn->query($query);
+              while ($row = $result->fetch_assoc()) {
+                echo '
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" name="id_horarios[]" id="horario'.$row['id_horario'].'" value="'.$row['id_horario'].'">
+                  <label class="form-check-label" for="horario'.$row['id_horario'].'">
+                    '.$row['nombre_horario'].' 
+                    <small class="text-muted">('.$row['hora_inicio'].' - '.$row['hora_fin'].')</small>
+                  </label>
+                </div>';
+              }
+              ?>
+            </div>
+            <small class="text-muted">Marcá uno o varios horarios según corresponda.</small>
           </div>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
-          <button type="submit" class="btn btn-success" data-traducible="Guardar">Guardar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-success">
+            Guardar
+          </button>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+
 
 
 <!-- Hero Grupos -->
