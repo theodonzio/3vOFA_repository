@@ -106,6 +106,9 @@ a{
 
 .botones button{
   width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bienvenida{
@@ -114,10 +117,41 @@ a{
     display: flex;
     flex-direction: column !important;
 }
+
+input::placeholder {
+  opacity: 0.5 !important;        /* opcional, por defecto es 0.5 en algunos navegadores */
+}
+
+#navbarNavDropdown {
+    margin: 10px;    /* Más espacio interno */
+}
+
+
+.dropdown-item:focus,
+.dropdown-item:active {
+  background-color: transparent; /* o el color que quieras */
+  color: inherit;               /* mantiene el color original del texto */
+  box-shadow: none;             /* evita el borde azul en algunos navegadores */
+}
+
+.form-select:focus {
+  box-shadow: none; 
+  border-color: #dee2e6;
+}
+
+.form-control:focus{
+    border-color: #dee2e6 !important;
+      box-shadow: none;
+}
+
 .tinylogo {
     width: 10rem;
     margin: 10px;
     height: auto;
+}
+
+.blue_icon{
+    width: 5rem;
 }
 
 .modal-footer .btn {
@@ -131,8 +165,17 @@ a{
     border-radius: 20px;       /* opcional, bordes redondeados */
 }
 
+.theme{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #boton-tema{
+  width: 80px;
+  height: auto;
   margin-right: 5px;
+  padding: 0px;
 }
 
 /* Estilo base */
@@ -141,14 +184,36 @@ a{
   transition: transform 0.4s ease, filter 0.3s ease !important;
 }
 
-/* Modo oscuro completo */
+/* Modo claro: normal */
+body:not(.oscuro) .theme_icon_mode {
+  filter: brightness(1);
+}
+
+/* Hover modo claro */
+body:not(.oscuro) .theme_icon_mode:hover {
+  transform: rotate(100deg) scale(1);
+  filter: brightness(1.2);
+}
+
+/* Modo oscuro: invertido por defecto */
+body.oscuro .theme_icon_mode {
+  filter: invert(1) brightness(1); /* invert siempre fijo */
+}
+
+/* Hover modo oscuro */
+body.oscuro .theme_icon_mode:hover {
+  transform: rotate(100deg) scale(1);
+  filter: invert(1) brightness(1); /* solo aumenta brillo, invert queda fijo */
+}
+
+/* ===== Modo oscuro completo ===== */
 body.oscuro {
   background-color: #1e1e1e;
   color: #f5f5f5;
   transition: all 0.3s ease;
 }
 
-/* Header / Navbar */
+/* ===== Header / Navbar ===== */
 body.oscuro .navbar {
   background-color: #2b2b2b !important;
 }
@@ -174,6 +239,12 @@ body.oscuro .navbar-nav .nav-link:focus {
 body.oscuro .dropdown-menu {
   background-color: #333;
   border-color: #444;
+}
+
+body.oscuro .dropdown-item {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
 }
 
 body.oscuro .dropdown-item:hover,
