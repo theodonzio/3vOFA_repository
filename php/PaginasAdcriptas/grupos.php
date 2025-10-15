@@ -60,8 +60,8 @@ $result = $conn->query($sql);
 
   <!-- Contenido del Hero -->
   <div class="container text-center" style="position: relative; z-index: 1; max-width: 900px;">
-    <h2 class="display-6 fw-semibold">Lista de Grupos Registrados</h2>
-    <p class="mb-4">Aquí puedes ver y gestionar los grupos del sistema</p>
+    <h2 class="display-6 fw-semibold" data-traducible="Lista de Grupos Registrados">Lista de Grupos Registrados</h2>
+    <p class="mb-4" data-traducible="Aquí puedes ver y gestionar los grupos del sistema">Aquí puedes ver y gestionar los grupos del sistema</p>
 
     <div class="d-flex justify-content-center gap-3">
       <a href="../usuarios/adscripta.php" 
