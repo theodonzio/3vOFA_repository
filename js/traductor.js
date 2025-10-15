@@ -13,7 +13,6 @@ const diccionario = {
 "Acceso de Usuarios": { en: "User Access", es: "Acceso de Usuarios" },
 "C.I | Email": { en: "ID | Email", es: "C.I | Email" },
 "Contraseña": { en: "Password", es: "Contraseña" },
-"Cancelar": { en: "Cancel", es: "Cancelar" },
 "Ingresar": { en: "Login", es: "Ingresar" },
 "Selecciona una opción": { en: "Select an option", es: "Selecciona una opción" },
 "Elige una opción": { en: "Choose an option", es: "Elige una opción" },
@@ -41,7 +40,6 @@ const diccionario = {
 "Apellido": { en: "Last Name", es: "Apellido" },
 "Cédula": { en: "ID", es: "Cédula" },
 "Email": { en: "Email", es: "Email" },
-"Guardar": { en: "Save", es: "Guardar" },
 "Gestión de Espacios": { en: "Spaces Management", es: "Gestión de Espacios" },
 "Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos": { en: "From here you can add new spaces to the system and assign resources", es: "Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos" },
 "➕ Agregar Espacio": { en: "➕ Add Space", es: "➕ Agregar Espacio" },
@@ -137,8 +135,6 @@ const diccionario = {
 "Aire Acondicionado": { en: "Air Conditioner", es: "Aire Acondicionado" },
 "Proyector": { en: "Projector", es: "Proyector" },
 "Alargue": { en: "Extension Cord", es: "Alargue" },
-"Cancelar": { en: "Cancel", es: "Cancelar" },
-"Guardar": { en: "Save", es: "Guardar" },
 
 // Sección Reservas
 "Reservas Realizadas por los Docentes": { en: "Reservations Made by Teachers", es: "Reservas Realizadas por los Docentes" },
@@ -163,8 +159,6 @@ const diccionario = {
 "Ej: Técnico en Informática": { en: "Ex: Computer Technician", es: "Ej: Técnico en Informática" },
 "Descripción del curso": { en: "Course description", es: "Descripción del curso" },
 "Ej: 3": { en: "Ex: 3", es: "Ej: 3" },
-"Cancelar": { en: "Cancel", es: "Cancelar" },
-"Guardar": { en: "Save", es: "Guardar" },
 
 //Modal agregar grupos
 
@@ -177,8 +171,6 @@ const diccionario = {
 "Seleccionar turno...": { en: "Select shift...", es: "Seleccionar turno..." },
 "Ej: 1A": { en: "Ex: 1A", es: "Ej: 1A" },
 "Ej: 1": { en: "Ex: 1", es: "Ej: 1" },
-"Cancelar": { en: "Cancel", es: "Cancelar" },
-"Guardar": { en: "Save", es: "Guardar" },
 "Matutino": { en: "Morning", es: "Matutino" },
 "Vespertino": { en: "Afternoon", es: "Vespertino" },
 "Nocturno": { en: "Night", es: "Nocturno" },
@@ -192,7 +184,6 @@ const diccionario = {
 "Grupo": { en: "Group", es: "Grupo" },
 "Seleccionar grupo...": { en: "Select group...", es: "Seleccionar grupo..." },
 "Ej: Matemática": { en: "Ex: Math", es: "Ej: Matemática" },
-"Cancelar": { en: "Cancel", es: "Cancelar" },
 "Guardar": { en: "Save", es: "Guardar" },
 
 
@@ -205,8 +196,6 @@ const diccionario = {
 "Seleccione un salón": { en: "Select a room", es: "Seleccione un salón" },
 "Fecha": { en: "Date", es: "Fecha" },
 "Horario": { en: "Schedule", es: "Horario" },
-"Cancelar": { en: "Cancel", es: "Cancelar" },
-"Reservar": { en: "Reserve", es: "Reservar" },
 "Mis Reservas": { en: "My Reservations", es: "Mis Reservas" },
 "Salón": { en: "Room", es: "Salón" },
 "Tipo": { en: "Type", es: "Tipo" },

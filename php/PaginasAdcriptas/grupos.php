@@ -66,7 +66,9 @@ $result = $conn->query($sql);
     <div class="d-flex justify-content-center gap-3">
       <a href="../usuarios/adscripta.php" 
          class="btn btn-outline-light px-3 py-2"
-         style="font-size: 0.95rem;">
+         style="font-size: 0.95rem;"
+         data-traducible="Volver al Panel"
+         >
        Volver al Panel
       </a>
     </div>
@@ -112,9 +114,6 @@ $result = $conn->query($sql);
   </div>
 </div>
 
-<!-- SCRIPTS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
@@ -131,3 +130,9 @@ $result = $conn->query($sql);
 </html>
 
 <?php $conn->close(); ?>
+
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../js/modoClaroOscuro.js"></script>
+<script src="../../js/traductor.js"></script>
