@@ -5,10 +5,8 @@
     <div class="container-fluid">
       <div class="logo">
         <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra">
-
         
         <div class="dropdown">
-
           <img 
             src="../img/icons/config_icon(black).png"
             class="theme_icon_mode dropdown-toggle"
@@ -36,11 +34,11 @@
 include '../tools/head.php';
 include '../login/conexion_bd.php';
 
-
 // Obtener todos los docentes (id_rol = 2)
 $sql = "SELECT id_usuario, nombre, apellido, cedula, email FROM Usuario WHERE id_rol = 2";
 $result = $conn->query($sql);
 ?>
+
 <!-- Hero Docentes -->
 <div class="hero text-white py-5 d-flex align-items-center justify-content-center"
      style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop'); 
@@ -57,20 +55,21 @@ $result = $conn->query($sql);
 
   <!-- Contenido del Hero -->
   <div class="container text-center" style="position: relative; z-index: 1; max-width: 900px;">
-    <h2 class="display-6 fw-semibold">Lista de Docentes Registrados</h2>
-    <p class="mb-4">Aquí puedes ver y gestionar a los docentes registrados en el sistema</p>
+    <h2 class="display-6 fw-semibold" data-traducible="Lista de Docentes Registrados">Lista de Docentes Registrados</h2>
+    <p class="mb-4" data-traducible="Aquí puedes ver y gestionar a los docentes registrados en el sistema">Aquí puedes ver y gestionar a los docentes registrados en el sistema</p>
 
     <div class="d-flex justify-content-center gap-3">
       <a href="../usuarios/adscripta.php" 
          class="btn btn-outline-light px-3 py-2"
-         style="font-size: 0.95rem;">
-       Volver al Panel
+         style="font-size: 0.95rem;"
+         data-traducible="Volver al Panel">
+        Volver al Panel
       </a>
     </div>
   </div>
 </div>
 
-
+<!-- Tabla Docentes -->
 <div class="mb-5 hero">
   <div class="shadow-lg border-0 rounded-4" id="tabla_docentes">
     <div>
@@ -79,11 +78,11 @@ $result = $conn->query($sql);
           <table class="table table-hover align-middle text-center table-striped mb-0">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Cédula</th>
-                <th>Email</th>
+                <th data-traducible="ID">ID</th>
+                <th data-traducible="Nombre">Nombre</th>
+                <th data-traducible="Apellido">Apellido</th>
+                <th data-traducible="Cédula">Cédula</th>
+                <th data-traducible="Email">Email</th>
               </tr>
             </thead>
             <tbody>
@@ -102,7 +101,7 @@ $result = $conn->query($sql);
       <?php else: ?>
         <div class="text-center py-4">
           <i class="bi bi-exclamation-circle fs-1 text-secondary"></i>
-          <h5 class="mt-3">No hay docentes registrados</h5>
+          <h5 class="mt-3" data-traducible="No hay docentes registrados">No hay docentes registrados</h5>
         </div>
       <?php endif; ?>
     </div>

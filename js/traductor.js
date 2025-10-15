@@ -235,6 +235,14 @@ const diccionario = {
   "Duración (Años)": { en: "Duration (Years)", es: "Duración (Años)" },
   "No hay cursos registrados": { en: "No courses registered", es: "No hay cursos registrados"},
 
+//DOCENTES.PHP
+
+"No hay docentes registrados": { es: "No hay docentes registrados", en: "There are no registered teachers"},
+"Lista de Docentes Registrados": { 
+  es: "Lista de Docentes Registrados", en: "List of Registered Teachers" },
+"Aquí puedes ver y gestionar a los docentes registrados en el sistema": { es: "Aquí puedes ver y gestionar a los docentes registrados en el sistema", en: "Here you can view and manage the teachers registered in the system" },
+
+
 //Headers
 "Lenguaje": { en: "Language", es: "Lenguaje" },
 "Español": { en: "Spanish", es: "Español" },
