@@ -31,7 +31,7 @@
               Cuenta
             </a>
             <ul class="dropdown-menu dropdown-menu-end" id="cerrar_sesion">
-              <li><a id="exit" class="dropdown-item" href="../index.php" data-traducible="Volver a página principal">Volver a página principal</a></li>
+              <li><a id="exit" class="dropdown-item" href="index.php" data-traducible="Volver a página principal">Volver a página principal</a></li>
             </ul>
           </li>
 

@@ -244,24 +244,38 @@ document.addEventListener('DOMContentLoaded', () => {
           <!-- Selección de horarios -->
           <div class="mb-3">
             <label class="form-label fw-semibold">Seleccionar Horarios</label>
-            <div class="p-3 border rounded bg-light" style="max-height: 200px; overflow-y: auto;">
+
+            <!-- Contenedor de horarios -->
+            <div class="p-3 border rounded bg-light mb-2" style="max-height: 200px; overflow-y: auto;">
               <?php
               include '../login/conexion_bd.php';
               $query = "SELECT id_horario, nombre_horario, hora_inicio, hora_fin FROM horario";
               $result = $conn->query($query);
               while ($row = $result->fetch_assoc()) {
                 echo '
-                <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" name="id_horarios[]" id="horario'.$row['id_horario'].'" value="'.$row['id_horario'].'">
-                  <label class="form-check-label" for="horario'.$row['id_horario'].'">
-                    '.$row['nombre_horario'].' 
-                    <small class="text-muted">('.$row['hora_inicio'].' - '.$row['hora_fin'].')</small>
-                  </label>
+                <div class="form-check mb-2 d-flex justify-content-between align-items-center">
+                  <div>
+                    <input class="form-check-input" type="checkbox" name="id_horarios[]" id="horario'.$row['id_horario'].'" value="'.$row['id_horario'].'">
+                    <label class="form-check-label" for="horario'.$row['id_horario'].'">
+                      '.$row['nombre_horario'].' 
+                      <small class="text-muted">('.$row['hora_inicio'].' - '.$row['hora_fin'].')</small>
+                    </label>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editarHorarioModal" data-id="'.$row['id_horario'].'" data-nombre="'.$row['nombre_horario'].'" data-inicio="'.$row['hora_inicio'].'" data-fin="'.$row['hora_fin'].'">Editar</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="eliminarHorario('.$row['id_horario'].')">Eliminar</button>
+                  </div>
                 </div>';
               }
               ?>
             </div>
-            <small class="text-muted">Marcá uno o varios horarios según corresponda.</small>
+
+            <!-- Botón agregar horario -->
+            <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#agregarHorarioModal">
+              + Agregar Horario
+            </button>
+
+            <small class="text-muted d-block mt-2">Marcá uno o varios horarios según corresponda.</small>
           </div>
         </div>
 
@@ -278,90 +292,104 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
-
-
-
-<!-- Hero Grupos -->
-<div id="HeroGrupos" class="hero text-white py-5 d-flex align-items-center justify-content-center" 
-     style="background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
-            background-size: cover; background-position: center; position: relative; min-height: 400px;">
-  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px"></div>
-  <div class="container text-center" style="position: relative; z-index: 1;">
-    <h2 data-traducible="Gestión de Grupos" class="display-6 fw-semibold">Gestión de Grupos</h2>
-    <p data-traducible="Desde aquí puedes agregar nuevos grupos al sistema" class="mb-4">
-      Desde aquí puedes agregar nuevos grupos al sistema
-    </p>
-    <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarGrupoModal">
-        <i class="bi bi-people-fill"></i> <div  data-traducible="Agregar Grupo">Agregar Grupo</div>
-      </button>
-      <a href="../PaginasAdcriptas/grupos.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Grupos">Ver Grupos</a>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Agregar Grupo -->
-<div class="modal fade" id="agregarGrupoModal" tabindex="-1" aria-labelledby="agregarGrupoLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content shadow border-0 rounded-3">
-      <form action="../funciones/agregar_grupo.php" method="POST">
+<!-- Modal Agregar Horario -->
+<div class="modal fade" id="agregarHorarioModal" tabindex="-1" aria-labelledby="agregarHorarioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="../funciones/agregar_horario.php" method="POST">
         <div class="modal-header">
-          <h5 class="modal-title fw-semibold" id="agregarGrupoLabel" data-traducible="Agregar Grupo">
-            <i class="bi bi-people-fill me-2 text-primary"></i>Agregar Grupo
-          </h5>
+          <h5 class="modal-title" id="agregarHorarioLabel">Agregar Horario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-
-        <div class="modal-body p-4">
+        <div class="modal-body">
           <div class="mb-3">
-            <label class="form-label fw-semibold" data-traducible="Nombre del Grupo">Nombre del Grupo</label>
-            <input type="text" name="nombre_grupo" class="form-control"
-                   placeholder="Ej: 1A" data-traducible="Ej: 1A" required>
+            <label class="form-label">Nombre del horario</label>
+            <input type="text" name="nombre_horario" class="form-control" required>
           </div>
-
           <div class="mb-3">
-            <label class="form-label fw-semibold" data-traducible="Año del Curso">Año del Curso</label>
-            <input type="number" name="anio_curso" class="form-control"
-                   placeholder="Ej: 1" data-traducible="Ej: 1" required min="1">
+            <label class="form-label">Hora de inicio</label>
+            <input type="time" name="hora_inicio" class="form-control" required>
           </div>
-
           <div class="mb-3">
-            <label class="form-label fw-semibold" data-traducible="Curso">Curso</label>
-            <select name="id_curso" class="form-select" required>
-              <option value="" data-traducible="Seleccionar curso...">Seleccionar curso...</option>
-              <?php
-              include '../login/conexion_bd.php';
-              $cursos = $conn->query("SELECT id_curso, nombre_curso FROM curso");
-              while ($c = $cursos->fetch_assoc()) {
-                $nombre = htmlspecialchars($c['nombre_curso']);
-                echo "<option value='{$c['id_curso']}' data-traducible='{$nombre}'>{$nombre}</option>";
-              }
-              ?>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label fw-semibold" data-traducible="Turno">Turno</label>
-            <select name="id_turno" class="form-select" required>
-              <option value="" data-traducible="Seleccionar turno...">Seleccionar turno...</option>
-              <?php
-              $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno");
-              while ($t = $turnos->fetch_assoc()) {
-                $turno = htmlspecialchars($t['nombre_turno']);
-                echo "<option value='{$t['id_turno']}' data-traducible='{$turno}'>{$turno}</option>";
-              }
-              ?>
-            </select>
+            <label class="form-label">Hora de fin</label>
+            <input type="time" name="hora_fin" class="form-control" required>
           </div>
         </div>
-
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
-          <button type="submit" class="btn btn-success" data-traducible="Guardar">Guardar</button>
+          <button type="submit" class="btn btn-success">Guardar</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+<!-- Modal Editar Horario -->
+<div class="modal fade" id="editarHorarioModal" tabindex="-1" aria-labelledby="editarHorarioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="../funciones/editar_horario.php" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editarHorarioLabel">Editar Horario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id_horario" id="edit_id_horario">
+          <div class="mb-3">
+            <label class="form-label">Nombre del horario</label>
+            <input type="text" name="nombre_horario" id="edit_nombre_horario" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Hora de inicio</label>
+            <input type="time" name="hora_inicio" id="edit_hora_inicio" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Hora de fin</label>
+            <input type="time" name="hora_fin" id="edit_hora_fin" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Actualizar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<!-- Incluye SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  // Cargar datos en el modal de edición
+  const editarHorarioModal = document.getElementById('editarHorarioModal');
+  editarHorarioModal.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget;
+    document.getElementById('edit_id_horario').value = button.getAttribute('data-id');
+    document.getElementById('edit_nombre_horario').value = button.getAttribute('data-nombre');
+    document.getElementById('edit_hora_inicio').value = button.getAttribute('data-inicio');
+    document.getElementById('edit_hora_fin').value = button.getAttribute('data-fin');
+  });
+
+  // Confirmar eliminación con SweetAlert2
+  function eliminarHorario(id) {
+    Swal.fire({
+      title: "¿Eliminar horario?",
+      text: "¿Estás seguro de que querés eliminar este horario? Esta acción no se puede deshacer.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#dc3545",
+      cancelButtonColor: "#6c757d"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Redirigir al PHP que elimina el horario
+        window.location.href = "../funciones/eliminar_horario.php?id=" + id;
+      }
+    });
+  }
+</script>
+
 
 
 <!-- Hero Asignaturas -->
@@ -542,7 +570,7 @@ grupoSelect.addEventListener("change", () => {
 
   if (!idGrupo) return;
 
-  // 1️⃣ Obtener horarios permitidos del curso del grupo
+  // 1️ Obtener horarios permitidos del curso del grupo
   fetch(`../funciones/obtener_horarios_curso.php?id_grupo=${idGrupo}`)
     .then(res => res.ok ? res.json() : [])
     .then(horariosCurso => {
@@ -553,7 +581,7 @@ grupoSelect.addEventListener("change", () => {
         });
       }
 
-      // 2️⃣ Obtener horarios ya guardados para ese grupo
+      // 2️ Obtener horarios ya guardados para ese grupo
       fetch(`../funciones/obtener_horario.php?id_grupo=${idGrupo}`)
         .then(res => res.ok ? res.json() : [])
         .then(data => {

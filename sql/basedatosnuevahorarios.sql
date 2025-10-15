@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2025 a las 13:20:54
+-- Tiempo de generación: 15-10-2025 a las 15:17:52
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -70,7 +70,8 @@ INSERT INTO `curso` (`id_curso`, `nombre_curso`, `descripcion`, `duracion_anos`)
 (7, 'Informatica Bilingue', 'hola', 2),
 (8, 'Ciberseguridad', 'Terciario', 4),
 (9, 'Ciberseguridad', 'Terciario', 4),
-(10, 'Ciberseguridad', 'Curso terciario', 4);
+(10, 'Ciberseguridad', 'Curso terciario', 4),
+(11, 'Diseño', 'Universitaria', 4);
 
 -- --------------------------------------------------------
 
@@ -88,18 +89,10 @@ CREATE TABLE `curso_horario` (
 --
 
 INSERT INTO `curso_horario` (`id_curso`, `id_horario`) VALUES
-(4, 1),
-(4, 4),
 (4, 6),
-(5, 1),
-(5, 2),
 (5, 3),
-(5, 4),
 (5, 5),
-(6, 1),
-(6, 2),
 (6, 3),
-(6, 4),
 (6, 5),
 (8, 9),
 (8, 10),
@@ -109,7 +102,9 @@ INSERT INTO `curso_horario` (`id_curso`, `id_horario`) VALUES
 (9, 11),
 (10, 9),
 (10, 10),
-(10, 11);
+(10, 11),
+(11, 5),
+(11, 11);
 
 -- --------------------------------------------------------
 
@@ -187,7 +182,8 @@ INSERT INTO `grupo` (`id_grupo`, `nombre_grupo`, `anio_curso`, `id_curso`, `id_t
 (2, '2B', 2, 2, 2),
 (3, '3C', 3, 3, 3),
 (4, 'MD', 3, 1, 1),
-(5, '1CB', 1, 10, 2);
+(5, '1CB', 1, 10, 2),
+(6, '4UNI', 4, 11, 2);
 
 -- --------------------------------------------------------
 
@@ -228,17 +224,16 @@ CREATE TABLE `horario` (
 --
 
 INSERT INTO `horario` (`id_horario`, `nombre_horario`, `hora_inicio`, `hora_fin`) VALUES
-(1, '1era', '07:00:00', '07:45:00'),
-(2, '2da', '07:50:00', '08:35:00'),
-(3, '3era', '08:40:00', '09:25:00'),
-(4, '4ta', '09:30:00', '10:15:00'),
+(3, '7ma', '10:42:00', '09:25:00'),
 (5, '5ta', '10:20:00', '11:05:00'),
 (6, '6ta', '11:10:00', '11:55:00'),
 (7, '7ma', '12:00:00', '12:45:00'),
 (8, '8va', '12:50:00', '13:35:00'),
 (9, '9na', '13:40:00', '14:25:00'),
 (10, '10ma', '14:30:00', '15:15:00'),
-(11, '11va', '15:20:00', '16:05:00');
+(11, '11va', '15:20:00', '16:05:00'),
+(12, '12va', '18:27:00', '19:30:00'),
+(13, '15', '20:18:00', '00:17:00');
 
 -- --------------------------------------------------------
 
@@ -259,26 +254,11 @@ CREATE TABLE `horario_grupo_asignatura` (
 --
 
 INSERT INTO `horario_grupo_asignatura` (`id_grupo`, `id_horario`, `dia_semana`, `id_asignatura`, `id_profesor`) VALUES
-(5, 1, 1, 2, NULL),
-(5, 1, 2, NULL, NULL),
-(5, 1, 3, NULL, NULL),
-(5, 1, 4, NULL, NULL),
-(5, 1, 5, NULL, NULL),
-(5, 2, 1, 1, NULL),
-(5, 2, 2, NULL, NULL),
-(5, 2, 3, NULL, NULL),
-(5, 2, 4, NULL, NULL),
-(5, 2, 5, NULL, NULL),
 (5, 3, 1, 2, NULL),
 (5, 3, 2, NULL, NULL),
 (5, 3, 3, NULL, NULL),
 (5, 3, 4, NULL, NULL),
 (5, 3, 5, NULL, NULL),
-(5, 4, 1, 3, NULL),
-(5, 4, 2, NULL, NULL),
-(5, 4, 3, NULL, NULL),
-(5, 4, 4, NULL, NULL),
-(5, 4, 5, NULL, NULL),
 (5, 5, 1, 3, NULL),
 (5, 5, 2, NULL, NULL),
 (5, 5, 3, NULL, NULL),
@@ -314,26 +294,11 @@ INSERT INTO `horario_grupo_asignatura` (`id_grupo`, `id_horario`, `dia_semana`, 
 (5, 11, 3, NULL, NULL),
 (5, 11, 4, NULL, NULL),
 (5, 11, 5, NULL, NULL),
-(2, 1, 1, 3, NULL),
-(2, 1, 2, NULL, NULL),
-(2, 1, 3, NULL, NULL),
-(2, 1, 4, NULL, NULL),
-(2, 1, 5, NULL, NULL),
-(2, 2, 1, 3, NULL),
-(2, 2, 2, NULL, NULL),
-(2, 2, 3, NULL, NULL),
-(2, 2, 4, NULL, NULL),
-(2, 2, 5, NULL, NULL),
 (2, 3, 1, 1, NULL),
 (2, 3, 2, NULL, NULL),
 (2, 3, 3, NULL, NULL),
 (2, 3, 4, NULL, NULL),
 (2, 3, 5, NULL, NULL),
-(2, 4, 1, 1, NULL),
-(2, 4, 2, NULL, NULL),
-(2, 4, 3, NULL, NULL),
-(2, 4, 4, NULL, NULL),
-(2, 4, 5, NULL, NULL),
 (2, 5, 1, 2, NULL),
 (2, 5, 2, NULL, NULL),
 (2, 5, 3, NULL, NULL),
@@ -369,26 +334,11 @@ INSERT INTO `horario_grupo_asignatura` (`id_grupo`, `id_horario`, `dia_semana`, 
 (2, 11, 3, NULL, NULL),
 (2, 11, 4, NULL, NULL),
 (2, 11, 5, NULL, NULL),
-(4, 1, 1, 3, NULL),
-(4, 1, 2, NULL, NULL),
-(4, 1, 3, NULL, NULL),
-(4, 1, 4, NULL, NULL),
-(4, 1, 5, NULL, NULL),
-(4, 2, 1, NULL, NULL),
-(4, 2, 2, NULL, NULL),
-(4, 2, 3, NULL, NULL),
-(4, 2, 4, NULL, NULL),
-(4, 2, 5, NULL, NULL),
 (4, 3, 1, 3, NULL),
 (4, 3, 2, NULL, NULL),
 (4, 3, 3, NULL, NULL),
 (4, 3, 4, NULL, NULL),
 (4, 3, 5, NULL, NULL),
-(4, 4, 1, NULL, NULL),
-(4, 4, 2, NULL, NULL),
-(4, 4, 3, NULL, NULL),
-(4, 4, 4, NULL, NULL),
-(4, 4, 5, NULL, NULL),
 (4, 5, 1, NULL, NULL),
 (4, 5, 2, NULL, NULL),
 (4, 5, 3, NULL, NULL),
@@ -423,7 +373,17 @@ INSERT INTO `horario_grupo_asignatura` (`id_grupo`, `id_horario`, `dia_semana`, 
 (4, 11, 2, NULL, NULL),
 (4, 11, 3, NULL, NULL),
 (4, 11, 4, NULL, NULL),
-(4, 11, 5, NULL, NULL);
+(4, 11, 5, NULL, NULL),
+(6, 5, 1, NULL, NULL),
+(6, 5, 2, NULL, NULL),
+(6, 5, 3, NULL, NULL),
+(6, 5, 4, NULL, NULL),
+(6, 5, 5, NULL, NULL),
+(6, 11, 1, NULL, NULL),
+(6, 11, 2, NULL, NULL),
+(6, 11, 3, 1, NULL),
+(6, 11, 4, NULL, NULL),
+(6, 11, 5, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -691,7 +651,7 @@ ALTER TABLE `horario`
 --
 ALTER TABLE `horario_grupo_asignatura`
   ADD KEY `id_grupo` (`id_grupo`),
-  ADD KEY `id_horario` (`id_horario`);
+  ADD KEY `horario_grupo_asignatura_ibfk_2` (`id_horario`);
 
 --
 -- Indices de la tabla `informe`
@@ -758,7 +718,7 @@ ALTER TABLE `asignatura`
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `espacio`
@@ -770,13 +730,13 @@ ALTER TABLE `espacio`
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `id_grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `informe`
@@ -858,7 +818,7 @@ ALTER TABLE `grupo_asignatura`
 --
 ALTER TABLE `horario_grupo_asignatura`
   ADD CONSTRAINT `horario_grupo_asignatura_ibfk_1` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`),
-  ADD CONSTRAINT `horario_grupo_asignatura_ibfk_2` FOREIGN KEY (`id_horario`) REFERENCES `horario` (`id_horario`);
+  ADD CONSTRAINT `horario_grupo_asignatura_ibfk_2` FOREIGN KEY (`id_horario`) REFERENCES `horario` (`id_horario`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `informe`
@@ -896,4 +856,4 @@ COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_
