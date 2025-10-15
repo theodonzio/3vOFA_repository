@@ -8,11 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Detección automática de nivel de ruta ---
   const currentPath = window.location.pathname;
 
-  // Si el archivo actual NO es /php/index.php → estamos en una subcarpeta
-  const isSubfolder = !currentPath.endsWith('/php/index.php') && !currentPath.endsWith('/php/index');
+  // Detecta si estamos en /php/usuarios/ u otra subcarpeta DENTRO de /php/
+  const isSubfolder = currentPath.includes('/php/usuarios/') || 
+                      currentPath.includes('/php/admin/') ||
+                      currentPath.includes('/php/reportes/');
 
   // Ruta base dinámica
   const basePath = isSubfolder ? '../../' : '../';
+
+  console.log('Ruta actual:', currentPath);
+  console.log('¿Es subcarpeta?:', isSubfolder);
+  console.log('Base path:', basePath);
 
   function aplicarModo(modo) {
     if (modo === 'oscuro') {

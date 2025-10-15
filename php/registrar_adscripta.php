@@ -8,7 +8,7 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <div class="logo">
-        <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra">
+        <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra" alt="Logo OFA">
 
         <div class="dropdown">
           <img
@@ -17,12 +17,13 @@
             id="boton-tema"
             data-bs-toggle="dropdown"
             aria-expanded="false"
+            alt="Configuración"
           >
 
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-tema">
             <li><h6 class="dropdown-header" data-traducible="Tema">Tema</h6></li>
-            <li><a class="dropdown-item" href="#" id="tema-claro" data-traducible="Claro"><img class="icono">Claro</a></li>
-            <li><a class="dropdown-item" href="#" id="tema-oscuro" data-traducible="Oscuro"><img class="icono">Oscuro</a></li>
+            <li><a class="dropdown-item" href="#" id="tema-claro" data-traducible="Claro">Claro</a></li>
+            <li><a class="dropdown-item" href="#" id="tema-oscuro" data-traducible="Oscuro">Oscuro</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><h6 class="dropdown-header" data-traducible="Lenguaje">Lenguaje</h6></li>
             <li><a class="dropdown-item" href="#" id="lenguaje-es" data-traducible="Español">Español</a></li>
@@ -41,7 +42,7 @@
     <h5>Completa los datos para crear una cuenta de adscripta</h5>
   </div>
 
-  <form action="procesar_registro_adscripta.php" method="POST" class="form_login" style="max-width: 400px;">
+  <form action="procesar_registro_adscripta.php" method="POST" class="form_login" style="max-width: 400px; margin: 0 auto;">
     <div class="mb-3">
       <label for="nombre" class="form-label">Nombre</label>
       <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -55,6 +56,7 @@
     <div class="mb-3">
       <label for="cedula" class="form-label">Cédula</label>
       <input type="text" class="form-control" id="cedula" name="cedula" maxlength="8" pattern="[0-9]{8}" required>
+      <small class="form-text text-muted">8 dígitos sin puntos ni guiones</small>
     </div>
 
     <div class="mb-3">
@@ -67,9 +69,10 @@
       <input type="password" class="form-control" id="contrasena" name="contrasena"
              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
              title="Debe contener al menos una letra, un número y mínimo 6 caracteres" required>
+      <small class="form-text text-muted">Mínimo 6 caracteres, debe incluir letras y números</small>
     </div>
 
-    <button type="submit" class="btn btn-primary w-100">Registrar</button>
+    <button type="submit" class="btn btn-primary w-100 mt-4">Registrar</button>
   </form>
 </main>
 
@@ -97,8 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
   <?php elseif ($_GET['registro'] === 'duplicado'): ?>
     Swal.fire({
       icon: 'warning',
-      title: 'Ya existe una cuenta con esa cédula o correo.',
-      text: 'Verifica los datos e intenta nuevamente.',
+      title: 'Ya existe una cuenta',
+      text: 'Ya existe una cuenta con esa cédula o correo.',
       background: bg,
       color: color,
       confirmButtonText: 'OK'
