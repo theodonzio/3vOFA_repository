@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 
-<!-- Modal Agregar Curso -->
+
 <!-- Modal Agregar Curso -->
 <div class="modal fade" id="agregarCursoModal" tabindex="-1" aria-labelledby="agregarCursoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -529,65 +529,86 @@ if (isset($conn)) {
 <!-- JS: carga/guardado de select -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-  const grupoSelect = document.getElementById("grupoSelect");
-  const guardarBtn = document.getElementById("guardarCambios");
+const grupoSelect = document.getElementById("grupoSelect");
+const guardarBtn = document.getElementById("guardarCambios");
 
-  grupoSelect.addEventListener("change", () => {
-    const idGrupo = grupoSelect.value;
-    document.querySelectorAll(".selectHorario").forEach(sel => sel.value = "");
+grupoSelect.addEventListener("change", () => {
+  const idGrupo = grupoSelect.value;
 
-    if (!idGrupo) return;
+  // Ocultar todas las filas de horarios
+  document.querySelectorAll("#tablaHorarios tbody tr").forEach(fila => fila.style.display = "none");
+  // Limpiar selects
+  document.querySelectorAll(".selectHorario").forEach(sel => sel.value = "");
 
-    fetch(`../funciones/obtener_horario.php?id_grupo=${idGrupo}`)
-      .then(res => res.ok ? res.json() : [])
-      .then(data => {
-        if (!Array.isArray(data)) return;
-        data.forEach(item => {
-          const sel = document.querySelector(`.selectHorario[data-dia='${item.dia_semana}'][data-hora='${item.id_horario}']`);
-          if (sel) sel.value = item.id_asignatura; // Ajustar según la respuesta JSON
+  if (!idGrupo) return;
+
+  // 1️⃣ Obtener horarios permitidos del curso del grupo
+  fetch(`../funciones/obtener_horarios_curso.php?id_grupo=${idGrupo}`)
+    .then(res => res.ok ? res.json() : [])
+    .then(horariosCurso => {
+      if (Array.isArray(horariosCurso)) {
+        horariosCurso.forEach(h => {
+          const select = document.querySelector(`#tablaHorarios select[data-hora='${h.id_horario}']`);
+          if (select) select.closest("tr").style.display = "";
         });
-      })
-      .catch(err => console.log('Error al obtener horarios:', err));
-  });
+      }
 
-  guardarBtn.addEventListener("click", () => {
-    if (!grupoSelect.value) {
-      Swal.fire("Error", "Debes seleccionar un grupo antes de guardar.", "error");
-      return;
-    }
+      // 2️⃣ Obtener horarios ya guardados para ese grupo
+      fetch(`../funciones/obtener_horario.php?id_grupo=${idGrupo}`)
+        .then(res => res.ok ? res.json() : [])
+        .then(data => {
+          if (!Array.isArray(data)) return;
+          data.forEach(item => {
+            const sel = document.querySelector(`.selectHorario[data-dia='${item.dia_semana}'][data-hora='${item.id_horario}']`);
+            if (sel) sel.value = item.id_asignatura;
+          });
+        });
+    })
+    .catch(err => console.error("Error al obtener horarios:", err));
+});
 
-    Swal.fire({
-      title: "¿Guardar cambios?",
-      text: "¿Estás seguro de guardar los cambios realizados en la tabla?",
-      icon: "question",
-      showCancelButton: true,
-      confirmButtonText: "Aceptar",
-      cancelButtonText: "Cancelar",
-      confirmButtonColor: "#198754",
-      cancelButtonColor: "#dc3545"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const datos = [];
-        document.querySelectorAll(".selectHorario").forEach(sel => {
+guardarBtn.addEventListener("click", () => {
+  if (!grupoSelect.value) {
+    Swal.fire("Error", "Debes seleccionar un grupo antes de guardar.", "error");
+    return;
+  }
+
+  Swal.fire({
+    title: "¿Guardar cambios?",
+    text: "¿Estás seguro de guardar los cambios realizados?",
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonText: "Guardar",
+    cancelButtonText: "Cancelar",
+    confirmButtonColor: "#198754",
+    cancelButtonColor: "#dc3545"
+  }).then(result => {
+    if (result.isConfirmed) {
+      const datos = [];
+
+      document.querySelectorAll(".selectHorario").forEach(sel => {
+        if (sel.closest("tr").style.display !== "none") {
           datos.push({
             id_horario: sel.dataset.hora,
             dia_semana: sel.dataset.dia,
             id_asignatura: sel.value || null
           });
-        });
+        }
+      });
 
-        fetch("../funciones/guardar_horario.php", {
-          method: "POST",
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify({id_grupo: grupoSelect.value, horarios: datos})
-        })
-        .then(res => res.ok ? res.json() : Promise.reject('error'))
-        .then(resp => Swal.fire(resp.titulo, resp.mensaje, resp.icono))
-        .catch(() => Swal.fire("Error", "No se pudieron guardar los cambios.", "error"));
-      }
-    });
+      fetch("../funciones/guardar_horario.php", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({id_grupo: grupoSelect.value, horarios: datos})
+      })
+      .then(res => res.ok ? res.json() : Promise.reject())
+      .then(resp => Swal.fire(resp.titulo, resp.mensaje, resp.icono))
+      .catch(() => Swal.fire("Error", "No se pudieron guardar los cambios.", "error"));
+    }
   });
+});
 </script>
+
 
 
 <!-- Hero Espacios -->
