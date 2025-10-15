@@ -8,10 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Detección automática de nivel de ruta ---
   const currentPath = window.location.pathname;
 
-  // Detecta si estamos en /php/usuarios/ u otra subcarpeta DENTRO de /php/
+  // ✅ AHORA INCLUYE /php/PaginasAdcriptas/
   const isSubfolder = currentPath.includes('/php/usuarios/') || 
                       currentPath.includes('/php/admin/') ||
-                      currentPath.includes('/php/reportes/');
+                      currentPath.includes('/php/reportes/') ||
+                      currentPath.includes('/php/PaginasAdcriptas/'); // 👈 AGREGADO
 
   // Ruta base dinámica
   const basePath = isSubfolder ? '../../' : '../';
