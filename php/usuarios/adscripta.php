@@ -910,6 +910,41 @@ document.getElementById("formEspacio").addEventListener("submit", function(e) {
   });
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Selecciona todos los formularios de reservas
+    const formularios = document.querySelectorAll('#tabla_reservas_adscripta form');
+
+    formularios.forEach(form => {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Evita envío inmediato
+
+        const accion = e.submitter.value; // "Aprobar" o "Rechazar"
+        let mensaje = accion === "Aprobar"
+          ? "¿Estás seguro de que querés aprobar esta reserva?"
+          : "¿Estás seguro de que querés rechazar esta reserva?";
+
+        let color = accion === "Aprobar" ? "#28a745" : "#dc3545"; // Verde o rojo
+
+        Swal.fire({
+          title: mensaje,
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: color,
+          cancelButtonColor: '#6c757d',
+          confirmButtonText: accion === "Aprobar" ? 'Sí, aprobar' : 'Sí, rechazar',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            form.submit(); // Envía el formulario si confirma
+          }
+        });
+      });
+    });
+  });
+</script>
+
 <?php include '../tools/footer.php'; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
