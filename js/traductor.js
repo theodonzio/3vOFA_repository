@@ -224,6 +224,17 @@ const diccionario = {
 "Cancelar": { en: "Cancel", es: "Cancelar" },
 "Reservar": { en: "Reserve", es: "Reservar" },
 
+//CURSOS.PHP
+
+ "Lista de Cursos Registrados": { en: "List of Registered Courses", es: "Lista de Cursos Registrados" },
+  "Aquí puedes ver los cursos del sistema": { en: "Here you can see the system courses", es: "Aquí puedes ver los cursos del sistema" },
+  "Volver al Panel": { en: "Return to Panel", es: "Volver al Panel" },
+  "ID": { en: "ID", es: "ID" },
+  "Nombre": { en: "Name", es: "Nombre" },
+  "Descripción": { en: "Description", es: "Descripción" },
+  "Duración (Años)": { en: "Duration (Years)", es: "Duración (Años)" },
+  "No hay cursos registrados": { en: "No courses registered", es: "No hay cursos registrados"},
+
 //Headers
 "Lenguaje": { en: "Language", es: "Lenguaje" },
 "Español": { en: "Spanish", es: "Español" },

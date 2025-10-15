@@ -52,13 +52,14 @@ $result = $conn->query($sql);
               border-radius: 20px;"></div>
 
   <div class="container text-center" style="position: relative; z-index: 1; max-width: 900px;">
-    <h2 class="display-6 fw-semibold">Lista de Cursos Registrados</h2>
-    <p class="mb-4">Aquí puedes ver los cursos del sistema</p>
+    <h2 class="display-6 fw-semibold" data-traducible="Lista de Cursos Registrados">Lista de Cursos Registrados</h2>
+    <p class="mb-4" data-traducible="Aquí puedes ver los cursos del sistema">Aquí puedes ver los cursos del sistema</p>
 
     <div class="d-flex justify-content-center gap-3">
       <a href="../usuarios/adscripta.php" 
          class="btn btn-outline-light px-3 py-2"
-         style="font-size: 0.95rem;">
+         style="font-size: 0.95rem;"
+         data-traducible="Volver al Panel">
         Volver al Panel
       </a>
     </div>
@@ -74,10 +75,10 @@ $result = $conn->query($sql);
           <table class="table table-hover align-middle text-center table-striped mb-0">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Duración (Años)</th>
+                <th data-traducible="ID">ID</th>
+                <th data-traducible="Nombre">Nombre</th>
+                <th data-traducible="Descripción">Descripción</th>
+                <th data-traducible="Duración (Años)">Duración (Años)</th>
               </tr>
             </thead>
             <tbody>
@@ -95,7 +96,7 @@ $result = $conn->query($sql);
       <?php else: ?>
         <div class="text-center py-4">
           <i class="bi bi-exclamation-circle fs-1 text-secondary"></i>
-          <h5 class="mt-3">No hay cursos registrados</h5>
+          <h5 class="mt-3" data-traducible="No hay cursos registrados">No hay cursos registrados</h5>
         </div>
       <?php endif; ?>
     </div>
