@@ -1,6 +1,6 @@
 <?php
   include '../tools/head.php';
-  include '../tools/header_estudiante.php';
+  include '../tools/headers/header_estudiante.php';
 ?>
 
 <link rel="stylesheet" href="../css/style.css">
