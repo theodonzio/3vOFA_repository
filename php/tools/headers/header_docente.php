@@ -24,7 +24,8 @@
                 <a class="dropdown-item" href="#GestionHorarios" data-traducible="Horarios">Horarios</a></li>              
             <li class="AlinearBotones"><img src="../../img/icons/abc_icon.png" class="icono">
                 <a class="dropdown-item" href="#HeroGrupos" data-traducible="Grupos">Grupos</a></li>             
-            <li><a class="dropdown-item" href="#tabla_reservas_docente" data-traducible="Reservas">Reservas</a></li>
+            <li class="AlinearBotones"><img src="../../img/icons/bookmark_icon.png" class="icono">
+              <a class="dropdown-item" href="#tabla_reservas_docente" data-traducible="Reservas">Reservas</a></li>
             </ul>
           </li>         
 
