@@ -13,16 +13,6 @@ CREATE TABLE `asignatura` (
   `id_curso` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `asignatura`
---
-
-INSERT INTO `asignatura` (`id_asignatura`, `nombre_asignatura`, `carga_horaria`, `id_curso`) VALUES
-(1, 'Programación', 120, 1),
-(2, 'Matemáticas', 80, 2),
-(3, 'Contabilidad', 100, 3);
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `curso`
