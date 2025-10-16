@@ -1,82 +1,43 @@
 <?php
 session_start();
 
-// Si no hay sesión activa, redirigir al index
-if (!isset($_SESSION['id_usuario'])) {
-    header("Location: ../index.php?login=required");
+// Verificar sesión
+if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 2) {
+    header("Location: ../index.php?login=" . (!isset($_SESSION['id_usuario']) ? 'required' : 'unauthorized'));
     exit;
 }
 
-// Si el rol no es adscripta, redirigir también
-if ($_SESSION['id_rol'] != 2) {
-    header("Location: ../index.php?login=unauthorized");
-    exit;
-}
-?>
-<?php
-  include '../tools/head.php';
-  include '../tools/header_docente.php';
-  include '../login/conexion_bd.php';
-  $id_docente = $_SESSION['id_usuario'];
+include '../tools/head.php';
+include '../tools/headers/header_docente.php';
+include '../login/conexion_bd.php';
+$id_docente = $_SESSION['id_usuario'];
 ?>
 
-<?php if (isset($_GET['reserva'])): ?>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  <?php if ($_GET['reserva'] === 'success'): ?>
-    Swal.fire({
-      icon: 'success',
-      title: '¡Reserva realizada!',
-      text: 'Tu reserva fue registrada correctamente.',
-      confirmButtonColor: '#198754',
-      confirmButtonText: 'Aceptar'
-    });
-  <?php elseif ($_GET['reserva'] === 'error_fecha'): ?>
-    Swal.fire({
-      icon: 'error',
-      title: 'Fecha u hora inválida',
-      text: 'No puedes reservar en una fecha u hora pasada.',
-      confirmButtonColor: '#dc3545',
-      confirmButtonText: 'Aceptar'
-    });
-  <?php elseif ($_GET['reserva'] === 'error'): ?>
-    Swal.fire({
-      icon: 'error',
-      title: 'Error al reservar',
-      text: 'Ocurrió un error al registrar tu reserva. Intenta nuevamente.',
-      confirmButtonColor: '#dc3545',
-      confirmButtonText: 'Aceptar'
-    });
-  <?php endif; ?>
-});
-</script>
-<?php endif; ?>
+<body>
 
-<!-- Título Superior -->
+<!-- Título Principal -->
 <div class="text-center titulo-adscripta">
-  <img src="../../img/ofalogos/blue-logo.png" class="tinylogo"> 
-  <img src="../../img/blueicons/docenteblue.png" class="blue_icon"> 
-  <h1 class="display-4 fw-bold text-primary" data-traducible="Sistema de Gestión">Sistema de Gestión</h1>
-  <p class="lead text-muted" data-traducible="Panel exclusivo para Docentes">Panel exclusivo para Docentes</p>
-
-  <?php include '../tools/reloj.php'; ?>
+    <img src="../../img/ofalogos/blue-logo.png" class="tinylogo"> 
+    <img src="../../img/blueicons/docenteblue.png" class="blue_icon"> 
+    <h1 class="display-4 fw-bold text-primary" data-traducible="Sistema de Gestión">Sistema de Gestión</h1>
+    <p class="lead text-muted" data-traducible="Panel exclusivo para Docentes">Panel exclusivo para Docentes</p>
+    <?php include '../tools/reloj.php'; ?>
 </div>
 
-<!-- Hero Docente estilizado con imagen de fondo -->
-<div class="hero hero-docente text-white d-flex align-items-center justify-content-center py-5" style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center; position: relative; min-height: 420px;">
-  <div class="overlay" style="position: absolute;top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(2px); border-radius: 20px;"></div>
-
-  <div class="container text-center hero-content" style="position: relative; z-index: 1;">
-    <h2 class="display-6 fw-semibold mb-3" data-traducible="Sistema de Reservas">Sistema de Reservas</h2>
-    <p class="mb-4 fs-5" data-traducible="Desde aquí podés solicitar espacios">Desde aquí podés solicitar espacios</p>
-
-    <div class="d-flex justify-content-center gap-3">
-      <button class="btn btn-success btn-lg shadow-sm btn_wicon" data-bs-toggle="modal" data-bs-target="#realizarReservaModal" data-traducible="Realizar Reserva">
-        <i class="bi bi-bookmark-fill"></i> Realizar Reserva
-      </button>
+<!-- Hero Docente -->
+<div class="hero hero-imagen text-white d-flex align-items-center justify-content-center py-5" 
+     style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop');">
+    <div class="hero-overlay"></div>
+    <div class="container text-center hero-content">
+        <h2 class="display-6 fw-semibold mb-3" data-traducible="Sistema de Reservas">Sistema de Reservas</h2>
+        <p class="mb-4 fs-5" data-traducible="Desde aquí podés solicitar espacios">Desde aquí podés solicitar espacios</p>
+        <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-success btn-lg shadow-sm btn_wicon" data-bs-toggle="modal" data-bs-target="#realizarReservaModal">
+                <i class="bi bi-bookmark-fill"></i> 
+                <span data-traducible="Realizar Reserva">Realizar Reserva</span>
+            </button>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- Modal Realizar Reserva -->
@@ -99,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if ($result->num_rows > 0) {
                   while ($row = $result->fetch_assoc()) {
                       $nombre = htmlspecialchars($row['nombre_espacio'] . ' (' . $row['tipo'] . ')');
-                      echo "<option value='".$row['id_espacio']."' data-traducible='{$nombre}'>{$nombre}</option>";
+                      echo "<option value='".$row['id_espacio']."'>{$nombre}</option>";
                   }
               }
               ?>
@@ -108,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           <div class="mb-3">
             <label class="form-label" data-traducible="Fecha">Fecha</label>
-            <input type="date" name="fecha_reserva" class="form-control" data-traducible="Fecha" required>
+            <input type="date" name="fecha_reserva" class="form-control" required>
           </div>
 
           <div class="mb-3">
@@ -121,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if ($result->num_rows > 0) {
                   while ($row = $result->fetch_assoc()) {
                       $horario = htmlspecialchars($row['nombre_horario'] . ' (' . $row['hora_inicio'] . ' - ' . $row['hora_fin'] . ')');
-                      echo "<option value='".$row['id_horario']."' data-traducible='{$horario}'>{$horario}</option>";
+                      echo "<option value='".$row['id_horario']."'>{$horario}</option>";
                   }
               }
               ?>
@@ -138,92 +99,52 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 </div>
 
-<div class="padre_tabla">
-<!-- Tabla de Reservas -->
-<div class="container" id="tabla_reservas_docente">
-  <h3 id="title_reservasdocente" data-traducible="Mis Reservas">Mis Reservas</h3>
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th data-traducible="Salón">Salón</th>
-        <th data-traducible="Tipo">Tipo</th>
-        <th data-traducible="Fecha">Fecha</th>
-        <th data-traducible="Horario">Horario</th>
-        <th data-traducible="Docente">Docente</th>
-        <th data-traducible="Estado">Estado</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-      $sql = "SELECT r.id_reserva, e.nombre_espacio, e.tipo AS tipo_salon, 
-                     DATE(r.fecha_inicio) AS fecha, 
-                     TIME(r.fecha_inicio) AS hora_inicio, TIME(r.fecha_fin) AS hora_fin, 
-                     u.nombre AS nombre_docente, u.apellido AS apellido_docente,
-                     r.estado
-              FROM reserva r
-              JOIN espacio e ON r.id_espacio = e.id_espacio
-              JOIN usuario u ON r.id_docente = u.id_usuario
-              WHERE r.id_docente = ?
-              ORDER BY r.fecha_inicio ASC";
-      $stmt = $conn->prepare($sql);
-      $stmt->bind_param("i", $id_docente);
-      $stmt->execute();
-      $result = $stmt->get_result();
-      while ($row = $result->fetch_assoc()) {
-          $estado = htmlspecialchars($row['estado']);
-          echo "<tr>
-                  <td data-traducible='{$row['nombre_espacio']}'>{$row['nombre_espacio']}</td>
-                  <td data-traducible='{$row['tipo_salon']}'>{$row['tipo_salon']}</td>
-                  <td data-traducible='{$row['fecha']}'>{$row['fecha']}</td>
-                  <td data-traducible='{$row['hora_inicio']} - {$row['hora_fin']}'>{$row['hora_inicio']} - {$row['hora_fin']}</td>
-                  <td data-traducible='{$row['nombre_docente']} {$row['apellido_docente']}'>{$row['nombre_docente']} {$row['apellido_docente']}</td>
-                  <td data-traducible='{$estado}'>{$estado}</td>
-                </tr>";
-      }
-      $stmt->close();
-      $conn->close();
-      ?>
-    </tbody>
-  </table>
-</div>
-</div>
+<!-- Tabla de Mis Reservas -->
+<?php include '../tools/sections/tabla_reservas_docente.php'; ?>
 
+<!-- Botón scroll top -->
 <a href="#top" id="scrollTopBtn" class="btn btn-secondary shadow-lg position-fixed bottom-0 end-0 m-4" 
-   style="z-index:999; font-size:28px; opacity:0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s;" 
-   data-traducible="Ir Arriba">
-  <i class="bi bi-caret-up-fill"></i>
+   style="z-index:999; font-size:28px; opacity:0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s;">
+    <i class="bi bi-caret-up-fill"></i>
 </a>
 
+<?php include '../tools/footer.php'; ?>
 
-<script>
-  const btn = document.getElementById('scrollTopBtn');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) { // aparece después de 500px de scroll
-      btn.style.opacity = '1';
-      btn.style.transform = 'translateY(0)';
-    } else {
-      btn.style.opacity = '0';
-      btn.style.transform = 'translateY(20px)';
-    }
-  });
-</script>
-
-<?php
-  include '../tools/footer.php';
-?>
-
-<!-- Bootstrap Bundle JS (incluye Popper) -->
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Inicialización de tooltips -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
-  });
-</script>
-
-<!-- Scripts locales -->
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
+<script src="../../js/scroll-top.js"></script>
+
+<?php if (isset($_GET['reserva'])): ?>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  <?php if ($_GET['reserva'] === 'success'): ?>
+    Swal.fire({
+      icon: 'success',
+      title: '¡Reserva realizada!',
+      text: 'Tu reserva fue registrada correctamente.',
+      confirmButtonColor: '#198754'
+    });
+  <?php elseif ($_GET['reserva'] === 'error_fecha'): ?>
+    Swal.fire({
+      icon: 'error',
+      title: 'Fecha u hora inválida',
+      text: 'No puedes reservar en una fecha u hora pasada.',
+      confirmButtonColor: '#dc3545'
+    });
+  <?php elseif ($_GET['reserva'] === 'error'): ?>
+    Swal.fire({
+      icon: 'error',
+      title: 'Error al reservar',
+      text: 'Ocurrió un error al registrar tu reserva. Intenta nuevamente.',
+      confirmButtonColor: '#dc3545'
+    });
+  <?php endif; ?>
+});
+</script>
+<?php endif; ?>
+
+</body>
+</html>
