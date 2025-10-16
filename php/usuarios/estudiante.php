@@ -1,3 +1,5 @@
+<!-- ARCHIVO: php/usuarios/estudiante.php (ACTUALIZADO) -->
+
 <?php
   include '../tools/head.php';
   include '../tools/headers/header_estudiante.php';
@@ -87,12 +89,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Actualizar título
-  document.getElementById('tituloGrupo').textContent = `Horario - Grupo ${opcionGrupo}`;
+  document.getElementById('tituloGrupo').textContent = Horario - Grupo ${opcionGrupo};
   document.getElementById('subtituloGrupo').textContent = 'Tu programa académico de la semana';
 
   // Cargar horarios desde el servidor
   try {
-    const response = await fetch(`../funciones/obtener_horario_estudiante.php?id_grupo=${idGrupo}`);
+    const response = await fetch(../funciones/obtener_horario_estudiante.php?id_grupo=${idGrupo});
     const data = await response.json();
 
     if (data.error) {
@@ -142,7 +144,7 @@ function construirTabla(datos) {
       </td>
       ${[1, 2, 3, 4, 5].map(dia => {
         const asignatura = horario.dias[dia];
-        return `<td>${asignatura ? `<span class="badge bg-info text-dark">${asignatura}</span>` : '<span class="text-muted">—</span>'}</td>`;
+        return <td>${asignatura ? `<span class="badge bg-info text-dark">${asignatura}</span> : '<span class="text-muted">—</span>'}</td>`;
       }).join('')}
     `;
     tbody.appendChild(tr);
