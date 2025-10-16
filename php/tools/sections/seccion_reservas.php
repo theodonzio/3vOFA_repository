@@ -79,7 +79,7 @@
                                 <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
                                 <input type="hidden" name="accion" value="Aprobar">
                                 <button type="submit" class="btn btn-success w-100">
-                                    <i class="bi bi-check-lg"></i> Aprobar
+                                    <i class="bi bi-check-lg"></i> <span data-traducible="Aprobar">Aprobar</span>
                                 </button>
                             </form>
                             

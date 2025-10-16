@@ -87,7 +87,8 @@ const diccionario = {
 "Ver Grupos":{en:"See Groups", es:"Ver Grupos"},
 "Asignaturas":{en:"Subjects", es:"Asignaturas"},
 "Desde aquí puedes gestionar las asignaturas registradas en el sistema":{en:"From here you can manage the subjects registered in the system", es:"Desde aquí puedes gestionar las asignaturas registradas en el sistema"},
-
+"Seleccioná un grupo para asignarle horarios y materias":{en:"Select a group to assign schedules and subjects", es:"Seleccioná un grupo para asignarle horarios y materias"},
+"Seleccioná un grupo para comenzar":{en:"Select a group to start", es:"Seleccioná un grupo para comenzar"},
 // Gestión de Horarios 
 "Gestión de Horarios por Grupo": { en: "Schedule Management by Group", es: "Gestión de Horarios por Grupo" },
 "Seleccionar grupo:": { en: "Select group:", es: "Seleccionar grupo:" },
@@ -100,6 +101,7 @@ const diccionario = {
 "Viernes": { en: "Friday", es: "Viernes" },
 "-- Vacío --": { en: "-- Empty --", es: "-- Vacío --" },
 "Guardar Cambios": { en: "Save Changes", es: "Guardar Cambios" },
+"Aprobar":{en: "Approve", es: "Aprobar"},
 
 // --- Nombres de Horarios 
 "1era": { en: "1st Hour", es: "1era" },

@@ -26,7 +26,7 @@ if (isset($conn)) {
   </h2>
   
   <p class="text-center text-muted mb-4">
-    Seleccioná un grupo para asignarle horarios y materias
+    <span data-traducible="Seleccioná un grupo para asignarle horarios y materias">Seleccioná un grupo para asignarle horarios y materias</span>
   </p>
 
   <!-- Selector de Grupo -->
@@ -111,7 +111,7 @@ if (isset($conn)) {
   
   <div id="mensajeSeleccionar" class="text-center text-muted mt-4">
     <i class="bi bi-arrow-up-circle fs-1"></i>
-    <p class="mt-2">Seleccioná un grupo para comenzar</p>
+    <p class="mt-2"><span data-traducible="Seleccioná un grupo para comenzar">Seleccioná un grupo para comenzar</span></p>
   </div>
 </div>
 
