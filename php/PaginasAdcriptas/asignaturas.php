@@ -1,14 +1,40 @@
+<?php
+session_start();
+
+// Verificar sesión
+if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
+    header("Location: ../../index.php?login=" . (!isset($_SESSION['id_usuario']) ? 'required' : 'unauthorized'));
+    exit;
+}
+
+include '../tools/head.php';
+include '../login/conexion_bd.php';
+
+// Consulta para obtener todas las asignaturas con su docente y grupo
+$sql = "
+  SELECT a.id_asignatura, a.nombre_asignatura,
+         CONCAT(u.nombre, ' ', u.apellido) AS docente,
+         g.nombre_grupo AS grupo
+  FROM asignatura a
+  LEFT JOIN grupo_asignatura ga ON a.id_asignatura = ga.id_asignatura
+  LEFT JOIN usuario u ON ga.id_docente = u.id_usuario
+  LEFT JOIN grupo g ON ga.id_grupo = g.id_grupo
+  ORDER BY a.id_asignatura ASC
+";
+$result = $conn->query($sql);
+?>
+
 <link rel="stylesheet" href="../../css/style.css">
 
 <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <div class="logo">
-        <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra">
+        <img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra">
 
         <div class="dropdown">
           <img 
-            src="../img/icons/config_icon(black).png"
+            src="../../img/icons/config_icon(black).png"
             class="theme_icon_mode dropdown-toggle"
             id="boton-tema"
             data-bs-toggle="dropdown"
@@ -29,22 +55,7 @@
   </nav>
 </header>
 
-<?php
-include '../tools/head.php';
-include '../login/conexion_bd.php';
-
-// Consulta para obtener todas las asignaturas con su docente y grupo
-$sql = "
-  SELECT a.id_asignatura, a.nombre_asignatura,
-         CONCAT(u.nombre, ' ', u.apellido) AS docente,
-         g.nombre_grupo AS grupo
-  FROM asignatura a
-  LEFT JOIN usuario u ON a.id_docente = u.id_usuario
-  LEFT JOIN grupo g ON a.id_grupo = g.id_grupo
-  ORDER BY a.id_asignatura ASC
-";
-$result = $conn->query($sql);
-?>
+<body>
 
 <!-- Hero Asignaturas -->
 <div class="hero text-white py-5 d-flex align-items-center justify-content-center"
@@ -127,5 +138,6 @@ $result = $conn->query($sql);
 
 <?php include '../tools/footer.php'; ?>
 <?php $conn->close(); ?>
+
 </body>
 </html>
