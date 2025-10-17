@@ -43,6 +43,7 @@ try {
     
 } catch (Exception $e) {
     // En caso de error, devolver array vacío
+    error_log("Error en obtener_asignaturas.php: " . $e->getMessage());
     echo json_encode([]);
 }
 

@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const swalConfig = {
         background: isDarkMode ? '#2c2c2c' : '#fff',
-        color: isDarkMode ? '#f5f5f5' : '#212529'
+        color: isDarkMode ? '#f5f5f5' : '#212529',
+        confirmButtonColor: '#198754'
     };
 
     // Notificación de Curso
@@ -16,51 +17,61 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tipo === 'success') {
             Swal.fire({
                 icon: 'success',
-                title: '¡Curso agregado correctamente!',
-                text: 'El nuevo curso ha sido registrado en el sistema.',
-                confirmButtonColor: '#198754',
+                title: '¡Curso agregado!',
+                text: 'El nuevo curso ha sido registrado exitosamente en el sistema.',
+                timer: 2500,
+                showConfirmButton: true,
                 ...swalConfig
             });
         } else if (tipo === 'error') {
             Swal.fire({
                 icon: 'error',
                 title: 'Error al registrar',
-                text: 'No se pudo agregar el curso. Intenta nuevamente.',
+                text: 'No se pudo agregar el curso. Por favor, intenta nuevamente.',
                 confirmButtonColor: '#dc3545',
                 ...swalConfig
             });
         }
+        // Limpiar URL
+        window.history.replaceState({}, document.title, window.location.pathname);
     }
 
     // Notificación de Docente
     if (urlParams.has('docente')) {
         const tipo = urlParams.get('docente');
+        let titulo = '';
         let mensaje = '';
         let icono = 'error';
 
         switch (tipo) {
             case 'success':
-                mensaje = 'Docente registrado correctamente ✅';
+                titulo = '¡Docente registrado!';
+                mensaje = 'El docente ha sido agregado correctamente al sistema.';
                 icono = 'success';
                 break;
             case 'cedula_invalida':
-                mensaje = 'La cédula debe tener exactamente 8 números.';
+                titulo = 'Cédula inválida';
+                mensaje = 'La cédula debe tener exactamente 8 números sin puntos ni guiones.';
                 break;
             case 'contrasena_invalida':
-                mensaje = 'La contraseña debe tener al menos una letra, un número y 6 caracteres.';
+                titulo = 'Contraseña inválida';
+                mensaje = 'La contraseña debe tener al menos 6 caracteres, incluyendo letras y números.';
                 break;
             case 'error':
-                mensaje = 'Ocurrió un error al registrar. Intente nuevamente.';
+                titulo = 'Error al registrar';
+                mensaje = 'Ocurrió un error al registrar el docente. Por favor, intenta nuevamente.';
                 break;
         }
 
         if (mensaje) {
             Swal.fire({
-                title: mensaje,
+                title: titulo,
+                text: mensaje,
                 icon: icono,
-                confirmButtonText: 'Aceptar',
+                confirmButtonColor: icono === 'success' ? '#198754' : '#dc3545',
                 ...swalConfig
             });
+            window.history.replaceState({}, document.title, window.location.pathname);
         }
     }
 
@@ -70,16 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tipo === 'success') {
             Swal.fire({
                 icon: 'success',
-                title: '¡Espacio agregado correctamente!',
-                text: 'El nuevo espacio ha sido registrado en el sistema.',
-                confirmButtonColor: '#198754',
+                title: '¡Espacio agregado!',
+                text: 'El nuevo espacio ha sido registrado correctamente en el sistema.',
+                timer: 2500,
+                showConfirmButton: true,
                 ...swalConfig
             });
         } else if (tipo === 'error') {
             Swal.fire({
                 icon: 'error',
                 title: 'Error al registrar',
-                text: 'No se pudo agregar el espacio. Intenta nuevamente.',
+                text: 'No se pudo agregar el espacio. Por favor, intenta nuevamente.',
                 confirmButtonColor: '#dc3545',
                 ...swalConfig
             });
@@ -87,11 +99,101 @@ document.addEventListener('DOMContentLoaded', () => {
             Swal.fire({
                 icon: 'warning',
                 title: 'Espacio duplicado',
-                text: 'Ya existe un espacio con esas características.',
+                text: 'Ya existe un espacio con esas características en el sistema.',
                 confirmButtonColor: '#ffc107',
                 ...swalConfig
             });
         }
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    // Notificación de Grupo
+    if (urlParams.has('grupo')) {
+        const tipo = urlParams.get('grupo');
+        if (tipo === 'success') {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Grupo agregado!',
+                text: 'El nuevo grupo ha sido creado exitosamente.',
+                timer: 2500,
+                showConfirmButton: true,
+                ...swalConfig
+            });
+        } else if (tipo === 'error') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al crear grupo',
+                text: 'No se pudo agregar el grupo. Verifica los datos e intenta nuevamente.',
+                confirmButtonColor: '#dc3545',
+                ...swalConfig
+            });
+        }
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    // Notificación de Asignatura
+    if (urlParams.has('asignatura')) {
+        const tipo = urlParams.get('asignatura');
+        if (tipo === 'success') {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Asignatura agregada!',
+                text: 'La asignatura ha sido registrada correctamente.',
+                timer: 2500,
+                showConfirmButton: true,
+                ...swalConfig
+            });
+        } else if (tipo === 'duplicado') {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Asignatura duplicada',
+                text: 'Esta asignatura ya está asignada a este grupo con este docente.',
+                confirmButtonColor: '#ffc107',
+                ...swalConfig
+            });
+        } else if (tipo === 'error') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error al agregar asignatura',
+                text: 'No se pudo registrar la asignatura. Intenta nuevamente.',
+                confirmButtonColor: '#dc3545',
+                ...swalConfig
+            });
+        }
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    // Notificación de Horario
+    if (urlParams.has('horario')) {
+        const tipo = urlParams.get('horario');
+        if (tipo === 'success') {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Horario guardado!',
+                text: 'El horario ha sido actualizado correctamente.',
+                timer: 2500,
+                showConfirmButton: true,
+                ...swalConfig
+            });
+        } else if (tipo === 'eliminado') {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Horario eliminado!',
+                text: 'El horario ha sido eliminado del sistema.',
+                timer: 2500,
+                showConfirmButton: true,
+                ...swalConfig
+            });
+        } else if (tipo === 'error') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error con el horario',
+                text: 'No se pudo procesar la operación. Intenta nuevamente.',
+                confirmButtonColor: '#dc3545',
+                ...swalConfig
+            });
+        }
+        window.history.replaceState({}, document.title, window.location.pathname);
     }
 
     // Notificación de acción sobre Reserva
@@ -104,27 +206,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon: 'success',
                 title: '¡Éxito!',
                 text: mensaje,
-                confirmButtonColor: '#198754',
+                timer: 2500,
+                showConfirmButton: true,
                 ...swalConfig
-            }).then(() => {
-                // Limpiar la URL después de mostrar la notificación
-                window.history.replaceState({}, document.title, window.location.pathname);
             });
         } else if (tipo === 'error') {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: mensaje,
-                confirmButtonColor: '#dc3545',
-                ...swalConfig,
                 html: `
                     <p>${mensaje}</p>
                     <small class="text-muted">Si el problema persiste, contacta al administrador.</small>
-                `
-            }).then(() => {
-                // Limpiar la URL después de mostrar la notificación
-                window.history.replaceState({}, document.title, window.location.pathname);
+                `,
+                confirmButtonColor: '#dc3545',
+                ...swalConfig
             });
         }
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    // Notificación genérica de éxito
+    if (urlParams.has('success')) {
+        const mensaje = urlParams.get('mensaje') || 'Operación completada exitosamente';
+        Swal.fire({
+            icon: 'success',
+            title: '¡Éxito!',
+            text: mensaje,
+            timer: 2500,
+            showConfirmButton: true,
+            ...swalConfig
+        });
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    // Notificación genérica de error
+    if (urlParams.has('error')) {
+        const mensaje = urlParams.get('mensaje') || 'Ocurrió un error al procesar la operación';
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: mensaje,
+            confirmButtonColor: '#dc3545',
+            ...swalConfig
+        });
+        window.history.replaceState({}, document.title, window.location.pathname);
     }
 });

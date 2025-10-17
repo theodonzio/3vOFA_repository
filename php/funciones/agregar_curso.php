@@ -27,12 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $stmt->close();
-            echo "<script>alert('Curso agregado correctamente'); window.location='../usuarios/adscripta.php';</script>";
+            header("Location: ../usuarios/adscripta.php?curso=success");
+            exit;
         } else {
-            echo "<script>alert('Error al agregar el curso'); window.location='../usuarios/adscripta.php';</script>";
+            header("Location: ../usuarios/adscripta.php?curso=error");
+            exit;
         }
     } else {
-        echo "<script>alert('Datos incompletos'); window.location='../usuarios/adscripta.php';</script>";
+        header("Location: ../usuarios/adscripta.php?curso=error");
+        exit;
     }
 }
 $conn->close();

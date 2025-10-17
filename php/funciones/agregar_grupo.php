@@ -14,14 +14,17 @@ if (isset($_POST['nombre_grupo'], $_POST['anio_curso'], $_POST['id_curso'], $_PO
     $stmt->bind_param("siii", $nombre_grupo, $anio_curso, $id_curso, $id_turno);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Grupo agregado correctamente'); window.location='../usuarios/adscripta.php';</script>";
+        header("Location: ../usuarios/adscripta.php?grupo=success");
+        exit;
     } else {
-        echo "<script>alert('Error al agregar el grupo'); window.location='../usuarios/adscripta.php';</script>";
+        header("Location: ../usuarios/adscripta.php?grupo=error");
+        exit;
     }
     
     $stmt->close();
 } else {
-    echo "<script>alert('Datos incompletos'); window.location='../usuarios/adscripta.php';</script>";
+    header("Location: ../usuarios/adscripta.php?grupo=error");
+    exit;
 }
 
 $conn->close();

@@ -1,84 +1,87 @@
+<?php
+// Obtener id_grupo de la URL o sesión
+$id_grupo_header = isset($_GET['id_grupo']) ? intval($_GET['id_grupo']) : (isset($id_grupo_actual) ? $id_grupo_actual : 0);
+?>
+
 <link rel="stylesheet" href="../../css/style.css">
 
 <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <div class="logo">
-        <img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra">
+    <div class="container-fluid d-flex align-items-center" id="header_nav">
+      
+      <!-- Logo -->
+      <div class="logo me-auto">
+        <img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra" alt="Logo OFA">
       </div>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- Botón toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" 
+              aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          
+
           <!-- Menú General -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" data-traducible="General">General</a>
+            <a class="nav-link dropdown-toggle" href="#" role="button" 
+               data-bs-toggle="dropdown" aria-expanded="false" data-traducible="General">
+              General
+            </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li>
-                <a class="dropdown-item" href="#">
-                  <img src="../../img/icons/timetable_icon.png" class="icono">
-                  <span data-traducible="Horarios">Horarios</span>
+              <li class="AlinearBotones">
+                <img src="../../img/icons/timetable_icon.png" class="icono" alt="Horarios">
+                <a class="dropdown-item" href="../usuarios/estudiante.php?id_grupo=<?= $id_grupo_header ?>" data-traducible="Horarios">
+                  Horarios
                 </a>
               </li>
-              <li>
-                <a class="dropdown-item" href="#">
-                  <img src="../../img/icons/space_icon.png" class="icono">
-                  <span data-traducible="Espacios">Espacios</span>
+              <li class="AlinearBotones">
+                <img src="../../img/icons/teach_icon.png" class="icono" alt="Docentes">
+                <a class="dropdown-item" href="../usuarios/docentesestudiantes.php?id_grupo=<?= $id_grupo_header ?>" data-traducible="Docentes">
+                  Docentes
                 </a>
               </li>
-              <li>
-                <a class="dropdown-item" href="#">
-                  <img src="../../img/icons/teach_icon.png" class="icono">
-                  <span data-traducible="Docentes">Docentes</span>
-                </a>
+              <li class="AlinearBotones">
+                <img src="../../img/icons/space_icon.png" class="icono" alt="Espacios">
+                <a class="dropdown-item" href="#" data-traducible="Espacios">Espacios</a>
               </li>
             </ul>
           </li>
 
           <!-- Menú Cuenta -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false" data-traducible="Cuenta">Cuenta</a>
+            <a class="nav-link dropdown-toggle" href="#" role="button" 
+               data-bs-toggle="dropdown" aria-expanded="false" data-traducible="Cuenta">
+              Cuenta
+            </a>
             <ul class="dropdown-menu dropdown-menu-end" id="cerrar_sesion">
               <li>
-                <a class="dropdown-item" href="../index.php" id="exit" data-traducible="Salir">Salir</a>
+                <a class="dropdown-item" href="../login/logout.php" id="exit" data-traducible="Salir">
+                  <i class="bi bi-box-arrow-right me-2"></i>Salir
+                </a>
               </li>
             </ul>
           </li>
 
-          <!-- Menú Configuración (Tema y Lenguaje) -->
+          <!-- Menú Configuración -->
           <li class="nav-item dropdown">
             <div class="dropdown theme">
-              <img src="../../img/icons/config_icon(black).png" class="theme_icon_mode dropdown-toggle" id="boton-tema"
-                data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="../../img/icons/config_icon(black).png" 
+                   class="theme_icon_mode dropdown-toggle" 
+                   id="boton-tema"
+                   data-bs-toggle="dropdown" 
+                   aria-expanded="false"
+                   alt="Configuración">
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-tema">
-                <li>
-                  <h6 class="dropdown-header" data-traducible="Tema">Tema</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" id="tema-claro" data-traducible="Claro">Claro</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" id="tema-oscuro" data-traducible="Oscuro">Oscuro</a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li>
-                  <h6 class="dropdown-header" data-traducible="Lenguaje">Lenguaje</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" id="lenguaje-es" data-traducible="Español">Español</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#" id="lenguaje-en" data-traducible="Inglés">Inglés</a>
-                </li>
+                <li><h6 class="dropdown-header" data-traducible="Tema">Tema</h6></li>
+                <li><a class="dropdown-item" href="#" id="tema-claro" data-traducible="Claro">Claro</a></li>
+                <li><a class="dropdown-item" href="#" id="tema-oscuro" data-traducible="Oscuro">Oscuro</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><h6 class="dropdown-header" data-traducible="Lenguaje">Lenguaje</h6></li>
+                <li><a class="dropdown-item" href="#" id="lenguaje-es" data-traducible="Español">Español</a></li>
+                <li><a class="dropdown-item" href="#" id="lenguaje-en" data-traducible="Inglés">Inglés</a></li>
               </ul>
             </div>
           </li>
@@ -89,17 +92,26 @@
   </nav>
 </header>
 
-<!-- Bootstrap Bundle JS (dropdown y tooltip) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-  crossorigin="anonymous"></script>
-
-<!-- Inicialización de tooltips -->
 <script>
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-  const tooltipList = [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el));
-</script>
+document.addEventListener("DOMContentLoaded", () => {
+  const idiomaGuardado = localStorage.getItem("idioma") || "es";
+  const esItem = document.getElementById("lenguaje-es");
+  const enItem = document.getElementById("lenguaje-en");
 
-<!-- Modo claro / oscuro y traducción -->
-<script src="../../js/modoClaroOscuro.js"></script>
-<script src="../../js/traductor.js"></script>
+  if (idiomaGuardado === "es") {
+    esItem?.classList.add("active");
+  } else {
+    enItem?.classList.add("active");
+  }
+
+  esItem?.addEventListener("click", () => {
+    esItem.classList.add("active");
+    enItem.classList.remove("active");
+  });
+  
+  enItem?.addEventListener("click", () => {
+    enItem.classList.add("active");
+    esItem.classList.remove("active");
+  });
+});
+</script>

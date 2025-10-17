@@ -27,19 +27,19 @@ if (!empty($_POST['nombre_asignatura']) && !empty($_POST['id_docente']) && !empt
         $sql = "INSERT INTO grupo_asignatura (id_grupo, id_asignatura, id_docente)
                 VALUES ($grupo, $id_asig, $docente)";
         if ($conn->query($sql)) {
-            header("Location: ../usuarios/adscripta.php?espacio=success");
+            header("Location: ../usuarios/adscripta.php?asignatura=success");
             exit;
         } else {
-            header("Location: ../usuarios/adscripta.php?espacio=error");
+            header("Location: ../usuarios/adscripta.php?asignatura=error");
             exit;
         }
     } else {
         // Ya existe → redirige con mensaje de aviso
-        header("Location: ../usuarios/adscripta.php?espacio=duplicado");
+        header("Location: ../usuarios/adscripta.php?asignatura=duplicado");
         exit;
     }
 } else {
-    header("Location: ../usuarios/adscripta.php?espacio=error");
+    header("Location: ../usuarios/adscripta.php?asignatura=error");
     exit;
 }
 ?>

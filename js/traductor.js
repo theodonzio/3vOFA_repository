@@ -243,7 +243,15 @@ const diccionario = {
   "Español": { en: "Spanish", es: "Español" },
   "Inglés": { en: "English", es: "Inglés" },
 
-};
+// Estudiante - Docentes
+"Mis Docentes": { en: "My Teachers", es: "Mis Docentes" },
+"Conoce a los profesores de tu grupo": { en: "Meet your group's teachers", es: "Conoce a los profesores de tu grupo" },
+"Materias que imparte": { en: "Subjects taught", es: "Materias que imparte" },
+"No hay docentes asignados": { en: "No teachers assigned", es: "No hay docentes asignados" },
+"Aún no se han asignado docentes a tu grupo.": { en: "No teachers have been assigned to your group yet.", es: "Aún no se han asignado docentes a tu grupo." },
+"Volver a mi horario": { en: "Back to my schedule", es: "Volver a mi horario" },
+
+};  
 
 // Función para traducir todos los elementos con data-traducible
 function traducir(idioma) {

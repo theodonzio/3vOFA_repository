@@ -1,7 +1,4 @@
 <?php
-/**
- * Obtener horarios permitidos para un grupo según su curso
- */
 header('Content-Type: application/json');
 include_once '../login/conexion_bd.php';
 
@@ -13,7 +10,6 @@ if (!isset($_GET['id_grupo'])) {
 $id_grupo = intval($_GET['id_grupo']);
 
 try {
-    // Obtener el ID del curso del grupo
     $sql = "SELECT id_curso FROM grupo WHERE id_grupo = ?";
     $stmt = $conn->prepare($sql);
     
@@ -34,8 +30,12 @@ try {
     $id_curso = intval($row['id_curso']);
     $stmt->close();
 
-    // Obtener los horarios permitidos para ese curso
-    $sql2 = "SELECT id_horario FROM curso_horario WHERE id_curso = ? ORDER BY id_horario";
+    $sql2 = "SELECT h.id_horario, h.nombre_horario, h.hora_inicio, h.hora_fin 
+             FROM curso_horario ch
+             JOIN horario h ON ch.id_horario = h.id_horario
+             WHERE ch.id_curso = ? 
+             ORDER BY h.hora_inicio";
+    
     $stmt2 = $conn->prepare($sql2);
     
     if (!$stmt2) {
@@ -49,7 +49,10 @@ try {
     $horarios = [];
     while ($h = $res2->fetch_assoc()) {
         $horarios[] = [
-            'id_horario' => intval($h['id_horario'])
+            'id_horario' => intval($h['id_horario']),
+            'nombre_horario' => $h['nombre_horario'],
+            'hora_inicio' => $h['hora_inicio'],
+            'hora_fin' => $h['hora_fin']
         ];
     }
 
@@ -57,7 +60,7 @@ try {
     $stmt2->close();
     
 } catch (Exception $e) {
-    // En caso de error, devolver array vacío
+    error_log("Error en obtener_horarios_curso.php: " . $e->getMessage());
     echo json_encode([]);
 }
 

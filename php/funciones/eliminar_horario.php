@@ -7,20 +7,64 @@ try {
     $ids = $data['ids'] ?? [];
 
     if (empty($ids)) {
-        echo json_encode(["titulo" => "Error", "mensaje" => "No se recibieron horarios para eliminar.", "icono" => "error"]);
+        echo json_encode([
+            "titulo" => "Error", 
+            "mensaje" => "No se recibieron horarios para eliminar.", 
+            "icono" => "error"
+        ]);
         exit;
     }
 
-    $ids_list = implode(',', array_map('intval', $ids));
+    // Validar que todos sean números
+    $ids = array_map('intval', $ids);
+    $ids = array_filter($ids, function($id) { return $id > 0; });
 
+    if (empty($ids)) {
+        echo json_encode([
+            "titulo" => "Error", 
+            "mensaje" => "IDs de horarios inválidos.", 
+            "icono" => "error"
+        ]);
+        exit;
+    }
+
+    $ids_list = implode(',', $ids);
+
+    // Verificar si están en uso
+    $check = $conn->query("SELECT COUNT(*) as count FROM curso_horario WHERE id_horario IN ($ids_list)");
+    $row = $check->fetch_assoc();
+    
+    if ($row['count'] > 0) {
+        echo json_encode([
+            "titulo" => "Error", 
+            "mensaje" => "No se pueden eliminar horarios que están asignados a cursos. Primero desasígnalos de los cursos.", 
+            "icono" => "error"
+        ]);
+        exit;
+    }
+
+    // Eliminar horarios
     $sql = "DELETE FROM horario WHERE id_horario IN ($ids_list)";
+    
     if ($conn->query($sql)) {
-        echo json_encode(["titulo" => "Eliminado", "mensaje" => "Los horarios seleccionados fueron eliminados correctamente.", "icono" => "success"]);
+        $eliminados = $conn->affected_rows;
+        echo json_encode([
+            "titulo" => "Eliminado", 
+            "mensaje" => "Se eliminaron $eliminados horario(s) correctamente.", 
+            "icono" => "success"
+        ]);
     } else {
         throw new Exception($conn->error);
     }
 
 } catch (Exception $e) {
-    echo json_encode(["titulo" => "Error", "mensaje" => "No se pueden eliminar horarios que estén en uso.", "icono" => "error"]);
+    error_log("Error en eliminar_horario.php: " . $e->getMessage());
+    echo json_encode([
+        "titulo" => "Error", 
+        "mensaje" => "Error al eliminar los horarios: " . $e->getMessage(), 
+        "icono" => "error"
+    ]);
 }
+
+$conn->close();
 ?>
