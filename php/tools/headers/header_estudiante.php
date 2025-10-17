@@ -43,10 +43,6 @@ $id_grupo_header = isset($_GET['id_grupo']) ? intval($_GET['id_grupo']) : (isset
                   Docentes
                 </a>
               </li>
-              <li class="AlinearBotones">
-                <img src="../../img/icons/space_icon.png" class="icono" alt="Espacios">
-                <a class="dropdown-item" href="#" data-traducible="Espacios">Espacios</a>
-              </li>
             </ul>
           </li>
 
