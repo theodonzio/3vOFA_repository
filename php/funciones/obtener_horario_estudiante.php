@@ -4,15 +4,30 @@
  * Ubicación: php/funciones/obtener_horario_estudiante.php
  */
 header('Content-Type: application/json');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 include_once '../login/conexion_bd.php';
 
 // Validar parámetro
 if (!isset($_GET['id_grupo'])) {
-    echo json_encode(['error' => 'No se especificó grupo']);
+    echo json_encode([
+        'error' => 'No se especificó grupo',
+        'debug' => 'Parámetro id_grupo no recibido'
+    ]);
     exit;
 }
 
 $id_grupo = intval($_GET['id_grupo']);
+
+// Verificar conexión a BD
+if (!$conn) {
+    echo json_encode([
+        'error' => 'Error de conexión a la base de datos',
+        'debug' => mysqli_connect_error()
+    ]);
+    exit;
+}
 
 try {
     // Obtener horarios del grupo con sus asignaturas
@@ -34,11 +49,24 @@ try {
     $stmt = $conn->prepare($sql);
     
     if (!$stmt) {
-        throw new Exception("Error al preparar consulta: " . $conn->error);
+        echo json_encode([
+            'error' => 'Error al preparar consulta',
+            'debug' => $conn->error,
+            'sql' => $sql
+        ]);
+        exit;
     }
     
     $stmt->bind_param("i", $id_grupo);
-    $stmt->execute();
+    
+    if (!$stmt->execute()) {
+        echo json_encode([
+            'error' => 'Error al ejecutar consulta',
+            'debug' => $stmt->error
+        ]);
+        exit;
+    }
+    
     $result = $stmt->get_result();
     
     $horarios = [];
@@ -55,14 +83,18 @@ try {
     
     echo json_encode([
         'success' => true,
-        'horarios' => $horarios
+        'horarios' => $horarios,
+        'total' => count($horarios),
+        'id_grupo_consultado' => $id_grupo
     ]);
     
     $stmt->close();
     
 } catch (Exception $e) {
     echo json_encode([
-        'error' => $e->getMessage()
+        'error' => 'Excepción capturada',
+        'mensaje' => $e->getMessage(),
+        'linea' => $e->getLine()
     ]);
 }
 

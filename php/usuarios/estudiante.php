@@ -1,5 +1,3 @@
-<!-- ARCHIVO: php/usuarios/estudiante.php (ACTUALIZADO) -->
-
 <?php
   include '../tools/head.php';
   include '../tools/headers/header_estudiante.php';
@@ -9,13 +7,11 @@
 <link rel="stylesheet" href="../../css/style.css">
 
 <div class="container my-5">
-  <!-- Título del Grupo Seleccionado -->
   <div class="text-center mb-5">
-    <h1 class="display-5 fw-bold text-primary" id="tituloGrupo">Selecciona tu grupo</h1>
+    <h1 class="display-5 fw-bold text-primary" id="tituloGrupo">Cargando...</h1>
     <p class="text-muted fs-5" id="subtituloGrupo">Aquí verás tu horario académico</p>
   </div>
 
-  <!-- Tabla de Horarios -->
   <div id="tablaHorariosContainer" style="display: none;">
     <div class="table-responsive">
       <table class="table table-bordered text-center align-middle table-hover table-striped">
@@ -29,21 +25,17 @@
             <th>Viernes</th>
           </tr>
         </thead>
-        <tbody id="cuerpoTabla">
-          <!-- Los datos se cargarán aquí dinámicamente -->
-        </tbody>
+        <tbody id="cuerpoTabla"></tbody>
       </table>
     </div>
   </div>
 
-  <!-- Mensaje cuando no hay grupo seleccionado -->
   <div id="mensajeVacio" class="text-center py-5">
     <i class="bi bi-calendar-event display-1 text-muted mb-3"></i>
-    <p class="fs-5 text-muted">Selecciona un grupo en la página anterior para ver tu horario</p>
+    <p class="fs-5 text-muted">Selecciona un grupo para ver tu horario</p>
   </div>
 </div>
 
-<!-- Botón scroll top -->
 <a href="#top" id="scrollTopBtn" class="btn btn-secondary shadow-lg position-fixed bottom-0 end-0 m-4" 
    style="z-index:999; font-size:28px; opacity:0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s;">
   <i class="bi bi-caret-up-fill"></i>
@@ -58,58 +50,48 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
-  // Obtener el parámetro 'opcion' de la URL
   const params = new URLSearchParams(window.location.search);
-  const opcionGrupo = params.get('opcion');
-
-  if (!opcionGrupo) {
-    document.getElementById('mensajeVacio').style.display = 'block';
-    document.getElementById('tablaHorariosContainer').style.display = 'none';
-    return;
-  }
-
-  // Mapeo de opciones a id_grupo
-  const grupoMap = {
-    '1MC': 1,
-    '1MD': 1,
-    '2MA': 2,
-    '2MB': 2,
-    '2MD': 2,
-    '3MA': 3,
-    '3MB': 3,
-    '3MD': 3,
-    '3BA': 4
-  };
-
-  const idGrupo = grupoMap[opcionGrupo];
+  const idGrupo = params.get('id_grupo');
 
   if (!idGrupo) {
+    document.getElementById('tituloGrupo').textContent = 'Selecciona tu grupo';
     document.getElementById('mensajeVacio').style.display = 'block';
     return;
   }
 
-  // Actualizar título
-  document.getElementById('tituloGrupo').textContent = Horario - Grupo ${opcionGrupo};
-  document.getElementById('subtituloGrupo').textContent = 'Tu programa académico de la semana';
-
-  // Cargar horarios desde el servidor
   try {
-    const response = await fetch(../funciones/obtener_horario_estudiante.php?id_grupo=${idGrupo});
+    // Cargar info del grupo
+    const responseGrupo = await fetch(`../funciones/obtener_info_grupo.php?id_grupo=${idGrupo}`);
+    const dataGrupo = await responseGrupo.json();
+    
+    if (dataGrupo.nombre_grupo) {
+      document.getElementById('tituloGrupo').textContent = `Horario - Grupo ${dataGrupo.nombre_grupo}`;
+      document.getElementById('subtituloGrupo').textContent = dataGrupo.nombre_curso || 'Tu horario académico';
+    }
+
+    // Cargar horarios
+    const response = await fetch(`../funciones/obtener_horario_estudiante.php?id_grupo=${idGrupo}`);
     const data = await response.json();
 
-    if (data.error) {
-      console.error('Error:', data.error);
+    if (data.error || !data.horarios || data.horarios.length === 0) {
+      document.getElementById('mensajeVacio').innerHTML = `
+        <i class="bi bi-calendar-x display-1 text-warning mb-3"></i>
+        <p class="fs-5 text-muted">Este grupo no tiene horarios asignados aún</p>
+      `;
       document.getElementById('mensajeVacio').style.display = 'block';
       return;
     }
 
-    // Construir tabla
     construirTabla(data);
     document.getElementById('tablaHorariosContainer').style.display = 'block';
     document.getElementById('mensajeVacio').style.display = 'none';
 
   } catch (error) {
-    console.error('Error al cargar horarios:', error);
+    document.getElementById('tituloGrupo').textContent = 'Error al cargar';
+    document.getElementById('mensajeVacio').innerHTML = `
+      <i class="bi bi-exclamation-circle display-1 text-danger mb-3"></i>
+      <p class="fs-5 text-muted">Error al cargar los horarios</p>
+    `;
     document.getElementById('mensajeVacio').style.display = 'block';
   }
 });
@@ -118,12 +100,12 @@ function construirTabla(datos) {
   const tbody = document.getElementById('cuerpoTabla');
   tbody.innerHTML = '';
 
-  // Agrupar por horario
   const horariosPorHora = {};
   
   datos.horarios.forEach(h => {
     if (!horariosPorHora[h.id_horario]) {
       horariosPorHora[h.id_horario] = {
+        id: h.id_horario,
         nombre: h.nombre_horario,
         horas: h.hora_inicio + ' - ' + h.hora_fin,
         dias: {}
@@ -134,8 +116,9 @@ function construirTabla(datos) {
     }
   });
 
-  // Crear filas
-  Object.values(horariosPorHora).forEach(horario => {
+  const horariosOrdenados = Object.values(horariosPorHora).sort((a, b) => a.id - b.id);
+
+  horariosOrdenados.forEach(horario => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td class="fw-bold bg-light">
@@ -144,7 +127,7 @@ function construirTabla(datos) {
       </td>
       ${[1, 2, 3, 4, 5].map(dia => {
         const asignatura = horario.dias[dia];
-        return <td>${asignatura ? `<span class="badge bg-info text-dark">${asignatura}</span> : '<span class="text-muted">—</span>'}</td>`;
+        return `<td>${asignatura ? `<span class="badge bg-info text-dark">${asignatura}</span>` : '<span class="text-muted">—</span>'}</td>`;
       }).join('')}
     `;
     tbody.appendChild(tr);
