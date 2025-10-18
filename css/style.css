@@ -1467,14 +1467,6 @@ body.oscuro #scrollTopBtn {
         width: 150px;
     }
 }
-
-/* Animaciones suaves para cambios responsive */
-@media (max-width: 768px) {
-    * {
-        transition: font-size 0.3s ease, padding 0.3s ease, margin 0.3s ease;
-    }
-}
-
 /* ============================================
    FIX HAMBURGUESA RESPONSIVE
    ============================================ */
@@ -1538,5 +1530,242 @@ body:not(.oscuro) .navbar-toggler:hover {
     .navbar-toggler {
         padding: 0.4rem 0.6rem;
         font-size: 1.1rem;
+    }
+}
+
+/* ============================================
+   TABLAS GRUPOS Y ASIGNATURAS - RESPONSIVE
+   ============================================ */
+
+/* Estilos unificados para ambas tablas */
+@media (max-width: 768px) {
+    #tabla_grupos .table,
+    #tabla_asignaturas .table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    /* Ajustar márgenes para border-radius */
+    #tabla_grupos,
+    #tabla_asignaturas {
+        margin-left: 0.75rem;
+        margin-right: 0.75rem;
+        width: calc(100% - 1.5rem);
+    }
+}
+
+@media (max-width: 576px) {
+    #tabla_grupos .table td,
+    #tabla_grupos .table th,
+    #tabla_asignaturas .table td,
+    #tabla_asignaturas .table th {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Márgenes más pequeños */
+    #tabla_grupos,
+    #tabla_asignaturas {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        width: calc(100% - 1rem);
+    }
+}
+
+@media (max-width: 420px) {
+    /* Márgenes mínimos para móviles pequeños */
+    #tabla_grupos,
+    #tabla_asignaturas {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+        width: calc(100% - 0.5rem);
+    }
+}
+
+@media (max-width: 400px) {
+    #tabla_grupos .table td,
+    #tabla_grupos .table th,
+    #tabla_asignaturas .table td,
+    #tabla_asignaturas .table th {
+        padding: 0.3rem 0.4rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* ============================================
+   FIX MODAL AGREGAR CURSO - RESPONSIVE
+   ============================================ */
+
+/* Optimización de lista de horarios en móviles */
+@media (max-width: 768px) {
+    #listaHorarios {
+        max-height: 200px;
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+    
+    .horario-item {
+        padding: 0.4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .horario-item .form-check-input {
+        margin-right: 0.5rem;
+        width: 18px;
+        height: 18px;
+    }
+    
+    .horario-item .form-check-label {
+        font-size: 0.8rem;
+        line-height: 1.3;
+        width: 100%;
+    }
+    
+    .horario-item .d-flex {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+    
+    .horario-item strong {
+        font-size: 0.85rem;
+    }
+    
+    .horario-item small {
+        font-size: 0.7rem;
+    }
+    
+    .btn-editar-horario {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+    }
+    
+    .btn-editar-horario i {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    #listaHorarios {
+        max-height: 180px;
+        font-size: 0.75rem;
+        padding: 0.35rem;
+    }
+    
+    .horario-item {
+        padding: 0.3rem;
+    }
+    
+    .horario-item .form-check-input {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .horario-item .form-check-label {
+        font-size: 0.75rem;
+    }
+    
+    .horario-item strong {
+        display: block;
+        font-size: 0.8rem;
+        margin-bottom: 0.15rem;
+    }
+    
+    .horario-item small {
+        font-size: 0.65rem;
+        display: block;
+    }
+    
+    .horario-item .d-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .horario-item .d-flex > div:first-child {
+        width: 100%;
+    }
+    
+    .btn-editar-horario {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.65rem;
+        margin-top: 0.25rem;
+        align-self: flex-start;
+    }
+}
+
+/* Botones del modal de curso en móviles */
+@media (max-width: 576px) {
+    #agregarCursoModal .btn-group-sm .btn {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
+    }
+    
+    #agregarCursoModal .btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    #agregarCursoModal .btn-group .btn {
+        width: 100%;
+        margin-bottom: 0.25rem;
+    }
+    
+    #agregarCursoModal .d-flex.justify-content-between.align-items-center {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    #agregarCursoModal .form-label.mb-0 {
+        margin-bottom: 0.5rem !important;
+    }
+}
+
+/* Mejorar scrollbar en lista de horarios */
+#listaHorarios::-webkit-scrollbar {
+    width: 6px;
+}
+
+#listaHorarios::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+#listaHorarios::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+#listaHorarios::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body.oscuro #listaHorarios::-webkit-scrollbar-track {
+    background: #2c2c2c;
+}
+
+body.oscuro #listaHorarios::-webkit-scrollbar-thumb {
+    background: #555;
+}
+
+body.oscuro #listaHorarios::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+/* Ajustar tamaño del modal en móviles */
+@media (max-width: 576px) {
+    #agregarCursoModal .modal-dialog {
+        margin: 0.5rem;
+        max-width: calc(100% - 1rem);
+    }
+    
+    #agregarCursoModal .modal-body {
+        padding: 0.75rem;
+    }
+    
+    #agregarCursoModal .mb-3 {
+        margin-bottom: 0.75rem !important;
     }
 }
