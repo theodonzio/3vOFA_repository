@@ -288,25 +288,4 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-
-<style>
-.horario-item {
-  transition: background-color 0.2s;
-  padding: 8px;
-  border-radius: 4px;
-}
-
-.horario-item:hover {
-  background-color: rgba(13, 110, 253, 0.1);
-}
-
-.btn-editar-horario {
-  padding: 2px 8px;
-  font-size: 0.875rem;
-}
-
-.checkbox-horario:checked + label {
-  background-color: rgba(25, 135, 84, 0.1);
-  border-radius: 4px;
-}
-</style>
+  

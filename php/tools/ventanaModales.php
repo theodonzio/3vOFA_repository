@@ -4,7 +4,7 @@
   <!-- Botón unificado: Docente / Adscripto -->
   <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalLogin" data-role="docente_adscripto">
     <img src="../img/icons/faceid_icon.png" class="indexlogo">
-    <span data-traducible="Docente / Adscripto">Personal</span>
+    <span data-traducible="Personal">Personal</span>
   </button>
 
   <!-- Botón Estudiante -->
@@ -54,7 +54,7 @@
           <div class="mb-3">
             <label for="opcionEstudiante" class="form-label" data-traducible="Elige tu grupo">Elige tu grupo</label>
             <select class="form-select" id="opcionEstudiante" name="id_grupo" required>
-              <option value="" selected disabled>-- Seleccionar grupo --</option>
+              <option value="" selected disabled data-traducible="-- Seleccionar grupo --">-- Seleccionar grupo --</option>
               <?php
               // Incluir conexión si no está definida
               if (!isset($conn)) {
@@ -82,7 +82,7 @@
                   echo "<option value='" . $grupo['id_grupo'] . "'>" . $nombre_completo . "</option>";
                 }
               } else {
-                echo "<option value='' disabled>No hay grupos disponibles</option>";
+                echo "<option value='' disabled data-traducible='No hay grupos disponibles'>No hay grupos disponibles</option>";
               }
               ?>
             </select>

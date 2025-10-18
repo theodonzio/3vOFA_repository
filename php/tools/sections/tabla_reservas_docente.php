@@ -71,10 +71,9 @@
                                 <td><?php echo htmlspecialchars($row['fecha']); ?></td>
                                 <td><?php echo htmlspecialchars($row['hora_inicio'] . ' - ' . $row['hora_fin']); ?></td>
                                 <td class="text-center">
-                                    <span class="badge <?php echo $badge_class; ?> px-3 py-2">
-                                        <i class="bi bi-<?php echo $icono; ?>"></i>
-                                        <?php echo htmlspecialchars($estado); ?>
-                                    </span>
+                                  <span class="badge <?php echo $badge_class; ?> px-3 py-2" data-traducible="<?php echo ucfirst($estado); ?>">
+                                      <?php echo htmlspecialchars($estado); ?>
+                                  </span>
                                 </td>
                             </tr>
                         <?php } ?>

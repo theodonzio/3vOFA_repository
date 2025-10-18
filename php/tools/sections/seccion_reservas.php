@@ -5,7 +5,7 @@
 ?>
 
 <div id="tabla_reservas_adscripta" class="container my-5">
-  <h2 class="mb-4 text-center" data-traducible="Reservas Realizadas por los Docentes" id="title_reserva">
+  <h2 class="mb-4 text-center" data-traducible="Reservas de los Docentes" id="title_reserva">
     Reservas de los Docentes
   </h2>
   
@@ -60,16 +60,16 @@
                             <i class="bi bi-<?php echo $icono; ?>"></i>
                             <?php echo htmlspecialchars($row['nombre_docente'] . ' ' . $row['apellido_docente']); ?>
                         </h5>
-                        <span class="badge bg-light <?php echo $textoColor; ?> fw-bold">
+                        <span class="badge bg-light <?php echo $textoColor; ?> fw-bold" data-traducible="<?php echo strtoupper($estado); ?>">
                             <?php echo strtoupper($estado); ?>
                         </span>
                     </div>
                     
                     <div class="card-body">
                         <ul class="list-unstyled mb-3">
-                            <li><strong>Salón:</strong> <?php echo htmlspecialchars($row['nombre_espacio'] . ' (' . $row['tipo_salon'] . ')'); ?></li>
-                            <li><strong>Fecha:</strong> <?php echo htmlspecialchars($row['fecha']); ?></li>
-                            <li><strong>Horario:</strong> <?php echo htmlspecialchars($row['hora_inicio'] . ' - ' . $row['hora_fin']); ?></li>
+                            <li><strong data-traducible="Salón:">Salón:</strong> <?php echo htmlspecialchars($row['nombre_espacio'] . ' (' . $row['tipo_salon'] . ')'); ?></li>
+                            <li><strong data-traducible="Fecha:">Fecha:</strong> <?php echo htmlspecialchars($row['fecha']); ?></li>
+                            <li><strong data-traducible="Horario:">Horario:</strong> <?php echo htmlspecialchars($row['hora_inicio'] . ' - ' . $row['hora_fin']); ?></li>
                         </ul>
 
                         <?php if ($estado == 'Pendiente') { ?>
@@ -88,7 +88,7 @@
                                 <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
                                 <input type="hidden" name="accion" value="Rechazar">
                                 <button type="submit" class="btn btn-danger w-100">
-                                    <i class="bi bi-x-lg"></i> Rechazar
+                                    <i class="bi bi-x-lg"></i> <span data-traducible="Rechazar">Rechazar</span>
                                 </button>
                             </form>
                         </div>
@@ -96,17 +96,19 @@
                     </div>
                     
                     <div class="card-footer text-muted text-center small bg-light">
-                        ID Reserva: <?php echo $row['id_reserva']; ?>
+                        <span data-traducible="ID Reserva:">ID Reserva:</span> <?php echo $row['id_reserva']; ?>
                     </div>
                 </div>
             </div>
     <?php
         }
     } else {
-        echo '<div class="col-12"><p class="text-center text-muted fs-5">No hay reservas registradas aún.</p></div>';
+        echo '<div class="col-12"><p class="text-center text-muted fs-5" data-traducible="No hay reservas registradas aún.">No hay reservas registradas aún.</p></div>';
     }
     ?>
   </div>
 </div>
+
+<script src="../../../js/traductor.js"></script>
 
 <!-- Sin JavaScript - Los formularios funcionan directamente -->

@@ -17,6 +17,13 @@ const diccionario = {
 "Selecciona una opción": { en: "Select an option", es: "Selecciona una opción" },
 "Elige una opción": { en: "Choose an option", es: "Elige una opción" },
 "Continuar": { en: "Continue", es: "Continuar" },
+"Personal": { en: "Staff", es: "Personal" },
+"C.I - Email": { en: "ID - Email", es: "C.I - Email" },
+"-- Seleccionar grupo --": { en: "-- Select group --", es: "-- Seleccionar grupo --" },
+"No hay grupos disponibles": { en: "No groups available", es: "No hay grupos disponibles" },
+"Selecciona tu grupo": { en: "Select your group", es: "Selecciona tu grupo" },
+"Elige tu grupo": { en: "Choose your group", es: "Elige tu grupo" },
+"Cancelar": { en: "Cancel", es: "Cancelar" },
 
 // Opciones de select
 "1ºMC (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)": { en: "1st MC (INFORMATION TECHNOLOGIES - BIL)", es: "1ºMC (TECNOLOGÍAS DE LA INFORMACIÓN - BIL)" },
@@ -40,7 +47,7 @@ const diccionario = {
 "Apellido": { en: "Last Name", es: "Apellido" },
 "Cédula": { en: "ID", es: "Cédula" },
 "Email": { en: "Email", es: "Email" },
-"Gestión de Espacios": { en: "Spaces Management", es: "Gestión de Espacios" },
+"Gestión de Espacios": { en: "Space Management", es: "Gestión de Espacios" },
 "Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos": { en: "From here you can add new spaces to the system and assign resources", es: "Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos" },
 "➕ Agregar Espacio": { en: "➕ Add Space", es: "➕ Agregar Espacio" },
 "Agregar Espacio": { en: "Add Space", es: "Agregar Espacio" },
@@ -76,10 +83,9 @@ const diccionario = {
 "Salir": { en:"Log out", es: "Salir" },
 "Reservas": { en:"Reservations", es: "Reservas" },
 "Cursos": { en:"Courses", es: "Cursos" },
-"Agregar Grupo": { en:"Add Groups", es: "Agregar Grupo" },
+"Agregar Grupo": { en:"Add Group", es: "Agregar Grupo" },
 "Agregar Asignatura": {en:"Add Subject", es: "Agregar Asignatura"},
-"Agregar Curso":{en: "Add Courses", es:"Agregar Cursos"},
-"Ver Cursos":{en: "See Courses", es:"Ver Cursos"},
+"Agregar Curso":{en: "Add Course", es:"Agregar Curso"},
 "Ver Cursos":{en: "See Courses", es:"Ver Cursos"},
 "Desde aquí puedes agregar nuevos cursos al sistema":{en:"From here you can add new courses to the system", es:"Desde aquí puedes agregar nuevos cursos al sistema"},
 "Gestión de Grupos": {en:"Group Management", es:"Gestión de Grupos"},
@@ -89,10 +95,10 @@ const diccionario = {
 "Desde aquí puedes gestionar las asignaturas registradas en el sistema":{en:"From here you can manage the subjects registered in the system", es:"Desde aquí puedes gestionar las asignaturas registradas en el sistema"},
 "Seleccioná un grupo para asignarle horarios y materias":{en:"Select a group to assign schedules and subjects", es:"Seleccioná un grupo para asignarle horarios y materias"},
 "Seleccioná un grupo para comenzar":{en:"Select a group to start", es:"Seleccioná un grupo para comenzar"},
+
 // Gestión de Horarios 
 "Gestión de Horarios por Grupo": { en: "Schedule Management by Group", es: "Gestión de Horarios por Grupo" },
 "Seleccionar grupo:": { en: "Select group:", es: "Seleccionar grupo:" },
-"-- Seleccionar grupo --": { en: "-- Select group --", es: "-- Seleccionar grupo --" },
 "Hora": { en: "Time", es: "Hora" },
 "Lunes": { en: "Monday", es: "Lunes" },
 "Martes": { en: "Tuesday", es: "Martes" },
@@ -101,9 +107,8 @@ const diccionario = {
 "Viernes": { en: "Friday", es: "Viernes" },
 "-- Vacío --": { en: "-- Empty --", es: "-- Vacío --" },
 "Guardar Cambios": { en: "Save Changes", es: "Guardar Cambios" },
-"Aprobar":{en: "Approve", es: "Aprobar"},
 
-// --- Nombres de Horarios 
+// Nombres de Horarios 
 "1era": { en: "1st Hour", es: "1era" },
 "2da": { en: "2nd Hour", es: "2da" },
 "3era": { en: "3rd Hour", es: "3era" },
@@ -116,45 +121,19 @@ const diccionario = {
 "10ma": { en: "10th Hour", es: "10ma" },
 "11va": { en: "11th Hour", es: "11va" },
 
-
-// Sección Hero - Gestión de Espacios
-"Gestión de Espacios": { en: "Space Management", es: "Gestión de Espacios" },
-"Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos": { en: "From here you can add new spaces to the system and assign them resources", es: "Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos" },
-"Agregar Espacio": { en: "Add Space", es: "Agregar Espacio" },
-
 // Modal Agregar Espacio
-"Tipo de Salón": { en: "Room Type", es: "Tipo de Salón" },
-"Seleccione un tipo": { en: "Select a type", es: "Seleccione un tipo" },
-"Aula": { en: "Classroom", es: "Aula" },
-"Laboratorio": { en: "Laboratory", es: "Laboratorio" },
-"Salón": { en: "Hall", es: "Salón" },
-"SUM": { en: "Multipurpose Room", es: "SUM" },
 "Nº de Espacio": { en: "Room Number", es: "Nº de Espacio" },
 "Ej: 2": { en: "Ex: 2", es: "Ej: 2" },
-"Selecciona los recursos que contiene:": { en: "Select the resources it contains:", es: "Selecciona los recursos que contiene:" },
-"Televisión": { en: "Television", es: "Televisión" },
-"Cable HDMI": { en: "HDMI Cable", es: "Cable HDMI" },
-"Aire Acondicionado": { en: "Air Conditioner", es: "Aire Acondicionado" },
-"Proyector": { en: "Projector", es: "Proyector" },
-"Alargue": { en: "Extension Cord", es: "Alargue" },
 
 // Sección Reservas
-"Reservas Realizadas por los Docentes": { en: "Reservations Made by Teachers", es: "Reservas Realizadas por los Docentes" },
 "Reservas de los Docentes": { en: "Teachers' Reservations", es: "Reservas de los Docentes" },
-"Pendiente": { en: "Pending", es: "Pendiente" },
-"Aprobada": { en: "Approved", es: "Aprobada" },
-"No aprobada": { en: "Not Approved", es: "No aprobada" },
-"Salón:": { en: "Room:", es: "Salón:" },
-"Fecha:": { en: "Date:", es: "Fecha:" },
-"Horario:": { en: "Schedule:", es: "Horario:" },
-"Aprobar": { en: "Approve", es: "Aprobar" },
-"No aprobar": { en: "Reject", es: "No aprobar" },
 "ID Reserva:": { en: "Reservation ID:", es: "ID Reserva:" },
-"No hay reservas registradas aún.": { en: "No reservations registered yet.", es: "No hay reservas registradas aún." },
+"Rechazar": { en: "Reject", es: "Rechazar" },
+"PENDIENTE": { en: "PENDING", es: "PENDIENTE" },
+"APROBADA": { en: "APPROVED", es: "APROBADA" },
+"NO APROBADA": { en: "NOT APPROVED", es: "NO APROBADA" },
 
-
-//Modal agregar cursos
-"Agregar Curso": { en: "Add Course", es: "Agregar Curso" },
+// Modal agregar cursos
 "Nombre del Curso": { en: "Course Name", es: "Nombre del Curso" },
 "Descripción": { en: "Description", es: "Descripción" },
 "Duración en años": { en: "Duration in years", es: "Duración en años" },
@@ -162,9 +141,7 @@ const diccionario = {
 "Descripción del curso": { en: "Course description", es: "Descripción del curso" },
 "Ej: 3": { en: "Ex: 3", es: "Ej: 3" },
 
-//Modal agregar grupos
-
-"Agregar Grupo": { en: "Add Group", es: "Agregar Grupo" },
+// Modal agregar grupos
 "Nombre del Grupo": { en: "Group Name", es: "Nombre del Grupo" },
 "Año del Curso": { en: "Course Year", es: "Año del Curso" },
 "Curso": { en: "Course", es: "Curso" },
@@ -177,19 +154,16 @@ const diccionario = {
 "Vespertino": { en: "Afternoon", es: "Vespertino" },
 "Nocturno": { en: "Night", es: "Nocturno" },
 
-
-//Modal agregar adignaturas
-"Agregar Asignatura": { en: "Add Subject", es: "Agregar Asignatura" },
+// Modal agregar asignaturas y asignatuas.php
 "Nombre de la Asignatura": { en: "Subject Name", es: "Nombre de la Asignatura" },
-"Docente": { en: "Teacher", es: "Docente" },
 "Seleccionar docente...": { en: "Select teacher...", es: "Seleccionar docente..." },
 "Grupo": { en: "Group", es: "Grupo" },
 "Seleccionar grupo...": { en: "Select group...", es: "Seleccionar grupo..." },
 "Ej: Matemática": { en: "Ex: Math", es: "Ej: Matemática" },
 "Guardar": { en: "Save", es: "Guardar" },
+"Visualiza todas las asignaturas registradas en el sistema": {en: "View all subjects registered in the system", es:"Visualiza todas las asignaturas registradas en el sistema"},
 
-
-//docente.php
+// docente.php
 "Sistema de Gestión": { en: "Management System", es: "Sistema de Gestión" },
 "Panel exclusivo para Docentes": { en: "Exclusive Panel for Teachers", es: "Panel exclusivo para Docentes" },
 "Sistema de Reservas": { en: "Reservation System", es: "Sistema de Reservas" },
@@ -199,49 +173,35 @@ const diccionario = {
 "Fecha": { en: "Date", es: "Fecha" },
 "Horario": { en: "Schedule", es: "Horario" },
 "Mis Reservas": { en: "My Reservations", es: "Mis Reservas" },
-"Salón": { en: "Room", es: "Salón" },
 "Tipo": { en: "Type", es: "Tipo" },
-"Docente": { en: "Teacher", es: "Docente" },
 "Estado": { en: "Status", es: "Estado" },
 
-
 // Modal Realizar Reserva
-"Realizar Reserva": { en: "Make Reservation", es: "Realizar Reserva" },
 "Selecciona un Espacio": { en: "Select a Space", es: "Selecciona un Espacio" },
-"Seleccione un salón": { en: "Select a room", es: "Seleccione un salón" },
-"Fecha": { en: "Date", es: "Fecha" },
-"Horario": { en: "Schedule", es: "Horario" },
 "Seleccione un horario": { en: "Select a schedule", es: "Seleccione un horario" },
-"Cancelar": { en: "Cancel", es: "Cancelar" },
 "Reservar": { en: "Reserve", es: "Reservar" },
 
-//CURSOS.PHP
+// CURSOS.PHP
+"Lista de Cursos Registrados": { en: "List of Registered Courses", es: "Lista de Cursos Registrados" },
+"Aquí puedes ver los cursos del sistema": { en: "Here you can see the system courses", es: "Aquí puedes ver los cursos del sistema" },
+"Volver al Panel": { en: "Return to Panel", es: "Volver al Panel" },
+"ID": { en: "ID", es: "ID" },
+"Duración (Años)": { en: "Duration (Years)", es: "Duración (Años)" },
+"No hay cursos registrados": { en: "No courses registered", es: "No hay cursos registrados"},
 
- "Lista de Cursos Registrados": { en: "List of Registered Courses", es: "Lista de Cursos Registrados" },
-  "Aquí puedes ver los cursos del sistema": { en: "Here you can see the system courses", es: "Aquí puedes ver los cursos del sistema" },
-  "Volver al Panel": { en: "Return to Panel", es: "Volver al Panel" },
-  "ID": { en: "ID", es: "ID" },
-  "Nombre": { en: "Name", es: "Nombre" },
-  "Descripción": { en: "Description", es: "Descripción" },
-  "Duración (Años)": { en: "Duration (Years)", es: "Duración (Años)" },
-  "No hay cursos registrados": { en: "No courses registered", es: "No hay cursos registrados"},
+// DOCENTES.PHP
+"No hay docentes registrados": { en: "There are no registered teachers", es: "No hay docentes registrados"},
+"Lista de Docentes Registrados": { en: "List of Registered Teachers", es: "Lista de Docentes Registrados" },
+"Aquí puedes ver y gestionar a los docentes registrados en el sistema": { en: "Here you can view and manage the teachers registered in the system", es: "Aquí puedes ver y gestionar a los docentes registrados en el sistema" },
 
-  //DOCENTES.PHP
+// GRUPOS.PHP
+"Lista de Grupos Registrados": { en: "Registered Groups List", es: "Lista de Grupos Registrados" },
+"Aquí puedes ver y gestionar los grupos del sistema": { en: "Here you can view and manage the system groups", es: "Aquí puedes ver y gestionar los grupos del sistema" },
 
-  "No hay docentes registrados": { es: "No hay docentes registrados", en: "There are no registered teachers"},
-  "Lista de Docentes Registrados": { 
-  es: "Lista de Docentes Registrados", en: "List of Registered Teachers" },
-  "Aquí puedes ver y gestionar a los docentes registrados en el sistema": { es: "Aquí puedes ver y gestionar a los docentes registrados en el sistema", en: "Here you can view and manage the teachers registered in the system" },
-
-  //GRUPOS.PHP
-
-  "Lista de Grupos Registrados": { en: "Registered Groups List", es: "Lista de Grupos Registrados" },
-  "Aquí puedes ver y gestionar los grupos del sistema": { en: "Here you can view and manage the system groups", es: "Aquí puedes ver y gestionar los grupos del sistema" },
-
-  //Headers
-  "Lenguaje": { en: "Language", es: "Lenguaje" },
-  "Español": { en: "Spanish", es: "Español" },
-  "Inglés": { en: "English", es: "Inglés" },
+// Headers
+"Lenguaje": { en: "Language", es: "Lenguaje" },
+"Español": { en: "Spanish", es: "Español" },
+"Inglés": { en: "English", es: "Inglés" },
 
 // Estudiante - Docentes
 "Mis Docentes": { en: "My Teachers", es: "Mis Docentes" },
