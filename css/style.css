@@ -1769,3 +1769,258 @@ body.oscuro #listaHorarios::-webkit-scrollbar-thumb:hover {
         margin-bottom: 0.75rem !important;
     }
 }
+
+
+/* ============================================
+   SECCIÓN GESTIÓN DE HORARIOS
+   ============================================ */
+
+/* Contenedor principal */
+#GestionHorarios {
+    margin-bottom: 2rem;
+}
+
+/* Card del selector de grupo */
+#grupoSelectHorarios {
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Tabla de horarios */
+#tablaHorarios {
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#tablaHorarios thead th {
+    background-color: #1a73e8 !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    padding: 1rem;
+    border: none;
+}
+
+#tablaHorarios tbody td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+}
+
+#tablaHorarios tbody .bg-light {
+    background-color: #f8f9fa !important;
+}
+
+/* Selects dentro de la tabla */
+#tablaHorarios select.form-select {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#tablaHorarios select.form-select:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 0.2rem rgba(26, 115, 232, 0.25);
+}
+
+/* Alert informativo */
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+/* Spinner de carga */
+#estadoCarga {
+    padding: 3rem 0;
+}
+
+#estadoCarga .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Mensaje inicial */
+#mensajeInicialHorarios {
+    padding: 3rem 0;
+}
+
+#mensajeInicialHorarios i {
+    color: #6c757d;
+}
+
+/* Botones de acción */
+#limpiarHorarios,
+#guardarCambiosHorarios {
+    min-width: 180px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+#limpiarHorarios:hover {
+    background-color: #6c757d;
+    color: white;
+    border-color: #6c757d;
+}
+
+#guardarCambiosHorarios:hover {
+    background-color: #157347;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(21, 115, 71, 0.3);
+}
+
+/* ============================================
+   MODO OSCURO - GESTIÓN DE HORARIOS
+   ============================================ */
+
+body.oscuro #GestionHorarios {
+    color: #f5f5f5;
+}
+
+/* Card del selector */
+body.oscuro .card {
+    background-color: #2c2c2c;
+    border-color: #444;
+}
+
+body.oscuro .card-body {
+    background-color: #2c2c2c;
+    color: #f5f5f5;
+}
+
+body.oscuro .form-label {
+    color: #f5f5f5;
+}
+
+/* Select del grupo */
+body.oscuro #grupoSelectHorarios {
+    background-color: #333;
+    color: #f5f5f5;
+    border-color: #555;
+}
+
+body.oscuro #grupoSelectHorarios:focus {
+    background-color: #333;
+    color: #f5f5f5;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 0.2rem rgba(26, 115, 232, 0.25);
+}
+
+body.oscuro #grupoSelectHorarios option {
+    background-color: #333;
+    color: #f5f5f5;
+}
+
+/* Alert info en modo oscuro */
+body.oscuro .alert-info {
+    background-color: #1a3a52;
+    border-color: #2c5d7f;
+    color: #a8d5f2;
+}
+
+/* Tabla de horarios en modo oscuro */
+body.oscuro #tablaHorarios {
+    background-color: #2b2b2b;
+    color: #f5f5f5;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+body.oscuro #tablaHorarios thead th {
+    background-color: #1565c0 !important;
+    color: #ffffff !important;
+    border-color: #444;
+}
+
+body.oscuro #tablaHorarios tbody td {
+    background-color: #3a3a3a;
+    color: #f5f5f5;
+    border-color: #555;
+}
+
+body.oscuro #tablaHorarios tbody .bg-light {
+    background-color: #2c2c2c !important;
+    color: #f5f5f5;
+}
+
+body.oscuro #tablaHorarios tbody tr:hover td {
+    background-color: #505050;
+}
+
+/* Selects en modo oscuro */
+body.oscuro #tablaHorarios select.form-select {
+    background-color: #333;
+    color: #f5f5f5;
+    border-color: #555;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+}
+
+body.oscuro #tablaHorarios select.form-select:focus {
+    background-color: #333;
+    color: #f5f5f5;
+    border-color: #1a73e8;
+}
+
+body.oscuro #tablaHorarios select.form-select option {
+    background-color: #333;
+    color: #f5f5f5;
+}
+
+/* Mensaje inicial en modo oscuro */
+body.oscuro #mensajeInicialHorarios {
+    color: #adb5bd;
+}
+
+body.oscuro #mensajeInicialHorarios i {
+    color: #6c757d;
+}
+
+/* Estado de carga en modo oscuro */
+body.oscuro #estadoCarga {
+    color: #f5f5f5;
+}
+
+body.oscuro #estadoCarga .spinner-border {
+    color: #6ea8fe;
+}
+
+/* Botones en modo oscuro */
+body.oscuro #limpiarHorarios {
+    background-color: transparent;
+    color: #adb5bd;
+    border-color: #6c757d;
+}
+
+body.oscuro #limpiarHorarios:hover {
+    background-color: #6c757d;
+    color: #fff;
+    border-color: #6c757d;
+}
+
+body.oscuro #guardarCambiosHorarios {
+    background-color: #198754;
+    border-color: #198754;
+    color: #fff;
+}
+
+body.oscuro #guardarCambiosHorarios:hover {
+    background-color: #157347;
+    border-color: #157347;
+}
+
+/* === MODO CLARO (por defecto) === */
+body:not(.oscuro) p.text-muted,
+body:not(.oscuro) #mensajeInicialHorarios,
+body:not(.oscuro) #mensajeInicialHorarios p,
+body:not(.oscuro) #mensajeInicialHorarios i {
+  color: #6c757d !important; /* gris suave para modo claro */
+}
+
+/* === MODO OSCURO === */
+body.oscuro p.text-muted,
+body.oscuro #mensajeInicialHorarios,
+body.oscuro #mensajeInicialHorarios p,
+body.oscuro #mensajeInicialHorarios i {
+  color: #d1d1d1 !important; /* gris claro sobre fondo oscuro */
+}

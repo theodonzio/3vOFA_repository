@@ -1,8 +1,3 @@
-<?php
-/**
- * Sección de Gestión de Horarios por Grupo - VERSIÓN FINAL
- */
-?>
 
 <style>
 /* FORZAR VISIBILIDAD DE LA TABLA */
