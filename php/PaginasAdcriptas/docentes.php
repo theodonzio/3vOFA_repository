@@ -35,7 +35,7 @@ include '../tools/head.php';
 include '../login/conexion_bd.php';
 
 // Obtener todos los docentes (id_rol = 2)
-$sql = "SELECT id_usuario, nombre, apellido, cedula, email FROM Usuario WHERE id_rol = 2";
+$sql = "SELECT id_usuario, nombre, apellido, cedula, email FROM usuario WHERE id_rol = 2";
 $result = $conn->query($sql);
 ?>
 

@@ -1474,3 +1474,69 @@ body.oscuro #scrollTopBtn {
         transition: font-size 0.3s ease, padding 0.3s ease, margin 0.3s ease;
     }
 }
+
+/* ============================================
+   FIX HAMBURGUESA RESPONSIVE
+   ============================================ */
+
+/* Centrar hamburguesa en móviles */
+@media (max-width: 992px) {
+    .logo {
+        position: relative;
+        justify-content: center;
+    }
+    
+    .navbar-toggler {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    #logo-barra {
+        margin: 0 auto;
+    }
+}
+
+/* Hacer visible la hamburguesa en modo oscuro */
+body.oscuro .navbar-toggler-icon {
+    filter: invert(1) brightness(2);
+}
+
+body:not(.oscuro) .navbar-toggler-icon {
+    filter: invert(0);
+}
+
+/* Mejorar visibilidad del botón hamburguesa */
+.navbar-toggler {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+body.oscuro .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+body.oscuro .navbar-toggler:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body:not(.oscuro) .navbar-toggler:hover {
+    border-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Ajustes adicionales para móviles pequeños */
+@media (max-width: 576px) {
+    .navbar-toggler {
+        padding: 0.4rem 0.6rem;
+        font-size: 1.1rem;
+    }
+}
