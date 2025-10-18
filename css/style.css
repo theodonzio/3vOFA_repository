@@ -358,7 +358,7 @@ input[type="checkbox"]:checked::after {
    ============================================ */
 
 .modal-footer .btn {
-    padding: 2rem 2rem;
+    padding: 0.5rem 1rem;
 }
 
 body.oscuro .modal-content {
@@ -367,10 +367,20 @@ body.oscuro .modal-content {
     border-color: #444;
 }
 
-body.oscuro .modal-header,
+body.oscuro .modal-header {
+    background-color: #2b2b2b;
+    border-color: #444;
+    color: #f5f5f5;
+}
+
 body.oscuro .modal-footer {
     background-color: #2b2b2b;
     border-color: #444;
+}
+
+body.oscuro .modal-body {
+    background-color: #2b2b2b;
+    color: #f5f5f5;
 }
 
 body.oscuro .modal-content .form-control,
@@ -385,7 +395,24 @@ body.oscuro .modal-content .form-select:focus {
     background-color: #333;
     color: #f5f5f5;
     border-color: #777;
-    box-shadow: none;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+body.oscuro .modal-content .form-control::placeholder {
+    color: #adb5bd;
+}
+
+body.oscuro .modal-content .form-label {
+    color: #f5f5f5;
+}
+
+body.oscuro .modal-content .text-muted,
+body.oscuro .modal-content .form-text {
+    color: #adb5bd !important;
+}
+
+body.oscuro .modal-content .btn-close {
+    filter: invert(1);
 }
 
 body.oscuro .modal-content .btn {
@@ -401,6 +428,53 @@ body.oscuro .modal-content .btn.btn-secondary {
 
 body.oscuro .modal-content .btn.btn-secondary:hover {
     background-color: #5a6268;
+}
+
+/* Lista de horarios en modal curso */
+body.oscuro #listaHorarios {
+    background-color: #333 !important;
+    border-color: #555 !important;
+}
+
+body.oscuro .horario-item {
+    border-color: #555 !important;
+}
+
+body.oscuro .form-check-label {
+    color: #f5f5f5;
+}
+
+body.oscuro .btn-outline-primary {
+    color: #6ea8fe;
+    border-color: #6ea8fe;
+}
+
+body.oscuro .btn-outline-primary:hover {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+body.oscuro .btn-outline-secondary {
+    color: #adb5bd;
+    border-color: #6c757d;
+}
+
+body.oscuro .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+
+body.oscuro .btn-outline-danger {
+    color: #ea868f;
+    border-color: #ea868f;
+}
+
+body.oscuro .btn-outline-danger:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
 }
 
 /* ============================================
@@ -541,7 +615,7 @@ body.oscuro .modal-content .btn.btn-secondary:hover {
 }
 
 /* ============================================
-   TABLAS
+   TABLAS - ESTILOS GENERALES
    ============================================ */
 
 #tabla_docentes,
@@ -550,6 +624,8 @@ body.oscuro .modal-content .btn.btn-secondary:hover {
 #tabla_asignaturas {
     max-width: 1400px;
     margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 #tabla_docentes .table,
@@ -559,10 +635,21 @@ body.oscuro .modal-content .btn.btn-secondary:hover {
     width: 100%;
     max-width: 100%;
     margin: 0px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #ddd;
 }
 
 #tabla_docentes .table td,
-#tabla_docentes .table th {
+#tabla_docentes .table th,
+#tabla_cursos .table td,
+#tabla_cursos .table th,
+#tabla_grupos .table td,
+#tabla_grupos .table th,
+#tabla_asignaturas .table td,
+#tabla_asignaturas .table th {
     text-align: center;
     padding: 1rem;
     vertical-align: middle;
@@ -570,27 +657,76 @@ body.oscuro .modal-content .btn.btn-secondary:hover {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Modo claro */
-body:not(.oscuro) #tabla_docentes .table {
+/* Redondear esquinas del thead */
+#tabla_docentes .table thead tr:first-child th:first-child,
+#tabla_cursos .table thead tr:first-child th:first-child,
+#tabla_grupos .table thead tr:first-child th:first-child,
+#tabla_asignaturas .table thead tr:first-child th:first-child {
+    border-top-left-radius: 20px;
+}
+
+#tabla_docentes .table thead tr:first-child th:last-child,
+#tabla_cursos .table thead tr:first-child th:last-child,
+#tabla_grupos .table thead tr:first-child th:last-child,
+#tabla_asignaturas .table thead tr:first-child th:last-child {
+    border-top-right-radius: 20px;
+}
+
+/* Redondear esquinas del tbody */
+#tabla_docentes .table tbody tr:last-child td:first-child,
+#tabla_cursos .table tbody tr:last-child td:first-child,
+#tabla_grupos .table tbody tr:last-child td:first-child,
+#tabla_asignaturas .table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 20px;
+}
+
+#tabla_docentes .table tbody tr:last-child td:last-child,
+#tabla_cursos .table tbody tr:last-child td:last-child,
+#tabla_grupos .table tbody tr:last-child td:last-child,
+#tabla_asignaturas .table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 20px;
+}
+
+/* Modo claro - Tablas */
+body:not(.oscuro) #tabla_docentes .table,
+body:not(.oscuro) #tabla_cursos .table,
+body:not(.oscuro) #tabla_grupos .table,
+body:not(.oscuro) #tabla_asignaturas .table {
     background-color: #ffffff;
     color: #000000;
 }
 
-body:not(.oscuro) #tabla_docentes .table thead th {
+body:not(.oscuro) #tabla_docentes .table thead th,
+body:not(.oscuro) #tabla_cursos .table thead th,
+body:not(.oscuro) #tabla_grupos .table thead th,
+body:not(.oscuro) #tabla_asignaturas .table thead th {
     background-color: #1a73e8 !important;
     color: #ffffff !important;
     font-weight: 700;
 }
 
-body:not(.oscuro) #tabla_docentes .table-striped tbody tr:nth-of-type(odd) td {
+body:not(.oscuro) #tabla_docentes .table tbody td,
+body:not(.oscuro) #tabla_cursos .table tbody td,
+body:not(.oscuro) #tabla_grupos .table tbody td,
+body:not(.oscuro) #tabla_asignaturas .table tbody td {
+    background-color: #fff;
+}
+
+body:not(.oscuro) #tabla_docentes .table-striped tbody tr:nth-of-type(odd) td,
+body:not(.oscuro) #tabla_cursos .table-striped tbody tr:nth-of-type(odd) td,
+body:not(.oscuro) #tabla_grupos .table-striped tbody tr:nth-of-type(odd) td,
+body:not(.oscuro) #tabla_asignaturas .table-striped tbody tr:nth-of-type(odd) td {
     background-color: #f9f9f9;
 }
 
-body:not(.oscuro) #tabla_docentes .table tbody tr:hover td {
+body:not(.oscuro) #tabla_docentes .table tbody tr:hover td,
+body:not(.oscuro) #tabla_cursos .table tbody tr:hover td,
+body:not(.oscuro) #tabla_grupos .table tbody tr:hover td,
+body:not(.oscuro) #tabla_asignaturas .table tbody tr:hover td {
     background-color: #e6f3ff;
 }
 
-/* Modo oscuro */
+/* Modo oscuro - Tablas */
 body.oscuro #tabla_docentes,
 body.oscuro #tabla_cursos,
 body.oscuro #tabla_grupos,
@@ -599,33 +735,55 @@ body.oscuro #tabla_asignaturas {
     box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
-body.oscuro #tabla_docentes .table {
+body.oscuro #tabla_docentes .table,
+body.oscuro #tabla_cursos .table,
+body.oscuro #tabla_grupos .table,
+body.oscuro #tabla_asignaturas .table {
     background-color: #2b2b2b;
     color: #f5f5f5 !important;
     border: 1px solid #444;
 }
 
-body.oscuro #tabla_docentes .table thead th {
+body.oscuro #tabla_docentes .table thead th,
+body.oscuro #tabla_cursos .table thead th,
+body.oscuro #tabla_grupos .table thead th,
+body.oscuro #tabla_asignaturas .table thead th {
     background-color: #1565c0 !important;
     color: #ffffff !important;
     font-weight: 700;
 }
 
-body.oscuro #tabla_docentes .table tbody td {
+body.oscuro #tabla_docentes .table tbody td,
+body.oscuro #tabla_cursos .table tbody td,
+body.oscuro #tabla_grupos .table tbody td,
+body.oscuro #tabla_asignaturas .table tbody td {
     background-color: #3a3a3a;
     color: #f5f5f5 !important;
 }
 
-body.oscuro #tabla_docentes .table-striped tbody tr:nth-of-type(odd) td {
+body.oscuro #tabla_docentes .table-striped tbody tr:nth-of-type(odd) td,
+body.oscuro #tabla_cursos .table-striped tbody tr:nth-of-type(odd) td,
+body.oscuro #tabla_grupos .table-striped tbody tr:nth-of-type(odd) td,
+body.oscuro #tabla_asignaturas .table-striped tbody tr:nth-of-type(odd) td {
     background-color: #383838;
 }
 
-body.oscuro #tabla_docentes .table tbody tr:hover td {
+body.oscuro #tabla_docentes .table tbody tr:hover td,
+body.oscuro #tabla_cursos .table tbody tr:hover td,
+body.oscuro #tabla_grupos .table tbody tr:hover td,
+body.oscuro #tabla_asignaturas .table tbody tr:hover td {
     background-color: #505050;
     color: #fff !important;
 }
 
-/* Tabla de reservas docente */
+body.oscuro .text-secondary {
+    color: #adb5bd !important;
+}
+
+/* ============================================
+   TABLA RESERVAS DOCENTE
+   ============================================ */
+
 #tabla_reservas_docente {
     margin: 0px !important;
     display: flex;
@@ -784,12 +942,9 @@ body.oscuro #tabla_reservas_adscripta .card-footer {
 }
 
 .horario-item:last-child {
-    border-bottom: none;
-}
+    border-bottom: none
 
-#tablaHorarios tbody tr {
-    display: none;
-}
+    }
 
 #title_reserva {
     margin-bottom: 50px !important;
@@ -935,7 +1090,10 @@ body.oscuro #scrollTopBtn {
     .hero-docentes h1 { font-size: 1.8rem; }
     .hero-docentes p { font-size: 0.95rem; }
     #tabla_reservas_docente .table,
-    #tabla_docentes .table {
+    #tabla_docentes .table,
+    #tabla_cursos .table,
+    #tabla_grupos .table,
+    #tabla_asignaturas .table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
@@ -955,7 +1113,13 @@ body.oscuro #scrollTopBtn {
     #tabla_reservas_docente .table td,
     #tabla_reservas_docente .table th,
     #tabla_docentes .table td,
-    #tabla_docentes .table th { 
+    #tabla_docentes .table th,
+    #tabla_cursos .table td,
+    #tabla_cursos .table th,
+    #tabla_grupos .table td,
+    #tabla_grupos .table th,
+    #tabla_asignaturas .table td,
+    #tabla_asignaturas .table th { 
         padding: 0.4rem 0.6rem; 
         font-size: 0.8rem; 
     }
@@ -971,7 +1135,13 @@ body.oscuro #scrollTopBtn {
     #tabla_reservas_docente .table td,
     #tabla_reservas_docente .table th,
     #tabla_docentes .table td,
-    #tabla_docentes .table th { 
+    #tabla_docentes .table th,
+    #tabla_cursos .table td,
+    #tabla_cursos .table th,
+    #tabla_grupos .table td,
+    #tabla_grupos .table th,
+    #tabla_asignaturas .table td,
+    #tabla_asignaturas .table th { 
         padding: 0.3rem 0.4rem; 
         font-size: 0.7rem; 
     }
