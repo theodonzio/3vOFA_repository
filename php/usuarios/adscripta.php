@@ -10,6 +10,8 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
 include '../tools/head.php';
 include '../tools/headers/header_adscripta.php';
 include '../login/conexion_bd.php';
+// Limpiar reservas antiguas automáticamente
+include '../funciones/limpiar_reservas_antiguas.php';
 ?>
 
 <body>

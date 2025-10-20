@@ -1,39 +1,102 @@
 <?php
-include '../login/conexion_bd.php';
+/**
+ * Procesar aprobación o rechazo de reservas
+ */
+
 session_start();
+include '../login/conexion_bd.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Obtener datos
-    $id_reserva = intval($_POST['id_reserva']);
-    $accion = isset($_POST['accion']) ? $_POST['accion'] : '';
-
-    // Determinar el estado según la acción
+    $id_reserva = isset($_POST['id_reserva']) ? intval($_POST['id_reserva']) : 0;
+    $accion = isset($_POST['accion']) ? trim($_POST['accion']) : '';
+    $use_sweetalert = isset($_POST['use_sweetalert']) ? true : false;
+    
+    // Validar datos
+    if ($id_reserva <= 0 || empty($accion)) {
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit();
+    }
+    
+    // Determinar nuevo estado
     if ($accion == 'Aprobar') {
         $nuevo_estado = 'Aprobada';
-        $mensaje = 'Reserva aprobada correctamente';
     } elseif ($accion == 'Rechazar') {
         $nuevo_estado = 'No aprobada';
-        $mensaje = 'Reserva rechazada correctamente';
     } else {
-        echo "<script>alert('Error: Acción no reconocida'); window.location='../usuarios/adscripta.php';</script>";
-        exit;
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit();
     }
-
-    // Actualizar en la base de datos
+    
+    // Actualizar en base de datos
     $sql = "UPDATE reserva SET estado = ? WHERE id_reserva = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $nuevo_estado, $id_reserva);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('" . $mensaje . "'); window.location='../usuarios/adscripta.php';</script>";
+    
+    if ($stmt) {
+        $stmt->bind_param("si", $nuevo_estado, $id_reserva);
+        
+        if ($stmt->execute()) {
+            // Redirigir con parámetros para SweetAlert
+            $redirect_url = $_SERVER['HTTP_REFERER'];
+            $separator = (strpos($redirect_url, '?') !== false) ? '&' : '?';
+            $redirect_url .= $separator . "success=1&accion=" . urlencode($accion);
+            
+            header("Location: " . $redirect_url);
+            exit();
+        } else {
+            // Error al actualizar
+            echo "<!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset='UTF-8'>
+                <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css'>
+                <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+            </head>
+            <body>
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo actualizar la reserva. Intenta nuevamente.',
+                        confirmButtonColor: '#dc3545'
+                    }).then(() => {
+                        window.location.href = '" . $_SERVER['HTTP_REFERER'] . "';
+                    });
+                </script>
+            </body>
+            </html>";
+            exit();
+        }
+        
+        $stmt->close();
     } else {
-        echo "<script>alert('Error al actualizar la reserva'); window.location='../usuarios/adscripta.php';</script>";
+        // Error al preparar consulta
+        echo "<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset='UTF-8'>
+            <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css'>
+            <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+        </head>
+        <body>
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error en la base de datos',
+                    text: 'Contacta al administrador del sistema.',
+                    confirmButtonColor: '#dc3545'
+                }).then(() => {
+                    window.location.href = '" . $_SERVER['HTTP_REFERER'] . "';
+                });
+            </script>
+        </body>
+        </html>";
+        exit();
     }
-
-    $stmt->close();
+    
     $conn->close();
 } else {
-    header("Location: ../usuarios/adscripta.php");
-    exit;
+    header("Location: " . $_SERVER['HTTP_REFERER']);
+    exit();
 }
 ?>

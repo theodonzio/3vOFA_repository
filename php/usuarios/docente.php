@@ -24,7 +24,10 @@ $id_docente = $_SESSION['id_usuario'];
     <?php include '../tools/reloj.php'; ?>
 </div>
 
-<!-- Hero Docente -->
+<!-- Sección de Horarios -->
+<?php include '../tools/sections/seccion_horarios_docente.php'; ?>
+
+<!-- Hero Reservas -->
 <div class="hero hero-imagen text-white d-flex align-items-center justify-content-center py-5" 
      style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
@@ -47,6 +50,7 @@ $id_docente = $_SESSION['id_usuario'];
       <form action="../funciones/realizar_reserva.php" method="POST">
         <div class="modal-header">
           <h5 class="modal-title" id="realizarReservaLabel" data-traducible="Realizar Reserva">Realizar Reserva</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
 
@@ -120,26 +124,34 @@ $id_docente = $_SESSION['id_usuario'];
 <?php if (isset($_GET['reserva'])): ?>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  const isDark = document.body.classList.contains('oscuro');
+  
   <?php if ($_GET['reserva'] === 'success'): ?>
     Swal.fire({
       icon: 'success',
       title: '¡Reserva realizada!',
       text: 'Tu reserva fue registrada correctamente.',
-      confirmButtonColor: '#198754'
+      confirmButtonColor: '#198754',
+      background: isDark ? '#2c2c2c' : '#fff',
+      color: isDark ? '#f5f5f5' : '#212529'
     });
   <?php elseif ($_GET['reserva'] === 'error_fecha'): ?>
     Swal.fire({
       icon: 'error',
       title: 'Fecha u hora inválida',
       text: 'No puedes reservar en una fecha u hora pasada.',
-      confirmButtonColor: '#dc3545'
+      confirmButtonColor: '#dc3545',
+      background: isDark ? '#2c2c2c' : '#fff',
+      color: isDark ? '#f5f5f5' : '#212529'
     });
   <?php elseif ($_GET['reserva'] === 'error'): ?>
     Swal.fire({
       icon: 'error',
       title: 'Error al reservar',
       text: 'Ocurrió un error al registrar tu reserva. Intenta nuevamente.',
-      confirmButtonColor: '#dc3545'
+      confirmButtonColor: '#dc3545',
+      background: isDark ? '#2c2c2c' : '#fff',
+      color: isDark ? '#f5f5f5' : '#212529'
     });
   <?php endif; ?>
 });

@@ -1,6 +1,6 @@
 <?php
 /**
- * Sección de Reservas de Docentes
+ * Sección de Reservas de Docentes con SweetAlert2
  */
 ?>
 
@@ -15,15 +15,18 @@
         include '../login/conexion_bd.php';
     }
     
+    // SQL modificado: mostrar reservas hasta que pase su fecha_fin
     $sql = "SELECT r.id_reserva, e.nombre_espacio, e.tipo AS tipo_salon,
                    DATE(r.fecha_inicio) AS fecha,
                    TIME(r.fecha_inicio) AS hora_inicio,
                    TIME(r.fecha_fin) AS hora_fin,
+                   r.fecha_fin AS fecha_fin_completa,
                    u.nombre AS nombre_docente, u.apellido AS apellido_docente,
                    r.estado
             FROM reserva r
             JOIN espacio e ON r.id_espacio = e.id_espacio
             JOIN usuario u ON r.id_docente = u.id_usuario
+            WHERE r.fecha_fin >= NOW()
             ORDER BY 
                 CASE 
                     WHEN r.estado = 'Pendiente' THEN 1
@@ -52,6 +55,12 @@
                 $icono = 'x-circle';
                 $textoColor = 'text-danger';
             }
+            
+            // Escapar datos para JavaScript
+            $docenteJs = htmlspecialchars($row['nombre_docente'] . ' ' . $row['apellido_docente'], ENT_QUOTES);
+            $salonJs = htmlspecialchars($row['nombre_espacio'], ENT_QUOTES);
+            $fechaJs = htmlspecialchars($row['fecha'], ENT_QUOTES);
+            $horarioJs = htmlspecialchars($row['hora_inicio'] . ' - ' . $row['hora_fin'], ENT_QUOTES);
     ?>
             <div class="col-md-4 mb-4">
                 <div class="card border-0 shadow-lg h-100 rounded-4 overflow-hidden">
@@ -74,13 +83,23 @@
 
                         <?php if ($estado == 'Pendiente') { ?>
                         <div class="d-flex gap-2">
-                            <!-- BOTÓN APROBAR (VERDE) -->
-                            <button type="button" class="btn btn-success w-100 flex-fill" data-bs-toggle="modal" data-bs-target="#modalAprobar<?php echo $row['id_reserva']; ?>">
+                            <!-- BOTÓN APROBAR -->
+                            <button type="button" class="btn btn-success w-100 flex-fill btn-aprobar-reserva" 
+                                    data-id="<?php echo $row['id_reserva']; ?>"
+                                    data-docente="<?php echo $docenteJs; ?>"
+                                    data-salon="<?php echo $salonJs; ?>"
+                                    data-fecha="<?php echo $fechaJs; ?>"
+                                    data-horario="<?php echo $horarioJs; ?>">
                                 <i class="bi bi-check-lg"></i> <span data-traducible="Aprobar">Aprobar</span>
                             </button>
                             
-                            <!-- BOTÓN RECHAZAR (ROJO) -->
-                            <button type="button" class="btn btn-danger w-100 flex-fill" data-bs-toggle="modal" data-bs-target="#modalRechazar<?php echo $row['id_reserva']; ?>">
+                            <!-- BOTÓN RECHAZAR -->
+                            <button type="button" class="btn btn-danger w-100 flex-fill btn-rechazar-reserva" 
+                                    data-id="<?php echo $row['id_reserva']; ?>"
+                                    data-docente="<?php echo $docenteJs; ?>"
+                                    data-salon="<?php echo $salonJs; ?>"
+                                    data-fecha="<?php echo $fechaJs; ?>"
+                                    data-horario="<?php echo $horarioJs; ?>">
                                 <i class="bi bi-x-lg"></i> <span data-traducible="Rechazar">Rechazar</span>
                             </button>
                         </div>
@@ -89,81 +108,6 @@
                     
                     <div class="card-footer text-muted text-center small bg-light">
                         <span data-traducible="ID Reserva:">ID Reserva:</span> <?php echo $row['id_reserva']; ?>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MODAL APROBAR -->
-            <div class="modal fade" id="modalAprobar<?php echo $row['id_reserva']; ?>" tabindex="-1" aria-labelledby="modalAprobarLabel<?php echo $row['id_reserva']; ?>" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header bg-success text-white">
-                            <h5 class="modal-title" id="modalAprobarLabel<?php echo $row['id_reserva']; ?>">
-                                <i class="bi bi-check-circle"></i> <span data-traducible="Confirmar Aprobación">Confirmar Aprobación</span>
-                            </h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p data-traducible="¿Está seguro que desea aprobar esta reserva?">¿Está seguro que desea aprobar esta reserva?</p>
-                            <div class="alert alert-info">
-                                <strong><?php echo htmlspecialchars($row['nombre_docente'] . ' ' . $row['apellido_docente']); ?></strong><br>
-                                <small>
-                                    <strong data-traducible="Salón:">Salón:</strong> <?php echo htmlspecialchars($row['nombre_espacio']); ?><br>
-                                    <strong data-traducible="Fecha:">Fecha:</strong> <?php echo htmlspecialchars($row['fecha']); ?><br>
-                                    <strong data-traducible="Horario:">Horario:</strong> <?php echo htmlspecialchars($row['hora_inicio'] . ' - ' . $row['hora_fin']); ?>
-                                </small>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                <i class="bi bi-x-lg"></i> <span data-traducible="Cancelar">Cancelar</span>
-                            </button>
-                            <form action="../funciones/aprobar_reserva.php" method="POST" class="d-inline">
-                                <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
-                                <input type="hidden" name="accion" value="Aprobar">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="bi bi-check-lg"></i> <span data-traducible="Confirmar Aprobación">Confirmar Aprobación</span>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MODAL RECHAZAR -->
-            <div class="modal fade" id="modalRechazar<?php echo $row['id_reserva']; ?>" tabindex="-1" aria-labelledby="modalRechazarLabel<?php echo $row['id_reserva']; ?>" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header bg-danger text-white">
-                            <h5 class="modal-title" id="modalRechazarLabel<?php echo $row['id_reserva']; ?>">
-                                <i class="bi bi-x-circle"></i> <span data-traducible="Confirmar Rechazo">Confirmar Rechazo</span>
-                            </h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p data-traducible="¿Está seguro que desea rechazar esta reserva?">¿Está seguro que desea rechazar esta reserva?</p>
-                            <div class="alert alert-warning">
-                                <strong><?php echo htmlspecialchars($row['nombre_docente'] . ' ' . $row['apellido_docente']); ?></strong><br>
-                                <small>
-                                    <strong data-traducible="Salón:">Salón:</strong> <?php echo htmlspecialchars($row['nombre_espacio']); ?><br>
-                                    <strong data-traducible="Fecha:">Fecha:</strong> <?php echo htmlspecialchars($row['fecha']); ?><br>
-                                    <strong data-traducible="Horario:">Horario:</strong> <?php echo htmlspecialchars($row['hora_inicio'] . ' - ' . $row['hora_fin']); ?>
-                                </small>
-                            </div>
-                            <p class="text-muted small" data-traducible="Esta acción no se puede deshacer.">Esta acción no se puede deshacer.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                <i class="bi bi-x-lg"></i> <span data-traducible="Cancelar">Cancelar</span>
-                            </button>
-                            <form action="../funciones/aprobar_reserva.php" method="POST" class="d-inline">
-                                <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
-                                <input type="hidden" name="accion" value="Rechazar">
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="bi bi-trash"></i> <span data-traducible="Confirmar Rechazo">Confirmar Rechazo</span>
-                                </button>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -177,3 +121,180 @@
 </div>
 
 <script src="../../../js/traductor.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Script de reservas cargado');
+    
+    // Función para detectar modo oscuro
+    function isDarkMode() {
+        return document.body.classList.contains('oscuro');
+    }
+    
+    // Función para aprobar reserva
+    document.querySelectorAll('.btn-aprobar-reserva').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const idReserva = this.getAttribute('data-id');
+            const docente = this.getAttribute('data-docente');
+            const salon = this.getAttribute('data-salon');
+            const fecha = this.getAttribute('data-fecha');
+            const horario = this.getAttribute('data-horario');
+            
+            const dark = isDarkMode();
+            
+            Swal.fire({
+                title: '¿Aprobar esta reserva?',
+                html: `
+                    <div class="text-start">
+                        <p><strong>Docente:</strong> ${docente}</p>
+                        <p><strong>Salón:</strong> ${salon}</p>
+                        <p><strong>Fecha:</strong> ${fecha}</p>
+                        <p><strong>Horario:</strong> ${horario}</p>
+                    </div>
+                `,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#198754',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: '<i class="bi bi-check-lg"></i> Sí, aprobar',
+                cancelButtonText: '<i class="bi bi-x-lg"></i> Cancelar',
+                background: dark ? '#2c2c2c' : '#fff',
+                color: dark ? '#f5f5f5' : '#212529'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    enviarAccion(idReserva, 'Aprobar');
+                }
+            });
+        });
+    });
+    
+    // Función para rechazar reserva
+    document.querySelectorAll('.btn-rechazar-reserva').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const idReserva = this.getAttribute('data-id');
+            const docente = this.getAttribute('data-docente');
+            const salon = this.getAttribute('data-salon');
+            const fecha = this.getAttribute('data-fecha');
+            const horario = this.getAttribute('data-horario');
+            
+            const dark = isDarkMode();
+            
+            Swal.fire({
+                title: '¿Rechazar esta reserva?',
+                html: `
+                    <div class="text-start">
+                        <p><strong>Docente:</strong> ${docente}</p>
+                        <p><strong>Salón:</strong> ${salon}</p>
+                        <p><strong>Fecha:</strong> ${fecha}</p>
+                        <p><strong>Horario:</strong> ${horario}</p>
+                        <p class="text-danger mt-3"><small><i class="bi bi-exclamation-triangle"></i> Esta acción no se puede deshacer.</small></p>
+                    </div>
+                `,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: '<i class="bi bi-trash"></i> Sí, rechazar',
+                cancelButtonText: '<i class="bi bi-x-lg"></i> Cancelar',
+                background: dark ? '#2c2c2c' : '#fff',
+                color: dark ? '#f5f5f5' : '#212529'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    enviarAccion(idReserva, 'Rechazar');
+                }
+            });
+        });
+    });
+    
+    // Función para enviar acción
+    function enviarAccion(idReserva, accion) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '../funciones/aprobar_reserva.php';
+        
+        const inputId = document.createElement('input');
+        inputId.type = 'hidden';
+        inputId.name = 'id_reserva';
+        inputId.value = idReserva;
+        
+        const inputAccion = document.createElement('input');
+        inputAccion.type = 'hidden';
+        inputAccion.name = 'accion';
+        inputAccion.value = accion;
+        
+        const inputSweetAlert = document.createElement('input');
+        inputSweetAlert.type = 'hidden';
+        inputSweetAlert.name = 'use_sweetalert';
+        inputSweetAlert.value = '1';
+        
+        form.appendChild(inputId);
+        form.appendChild(inputAccion);
+        form.appendChild(inputSweetAlert);
+        document.body.appendChild(form);
+        form.submit();
+    }
+    
+    // Mostrar resultado después de la acción
+    <?php if (isset($_GET['success']) && isset($_GET['accion'])): ?>
+        const dark = isDarkMode();
+        
+        <?php if ($_GET['accion'] == 'Aprobar'): ?>
+            Swal.fire({
+                icon: 'success',
+                title: '¡Reserva Aprobada!',
+                text: 'La reserva ha sido aprobada exitosamente.',
+                confirmButtonColor: '#198754',
+                confirmButtonText: 'Aceptar',
+                timer: 3000,
+                timerProgressBar: true,
+                background: dark ? '#2c2c2c' : '#fff',
+                color: dark ? '#f5f5f5' : '#212529'
+            });
+        <?php elseif ($_GET['accion'] == 'Rechazar'): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Reserva Rechazada',
+                text: 'La reserva ha sido rechazada correctamente.',
+                confirmButtonColor: '#dc3545',
+                confirmButtonText: 'Aceptar',
+                timer: 3000,
+                timerProgressBar: true,
+                background: dark ? '#2c2c2c' : '#fff',
+                color: dark ? '#f5f5f5' : '#212529'
+            });
+        <?php endif; ?>
+        
+        // Limpiar URL
+        const url = new URL(window.location);
+        url.searchParams.delete('success');
+        url.searchParams.delete('accion');
+        window.history.replaceState({}, document.title, url);
+    <?php endif; ?>
+});
+</script>
+
+<style>
+/* Estilos para SweetAlert en modo oscuro */
+body.oscuro .swal2-popup {
+    background-color: #2c2c2c !important;
+    color: #f5f5f5 !important;
+}
+
+body.oscuro .swal2-title {
+    color: #f5f5f5 !important;
+}
+
+body.oscuro .swal2-html-container {
+    color: #f5f5f5 !important;
+}
+
+body.oscuro .swal2-icon.swal2-question {
+    border-color: #6ea8fe !important;
+    color: #6ea8fe !important;
+}
+
+body.oscuro .swal2-icon.swal2-warning {
+    border-color: #ffc107 !important;
+    color: #ffc107 !important;
+}
+</style>
