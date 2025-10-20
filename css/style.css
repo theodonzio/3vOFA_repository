@@ -2024,3 +2024,14 @@ body.oscuro #mensajeInicialHorarios p,
 body.oscuro #mensajeInicialHorarios i {
   color: #d1d1d1 !important; /* gris claro sobre fondo oscuro */
 }
+
+/* Texto tenue (modo claro por defecto) */
+.text-muted {
+  color: #6c757d !important; /* gris por defecto de Bootstrap */
+  transition: color 0.3s ease;
+}
+
+/* Modo oscuro activo */
+.oscuro .text-muted {
+  color: #e0e0e0 !important; /* gris claro tirando a blanco */
+}
