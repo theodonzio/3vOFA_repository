@@ -45,62 +45,62 @@ $id_docente = $_SESSION['id_usuario'];
 
 <!-- Modal Realizar Reserva -->
 <div class="modal fade" id="realizarReservaModal" tabindex="-1" aria-labelledby="realizarReservaLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <form action="../funciones/realizar_reserva.php" method="POST">
-        <div class="modal-header">
-          <h5 class="modal-title" id="realizarReservaLabel" data-traducible="Realizar Reserva">Realizar Reserva</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form action="../funciones/realizar_reserva.php" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="realizarReservaLabel" data-traducible="Realizar Reserva">Realizar Reserva</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label" data-traducible="Selecciona un Espacio">Selecciona un Espacio</label>
+                        <select name="id_espacio" id="nombre_salon" class="form-select" required>
+                            <option value="" data-traducible="Seleccione un salón">Seleccione un salón</option>
+                            <?php
+                            $sql = "SELECT id_espacio, nombre_espacio, tipo FROM espacio ORDER BY nombre_espacio ASC";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $nombre = htmlspecialchars($row['nombre_espacio'] . ' (' . $row['tipo'] . ')');
+                                    echo "<option value='".$row['id_espacio']."'>{$nombre}</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" data-traducible="Fecha">Fecha</label>
+                        <input type="date" name="fecha_reserva" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" data-traducible="Horario">Horario</label>
+                        <select name="id_horario" class="form-select" required>
+                            <option value="" data-traducible="Seleccione un horario">Seleccione un horario</option>
+                            <?php
+                            $sql = "SELECT id_horario, nombre_horario, hora_inicio, hora_fin FROM horario ORDER BY id_horario ASC";
+                            $result = $conn->query($sql);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $horario = htmlspecialchars($row['nombre_horario'] . ' (' . $row['hora_inicio'] . ' - ' . $row['hora_fin'] . ')');
+                                    echo "<option value='".$row['id_horario']."'>{$horario}</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <!-- Nueva sección para recursos -->
+                    <div class="mb-3" id="recursos-container" style="display: none;">
+                        <label class="form-label" data-traducible="Selecciona los recursos">Selecciona los recursos</label>
+                        <div id="recursos-list"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+                    <button type="submit" class="btn btn-success submit_btn" data-traducible="Reservar">Reservar</button>
+                </div>
+            </form>
         </div>
-        <div class="modal-body">
-
-          <div class="mb-3">
-            <label class="form-label" data-traducible="Selecciona un Espacio">Selecciona un Espacio</label>
-            <select name="id_espacio" id="nombre_salon" class="form-select" required>
-              <option value="" data-traducible="Seleccione un salón">Seleccione un salón</option>
-              <?php
-              $sql = "SELECT id_espacio, nombre_espacio, tipo FROM espacio ORDER BY nombre_espacio ASC";
-              $result = $conn->query($sql);
-              if ($result->num_rows > 0) {
-                  while ($row = $result->fetch_assoc()) {
-                      $nombre = htmlspecialchars($row['nombre_espacio'] . ' (' . $row['tipo'] . ')');
-                      echo "<option value='".$row['id_espacio']."'>{$nombre}</option>";
-                  }
-              }
-              ?>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label" data-traducible="Fecha">Fecha</label>
-            <input type="date" name="fecha_reserva" class="form-control" required>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label" data-traducible="Horario">Horario</label>
-            <select name="id_horario" class="form-select" required>
-              <option value="" data-traducible="Seleccione un horario">Seleccione un horario</option>
-              <?php
-              $sql = "SELECT id_horario, nombre_horario, hora_inicio, hora_fin FROM horario ORDER BY id_horario ASC";
-              $result = $conn->query($sql);
-              if ($result->num_rows > 0) {
-                  while ($row = $result->fetch_assoc()) {
-                      $horario = htmlspecialchars($row['nombre_horario'] . ' (' . $row['hora_inicio'] . ' - ' . $row['hora_fin'] . ')');
-                      echo "<option value='".$row['id_horario']."'>{$horario}</option>";
-                  }
-              }
-              ?>
-            </select>
-          </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
-          <button type="submit" class="btn btn-success submit_btn" data-traducible="Reservar">Reservar</button>
-        </div>
-      </form>
     </div>
-  </div>
 </div>
 
 <!-- Tabla de Mis Reservas -->
@@ -157,6 +157,47 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <?php endif; ?>
+
+<script>
+document.getElementById('nombre_salon').addEventListener('change', function() {
+    const idEspacio = this.value;
+    const recursosContainer = document.getElementById('recursos-container');
+    const recursosList = document.getElementById('recursos-list');
+    
+    if (idEspacio) {
+        // Hacer petición AJAX para obtener recursos
+        fetch(`../funciones/obtener_recursos.php?id_espacio=${idEspacio}`)
+            .then(response => response.json())
+            .then(data => {
+                recursosList.innerHTML = ''; // Limpiar lista anterior
+                if (data.length > 0) {
+                    data.forEach(recurso => {
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.name = 'recursos[]';
+                        checkbox.value = recurso.id_recurso;
+                        checkbox.id = `recurso-${recurso.id_recurso}`;
+                        
+                        const label = document.createElement('label');
+                        label.htmlFor = `recurso-${recurso.id_recurso}`;
+                        label.textContent = recurso.nombre_recurso;
+                        
+                        const div = document.createElement('div');
+                        div.appendChild(checkbox);
+                        div.appendChild(label);
+                        recursosList.appendChild(div);
+                    });
+                    recursosContainer.style.display = 'block'; // Mostrar sección
+                } else {
+                    recursosContainer.style.display = 'none'; // Ocultar si no hay recursos
+                }
+            })
+            .catch(error => console.error('Error al cargar recursos:', error));
+    } else {
+        recursosContainer.style.display = 'none';
+    }
+});
+</script>
 
 </body>
 </html>
