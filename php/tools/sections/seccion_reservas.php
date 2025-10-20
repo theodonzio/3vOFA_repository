@@ -75,28 +75,95 @@
                         <?php if ($estado == 'Pendiente') { ?>
                         <div class="d-flex gap-2">
                             <!-- BOTÓN APROBAR (VERDE) -->
-                            <form action="../funciones/aprobar_reserva.php" method="POST" class="flex-fill">
-                                <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
-                                <input type="hidden" name="accion" value="Aprobar">
-                                <button type="submit" class="btn btn-success w-100">
-                                    <i class="bi bi-check-lg"></i> <span data-traducible="Aprobar">Aprobar</span>
-                                </button>
-                            </form>
+                            <button type="button" class="btn btn-success w-100 flex-fill" data-bs-toggle="modal" data-bs-target="#modalAprobar<?php echo $row['id_reserva']; ?>">
+                                <i class="bi bi-check-lg"></i> <span data-traducible="Aprobar">Aprobar</span>
+                            </button>
                             
                             <!-- BOTÓN RECHAZAR (ROJO) -->
-                            <form action="../funciones/aprobar_reserva.php" method="POST" class="flex-fill">
-                                <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
-                                <input type="hidden" name="accion" value="Rechazar">
-                                <button type="submit" class="btn btn-danger w-100">
-                                    <i class="bi bi-x-lg"></i> <span data-traducible="Rechazar">Rechazar</span>
-                                </button>
-                            </form>
+                            <button type="button" class="btn btn-danger w-100 flex-fill" data-bs-toggle="modal" data-bs-target="#modalRechazar<?php echo $row['id_reserva']; ?>">
+                                <i class="bi bi-x-lg"></i> <span data-traducible="Rechazar">Rechazar</span>
+                            </button>
                         </div>
                         <?php } ?>
                     </div>
                     
                     <div class="card-footer text-muted text-center small bg-light">
                         <span data-traducible="ID Reserva:">ID Reserva:</span> <?php echo $row['id_reserva']; ?>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL APROBAR -->
+            <div class="modal fade" id="modalAprobar<?php echo $row['id_reserva']; ?>" tabindex="-1" aria-labelledby="modalAprobarLabel<?php echo $row['id_reserva']; ?>" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success text-white">
+                            <h5 class="modal-title" id="modalAprobarLabel<?php echo $row['id_reserva']; ?>">
+                                <i class="bi bi-check-circle"></i> <span data-traducible="Confirmar Aprobación">Confirmar Aprobación</span>
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p data-traducible="¿Está seguro que desea aprobar esta reserva?">¿Está seguro que desea aprobar esta reserva?</p>
+                            <div class="alert alert-info">
+                                <strong><?php echo htmlspecialchars($row['nombre_docente'] . ' ' . $row['apellido_docente']); ?></strong><br>
+                                <small>
+                                    <strong data-traducible="Salón:">Salón:</strong> <?php echo htmlspecialchars($row['nombre_espacio']); ?><br>
+                                    <strong data-traducible="Fecha:">Fecha:</strong> <?php echo htmlspecialchars($row['fecha']); ?><br>
+                                    <strong data-traducible="Horario:">Horario:</strong> <?php echo htmlspecialchars($row['hora_inicio'] . ' - ' . $row['hora_fin']); ?>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                <i class="bi bi-x-lg"></i> <span data-traducible="Cancelar">Cancelar</span>
+                            </button>
+                            <form action="../funciones/aprobar_reserva.php" method="POST" class="d-inline">
+                                <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
+                                <input type="hidden" name="accion" value="Aprobar">
+                                <button type="submit" class="btn btn-success">
+                                    <i class="bi bi-check-lg"></i> <span data-traducible="Confirmar Aprobación">Confirmar Aprobación</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL RECHAZAR -->
+            <div class="modal fade" id="modalRechazar<?php echo $row['id_reserva']; ?>" tabindex="-1" aria-labelledby="modalRechazarLabel<?php echo $row['id_reserva']; ?>" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-danger text-white">
+                            <h5 class="modal-title" id="modalRechazarLabel<?php echo $row['id_reserva']; ?>">
+                                <i class="bi bi-x-circle"></i> <span data-traducible="Confirmar Rechazo">Confirmar Rechazo</span>
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p data-traducible="¿Está seguro que desea rechazar esta reserva?">¿Está seguro que desea rechazar esta reserva?</p>
+                            <div class="alert alert-warning">
+                                <strong><?php echo htmlspecialchars($row['nombre_docente'] . ' ' . $row['apellido_docente']); ?></strong><br>
+                                <small>
+                                    <strong data-traducible="Salón:">Salón:</strong> <?php echo htmlspecialchars($row['nombre_espacio']); ?><br>
+                                    <strong data-traducible="Fecha:">Fecha:</strong> <?php echo htmlspecialchars($row['fecha']); ?><br>
+                                    <strong data-traducible="Horario:">Horario:</strong> <?php echo htmlspecialchars($row['hora_inicio'] . ' - ' . $row['hora_fin']); ?>
+                                </small>
+                            </div>
+                            <p class="text-muted small" data-traducible="Esta acción no se puede deshacer.">Esta acción no se puede deshacer.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                <i class="bi bi-x-lg"></i> <span data-traducible="Cancelar">Cancelar</span>
+                            </button>
+                            <form action="../funciones/aprobar_reserva.php" method="POST" class="d-inline">
+                                <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
+                                <input type="hidden" name="accion" value="Rechazar">
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="bi bi-trash"></i> <span data-traducible="Confirmar Rechazo">Confirmar Rechazo</span>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -110,5 +177,3 @@
 </div>
 
 <script src="../../../js/traductor.js"></script>
-
-<!-- Sin JavaScript - Los formularios funcionan directamente -->
