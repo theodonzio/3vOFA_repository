@@ -44,6 +44,26 @@ include '../funciones/limpiar_reservas_antiguas.php';
     </div>
 </div>
 
+<!-- Hero Horarios -->
+<div id="HeroHorarios" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
+     style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2070&auto=format&fit=crop');">
+    <div class="hero-overlay"></div>
+    <div class="container text-center hero-content">
+        <h2 data-traducible="Gestión de Horarios" class="display-6 fw-semibold">Gestión de Horarios</h2>
+        <p data-traducible="Desde aquí puedes agregar, visualizar y administrar los horarios del sistema" class="mb-4">
+            Desde aquí puedes agregar, visualizar y administrar los horarios del sistema
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarHorarioModal">
+                <i class="bi bi-calendar-plus-fill"></i>
+                <span data-traducible="Agregar Horario">Agregar Horario</span>
+            </button>
+            <a href="../PaginasAdcriptas/horarios.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Horarios">Ver Horarios</a>
+        </div>
+    </div>
+</div>
+
+
 <!-- Hero Cursos -->
 <div id="HeroCursos" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop');">
