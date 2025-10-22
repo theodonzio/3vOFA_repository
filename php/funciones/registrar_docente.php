@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena_hash = password_hash($contrasena, PASSWORD_DEFAULT);
 
     // --- Inserción en la base de datos ---
-    $sql = "INSERT INTO Usuario (nombre, apellido, cedula, email, contrasena, id_rol)
+    $sql = "INSERT INTO usuario (nombre, apellido, cedula, email, contrasena, id_rol)
             VALUES (?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
