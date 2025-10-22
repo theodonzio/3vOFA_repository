@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2025 a las 16:08:10
+-- Tiempo de generación: 22-10-2025 a las 19:14:40
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,8 +39,6 @@ CREATE TABLE `asignatura` (
 --
 
 INSERT INTO `asignatura` (`id_asignatura`, `nombre_asignatura`, `carga_horaria`, `id_curso`) VALUES
-(4, 'Historia', NULL, NULL),
-(5, 'Geometria', NULL, NULL),
 (6, 'Ciberseguridad2', NULL, NULL),
 (7, 'Programación lll', NULL, NULL),
 (8, 'Ingenieria', NULL, NULL);
@@ -63,7 +61,7 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`id_curso`, `nombre_curso`, `descripcion`, `duracion_anos`) VALUES
-(1, 'Informática', 'Técnico en Informática', 3),
+(1, 'Informática comun', 'Técnico en Informática comun', 3),
 (2, 'Bachillerato', 'Bachillerato Tecnológico', 3),
 (3, 'Administración', 'Técnico en Administración', 2),
 (4, 'Informatica', 'Informatica comun', 3),
@@ -197,7 +195,6 @@ CREATE TABLE `estudiante_grupo` (
 --
 
 INSERT INTO `estudiante_grupo` (`id_usuario`, `id_grupo`, `anio_academico`) VALUES
-(3, 1, 2024),
 (3, 2, 2023),
 (3, 3, 2022);
 
@@ -220,7 +217,6 @@ CREATE TABLE `grupo` (
 --
 
 INSERT INTO `grupo` (`id_grupo`, `nombre_grupo`, `anio_curso`, `id_curso`, `id_turno`) VALUES
-(1, '1A', 1, 1, 1),
 (2, '2B', 2, 2, 2),
 (3, '3C', 3, 3, 3),
 (4, 'MD', 3, 1, 1),
@@ -632,20 +628,6 @@ CREATE TABLE `reserva` (
   `id_espacio` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `reserva`
---
-
-INSERT INTO `reserva` (`id_reserva`, `fecha_inicio`, `fecha_fin`, `tipo_reserva`, `estado`, `id_grupo_asignatura`, `id_docente`, `id_aprobador`, `id_espacio`) VALUES
-(1, '2024-09-05 08:00:00', '2024-09-05 10:00:00', 'Clase', 'Aprobada', NULL, 2, 1, 1),
-(2, '2024-09-06 14:00:00', '2024-09-06 16:00:00', 'Examen', 'Aprobada', NULL, 2, NULL, 2),
-(3, '2024-09-07 10:00:00', '2024-09-07 12:00:00', 'Estudio', 'Aprobada', NULL, 2, 1, 3),
-(4, '2025-10-06 12:00:00', '2025-10-06 12:45:00', 'Clase', 'No aprobada', NULL, 2, NULL, 10),
-(5, '2025-10-06 12:50:00', '2025-10-06 13:35:00', 'Clase', 'Aprobada', NULL, 2, NULL, 10),
-(6, '2025-10-07 07:50:00', '2025-10-07 08:35:00', 'Clase', 'No aprobada', NULL, 2, NULL, 10),
-(7, '2025-10-07 11:10:00', '2025-10-07 11:55:00', 'Clase', 'Aprobada', NULL, 4, NULL, 7),
-(8, '2025-10-13 07:00:00', '2025-10-13 07:45:00', 'Clase', 'Aprobada', NULL, 4, NULL, 7);
-
 -- --------------------------------------------------------
 
 --
@@ -729,7 +711,6 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `cedula`, `email`, `contrasena`, `id_rol`) VALUES
 (1, 'María', 'González', '12345678', 'maria@instituto.edu.uy', '$2y$10$1iij6THLthJZpCI94TuoVOutBeTWANIkMbPVi78qqAr.d7/D1xJA2', 1),
-(2, 'Carlos', 'Rodríguez', '23456789', 'carlos@instituto.edu.uy', '$2y$10$dfcOEoUmv4CkgUEPGwvIVeRnrb.Li5bLNhiVYFm.EmJFEbml8AsCa', 2),
 (3, 'Ana', 'Martínez', '34567890', 'ana@instituto.edu.uy', 'pass789', 3),
 (4, 'Facundo', 'Rubil', '12344567', 'facundorubil@gmail.com', '$2y$10$4LUxCakyMcYLc3WLNwDfqulgz8MdG2BUuCuz6nzGFkJodRPI5cjQ6', 2),
 (8, 'Valentino', 'Grampin', '12344569', 'valegrampin@gmail.com', '$2y$10$26z/4LZHPh.WgIk30pmsyu3olTemOQ5DvjUewLc4wgYZouOaRNZ2O', 2),
@@ -931,7 +912,7 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `asignatura`
 --
 ALTER TABLE `asignatura`
-  ADD CONSTRAINT `asignatura_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`);
+  ADD CONSTRAINT `asignatura_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `curso_horario`
@@ -945,20 +926,20 @@ ALTER TABLE `curso_horario`
 --
 ALTER TABLE `estudiante_grupo`
   ADD CONSTRAINT `estudiante_grupo_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
-  ADD CONSTRAINT `estudiante_grupo_ibfk_2` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`);
+  ADD CONSTRAINT `estudiante_grupo_ibfk_2` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  ADD CONSTRAINT `grupo_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`),
+  ADD CONSTRAINT `grupo_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE,
   ADD CONSTRAINT `grupo_ibfk_2` FOREIGN KEY (`id_turno`) REFERENCES `turno` (`id_turno`);
 
 --
 -- Filtros para la tabla `horario_grupo_asignatura`
 --
 ALTER TABLE `horario_grupo_asignatura`
-  ADD CONSTRAINT `horario_grupo_asignatura_ibfk_1` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`),
+  ADD CONSTRAINT `horario_grupo_asignatura_ibfk_1` FOREIGN KEY (`id_grupo`) REFERENCES `grupo` (`id_grupo`) ON DELETE CASCADE,
   ADD CONSTRAINT `horario_grupo_asignatura_ibfk_2` FOREIGN KEY (`id_horario`) REFERENCES `horario` (`id_horario`) ON DELETE CASCADE;
 COMMIT;
 
