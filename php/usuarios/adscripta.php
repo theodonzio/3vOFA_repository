@@ -125,8 +125,6 @@ include '../funciones/limpiar_reservas_antiguas.php';
 <!-- Sección Reservas -->
 <?php include '../tools/sections/seccion_reservas.php'; ?>
 
-<?php include '../tools/sections/seccion_avisos_inasistencia.php'; ?>
-
 <!-- Botón scroll top -->
 <a href="#top" id="scrollTopBtn" class="btn btn-secondary shadow-lg position-fixed bottom-0 end-0 m-4" 
    style="z-index:999; font-size:28px; opacity:0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s;">
