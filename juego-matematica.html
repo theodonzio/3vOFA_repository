@@ -247,34 +247,12 @@
             transform: scale(0.95);
         }
 
-        .number-btn.notes-mode {
-            background: #f0f4ff;
-            font-size: 1em;
-        }
-
         .action-buttons {
             display: flex;
             gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 20px;
-        }
-
-        .notes {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-            gap: 1px;
-            position: absolute;
-            inset: 2px;
-            font-size: 0.4em;
-            color: #999;
-        }
-
-        .note {
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .message {
@@ -425,59 +403,6 @@
                 justify-content: space-around;
             }
         }
-
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 30px;
-        }
-
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 30px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 22px;
-            width: 22px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-
-        input:checked + .slider {
-            background-color: #667eea;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(30px);
-        }
-
-        .notes-toggle {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            justify-content: center;
-        }
     </style>
 </head>
 <body>
@@ -516,14 +441,6 @@
         </div>
 
         <div class="sudoku-board" id="board"></div>
-
-        <div class="notes-toggle">
-            <span>Modo Notas:</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="notesMode" onchange="toggleNotesMode()">
-                <span class="slider"></span>
-            </label>
-        </div>
 
         <div class="number-pad" id="numberPad"></div>
 
@@ -576,8 +493,6 @@
         let hintsRemaining = 3;
         let timer = 0;
         let timerInterval = null;
-        let notesMode = false;
-        let notes = Array(9).fill().map(() => Array(9).fill().map(() => new Set()));
         let moveHistory = [];
 
         // Dificultades (cantidad de celdas a mostrar)
@@ -636,7 +551,6 @@
             hintsRemaining = 3;
             timer = 0;
             moveHistory = [];
-            notes = Array(9).fill().map(() => Array(9).fill().map(() => new Set()));
             
             clearInterval(timerInterval);
             timerInterval = setInterval(() => {
@@ -756,17 +670,6 @@
                     if (solution[row][col] !== value) {
                         cell.classList.add('error');
                     }
-                } else if (notesMode && notes[row][col].size > 0) {
-                    // Mostrar notas
-                    const notesDiv = document.createElement('div');
-                    notesDiv.className = 'notes';
-                    for (let i = 1; i <= 9; i++) {
-                        const note = document.createElement('div');
-                        note.className = 'note';
-                        note.textContent = notes[row][col].has(i) ? i : '';
-                        notesDiv.appendChild(note);
-                    }
-                    cell.appendChild(notesDiv);
                 }
                 
                 // Destacar celda seleccionada
@@ -802,45 +705,33 @@
             
             if (initialBoard[row][col] !== 0) return;
             
-            if (notesMode) {
-                // Modo notas
-                if (notes[row][col].has(num)) {
-                    notes[row][col].delete(num);
-                } else {
-                    notes[row][col].add(num);
-                }
-            } else {
-                // Modo normal
-                const oldValue = board[row][col];
-                board[row][col] = num;
+            // Modo normal
+            const oldValue = board[row][col];
+            board[row][col] = num;
+            
+            // Guardar movimiento para deshacer
+            moveHistory.push({ row, col, oldValue, newValue: num });
+            
+            // Verificar si es correcto
+            if (solution[row][col] !== num) {
+                errors++;
+                updateDisplay();
                 
-                // Guardar movimiento para deshacer
-                moveHistory.push({ row, col, oldValue, newValue: num });
-                
-                // Verificar si es correcto
-                if (solution[row][col] !== num) {
-                    errors++;
-                    updateDisplay();
-                    
-                    if (errors >= maxErrors) {
-                        setTimeout(() => {
-                            showMessage('¡Demasiados errores! Juego terminado', 'error');
-                            clearInterval(timerInterval);
-                        }, 500);
-                    } else {
-                        showMessage(`Error detectado (${errors}/${maxErrors})`, 'error');
-                    }
-                } else {
-                    // Limpiar notas de la celda
-                    notes[row][col].clear();
-                }
-                
-                // Verificar si ganó
-                if (checkWin()) {
+                if (errors >= maxErrors) {
                     setTimeout(() => {
-                        showVictoryModal();
+                        showMessage('¡Demasiados errores! Juego terminado', 'error');
+                        clearInterval(timerInterval);
                     }, 500);
+                } else {
+                    showMessage(`Error detectado (${errors}/${maxErrors})`, 'error');
                 }
+            }
+            
+            // Verificar si ganó
+            if (checkWin()) {
+                setTimeout(() => {
+                    showVictoryModal();
+                }, 500);
             }
             
             renderBoard();
@@ -858,7 +749,6 @@
             
             const oldValue = board[row][col];
             board[row][col] = 0;
-            notes[row][col].clear();
             
             // Guardar movimiento para deshacer
             if (oldValue !== 0) {
@@ -907,7 +797,6 @@
             // Seleccionar una celda aleatoria vacía
             const [row, col] = emptyCells[Math.floor(Math.random() * emptyCells.length)];
             board[row][col] = solution[row][col];
-            notes[row][col].clear();
             
             hintsRemaining--;
             updateDisplay();
@@ -951,18 +840,6 @@
                 }
             }
             return true;
-        }
-
-        function toggleNotesMode() {
-            notesMode = document.getElementById('notesMode').checked;
-            const numberBtns = document.querySelectorAll('.number-btn');
-            numberBtns.forEach(btn => {
-                if (notesMode) {
-                    btn.classList.add('notes-mode');
-                } else {
-                    btn.classList.remove('notes-mode');
-                }
-            });
         }
 
         function updateDisplay() {
