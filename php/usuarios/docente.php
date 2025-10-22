@@ -106,6 +106,10 @@ $id_docente = $_SESSION['id_usuario'];
 <!-- Tabla de Mis Reservas -->
 <?php include '../tools/sections/tabla_reservas_docente.php'; ?>
 
+<?php include '../tools/modales/modal_avisar_inasistencia.php'; ?>
+
+<?php include '../tools/sections/tabla_avisos_docente.php'; ?>
+
 <!-- Botón scroll top -->
 <a href="#top" id="scrollTopBtn" class="btn btn-secondary shadow-lg position-fixed bottom-0 end-0 m-4" 
    style="z-index:999; font-size:28px; opacity:0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s;">
