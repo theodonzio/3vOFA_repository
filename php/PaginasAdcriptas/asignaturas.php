@@ -87,6 +87,16 @@ $result = $conn->query($sql);
   </div>
 </div>
 
+<!-- Mensajes simples -->
+<div class="container mt-4">
+  <?php if (isset($_GET['edit']) && $_GET['edit'] === 'success'): ?>
+    <div class="alert alert-success">Asignatura actualizada correctamente.</div>
+  <?php endif; ?>
+  <?php if (isset($_GET['delete']) && $_GET['delete'] === 'success'): ?>
+    <div class="alert alert-success">Asignatura eliminada correctamente.</div>
+  <?php endif; ?>
+</div>
+
 <!-- Tabla de Asignaturas -->
 <div class="mb-5 hero">
   <div class="shadow-lg border-0 rounded-4" id="tabla_asignaturas">
@@ -100,6 +110,7 @@ $result = $conn->query($sql);
                 <th data-traducible="Nombre de la Asignatura">Nombre de la Asignatura</th>
                 <th data-traducible="Docente">Docente</th>
                 <th data-traducible="Grupo">Grupo</th>
+                <th data-traducible="Acciones">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -109,7 +120,50 @@ $result = $conn->query($sql);
                   <td><?= htmlspecialchars($row['nombre_asignatura']) ?></td>
                   <td><?= htmlspecialchars($row['docente'] ?? '—') ?></td>
                   <td><?= htmlspecialchars($row['grupo'] ?? '—') ?></td>
+                  <td>
+                    <!-- Botón Editar -->
+                    <button class="btn btn-warning btn-sm me-1" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#editarAsignaturaModal<?= $row['id_asignatura'] ?>"
+                            title="Editar">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+
+                    <!-- Botón Eliminar -->
+                    <a href="eliminar_asignatura.php?id=<?= urlencode($row['id_asignatura']) ?>" 
+                       class="btn btn-danger btn-sm"
+                       onclick="return confirm('¿Seguro que deseas eliminar la asignatura <?= addslashes(htmlspecialchars($row['nombre_asignatura'])) ?>?');"
+                       title="Eliminar">
+                      <i class="bi bi-trash"></i>
+                    </a>
+                  </td>
                 </tr>
+
+                <!-- Modal Editar -->
+                <div class="modal fade" id="editarAsignaturaModal<?= $row['id_asignatura'] ?>" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <form action="editar_asignatura.php" method="POST">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Editar Asignatura #<?= htmlspecialchars($row['id_asignatura']) ?></h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                          <input type="hidden" name="id_asignatura" value="<?= htmlspecialchars($row['id_asignatura']) ?>">
+                          <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" name="nombre_asignatura" class="form-control" value="<?= htmlspecialchars($row['nombre_asignatura']) ?>" required>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Modal Editar -->
               <?php endwhile; ?>
             </tbody>
           </table>
@@ -126,13 +180,6 @@ $result = $conn->query($sql);
 
 <!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
-  });
-</script>
-
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
 

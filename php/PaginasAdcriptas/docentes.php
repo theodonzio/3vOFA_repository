@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+// Verificar sesión (mismo comportamiento que en los otros archivos)
+if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
+    header("Location: ../../index.php?login=" . (!isset($_SESSION['id_usuario']) ? 'required' : 'unauthorized'));
+    exit;
+}
+
+include '../tools/head.php';
+include '../login/conexion_bd.php';
+
+// Obtener todos los docentes (id_rol = 2)
+$sql = "SELECT id_usuario, nombre, apellido, cedula, email FROM usuario WHERE id_rol = 2 ORDER BY id_usuario ASC";
+$result = $conn->query($sql);
+?>
+
 <link rel="stylesheet" href="../../css/style.css">
 
 <header>
@@ -30,14 +47,7 @@
   </nav>
 </header>
 
-<?php
-include '../tools/head.php';
-include '../login/conexion_bd.php';
-
-// Obtener todos los docentes (id_rol = 2)
-$sql = "SELECT id_usuario, nombre, apellido, cedula, email FROM usuario WHERE id_rol = 2";
-$result = $conn->query($sql);
-?>
+<body>
 
 <!-- Hero Docentes -->
 <div class="hero text-white py-5 d-flex align-items-center justify-content-center"
@@ -69,11 +79,21 @@ $result = $conn->query($sql);
   </div>
 </div>
 
+<!-- Mensajes simples -->
+<div class="container mt-4">
+  <?php if (isset($_GET['edit']) && $_GET['edit'] === 'success'): ?>
+    <div class="alert alert-success">Docente actualizado correctamente.</div>
+  <?php endif; ?>
+  <?php if (isset($_GET['delete']) && $_GET['delete'] === 'success'): ?>
+    <div class="alert alert-success">Docente eliminado correctamente.</div>
+  <?php endif; ?>
+</div>
+
 <!-- Tabla Docentes -->
 <div class="mb-5 hero">
   <div class="shadow-lg border-0 rounded-4" id="tabla_docentes">
     <div>
-      <?php if ($result->num_rows > 0): ?>
+      <?php if ($result && $result->num_rows > 0): ?>
         <div class="table-responsive">
           <table class="table table-hover align-middle text-center table-striped mb-0">
             <thead>
@@ -83,17 +103,78 @@ $result = $conn->query($sql);
                 <th data-traducible="Apellido">Apellido</th>
                 <th data-traducible="Cédula">Cédula</th>
                 <th data-traducible="Email">Email</th>
+                <th data-traducible="Acciones">Acciones</th>
               </tr>
             </thead>
             <tbody>
               <?php while ($row = $result->fetch_assoc()): ?>
                 <tr>
-                  <td><?= $row['id_usuario'] ?></td>
+                  <td><?= htmlspecialchars($row['id_usuario']) ?></td>
                   <td><?= htmlspecialchars($row['nombre']) ?></td>
                   <td><?= htmlspecialchars($row['apellido']) ?></td>
                   <td><?= htmlspecialchars($row['cedula']) ?></td>
                   <td><?= htmlspecialchars($row['email']) ?></td>
+                  <td>
+                    <!-- Botón Editar -->
+                    <button class="btn btn-warning btn-sm me-1" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#editarDocenteModal<?= $row['id_usuario'] ?>"
+                            title="Editar"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+
+                    <!-- Botón Eliminar -->
+                    <a href="eliminar_docente.php?id=<?= urlencode($row['id_usuario']) ?>" 
+                       class="btn btn-danger btn-sm"
+                       onclick="return confirm('¿Seguro que deseas eliminar al docente <?= addslashes(htmlspecialchars($row['nombre'] . ' ' . $row['apellido'])) ?>?');"
+                       title="Eliminar"
+                       data-bs-toggle="tooltip"
+                       data-bs-placement="top">
+                      <i class="bi bi-trash"></i>
+                    </a>
+                  </td>
                 </tr>
+
+                <!-- Modal Editar por cada docente -->
+                <div class="modal fade" id="editarDocenteModal<?= $row['id_usuario'] ?>" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <form action="editar_docente.php" method="POST">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Editar Docente #<?= htmlspecialchars($row['id_usuario']) ?></h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                          <input type="hidden" name="id_usuario" value="<?= htmlspecialchars($row['id_usuario']) ?>">
+                          <div class="mb-3">
+                            <label class="form-label" data-traducible="Nombre">Nombre</label>
+                            <input type="text" name="nombre" class="form-control" value="<?= htmlspecialchars($row['nombre']) ?>" required>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" data-traducible="Apellido">Apellido</label>
+                            <input type="text" name="apellido" class="form-control" value="<?= htmlspecialchars($row['apellido']) ?>" required>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" data-traducible="Cédula">Cédula</label>
+                            <input type="text" name="cedula" class="form-control" value="<?= htmlspecialchars($row['cedula']) ?>" required>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label" data-traducible="Email">Email</label>
+                            <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($row['email']) ?>" required>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Modal Editar -->
+
               <?php endwhile; ?>
             </tbody>
           </table>
@@ -121,9 +202,8 @@ $result = $conn->query($sql);
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
 
-</body>
-
 <?php include '../tools/footer.php'; ?>
-</html>
-
 <?php $conn->close(); ?>
+
+</body>
+</html>

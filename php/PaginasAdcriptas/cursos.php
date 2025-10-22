@@ -76,6 +76,16 @@ $result = $conn->query($sql);
   </div>
 </div>
 
+<!-- Mensajes simples -->
+<div class="container mt-4">
+  <?php if (isset($_GET['edit']) && $_GET['edit'] === 'success'): ?>
+    <div class="alert alert-success">Curso actualizado correctamente.</div>
+  <?php endif; ?>
+  <?php if (isset($_GET['delete']) && $_GET['delete'] === 'success'): ?>
+    <div class="alert alert-success">Curso eliminado correctamente.</div>
+  <?php endif; ?>
+</div>
+
 <!-- Tabla Cursos -->
 <div class="mb-5 hero">
   <div class="shadow-lg border-0 rounded-4" id="tabla_cursos">
@@ -89,6 +99,7 @@ $result = $conn->query($sql);
                 <th data-traducible="Nombre">Nombre</th>
                 <th data-traducible="Descripción">Descripción</th>
                 <th data-traducible="Duración (Años)">Duración (Años)</th>
+                <th data-traducible="Acciones">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -98,7 +109,59 @@ $result = $conn->query($sql);
                   <td><?= htmlspecialchars($row['nombre_curso']) ?></td>
                   <td><?= htmlspecialchars($row['descripcion'] ?: '—') ?></td>
                   <td><?= htmlspecialchars($row['duracion_anos'] ?: '—') ?></td>
+                  <td>
+                    <!-- Botón Editar (abre modal único por fila) -->
+                    <button class="btn btn-warning btn-sm me-1" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#editarCursoModal<?= $row['id_curso'] ?>"
+                            title="Editar">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+
+                    <!-- Botón Eliminar -->
+                    <a href="eliminar_curso.php?id=<?= urlencode($row['id_curso']) ?>" 
+                       class="btn btn-danger btn-sm"
+                       onclick="return confirm('¿Seguro que deseas eliminar el curso <?= addslashes(htmlspecialchars($row['nombre_curso'])) ?>?');"
+                       title="Eliminar">
+                      <i class="bi bi-trash"></i>
+                    </a>
+                  </td>
                 </tr>
+
+                <!-- Modal Editar por cada fila -->
+                <div class="modal fade" id="editarCursoModal<?= $row['id_curso'] ?>" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <form action="editar_curso.php" method="POST">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Editar Curso #<?= htmlspecialchars($row['id_curso']) ?></h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                          <input type="hidden" name="id_curso" value="<?= htmlspecialchars($row['id_curso']) ?>">
+                          <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" name="nombre_curso" class="form-control" value="<?= htmlspecialchars($row['nombre_curso']) ?>" required>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea name="descripcion" class="form-control" rows="3"><?= htmlspecialchars($row['descripcion']) ?></textarea>
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Duración (Años)</label>
+                            <input type="number" min="0" name="duracion_anos" class="form-control" value="<?= htmlspecialchars($row['duracion_anos']) ?>">
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Modal Editar -->
+
               <?php endwhile; ?>
             </tbody>
           </table>
