@@ -116,6 +116,7 @@ include '../funciones/limpiar_reservas_antiguas.php';
 
 <?php include '../tools/sections/seccion_horarios.php'; ?>
 
+<!-- Hero Recursos -->
 <div id="HeroRecursos" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
@@ -133,6 +134,41 @@ include '../funciones/limpiar_reservas_antiguas.php';
         </div>
     </div>
 </div>
+
+
+<!--  Modal Agregar Recurso -->
+<div class="modal fade" id="agregarRecursoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="../PaginasAdcriptas/agregar_recurso.php" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" data-traducible="Agregar Nuevo Recurso">Agregar Nuevo Recurso</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Nombre del Recurso">Nombre del Recurso</label>
+            <input type="text" name="nombre_recurso" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Tipo">Tipo</label>
+            <input type="text" name="tipo" class="form-control">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-primary" data-traducible="Agregar">Agregar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
 
 <div id="HeroEspacios" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop');">
