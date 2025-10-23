@@ -84,26 +84,4 @@ $id_grupo_header = isset($_GET['id_grupo']) ? intval($_GET['id_grupo']) : (isset
   </nav>
 </header>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const idiomaGuardado = localStorage.getItem("idioma") || "es";
-  const esItem = document.getElementById("lenguaje-es");
-  const enItem = document.getElementById("lenguaje-en");
-
-  if (idiomaGuardado === "es") {
-    esItem?.classList.add("active");
-  } else {
-    enItem?.classList.add("active");
-  }
-
-  esItem?.addEventListener("click", () => {
-    esItem.classList.add("active");
-    enItem.classList.remove("active");
-  });
-  
-  enItem?.addEventListener("click", () => {
-    enItem.classList.add("active");
-    esItem.classList.remove("active");
-  });
-});
-</script>
+<script src="../../js/header-estudiante-leng.js"></script>
