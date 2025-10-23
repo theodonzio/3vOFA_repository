@@ -41,87 +41,17 @@
     <h5 id="subtitulo" data-traducible="Ingresa a tu perfil">Ingresa a tu perfil</h5>
   </div>
 
-<?php
-  include '../php/tools/ventanaModales.php';
-?>
+  <?php include '../php/tools/ventanaModales.php'; ?>
 
+</main>
+
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../js/traductor.js"></script>
 <script src="../js/loginModal.js"></script>
 <script src="../js/modoClaroOscuro.js"></script>
+<script src="../js/notificaciones-index.js"></script>
 
-<?php if (isset($_GET['login'])): ?>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Detectar si estamos en modo oscuro
-  const isDarkMode = document.body.classList.contains('oscuro');
-
-  const swalTheme = isDarkMode ? 'dark' : 'light';
-
-  <?php if ($_GET['login'] === 'success'): ?>
-    const rol = "<?php echo $_GET['rol'] ?? ''; ?>";
-
-    Swal.fire({
-      icon: 'success',
-      title: 'Inicio de sesión correcto',
-      text: 'Bienvenido/a al sistema.',
-      timer: 1800,
-      showConfirmButton: false,
-      background: isDarkMode ? '#2c2c2c' : '#fff',
-      color: isDarkMode ? '#f5f5f5' : '#212529'
-    }).then(() => {
-      if (rol === '1') {
-        window.location.href = 'usuarios/adscripta.php';
-      } else if (rol === '2') {
-        window.location.href = 'usuarios/docente.php';
-      } else {
-        window.location.href = 'usuarios/estudiante.php';
-      }
-    });
-  <?php elseif ($_GET['login'] === 'error_pass'): ?>
-    Swal.fire({
-      icon: 'error',
-      title: 'Contraseña incorrecta',
-      text: 'Verifica tu contraseña e inténtalo de nuevo.',
-      confirmButtonText: 'Intentar de nuevo',
-      background: isDarkMode ? '#2c2c2c' : '#fff',
-      color: isDarkMode ? '#f5f5f5' : '#212529'
-    });
-  <?php elseif ($_GET['login'] === 'error_user'): ?>
-    Swal.fire({
-      icon: 'warning',
-      title: 'Usuario no encontrado',
-      text: 'No existe una cuenta con ese correo o cédula.',
-      confirmButtonText: 'OK',
-      background: isDarkMode ? '#2c2c2c' : '#fff',
-      color: isDarkMode ? '#f5f5f5' : '#212529'
-    });
-  <?php endif; ?>
-});
-</script>
-<?php endif; ?>
-<?php if (isset($_GET['login']) && $_GET['login'] === 'required'): ?>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  Swal.fire({
-    icon: 'warning',
-    title: 'Inicia sesión primero',
-    text: 'Debes iniciar sesión para acceder al sistema.',
-    confirmButtonText: 'Entendido'
-  });
-});
-</script>
-<?php elseif (isset($_GET['login']) && $_GET['login'] === 'unauthorized'): ?>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  Swal.fire({
-    icon: 'error',
-    title: 'Acceso no autorizado',
-    text: 'No tienes permisos para acceder a esa página.',
-    confirmButtonText: 'OK'
-  });
-});
-</script>
-<?php endif; ?>
 </body>
+</html>
