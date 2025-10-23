@@ -58,19 +58,10 @@ $result = $conn->query($sql);
 <body>
 
 <!-- Hero Asignaturas -->
-<div class="hero text-white py-5 d-flex align-items-center justify-content-center"
-     style="background-image: url('https://images.unsplash.com/photo-1587691592099-24045742c181?q=80&w=2073&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            min-height: 400px;
-            border-radius: 20px;">
+<div class="hero text-white py-5 d-flex align-items-center justify-content-center hero-asignaturas">
+  <div class="hero-overlay"></div>
 
-  <div style="position: absolute; top:0; left:0; right:0; bottom:0;
-              background: rgba(0,0,0,0.4);
-              border-radius: 20px;"></div>
-
-  <div class="container text-center" style="position: relative; z-index: 1; max-width: 900px;">
+  <div class="container text-center hero-content">
     <h2 class="display-6 fw-semibold" data-traducible="Asignaturas">Asignaturas</h2>
     <p class="mb-4" data-traducible="Visualiza todas las asignaturas registradas en el sistema">
       Visualiza todas las asignaturas registradas en el sistema
@@ -78,8 +69,7 @@ $result = $conn->query($sql);
 
     <div class="d-flex justify-content-center gap-3">
       <a href="../usuarios/adscripta.php" 
-         class="btn btn-outline-light px-3 py-2"
-         style="font-size: 0.95rem;"
+         class="btn btn-outline-light px-3 py-2 btn-volver"
          data-traducible="Volver al Panel">
         Volver al Panel
       </a>
