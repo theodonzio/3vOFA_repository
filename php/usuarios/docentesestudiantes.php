@@ -14,13 +14,12 @@ include '../tools/headers/header_estudiante.php';
 ?>
 
 <link rel="stylesheet" href="../../css/style.css">
-
 <body>
 
 <!-- Título Principal -->
 <div class="text-center my-5">
     <div class="mb-4">
-        <i class="bi bi-person-workspace" style="font-size: 4rem; color: #0d6efd;"></i>
+        <i class="bi bi-person-workspace icon-main"></i>
     </div>
     <h1 class="display-4 fw-bold text-primary" data-traducible="Mis Docentes">Mis Docentes</h1>
     <p class="lead text-muted" data-traducible="Conoce a los profesores de tu grupo">
@@ -97,11 +96,7 @@ $stmt->close();
                     <div class="card h-100 shadow-sm border-0 docente-card">
                         <div class="card-body text-center">
                             <!-- Avatar con iniciales -->
-                            <div class="avatar-circle mx-auto mb-3" 
-                                 style="width: 80px; height: 80px; background-color: <?= $color ?>; 
-                                        border-radius: 50%; display: flex; align-items: center; 
-                                        justify-content: center; color: white; font-size: 2rem; 
-                                        font-weight: bold;">
+                            <div class="avatar-circle mx-auto mb-3" style="background-color: <?= $color ?>;">
                                 <?= $iniciales ?>
                             </div>
                             
@@ -164,9 +159,7 @@ $stmt->close();
 </div>
 
 <!-- Botón scroll top -->
-<a href="#top" id="scrollTopBtn" class="btn btn-secondary shadow-lg position-fixed bottom-0 end-0 m-4" 
-   style="z-index:999; font-size:28px; opacity:0; transform: translateY(20px); 
-          transition: opacity 0.5s, transform 0.5s;">
+<a href="#top" id="scrollTopBtn" class="btn btn-secondary shadow-lg position-fixed bottom-0 end-0 m-4">
     <i class="bi bi-caret-up-fill"></i>
 </a>
 
@@ -178,68 +171,6 @@ $stmt->close();
 <script src="../../js/traductor.js"></script>
 <script src="../../js/scroll-top.js"></script>
 <script src="../../js/watchFunction.js"></script>
-
-<style>
-/* Estilos para las tarjetas de docentes */
-.docente-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 15px;
-}
-
-.docente-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
-}
-
-.avatar-circle {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.docente-card:hover .avatar-circle {
-    transform: scale(1.1);
-}
-
-/* Modo oscuro */
-body.oscuro .docente-card {
-    background-color: #2c2c2c !important;
-    color: #f5f5f5 !important;
-}
-
-body.oscuro .card.bg-light {
-    background-color: #3a3a3a !important;
-    color: #f5f5f5 !important;
-}
-
-body.oscuro .text-muted {
-    color: #adb5bd !important;
-}
-
-body.oscuro .alert-info {
-    background-color: #2c3e50 !important;
-    border-color: #34495e !important;
-    color: #ecf0f1 !important;
-}
-
-/* Badges responsivos */
-.badge {
-    font-size: 0.85rem;
-    padding: 0.5rem 0.75rem;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .avatar-circle {
-        width: 60px !important;
-        height: 60px !important;
-        font-size: 1.5rem !important;
-    }
-    
-    .card-title {
-        font-size: 1.1rem;
-    }
-}
-</style>
 
 </body>
 </html>
