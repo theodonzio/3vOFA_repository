@@ -2455,3 +2455,360 @@ body.oscuro #grupoSelectDocente:focus {
     border-color: #198754;
     box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
 }
+
+
+/* Estilos para Sección de Gestión de Horarios */
+
+/* FORZAR VISIBILIDAD DE LA TABLA */
+#contenedorTablaHorarios {
+    display: block !important;
+}
+
+#tablaHorarios {
+    display: table !important;
+    visibility: visible !important;
+    width: 100% !important;
+}
+
+#cuerpoTablaHorarios {
+    display: table-row-group !important;
+    visibility: visible !important;
+}
+
+#cuerpoTablaHorarios tr {
+    display: table-row !important;
+    visibility: visible !important;
+}
+
+#cuerpoTablaHorarios td {
+    display: table-cell !important;
+    visibility: visible !important;
+}
+
+/* Card del selector de grupo */
+#GestionHorarios ~ p + .d-flex .card {
+    max-width: 500px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#GestionHorarios ~ p + .d-flex .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Selector de grupo */
+#grupoSelectHorarios {
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+#grupoSelectHorarios:hover {
+    border-color: #0d6efd;
+}
+
+#grupoSelectHorarios:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Estado de carga */
+#estadoCarga {
+    padding: 3rem 0;
+}
+
+#estadoCarga .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Contenedor de tabla */
+#contenedorTablaHorarios {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Alert de información */
+#contenedorTablaHorarios .alert-info {
+    border-left: 4px solid #0dcaf0;
+}
+
+/* Tabla de horarios */
+#tablaHorarios {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#tablaHorarios thead th {
+    font-weight: 700;
+    font-size: 1rem;
+    vertical-align: middle;
+    padding: 1rem;
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+#tablaHorarios tbody td {
+    vertical-align: middle;
+    padding: 0.5rem;
+}
+
+#tablaHorarios tbody tr {
+    transition: background-color 0.2s;
+}
+
+#tablaHorarios tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* Selects dentro de la tabla */
+#tablaHorarios .form-select {
+    font-size: 0.875rem;
+    border-radius: 6px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#tablaHorarios .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+#tablaHorarios .form-select option {
+    padding: 0.5rem;
+}
+
+/* Columna de hora */
+#tablaHorarios .bg-light {
+    background-color: #f8f9fa !important;
+}
+
+/* Botones de acción */
+#limpiarHorarios,
+#guardarCambiosHorarios {
+    min-width: 150px;
+    transition: all 0.3s ease;
+}
+
+#limpiarHorarios:hover {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+    transform: translateY(-2px);
+}
+
+#guardarCambiosHorarios:hover {
+    background-color: #157347;
+    border-color: #146c43;
+    transform: translateY(-2px);
+}
+
+#limpiarHorarios:active,
+#guardarCambiosHorarios:active {
+    transform: translateY(0);
+}
+
+/* Mensaje inicial */
+#mensajeInicialHorarios {
+    padding: 3rem 0;
+}
+
+#mensajeInicialHorarios .bi-arrow-up-circle {
+    color: #6c757d;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Modo oscuro */
+body.oscuro #contenedorTablaHorarios .card {
+    background-color: #2b2b2b;
+    border-color: #444;
+}
+
+body.oscuro #grupoSelectHorarios {
+    background-color: #3a3a3a;
+    color: #f5f5f5;
+    border-color: #555;
+}
+
+body.oscuro #grupoSelectHorarios:hover {
+    border-color: #0d6efd;
+}
+
+body.oscuro #grupoSelectHorarios:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
+}
+
+body.oscuro #estadoCarga .spinner-border {
+    color: #0d6efd;
+}
+
+body.oscuro .alert-info {
+    background-color: #2c3e50 !important;
+    border-color: #34495e !important;
+    color: #ecf0f1 !important;
+}
+
+body.oscuro #tablaHorarios {
+    background-color: #2b2b2b;
+    color: #f5f5f5;
+}
+
+body.oscuro #tablaHorarios thead th {
+    background-color: #0a58ca !important;
+}
+
+body.oscuro #tablaHorarios tbody td {
+    background-color: #3a3a3a;
+    color: #f5f5f5;
+    border-color: #555;
+}
+
+body.oscuro #tablaHorarios tbody tr:hover {
+    background-color: #404040;
+}
+
+body.oscuro #tablaHorarios .bg-light {
+    background-color: #3a3a3a !important;
+    color: #f5f5f5 !important;
+}
+
+body.oscuro #tablaHorarios .form-select {
+    background-color: #2b2b2b;
+    color: #f5f5f5;
+    border-color: #555;
+}
+
+body.oscuro #tablaHorarios .form-select:focus {
+    background-color: #3a3a3a;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.5);
+}
+
+body.oscuro #tablaHorarios .form-select option {
+    background-color: #2b2b2b;
+    color: #f5f5f5;
+}
+
+body.oscuro #limpiarHorarios:hover {
+    background-color: #5c636a;
+    border-color: #565e64;
+}
+
+body.oscuro #guardarCambiosHorarios {
+    background-color: #198754;
+}
+
+body.oscuro #guardarCambiosHorarios:hover {
+    background-color: #146c43;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #tablaHorarios {
+        font-size: 0.875rem;
+    }
+    
+    #tablaHorarios thead th,
+    #tablaHorarios tbody td {
+        padding: 0.5rem 0.25rem;
+    }
+    
+    #tablaHorarios .form-select {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    #limpiarHorarios,
+    #guardarCambiosHorarios {
+        min-width: auto;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .d-flex.gap-3 {
+        flex-direction: column;
+        gap: 0 !important;
+    }
+}
+
+@media (max-width: 576px) {
+    #GestionHorarios {
+        font-size: 1.5rem;
+    }
+    
+    .alert {
+        font-size: 0.875rem;
+    }
+    
+    #tablaHorarios thead th {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.25rem;
+    }
+}
+
+/* Mejoras visuales adicionales */
+#tablaHorarios tbody td.p-2 {
+    padding: 0.75rem !important;
+}
+
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.oscuro .table-responsive {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estados de validación */
+#tablaHorarios .form-select.is-valid {
+    border-color: #198754;
+}
+
+#tablaHorarios .form-select.is-invalid {
+    border-color: #dc3545;
+}
+
+/* Loading state para botones */
+#guardarCambiosHorarios.loading {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+#guardarCambiosHorarios.loading::after {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+    border: 2px solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
