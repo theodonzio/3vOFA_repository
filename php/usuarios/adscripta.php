@@ -58,7 +58,6 @@ include '../funciones/limpiar_reservas_antiguas.php';
                 <i class="bi bi-calendar-plus-fill"></i>
                 <span data-traducible="Agregar Horario">Agregar Horario</span>
             </button>
-            <a href="../PaginasAdcriptas/horarios.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Horarios">Ver Horarios</a>
         </div>
     </div>
 </div>
