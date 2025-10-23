@@ -5,7 +5,9 @@
         <div class="modal-header">
           <h5 data-traducible="Agregar Espacio" class="modal-title" id="agregarEspacioLabel">Agregar Espacio</h5>
         </div>
+
         <div class="modal-body">
+          <!-- Tipo de Salón -->
           <div class="mb-3">
             <label data-traducible="Tipo de Salón" class="form-label">Tipo de Salón</label>
             <select name="tipo_salon" class="form-select" required>
@@ -17,7 +19,7 @@
             </select>
           </div>
 
-          <!-- Descripción del salón -->
+          <!-- Nº de Espacio -->
           <div class="mb-3">
             <label data-traducible="Nº de Espacio" class="form-label">Nº de Espacio</label>
             <input 
@@ -30,22 +32,31 @@
               required>
           </div>
 
+          <!-- Recursos dinámicos -->
           <label data-traducible="Selecciona los recursos que contiene:" class="form-label">Selecciona los recursos que contiene:</label><br>
           <div class="recursos">
-            <input type="checkbox" id="television" name="opciones[]" value="Televisión">
-            <label for="television"><img src="../../img/icons/tv_icon.png" class="icono"> <span data-traducible="Televisión">Televisión</span></label><br>
+            <?php
+            // Conexión a la BD
+            include '../login/conexion_bd.php';
+            $sql = "SELECT id_recurso, nombre_recurso, tipo FROM recurso ORDER BY nombre_recurso ASC";
+            $result = $conn->query($sql);
 
-            <input type="checkbox" id="cableHDMI" name="opciones[]" value="Cable HDMI">
-            <label for="cableHDMI"><img src="../../img/icons/hdmi_icon.png" class="icono"> <span data-traducible="Cable HDMI">Cable HDMI</span></label><br>
-
-            <input type="checkbox" id="aireAcondicionado" name="opciones[]" value="Aire Acondicionado">
-            <label for="aireAcondicionado"><img src="../../img/icons/air_icon.png" class="icono"> <span data-traducible="Aire Acondicionado">Aire Acondicionado</span></label><br>
-
-            <input type="checkbox" id="proyector" name="opciones[]" value="Proyector">
-            <label for="proyector"><img src="../../img/icons/proyector_icon.png" class="icono"> <span data-traducible="Proyector">Proyector</span></label><br>
-
-            <input type="checkbox" id="alargue" name="opciones[]" value="Alargue">
-            <label for="alargue"><img src="../../img/icons/alargue_icon.png" class="icono"> <span data-traducible="Alargue">Alargue</span></label><br>
+            if ($result && $result->num_rows > 0):
+              while ($row = $result->fetch_assoc()):
+                $id = htmlspecialchars($row['id_recurso']);
+                $nombre = htmlspecialchars($row['nombre_recurso']);
+                $tipo = htmlspecialchars($row['tipo']);
+            ?>
+              <input type="checkbox" id="recurso<?= $id ?>" name="recursos[]" value="<?= $id ?>">
+              <label for="recurso<?= $id ?>">
+                <span><?= $nombre ?> <?= $tipo ? "($tipo)" : "" ?></span>
+              </label><br>
+            <?php
+              endwhile;
+            else:
+            ?>
+              <p data-traducible="No hay recursos disponibles">No hay recursos disponibles</p>
+            <?php endif; ?>
           </div>
         </div>
 
