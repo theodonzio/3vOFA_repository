@@ -1,4 +1,3 @@
-<!-- Modal Agregar Horario -->
 <div class="modal fade" id="agregarHorarioModal" tabindex="-1" aria-labelledby="agregarHorarioLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

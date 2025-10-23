@@ -1,4 +1,3 @@
-<!-- Modal Editar Horario -->
 <div class="modal fade" id="editarHorarioModal" tabindex="-1" aria-labelledby="editarHorarioLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

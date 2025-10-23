@@ -9,7 +9,6 @@ $id_grupo_header = isset($_GET['id_grupo']) ? intval($_GET['id_grupo']) : (isset
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid d-flex align-items-center" id="header_nav">
       
-      <!-- Logo -->
       <div class="logo me-auto">
         <img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra" alt="Logo OFA">
       </div>
@@ -24,7 +23,6 @@ $id_grupo_header = isset($_GET['id_grupo']) ? intval($_GET['id_grupo']) : (isset
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
 
-          <!-- Menú General -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" 
                data-bs-toggle="dropdown" aria-expanded="false" data-traducible="General">
@@ -46,7 +44,6 @@ $id_grupo_header = isset($_GET['id_grupo']) ? intval($_GET['id_grupo']) : (isset
             </ul>
           </li>
 
-          <!-- Menú Cuenta -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" 
                data-bs-toggle="dropdown" aria-expanded="false" data-traducible="Cuenta">
@@ -61,7 +58,6 @@ $id_grupo_header = isset($_GET['id_grupo']) ? intval($_GET['id_grupo']) : (isset
             </ul>
           </li>
 
-          <!-- Menú Configuración -->
           <li class="nav-item dropdown">
             <div class="dropdown theme">
               <img src="../../img/icons/config_icon(black).png" 

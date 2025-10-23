@@ -1,9 +1,4 @@
 <?php
-/**
- * Sección de Horarios para Docentes
- * Muestra SOLO las clases del docente (no otras asignaturas)
- */
-
 // Obtener ID del docente de la sesión
 $id_docente_actual = $_SESSION['id_usuario'];
 ?>
@@ -118,7 +113,6 @@ $id_docente_actual = $_SESSION['id_usuario'];
       </table>
     </div>
 
-    <!-- Leyenda -->
     <div class="mt-3 text-center">
       <small class="text-muted">
         <i class="bi bi-info-circle me-1"></i>

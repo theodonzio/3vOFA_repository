@@ -1,9 +1,3 @@
-<?php
-/**
- * Sección de Reservas de Docentes con SweetAlert2
- */
-?>
-
 <div id="tabla_reservas_adscripta" class="container my-5">
   <h2 class="mb-4 text-center" data-traducible="Reservas de los Docentes" id="title_reserva">
     Reservas de los Docentes

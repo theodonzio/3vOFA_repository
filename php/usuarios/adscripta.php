@@ -16,7 +16,6 @@ include '../funciones/limpiar_reservas_antiguas.php';
 
 <body>
 
-<!-- Título Principal -->
 <div class="text-center titulo-adscripta">
     <img src="../../img/ofalogos/blue-logo.png" class="tinylogo"> 
     <img src="../../img/blueicons/adscriptablue.png" class="blue_icon"> 
@@ -25,7 +24,6 @@ include '../funciones/limpiar_reservas_antiguas.php';
     <?php include '../tools/reloj.php'; ?>
 </div>
 
-<!-- Hero Docentes -->
 <div id="HeroDocentes" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
@@ -44,7 +42,6 @@ include '../funciones/limpiar_reservas_antiguas.php';
     </div>
 </div>
 
-<!-- Hero Horarios -->
 <div id="HeroHorarios" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2070&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
@@ -63,7 +60,6 @@ include '../funciones/limpiar_reservas_antiguas.php';
 </div>
 
 
-<!-- Hero Cursos -->
 <div id="HeroCursos" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
@@ -82,7 +78,6 @@ include '../funciones/limpiar_reservas_antiguas.php';
     </div>
 </div>
 
-<!-- Hero Grupos -->
 <div id="HeroGrupos" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2070&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
@@ -101,7 +96,6 @@ include '../funciones/limpiar_reservas_antiguas.php';
     </div>
 </div>
 
-<!-- Hero Asignaturas -->
 <div class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1587691592099-24045742c181?q=80&w=2073&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
@@ -120,10 +114,8 @@ include '../funciones/limpiar_reservas_antiguas.php';
     </div>
 </div>
 
-<!-- Gestión de Horarios -->
 <?php include '../tools/sections/seccion_horarios.php'; ?>
 
-<!-- Hero Recursos -->
 <div id="HeroRecursos" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
@@ -142,7 +134,6 @@ include '../funciones/limpiar_reservas_antiguas.php';
     </div>
 </div>
 
-<!-- Hero Espacios -->
 <div id="HeroEspacios" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
@@ -160,10 +151,8 @@ include '../funciones/limpiar_reservas_antiguas.php';
     </div>
 </div>
 
-<!-- Sección Reservas -->
 <?php include '../tools/sections/seccion_reservas.php'; ?>
 
-<!-- Botón scroll top -->
 <a href="#top" id="scrollTopBtn" class="btn btn-secondary shadow-lg position-fixed bottom-0 end-0 m-4" 
    style="z-index:999; font-size:28px; opacity:0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s;">
     <i class="bi bi-caret-up-fill"></i>
@@ -174,7 +163,6 @@ include '../funciones/limpiar_reservas_antiguas.php';
 
 <?php include '../tools/footer.php'; ?>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../js/modoClaroOscuro.js"></script>

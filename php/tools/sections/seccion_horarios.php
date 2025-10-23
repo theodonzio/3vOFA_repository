@@ -1,4 +1,3 @@
-
 <style>
 /* FORZAR VISIBILIDAD DE LA TABLA */
 #contenedorTablaHorarios {

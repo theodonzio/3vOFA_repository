@@ -1,4 +1,3 @@
-<!-- Footer minimalista -->
 <footer class="text-light py-4">
   <div class="container text-center">
 

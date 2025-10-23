@@ -1,4 +1,3 @@
-<!-- Modal Agregar Curso -->
 <div class="modal fade" id="agregarCursoModal" tabindex="-1" aria-labelledby="agregarCursoLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content shadow border-0 rounded-3">
@@ -11,25 +10,21 @@
         </div>
 
         <div class="modal-body p-4">
-          <!-- Nombre del curso -->
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Nombre del Curso">Nombre del Curso</label>
             <input type="text" name="nombre_curso" class="form-control" placeholder="Ej: Técnico en Informática" required>
           </div>
 
-          <!-- Descripción -->
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Descripción">Descripción</label>
             <textarea name="descripcion" class="form-control" rows="2" placeholder="Descripción del curso"></textarea>
           </div>
 
-          <!-- Duración -->
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Duración en años">Duración en años</label>
             <input type="number" name="duracion_anos" class="form-control" min="1" max="10" placeholder="Ej: 3" required>
           </div>
 
-          <!-- Selección de horarios -->
           <div class="mb-3">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <label class="form-label fw-semibold mb-0" data-traducible="Seleccionar Horarios del Curso">

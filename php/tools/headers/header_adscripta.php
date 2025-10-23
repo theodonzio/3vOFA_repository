@@ -2,12 +2,11 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid d-flex align-items-center" id="header_nav">
       
-      <!-- Logo a la izquierda -->
       <div class="logo me-auto">
           <img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra">
       </div>
 
-      <!-- Botón toggler (para mobile) -->
+      <!-- Botón toggler -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

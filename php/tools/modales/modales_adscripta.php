@@ -1,8 +1,4 @@
 <?php
-/**
- * Archivo que incluye todos los modales para la página de adscripta
- * Ubicación sugerida: php/tools/modales/modales_adscripta.php
- */
 
 // Modal Registrar Docente
 include 'modal_registrar_docente.php';

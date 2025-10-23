@@ -1,10 +1,3 @@
-<?php
-/**
- * Tabla de Reservas para Docentes
- * Ubicación: php/tools/sections/tabla_reservas_docente.php
- */
-?>
-
 <!-- Tabla de Reservas del Docente -->
 <div class="padre_tabla">
     <div class="container" id="tabla_reservas_docente">
