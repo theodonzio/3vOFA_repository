@@ -15,7 +15,6 @@ $id_docente = $_SESSION['id_usuario'];
 
 <body>
 
-<!-- Título Principal -->
 <div class="text-center titulo-adscripta">
     <img src="../../img/ofalogos/blue-logo.png" class="tinylogo"> 
     <img src="../../img/blueicons/docenteblue.png" class="blue_icon"> 
@@ -24,10 +23,8 @@ $id_docente = $_SESSION['id_usuario'];
     <?php include '../tools/reloj.php'; ?>
 </div>
 
-<!-- Sección de Horarios -->
 <?php include '../tools/sections/seccion_horarios_docente.php'; ?>
 
-<!-- Hero Reservas -->
 <div class="hero hero-imagen hero-reservas text-white d-flex align-items-center justify-content-center py-5" id="reservashero">
     <div class="hero-overlay"></div>
     <div class="container text-center hero-content">
@@ -42,7 +39,6 @@ $id_docente = $_SESSION['id_usuario'];
     </div>
 </div>
 
-<!-- Modal Realizar Reserva -->
 <div class="modal fade" id="realizarReservaModal" tabindex="-1" aria-labelledby="realizarReservaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -90,7 +86,7 @@ $id_docente = $_SESSION['id_usuario'];
                         </select>
                     </div>
                     
-                    <!-- Sección para recursos (cargada dinámicamente) -->
+                    
                     <div class="mb-3" id="recursos-container" style="display: none;">
                         <label class="form-label" data-traducible="Selecciona los recursos">Selecciona los recursos</label>
                         <div id="recursos-list"></div>
@@ -106,10 +102,8 @@ $id_docente = $_SESSION['id_usuario'];
     </div>
 </div>
 
-<!-- Tabla de Mis Reservas -->
 <?php include '../tools/sections/tabla_reservas_docente.php'; ?>
 
-<!-- Botón scroll top -->
 <a href="#top" id="scrollTopBtn" class="btn btn-secondary shadow-lg position-fixed bottom-0 end-0 m-4" 
    style="z-index:999; font-size:28px; opacity:0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s;">
     <i class="bi bi-caret-up-fill"></i>
@@ -117,7 +111,6 @@ $id_docente = $_SESSION['id_usuario'];
 
 <?php include '../tools/footer.php'; ?>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../js/modoClaroOscuro.js"></script>

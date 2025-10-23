@@ -16,7 +16,6 @@ include '../tools/headers/header_estudiante.php';
 <link rel="stylesheet" href="../../css/style.css">
 <body>
 
-<!-- Título Principal -->
 <div class="text-center my-5">
     <div class="mb-4">
         <i class="bi bi-person-workspace icon-main"></i>
@@ -165,7 +164,6 @@ $stmt->close();
 
 <?php include '../tools/footer.php'; ?>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>

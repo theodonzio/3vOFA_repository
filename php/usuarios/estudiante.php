@@ -11,7 +11,6 @@ include '../tools/headers/header_estudiante.php';
 
 <body>
 
-<!-- Título Principal -->
 <div class="container text-center my-5">
     <div class="mb-4">
         <i class="bi bi-calendar-week" style="font-size: 4rem; color: #0d6efd;"></i>
@@ -21,7 +20,6 @@ include '../tools/headers/header_estudiante.php';
     <div id="watch" class="reloj text-center mt-2 fs-4 fw-semibold text-primary"></div>
 </div>
 
-<!-- Contenedor de la tabla -->
 <div class="container my-5">
   <div id="tablaHorariosContainer" style="display: none;">
     <div class="table-responsive shadow rounded">
@@ -49,7 +47,6 @@ include '../tools/headers/header_estudiante.php';
 
 <?php include '../tools/footer.php'; ?>
 
-<!-- Scripts al final -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../js/traductor.js"></script>
 <script src="../../js/modoClaroOscuro.js"></script>
