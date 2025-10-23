@@ -15,6 +15,7 @@ $result = $conn->query($sql);
 ?>
 
 <link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/cursos.css">
 
 <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -49,26 +50,16 @@ $result = $conn->query($sql);
 <body>
 
 <!-- Hero Cursos -->
-<div class="hero text-white py-5 d-flex align-items-center justify-content-center"
-     style="background-image: url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            min-height: 400px;
-            border-radius: 20px;">
+<div class="hero text-white py-5 d-flex align-items-center justify-content-center hero-cursos">
+  <div class="hero-overlay"></div>
 
-  <div style="position: absolute; top:0; left:0; right:0; bottom:0;
-              background: rgba(0,0,0,0.4);
-              border-radius: 20px;"></div>
-
-  <div class="container text-center" style="position: relative; z-index: 1; max-width: 900px;">
+  <div class="container text-center hero-content">
     <h2 class="display-6 fw-semibold" data-traducible="Lista de Cursos Registrados">Lista de Cursos Registrados</h2>
     <p class="mb-4" data-traducible="Aquí puedes ver los cursos del sistema">Aquí puedes ver los cursos del sistema</p>
 
     <div class="d-flex justify-content-center gap-3">
       <a href="../usuarios/adscripta.php" 
-         class="btn btn-outline-light px-3 py-2"
-         style="font-size: 0.95rem;"
+         class="btn btn-outline-light px-3 py-2 btn-volver"
          data-traducible="Volver al Panel">
         Volver al Panel
       </a>
