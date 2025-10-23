@@ -28,7 +28,7 @@ $id_docente = $_SESSION['id_usuario'];
 <?php include '../tools/sections/seccion_horarios_docente.php'; ?>
 
 <!-- Hero Reservas -->
-<div class="hero hero-imagen text-white d-flex align-items-center justify-content-center py-5" 
+<div class="hero hero-imagen text-white d-flex align-items-center justify-content-center py-5" id="reservashero"
      style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
     <div class="container text-center hero-content">

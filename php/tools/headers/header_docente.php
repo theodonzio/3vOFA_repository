@@ -21,11 +21,9 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-traducible="General">General</a>
             <ul class="dropdown-menu dropdown-menu-end">
             <li class="AlinearBotones"><img src="../../img/icons/timetable_icon.png" class="icono">
-                <a class="dropdown-item" href="#GestionHorarios" data-traducible="Horarios">Horarios</a></li>              
-            <li class="AlinearBotones"><img src="../../img/icons/abc_icon.png" class="icono">
-                <a class="dropdown-item" href="#HeroGrupos" data-traducible="Grupos">Grupos</a></li>             
+                <a class="dropdown-item" href="#HorariosDocente" data-traducible="Horarios">Horarios</a></li>                         
             <li class="AlinearBotones"><img src="../../img/icons/bookmark_icon.png" class="icono">
-              <a class="dropdown-item" href="#tabla_reservas_docente" data-traducible="Reservas">Reservas</a></li>
+              <a class="dropdown-item" href="#reservashero" data-traducible="Reservas">Reservas</a></li>
             </ul>
           </li>         
 
