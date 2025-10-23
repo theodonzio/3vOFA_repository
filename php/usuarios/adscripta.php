@@ -123,6 +123,25 @@ include '../funciones/limpiar_reservas_antiguas.php';
 <!-- Gestión de Horarios -->
 <?php include '../tools/sections/seccion_horarios.php'; ?>
 
+<!-- Hero Recursos -->
+<div id="HeroRecursos" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
+     style="background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop');">
+    <div class="hero-overlay"></div>
+    <div class="container text-center hero-content">
+        <h2 data-traducible="Cursos" class="display-6 fw-semibold">Recursos</h2>
+        <p data-traducible="Desde aquí puedes agregar nuevos Recursos al sistema" class="mb-4">
+            Desde aquí puedes agregar nuevos recursos al sistema
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarRecursoModal">
+                <i class="bi bi-file-earmark-plus-fill"></i>
+                <span data-traducible="Agregar Recurso">Agregar Recurso</span>
+            </button>
+            <a href="../PaginasAdcriptas/recursos.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Recursos">Ver Recursos</a>
+        </div>
+    </div>
+</div>
+
 <!-- Hero Espacios -->
 <div id="HeroEspacios" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop');">
