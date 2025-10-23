@@ -1,4 +1,49 @@
 /* ============================================
+   VARIABLES CSS (Agregar al inicio)
+   ============================================ */
+
+:root {
+    /* Colores principales */
+    --color-primary: #1a73e8;
+    --color-primary-dark: #1565c0;
+    --color-success: #198754;
+    --color-success-dark: #157347;
+    --color-danger: #dc3545;
+    --color-warning: #ffc107;
+    --color-secondary: #6c757d;
+    
+    /* Colores de fondo */
+    --bg-light: #ffffff;
+    --bg-light-alt: #f9f9f9;
+    --bg-light-hover: #e6f3ff;
+    --bg-dark: #1e1e1e;
+    --bg-dark-alt: #2b2b2b;
+    --bg-dark-card: #2c2c2c;
+    --bg-dark-table: #3a3a3a;
+    
+    /* Bordes */
+    --border-light: #dee2e6;
+    --border-dark: #444;
+    --border-radius: 20px;
+    --border-radius-sm: 10px;
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+    --shadow-lg: 0 6px 20px rgba(0,0,0,0.15);
+    
+    /* Transiciones */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Espaciado */
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+}
+
+/* ============================================
    ESTILOS GLOBALES
    ============================================ */
 
@@ -87,7 +132,7 @@ header .navbar {
 }
 
 .submit_btn {
-    background-color: #157347 !important;
+    background-color: var(--color-success-dark) !important;
     border: none;
 }
 
@@ -97,14 +142,16 @@ header .navbar {
 
 .theme_icon_mode {
     opacity: 0.7;
-    transition: opacity 0.3s ease, transform 0.4s ease, filter 0.3s ease !important;
+    transition: opacity var(--transition-normal), 
+                transform 0.4s ease, 
+                filter var(--transition-normal) !important;
     cursor: pointer;
 }
 
 .indexlogo {
     filter: invert(100);
     width: 4rem;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-normal);
 }
 
 .btn:hover .indexlogo {
@@ -118,7 +165,7 @@ header .navbar {
 
 .recursos .icono {
     filter: brightness(0) invert(0) !important;
-    transition: filter 0.3s ease;
+    transition: filter var(--transition-normal);
 }
 
 .blue_icon {
@@ -152,9 +199,9 @@ body:not(.oscuro) .theme_icon_mode:hover {
 
 /* Modo oscuro */
 body.oscuro {
-    background-color: #1e1e1e;
+    background-color: var(--bg-dark);
     color: #f5f5f5;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal);
 }
 
 body.oscuro .theme_icon_mode {
@@ -167,7 +214,7 @@ body.oscuro .theme_icon_mode:hover {
 }
 
 body.oscuro .navbar {
-    background-color: #2b2b2b !important;
+    background-color: var(--bg-dark-alt) !important;
 }
 
 body.oscuro .navbar-nav .nav-link {
@@ -184,7 +231,7 @@ body.oscuro .icono,
 body.oscuro #boton-tema,
 body.oscuro .dropdown-item .icono {
     filter: brightness(0) invert(1);
-    transition: filter 0.3s ease;
+    transition: filter var(--transition-normal);
 }
 
 body.oscuro .recursos .icono {
@@ -201,8 +248,8 @@ body.oscuro .botones .btn img.indexlogo {
 
 .dropdown-menu {
     min-width: 180px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
     text-align: left;
 }
 
@@ -221,7 +268,7 @@ body.oscuro .botones .btn img.indexlogo {
 
 body.oscuro .dropdown-menu {
     background-color: #333;
-    border-color: #444;
+    border-color: var(--border-dark);
 }
 
 body.oscuro .dropdown-header {
@@ -281,14 +328,14 @@ body.oscuro #boton-tema:hover {
    FORMULARIOS
    ============================================ */
 
-.form-select:focus {
+.form-select:focus,
+.form-control:focus {
     box-shadow: none;
-    border-color: #dee2e6;
+    border-color: var(--border-light);
 }
 
 .form-control:focus {
-    border-color: #dee2e6 !important;
-    box-shadow: none;
+    border-color: var(--border-light) !important;
 }
 
 body.oscuro select {
@@ -331,14 +378,14 @@ input[type="checkbox"] {
     background-color: #ffffff;
     cursor: pointer;
     position: relative;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal);
     margin-right: 10px;
     vertical-align: middle;
 }
 
 input[type="checkbox"]:checked {
-    background-color: #198755;
-    border-color: #198755;
+    background-color: var(--color-success);
+    border-color: var(--color-success);
 }
 
 input[type="checkbox"]:checked::after {
@@ -354,32 +401,33 @@ input[type="checkbox"]:checked::after {
 }
 
 /* ============================================
-   MODALES
+   MODALES - UNIFICADO
    ============================================ */
 
 .modal-footer .btn {
     padding: 0.5rem 1rem;
 }
 
+/* Modo oscuro - Todos los modales */
 body.oscuro .modal-content {
-    background-color: #2b2b2b;
+    background-color: var(--bg-dark-alt);
     color: #f5f5f5;
-    border-color: #444;
+    border-color: var(--border-dark);
 }
 
 body.oscuro .modal-header {
-    background-color: #2b2b2b;
-    border-color: #444;
+    background-color: var(--bg-dark-alt);
+    border-color: var(--border-dark);
     color: #f5f5f5;
 }
 
 body.oscuro .modal-footer {
-    background-color: #2b2b2b;
-    border-color: #444;
+    background-color: var(--bg-dark-alt);
+    border-color: var(--border-dark);
 }
 
 body.oscuro .modal-body {
-    background-color: #2b2b2b;
+    background-color: var(--bg-dark-alt);
     color: #f5f5f5;
 }
 
@@ -417,11 +465,11 @@ body.oscuro .modal-content .btn-close {
 
 body.oscuro .modal-content .btn {
     color: #fff;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal);
 }
 
 body.oscuro .modal-content .btn.btn-secondary {
-    background-color: #6c757d;
+    background-color: var(--color-secondary);
     color: #fff;
     border-color: #5a6268;
 }
@@ -444,6 +492,7 @@ body.oscuro .form-check-label {
     color: #f5f5f5;
 }
 
+/* Botones outline en modo oscuro */
 body.oscuro .btn-outline-primary {
     color: #6ea8fe;
     border-color: #6ea8fe;
@@ -457,12 +506,12 @@ body.oscuro .btn-outline-primary:hover {
 
 body.oscuro .btn-outline-secondary {
     color: #adb5bd;
-    border-color: #6c757d;
+    border-color: var(--color-secondary);
 }
 
 body.oscuro .btn-outline-secondary:hover {
-    background-color: #6c757d;
-    border-color: #6c757d;
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
     color: #fff;
 }
 
@@ -472,8 +521,8 @@ body.oscuro .btn-outline-danger {
 }
 
 body.oscuro .btn-outline-danger:hover {
-    background-color: #dc3545;
-    border-color: #dc3545;
+    background-color: var(--color-danger);
+    border-color: var(--color-danger);
     color: #fff;
 }
 
@@ -514,7 +563,7 @@ body.oscuro .btn-outline-danger:hover {
     padding: 50px 20px;
     margin: 40px;
     background-color: #e6f3ff;
-    border-radius: 20px;
+    border-radius: var(--border-radius);
 }
 
 /* ============================================
@@ -523,7 +572,7 @@ body.oscuro .btn-outline-danger:hover {
 
 .hero {
     margin: 40px;
-    border-radius: 20px;
+    border-radius: var(--border-radius);
 }
 
 .hero-imagen {
@@ -531,7 +580,7 @@ body.oscuro .btn-outline-danger:hover {
     background-position: center;
     position: relative;
     min-height: 400px;
-    border-radius: 20px;
+    border-radius: var(--border-radius);
 }
 
 .hero-overlay {
@@ -541,7 +590,7 @@ body.oscuro .btn-outline-danger:hover {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.4);
-    border-radius: 20px;
+    border-radius: var(--border-radius);
 }
 
 .hero-content {
@@ -574,7 +623,7 @@ body.oscuro .btn-outline-danger:hover {
 .hero-docentes .btn {
     border: 2px solid #fff;
     color: #fff;
-    transition: all 0.3s ease;
+    transition: all var(--transition-normal);
 }
 
 .hero-docentes .btn:hover {
@@ -600,34 +649,45 @@ body.oscuro .btn-outline-danger:hover {
     to { opacity: 1; transform: translateY(0); }
 }
 
+.hero-reservas {
+    background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 400px;
+    border-radius: var(--border-radius);
+}
+
 /* ============================================
    CARDS
    ============================================ */
 
 .card {
     border-width: 3px !important;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    transition: transform var(--transition-fast), box-shadow var(--transition-normal);
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    box-shadow: var(--shadow-lg);
 }
 
 /* ============================================
-   TABLAS - ESTILOS GENERALES
+   TABLAS - ESTILOS UNIFICADOS
    ============================================ */
 
+/* Contenedor de tablas */
 #tabla_docentes,
 #tabla_cursos,
 #tabla_grupos,
 #tabla_asignaturas {
     max-width: 1400px;
     margin: 0 auto;
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     overflow: hidden;
 }
 
+/* Tabla base */
 #tabla_docentes .table,
 #tabla_cursos .table,
 #tabla_grupos .table,
@@ -637,11 +697,12 @@ body.oscuro .btn-outline-danger:hover {
     margin: 0px auto;
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     overflow: hidden;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-light);
 }
 
+/* Celdas */
 #tabla_docentes .table td,
 #tabla_docentes .table th,
 #tabla_cursos .table td,
@@ -654,37 +715,37 @@ body.oscuro .btn-outline-danger:hover {
     padding: 1rem;
     vertical-align: middle;
     border: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
-/* Redondear esquinas del thead */
+/* Esquinas redondeadas - thead */
 #tabla_docentes .table thead tr:first-child th:first-child,
 #tabla_cursos .table thead tr:first-child th:first-child,
 #tabla_grupos .table thead tr:first-child th:first-child,
 #tabla_asignaturas .table thead tr:first-child th:first-child {
-    border-top-left-radius: 20px;
+    border-top-left-radius: var(--border-radius);
 }
 
 #tabla_docentes .table thead tr:first-child th:last-child,
 #tabla_cursos .table thead tr:first-child th:last-child,
 #tabla_grupos .table thead tr:first-child th:last-child,
 #tabla_asignaturas .table thead tr:first-child th:last-child {
-    border-top-right-radius: 20px;
+    border-top-right-radius: var(--border-radius);
 }
 
-/* Redondear esquinas del tbody */
+/* Esquinas redondeadas - tbody */
 #tabla_docentes .table tbody tr:last-child td:first-child,
 #tabla_cursos .table tbody tr:last-child td:first-child,
 #tabla_grupos .table tbody tr:last-child td:first-child,
 #tabla_asignaturas .table tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 20px;
+    border-bottom-left-radius: var(--border-radius);
 }
 
 #tabla_docentes .table tbody tr:last-child td:last-child,
 #tabla_cursos .table tbody tr:last-child td:last-child,
 #tabla_grupos .table tbody tr:last-child td:last-child,
 #tabla_asignaturas .table tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 20px;
+    border-bottom-right-radius: var(--border-radius);
 }
 
 /* Modo claro - Tablas */
@@ -692,7 +753,7 @@ body:not(.oscuro) #tabla_docentes .table,
 body:not(.oscuro) #tabla_cursos .table,
 body:not(.oscuro) #tabla_grupos .table,
 body:not(.oscuro) #tabla_asignaturas .table {
-    background-color: #ffffff;
+    background-color: var(--bg-light);
     color: #000000;
 }
 
@@ -700,7 +761,7 @@ body:not(.oscuro) #tabla_docentes .table thead th,
 body:not(.oscuro) #tabla_cursos .table thead th,
 body:not(.oscuro) #tabla_grupos .table thead th,
 body:not(.oscuro) #tabla_asignaturas .table thead th {
-    background-color: #1a73e8 !important;
+    background-color: var(--color-primary) !important;
     color: #ffffff !important;
     font-weight: 700;
 }
@@ -716,14 +777,14 @@ body:not(.oscuro) #tabla_docentes .table-striped tbody tr:nth-of-type(odd) td,
 body:not(.oscuro) #tabla_cursos .table-striped tbody tr:nth-of-type(odd) td,
 body:not(.oscuro) #tabla_grupos .table-striped tbody tr:nth-of-type(odd) td,
 body:not(.oscuro) #tabla_asignaturas .table-striped tbody tr:nth-of-type(odd) td {
-    background-color: #f9f9f9;
+    background-color: var(--bg-light-alt);
 }
 
 body:not(.oscuro) #tabla_docentes .table tbody tr:hover td,
 body:not(.oscuro) #tabla_cursos .table tbody tr:hover td,
 body:not(.oscuro) #tabla_grupos .table tbody tr:hover td,
 body:not(.oscuro) #tabla_asignaturas .table tbody tr:hover td {
-    background-color: #e6f3ff;
+    background-color: var(--bg-light-hover);
 }
 
 /* Modo oscuro - Tablas */
@@ -731,7 +792,7 @@ body.oscuro #tabla_docentes,
 body.oscuro #tabla_cursos,
 body.oscuro #tabla_grupos,
 body.oscuro #tabla_asignaturas {
-    background-color: #2c2c2c;
+    background-color: var(--bg-dark-card);
     box-shadow: 0 4px 12px rgba(0,0,0,0.6);
 }
 
@@ -739,16 +800,16 @@ body.oscuro #tabla_docentes .table,
 body.oscuro #tabla_cursos .table,
 body.oscuro #tabla_grupos .table,
 body.oscuro #tabla_asignaturas .table {
-    background-color: #2b2b2b;
+    background-color: var(--bg-dark-alt);
     color: #f5f5f5 !important;
-    border: 1px solid #444;
+    border: 1px solid var(--border-dark);
 }
 
 body.oscuro #tabla_docentes .table thead th,
 body.oscuro #tabla_cursos .table thead th,
 body.oscuro #tabla_grupos .table thead th,
 body.oscuro #tabla_asignaturas .table thead th {
-    background-color: #1565c0 !important;
+    background-color: var(--color-primary-dark) !important;
     color: #ffffff !important;
     font-weight: 700;
 }
@@ -757,7 +818,7 @@ body.oscuro #tabla_docentes .table tbody td,
 body.oscuro #tabla_cursos .table tbody td,
 body.oscuro #tabla_grupos .table tbody td,
 body.oscuro #tabla_asignaturas .table tbody td {
-    background-color: #3a3a3a;
+    background-color: var(--bg-dark-table);
     color: #f5f5f5 !important;
 }
 
@@ -808,13 +869,13 @@ body.oscuro .text-secondary {
 #tabla_reservas_docente .table {
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     overflow: hidden;
     width: 100%;
     max-width: 1000px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border: 1px solid #ddd;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
     margin-bottom: 50px !important;
 }
 
@@ -824,17 +885,17 @@ body.oscuro .text-secondary {
     padding: 0.75rem 1rem;
     vertical-align: middle;
     border: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
 /* Modo claro */
 body:not(.oscuro) #tabla_reservas_docente .table {
-    background-color: #ffffff;
+    background-color: var(--bg-light);
     color: #000000;
 }
 
 body:not(.oscuro) #tabla_reservas_docente .table thead th {
-    background-color: #1a73e8 !important;
+    background-color: var(--color-primary) !important;
     color: #ffffff !important;
     font-weight: 700;
 }
@@ -844,28 +905,28 @@ body:not(.oscuro) #tabla_reservas_docente .table tbody td {
 }
 
 body:not(.oscuro) #tabla_reservas_docente .table-striped tbody tr:nth-of-type(odd) td {
-    background-color: #f9f9f9;
+    background-color: var(--bg-light-alt);
 }
 
 body:not(.oscuro) #tabla_reservas_docente .table tbody tr:hover td {
-    background-color: #e6f3ff;
+    background-color: var(--bg-light-hover);
 }
 
 /* Modo oscuro */
 body.oscuro #tabla_reservas_docente .table {
-    background-color: #2b2b2b;
+    background-color: var(--bg-dark-alt);
     color: #f5f5f5 !important;
-    border: 1px solid #444;
+    border: 1px solid var(--border-dark);
 }
 
 body.oscuro #tabla_reservas_docente .table thead th {
-    background-color: #1565c0 !important;
+    background-color: var(--color-primary-dark) !important;
     color: #ffffff !important;
     font-weight: 700;
 }
 
 body.oscuro #tabla_reservas_docente .table tbody td {
-    background-color: #3a3a3a;
+    background-color: var(--bg-dark-table);
     color: #f5f5f5 !important;
 }
 
@@ -880,7 +941,7 @@ body.oscuro #tabla_reservas_docente .table tbody tr:hover td {
 }
 
 /* ============================================
-   RESERVAS (CARDS)
+   RESERVAS (CARDS) - SIMPLIFICADO
    ============================================ */
 
 #tabla_reservas_adscripta {
@@ -895,35 +956,35 @@ body.oscuro #tabla_reservas_docente .table tbody tr:hover td {
 }
 
 #tabla_reservas_adscripta .card {
-    background-color: #ffffff;
+    background-color: var(--bg-light);
     color: #333333;
     border: none;
 }
 
-#tabla_reservas_adscripta .card-header.bg-warning { background-color: #ffc107; }
-#tabla_reservas_adscripta .card-header.bg-success { background-color: #198754; }
-#tabla_reservas_adscripta .card-header.bg-danger  { background-color: #dc3545; }
-#tabla_reservas_adscripta .card-header.bg-secondary { background-color: #6c757d; }
+#tabla_reservas_adscripta .card-header.bg-warning { background-color: var(--color-warning); }
+#tabla_reservas_adscripta .card-header.bg-success { background-color: var(--color-success); }
+#tabla_reservas_adscripta .card-header.bg-danger  { background-color: var(--color-danger); }
+#tabla_reservas_adscripta .card-header.bg-secondary { background-color: var(--color-secondary); }
 
 #tabla_reservas_adscripta .card-footer {
     background-color: #f8f9fa;
-    color: #6c757d;
+    color: var(--color-secondary);
 }
 
 body.oscuro #tabla_reservas_adscripta .card {
-    background-color: #2c2c2c;
+    background-color: var(--bg-dark-card);
     color: #e0e0e0;
     border: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
 body.oscuro #tabla_reservas_adscripta .card-header.bg-warning { background-color: #e0a800; }
-body.oscuro #tabla_reservas_adscripta .card-header.bg-success { background-color: #157347; }
+body.oscuro #tabla_reservas_adscripta .card-header.bg-success { background-color: var(--color-success-dark); }
 body.oscuro #tabla_reservas_adscripta .card-header.bg-danger  { background-color: #bb2d3b; }
 body.oscuro #tabla_reservas_adscripta .card-header.bg-secondary { background-color: #495057; }
 
 body.oscuro #tabla_reservas_adscripta .card-footer {
-    background-color: #3a3a3a !important;
+    background-color: var(--bg-dark-table) !important;
     color: #cfcfcf !important;
 }
 
@@ -938,7 +999,7 @@ body.oscuro #tabla_reservas_adscripta .card-footer {
 
 .horario-item {
     padding: 0.5rem;
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .horario-item:last-child {
@@ -968,13 +1029,13 @@ body.oscuro #tabla_reservas_adscripta .card-footer {
 
 #watch .fecha {
     font-size: 1rem;
-    color: #6c757d;
+    color: var(--color-secondary);
     font-weight: 500;
     text-transform: capitalize;
     margin-bottom: 0px;
     margin-top: 20px !important;
     letter-spacing: 0.5px;
-    transition: color 0.3s ease;
+    transition: color var(--transition-normal);
 }
 
 #watch .hora {
@@ -983,7 +1044,7 @@ body.oscuro #tabla_reservas_adscripta .card-footer {
     margin-top: 10px !important;
     color: #0d6efd;
     letter-spacing: 1px;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color var(--transition-normal), transform var(--transition-normal);
 }
 
 /* ============================================
@@ -999,7 +1060,7 @@ footer {
    ============================================ */
 
 #cerrar_sesion #exit {
-    color: #dc3545 !important;
+    color: var(--color-danger) !important;
 }
 
 /* ============================================
@@ -1032,9 +1093,9 @@ body.oscuro .en-construccion p {
    SCROLL TOP BUTTON
    ============================================ */
 
-   #scrollTopBtn {
+#scrollTopBtn {
     border: solid 1px #505050;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    box-shadow: var(--shadow-md);
 }
 
 body:not(.oscuro) #scrollTopBtn {
@@ -1055,6 +1116,746 @@ body.oscuro #scrollTopBtn {
 
 .recursos {
     margin: 10px;
+}
+
+/* ============================================
+   SECCIÓN GESTIÓN DE HORARIOS
+   ============================================ */
+
+#GestionHorarios {
+    margin-bottom: 2rem;
+}
+
+#grupoSelectHorarios {
+    transition: border-color var(--transition-normal), background-color var(--transition-normal);
+}
+
+#tablaHorarios {
+    margin: 0 auto;
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+}
+
+#tablaHorarios thead th {
+    background-color: var(--color-primary) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    padding: 1rem;
+    border: none;
+}
+
+#tablaHorarios tbody td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border: 1px solid var(--border-light);
+}
+
+#tablaHorarios tbody .bg-light {
+    background-color: #f8f9fa !important;
+}
+
+#tablaHorarios select.form-select {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    transition: all var(--transition-normal);
+}
+
+#tablaHorarios select.form-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(26, 115, 232, 0.25);
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+#estadoCarga {
+    padding: 3rem 0;
+}
+
+#estadoCarga .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+#mensajeInicialHorarios {
+    padding: 3rem 0;
+}
+
+#mensajeInicialHorarios i {
+    color: var(--color-secondary);
+}
+
+#limpiarHorarios,
+#guardarCambiosHorarios {
+    min-width: 180px;
+    font-weight: 600;
+    transition: all var(--transition-normal);
+}
+
+#limpiarHorarios:hover {
+    background-color: var(--color-secondary);
+    color: white;
+    border-color: var(--color-secondary);
+}
+
+#guardarCambiosHorarios:hover {
+    background-color: var(--color-success-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(21, 115, 71, 0.3);
+}
+
+/* Modo oscuro - Gestión de Horarios */
+body.oscuro #GestionHorarios {
+    color: #f5f5f5;
+}
+
+body.oscuro .card {
+    background-color: var(--bg-dark-card);
+    border-color: var(--border-dark);
+}
+
+body.oscuro .card-body {
+    background-color: var(--bg-dark-card);
+    color: #f5f5f5;
+}
+
+body.oscuro .form-label {
+    color: #f5f5f5;
+}
+
+body.oscuro #grupoSelectHorarios {
+    background-color: #333;
+    color: #f5f5f5;
+    border-color: #555;
+}
+
+body.oscuro #grupoSelectHorarios:focus {
+    background-color: #333;
+    color: #f5f5f5;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(26, 115, 232, 0.25);
+}
+
+body.oscuro #grupoSelectHorarios option {
+    background-color: #333;
+    color: #f5f5f5;
+}
+
+body.oscuro .alert-info {
+    background-color: #1a3a52;
+    border-color: #2c5d7f;
+    color: #a8d5f2;
+}
+
+body.oscuro #tablaHorarios {
+    background-color: var(--bg-dark-alt);
+    color: #f5f5f5;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+body.oscuro #tablaHorarios thead th {
+    background-color: var(--color-primary-dark) !important;
+    color: #ffffff !important;
+    border-color: var(--border-dark);
+}
+
+body.oscuro #tablaHorarios tbody td {
+    background-color: var(--bg-dark-table);
+    color: #f5f5f5;
+    border-color: #555;
+}
+
+body.oscuro #tablaHorarios tbody .bg-light {
+    background-color: var(--bg-dark-card) !important;
+    color: #f5f5f5;
+}
+
+body.oscuro #tablaHorarios tbody tr:hover td {
+    background-color: #505050;
+}
+
+body.oscuro #tablaHorarios select.form-select {
+    background-color: #333;
+    color: #f5f5f5;
+    border-color: #555;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+}
+
+body.oscuro #tablaHorarios select.form-select:focus {
+    background-color: #333;
+    color: #f5f5f5;
+    border-color: var(--color-primary);
+}
+
+body.oscuro #tablaHorarios select.form-select option {
+    background-color: #333;
+    color: #f5f5f5;
+}
+
+body.oscuro #mensajeInicialHorarios {
+    color: #adb5bd;
+}
+
+body.oscuro #mensajeInicialHorarios i {
+    color: var(--color-secondary);
+}
+
+body.oscuro #estadoCarga {
+    color: #f5f5f5;
+}
+
+body.oscuro #estadoCarga .spinner-border {
+    color: #6ea8fe;
+}
+
+body.oscuro #limpiarHorarios {
+    background-color: transparent;
+    color: #adb5bd;
+    border-color: var(--color-secondary);
+}
+
+body.oscuro #limpiarHorarios:hover {
+    background-color: var(--color-secondary);
+    color: #fff;
+    border-color: var(--color-secondary);
+}
+
+body.oscuro #guardarCambiosHorarios {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+    color: #fff;
+}
+
+body.oscuro #guardarCambiosHorarios:hover {
+    background-color: var(--color-success-dark);
+    border-color: var(--color-success-dark);
+}
+
+/* Modo claro/oscuro - Texto muted */
+body:not(.oscuro) p.text-muted,
+body:not(.oscuro) #mensajeInicialHorarios,
+body:not(.oscuro) #mensajeInicialHorarios p,
+body:not(.oscuro) #mensajeInicialHorarios i {
+    color: var(--color-secondary) !important;
+}
+
+body.oscuro p.text-muted,
+body.oscuro #mensajeInicialHorarios,
+body.oscuro #mensajeInicialHorarios p,
+body.oscuro #mensajeInicialHorarios i {
+    color: #d1d1d1 !important;
+}
+
+.text-muted {
+    color: var(--color-secondary) !important;
+    transition: color var(--transition-normal);
+}
+
+.oscuro .text-muted {
+    color: #e0e0e0 !important;
+}
+
+/* ============================================
+   ESTILOS PARA DOCENTES/ESTUDIANTES
+   ============================================ */
+
+.avatar-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.docente-card {
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.docente-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+#scrollTopBtn {
+    z-index: 999;
+    font-size: 28px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+#scrollTopBtn.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.icon-main {
+    font-size: 4rem;
+    color: #0d6efd;
+}
+
+.card-body .badge {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+}
+
+.avatar-circle:hover {
+    transform: scale(1.05);
+    transition: transform var(--transition-normal);
+}
+
+/* Estilos para horarios de estudiante */
+.icon-calendar-main {
+    font-size: 4rem;
+    color: #0d6efd;
+}
+
+.table {
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+}
+
+.table thead th {
+    font-weight: 700;
+    font-size: 1rem;
+    vertical-align: middle;
+    padding: 1rem;
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+.table tbody td {
+    vertical-align: middle;
+    padding: 1rem;
+}
+
+.table tbody tr {
+    transition: background-color var(--transition-fast);
+}
+
+.table tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.badge {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: normal;
+    line-height: 1.4;
+}
+
+#tablaHorariosContainer {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body.oscuro .table {
+    background-color: var(--bg-dark-alt);
+    color: #f5f5f5;
+}
+
+body.oscuro .table thead th {
+    background-color: var(--color-primary-dark) !important;
+}
+
+body.oscuro .table tbody td {
+    background-color: var(--bg-dark-table);
+    color: #f5f5f5;
+    border-color: #555;
+}
+
+body.oscuro .table tbody tr:hover {
+    background-color: #505050;
+}
+
+body.oscuro .bg-light {
+    background-color: var(--bg-dark-table) !important;
+    color: #f5f5f5 !important;
+}
+
+body.oscuro .text-muted {
+    color: #adb5bd !important;
+}
+
+/* Sección de Horarios Docente */
+#HorariosDocente .card {
+    max-width: 500px;
+    width: 100%;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+#HorariosDocente .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+#grupoSelectDocente {
+    cursor: pointer;
+    transition: border-color var(--transition-normal);
+}
+
+#grupoSelectDocente:hover {
+    border-color: var(--color-success);
+}
+
+#asignaturasDocente {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#estadoCargaDocente {
+    padding: 3rem 0;
+}
+
+#estadoCargaDocente .spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+#contenedorTablaHorariosDocente .table {
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+}
+
+#contenedorTablaHorariosDocente .table thead th {
+    font-weight: 700;
+    font-size: 1rem;
+    vertical-align: middle;
+    padding: 1rem;
+    background-color: var(--color-success) !important;
+    color: white !important;
+}
+
+#contenedorTablaHorariosDocente .table tbody td {
+    vertical-align: middle;
+    padding: 1rem;
+}
+
+#contenedorTablaHorariosDocente .table tbody tr {
+    transition: background-color var(--transition-fast);
+}
+
+#contenedorTablaHorariosDocente .table tbody tr:hover {
+    background-color: rgba(25, 135, 84, 0.1);
+}
+
+#contenedorTablaHorariosDocente .badge {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: normal;
+    line-height: 1.4;
+}
+
+#mensajeInicialHorariosDocente {
+    padding: 3rem 0;
+}
+
+#mensajeInicialHorariosDocente .bi-arrow-up-circle {
+    color: var(--color-secondary);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.alert-info {
+    border-left: 4px solid #0dcaf0;
+}
+
+.alert-success {
+    border-left: 4px solid var(--color-success);
+}
+
+.alert-success .badge {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+}
+
+.text-muted small {
+    font-size: 0.875rem;
+}
+
+#contenedorTablaHorariosDocente {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+body.oscuro #contenedorTablaHorariosDocente .table {
+    background-color: var(--bg-dark-alt);
+    color: #f5f5f5;
+}
+
+body.oscuro #contenedorTablaHorariosDocente .table thead th {
+    background-color: var(--color-success-dark) !important;
+}
+
+body.oscuro #contenedorTablaHorariosDocente .table tbody td {
+    background-color: var(--bg-dark-table);
+    color: #f5f5f5;
+    border-color: #555;
+}
+
+body.oscuro #contenedorTablaHorariosDocente .table tbody tr:hover {
+    background-color: #505050;
+}
+
+body.oscuro #contenedorTablaHorariosDocente .bg-light {
+    background-color: var(--bg-dark-table) !important;
+    color: #f5f5f5 !important;
+}
+
+body.oscuro .alert-info {
+    background-color: #2c3e50 !important;
+    border-color: #34495e !important;
+    color: #ecf0f1 !important;
+}
+
+body.oscuro .alert-success {
+    background-color: #1e4d2b !important;
+    border-color: #2d5a37 !important;
+    color: #d4edda !important;
+}
+
+body.oscuro #HorariosDocente .card {
+    background-color: var(--bg-dark-alt);
+    border-color: var(--border-dark);
+}
+
+body.oscuro #grupoSelectDocente {
+    background-color: var(--bg-dark-table);
+    color: #f5f5f5;
+    border-color: #555;
+}
+
+body.oscuro #grupoSelectDocente:hover {
+    border-color: var(--color-success);
+}
+
+body.oscuro #estadoCargaDocente .spinner-border {
+    color: var(--color-success);
+}
+
+body.oscuro #grupoSelectDocente:focus {
+    border-color: var(--color-success);
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
+}
+
+/* Sección de Gestión de Horarios - FORZAR VISIBILIDAD */
+#contenedorTablaHorarios {
+    display: block !important;
+}
+
+#tablaHorarios {
+    display: table !important;
+    visibility: visible !important;
+    width: 100% !important;
+}
+
+#cuerpoTablaHorarios {
+    display: table-row-group !important;
+    visibility: visible !important;
+}
+
+#cuerpoTablaHorarios tr {
+    display: table-row !important;
+    visibility: visible !important;
+}
+
+#cuerpoTablaHorarios td {
+    display: table-cell !important;
+    visibility: visible !important;
+}
+
+#GestionHorarios ~ p + .d-flex .card {
+    max-width: 500px;
+    width: 100%;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+#GestionHorarios ~ p + .d-flex .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+#contenedorTablaHorarios .alert-info {
+    border-left: 4px solid #0dcaf0;
+}
+
+#tablaHorarios .form-select {
+    font-size: 0.875rem;
+    border-radius: 6px;
+    transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+#tablaHorarios .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+#tablaHorarios .form-select option {
+    padding: 0.5rem;
+}
+
+#tablaHorarios .bg-light {
+    background-color: #f8f9fa !important;
+}
+
+body.oscuro #contenedorTablaHorarios .card {
+    background-color: var(--bg-dark-alt);
+    border-color: var(--border-dark);
+}
+
+body.oscuro #tablaHorarios .bg-light {
+    background-color: var(--bg-dark-table) !important;
+    color: #f5f5f5 !important;
+}
+
+body.oscuro #tablaHorarios .form-select {
+    background-color: var(--bg-dark-alt);
+    color: #f5f5f5;
+    border-color: #555;
+}
+
+body.oscuro #tablaHorarios .form-select:focus {
+    background-color: var(--bg-dark-table);
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.5);
+}
+
+body.oscuro #tablaHorarios .form-select option {
+    background-color: var(--bg-dark-alt);
+    color: #f5f5f5;
+}
+
+.table-responsive {
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+body.oscuro .table-responsive {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+#tablaHorarios .form-select.is-valid {
+    border-color: var(--color-success);
+}
+
+#tablaHorarios .form-select.is-invalid {
+    border-color: var(--color-danger);
+}
+
+#guardarCambiosHorarios.loading {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+#guardarCambiosHorarios.loading::after {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+    border: 2px solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   FIX HAMBURGUESA RESPONSIVE
+   ============================================ */
+
+@media (max-width: 992px) {
+    .logo {
+        position: relative;
+        justify-content: center;
+    }
+    
+    .navbar-toggler {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    #logo-barra {
+        margin: 0 auto;
+    }
+}
+
+body.oscuro .navbar-toggler-icon {
+    filter: invert(1) brightness(2);
+}
+
+body:not(.oscuro) .navbar-toggler-icon {
+    filter: invert(0);
+}
+
+.navbar-toggler {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0.75rem;
+    transition: all var(--transition-normal);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+body.oscuro .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+body.oscuro .navbar-toggler:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body:not(.oscuro) .navbar-toggler:hover {
+    border-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 /* ============================================
@@ -1099,7 +1900,6 @@ body.oscuro #scrollTopBtn {
         white-space: nowrap;
     }
     
-    /* Tabla de gestión de horarios */
     #tablaHorarios {
         font-size: 0.75rem;
     }
@@ -1113,492 +1913,7 @@ body.oscuro #scrollTopBtn {
     #tablaHorarios th {
         padding: 0.5rem 0.25rem;
     }
-}
-
-/* Móviles medianos - 576px y menos */
-@media (max-width: 576px) {
-    .logo img { width: 8rem; padding: 10px; }
-    .btn-lg { font-size: 0.85rem; padding: 12px; }
-    .botones { gap: 10px; }
-    .hero-docentes h1 { font-size: 1.5rem; }
-    .hero-docentes p { font-size: 0.85rem; }
     
-    #tabla_reservas_docente h3,
-    #title_reserva,
-    #title_reservasdocente { font-size: 1rem; }
-    
-    #tabla_reservas_docente .table td,
-    #tabla_reservas_docente .table th,
-    #tabla_docentes .table td,
-    #tabla_docentes .table th,
-    #tabla_cursos .table td,
-    #tabla_cursos .table th,
-    #tabla_grupos .table td,
-    #tabla_grupos .table th,
-    #tabla_asignaturas .table td,
-    #tabla_asignaturas .table th { 
-        padding: 0.4rem 0.6rem; 
-        font-size: 0.8rem; 
-    }
-    
-    /* Modales responsive */
-    .modal-dialog {
-        margin: 0.5rem;
-    }
-    
-    .modal-content {
-        border-radius: 15px;
-    }
-    
-    .modal-header h5 {
-        font-size: 1rem;
-    }
-    
-    .modal-body {
-        padding: 1rem;
-    }
-    
-    .modal-footer {
-        padding: 0.75rem;
-    }
-    
-    .modal-footer .btn {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.85rem;
-    }
-    
-    #listaHorarios {
-        max-height: 150px;
-        font-size: 0.85rem;
-    }
-    
-    .horario-item {
-        padding: 0.35rem;
-    }
-    
-    /* Tabla de gestión de horarios */
-    #contenedorTablaHorarios .alert {
-        font-size: 0.8rem;
-        padding: 0.5rem;
-    }
-    
-    #guardarCambiosHorarios,
-    #limpiarHorarios {
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
-    
-    .d-flex.gap-3 {
-        flex-direction: column;
-        gap: 0.5rem !important;
-    }
-    
-    #grupoSelectHorarios {
-        font-size: 0.9rem;
-    }
-    
-    .card-body label {
-        font-size: 0.9rem;
-    }
-    
-    /* Título adscripta */
-    .titulo-adscripta {
-        padding: 30px 15px;
-        margin: 20px 10px;
-    }
-    
-    .titulo-adscripta h1 {
-        font-size: 1.5rem !important;
-    }
-    
-    .titulo-adscripta p {
-        font-size: 0.9rem;
-    }
-    
-    .tinylogo {
-        width: 6rem;
-    }
-    
-    .blue_icon {
-        width: 3.5rem;
-    }
-    
-    /* Docentes estudiantes */
-    .docente-card .card-body {
-        padding: 1rem;
-    }
-    
-    .docente-card .card-title {
-        font-size: 1rem;
-    }
-    
-    .avatar-circle {
-        width: 60px !important;
-        height: 60px !important;
-        font-size: 1.5rem !important;
-    }
-    
-    .badge {
-        font-size: 0.75rem;
-        padding: 0.35rem 0.5rem;
-    }
-    
-    /* Hero sections */
-    .hero {
-        margin: 20px 10px;
-    }
-    
-    .hero-imagen {
-        min-height: 300px;
-    }
-    
-    .hero-content .btn {
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
-    
-    .d-flex.gap-3.justify-content-center {
-        flex-direction: column;
-    }
-    
-    /* Reloj */
-    #watch .fecha {
-        font-size: 0.85rem;
-    }
-    
-    #watch .hora {
-        font-size: 1.5rem !important;
-    }
-}
-
-/* Móviles pequeños - 400px y menos */
-@media (max-width: 400px) {
-    .logo img { width: 6rem; }
-    .btn-lg { font-size: 0.75rem; padding: 10px; }
-    .hero-docentes h1 { font-size: 1.3rem; }
-    .hero-docentes p { font-size: 0.8rem; }
-    .botones button { width: 100%; padding: 10px; font-size: 0.75rem; }
-    
-    #tabla_reservas_docente .table td,
-    #tabla_reservas_docente .table th,
-    #tabla_docentes .table td,
-    #tabla_docentes .table th,
-    #tabla_cursos .table td,
-    #tabla_cursos .table th,
-    #tabla_grupos .table td,
-    #tabla_grupos .table th,
-    #tabla_asignaturas .table td,
-    #tabla_asignaturas .table th { 
-        padding: 0.3rem 0.4rem; 
-        font-size: 0.7rem; 
-    }
-    
-    #scrollTopBtn { bottom: 10px; right: 10px; }
-}
-
-/* ============================================
-   MEJORAS ADICIONALES DE RESPONSIVIDAD
-   ============================================ */
-
-/* Página de estudiante - Tabla de horarios */
-@media (max-width: 768px) {
-    .table-responsive {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-@media (max-width: 576px) {
-    /* Ajustes para la tabla de horarios de estudiante */
-    .table thead th {
-        font-size: 0.75rem;
-        padding: 0.5rem 0.25rem;
-    }
-    
-    .table tbody td {
-        font-size: 0.7rem;
-        padding: 0.5rem 0.25rem;
-    }
-    
-    .table .badge {
-        font-size: 0.65rem;
-        padding: 0.3rem 0.4rem;
-    }
-    
-    /* Alerts y mensajes */
-    .alert {
-        font-size: 0.85rem;
-        padding: 0.75rem;
-    }
-    
-    /* Botones en general */
-    .btn {
-        font-size: 0.85rem;
-    }
-    
-    /* Cards de reservas responsive */
-    #tabla_reservas_adscripta .card {
-        margin-bottom: 1rem;
-    }
-    
-    #tabla_reservas_adscripta .card-header h5 {
-        font-size: 0.9rem;
-    }
-    
-    #tabla_reservas_adscripta .card-body {
-        padding: 0.75rem;
-    }
-    
-    #tabla_reservas_adscripta .card-body ul li {
-        font-size: 0.85rem;
-    }
-    
-    #tabla_reservas_adscripta .btn {
-        font-size: 0.75rem;
-        padding: 0.4rem 0.6rem;
-    }
-}
-
-/* Mejoras para modo oscuro en componentes responsive */
-@media (max-width: 576px) {
-    body.oscuro .titulo-adscripta {
-        background-color: #2c3e50;
-        color: #ecf0f1;
-    }
-    
-    body.oscuro .alert-info {
-        background-color: #2c3e50;
-        border-color: #34495e;
-        color: #ecf0f1;
-    }
-}
-
-/* Optimización de scroll horizontal en tablas pequeñas */
-@media (max-width: 576px) {
-    .table-responsive::-webkit-scrollbar {
-        height: 8px;
-    }
-    
-    .table-responsive::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
-    
-    .table-responsive::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 4px;
-    }
-    
-    .table-responsive::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
-    
-    body.oscuro .table-responsive::-webkit-scrollbar-track {
-        background: #2c2c2c;
-    }
-    
-    body.oscuro .table-responsive::-webkit-scrollbar-thumb {
-        background: #555;
-    }
-    
-    body.oscuro .table-responsive::-webkit-scrollbar-thumb:hover {
-        background: #777;
-    }
-}
-
-/* Mejoras para formularios en móviles */
-@media (max-width: 576px) {
-    .form-control,
-    .form-select {
-        font-size: 0.9rem;
-        padding: 0.5rem;
-    }
-    
-    .form-label {
-        font-size: 0.9rem;
-        margin-bottom: 0.3rem;
-    }
-    
-    .form-text {
-        font-size: 0.75rem;
-    }
-}
-
-/* Optimización de espaciado en móviles */
-@media (max-width: 576px) {
-    .container {
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
-    }
-    
-    .row {
-        margin-left: -0.5rem;
-        margin-right: -0.5rem;
-    }
-    
-    .row > * {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
-}
-
-/* Mejoras para el selector de grupos en la página de estudiante */
-@media (max-width: 576px) {
-    #opcionEstudiante {
-        font-size: 0.85rem;
-    }
-}
-
-/* Footer responsive */
-@media (max-width: 576px) {
-    footer {
-        padding: 1.5rem 0;
-    }
-    
-    footer .container {
-        font-size: 0.85rem;
-    }
-    
-    footer a {
-        display: block;
-        margin: 0.25rem 0;
-    }
-    
-    #metamatelogo {
-        width: 150px;
-    }
-}
-/* ============================================
-   FIX HAMBURGUESA RESPONSIVE
-   ============================================ */
-
-/* Centrar hamburguesa en móviles */
-@media (max-width: 992px) {
-    .logo {
-        position: relative;
-        justify-content: center;
-    }
-    
-    .navbar-toggler {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    
-    #logo-barra {
-        margin: 0 auto;
-    }
-}
-
-/* Hacer visible la hamburguesa en modo oscuro */
-body.oscuro .navbar-toggler-icon {
-    filter: invert(1) brightness(2);
-}
-
-body:not(.oscuro) .navbar-toggler-icon {
-    filter: invert(0);
-}
-
-/* Mejorar visibilidad del botón hamburguesa */
-.navbar-toggler {
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    padding: 0.5rem 0.75rem;
-    transition: all 0.3s ease;
-}
-
-.navbar-toggler:focus {
-    box-shadow: none;
-    outline: none;
-}
-
-body.oscuro .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-body.oscuro .navbar-toggler:hover {
-    border-color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-body:not(.oscuro) .navbar-toggler:hover {
-    border-color: rgba(0, 0, 0, 0.3);
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-/* Ajustes adicionales para móviles pequeños */
-@media (max-width: 576px) {
-    .navbar-toggler {
-        padding: 0.4rem 0.6rem;
-        font-size: 1.1rem;
-    }
-}
-
-/* ============================================
-   TABLAS GRUPOS Y ASIGNATURAS - RESPONSIVE
-   ============================================ */
-
-/* Estilos unificados para ambas tablas */
-@media (max-width: 768px) {
-    #tabla_grupos .table,
-    #tabla_asignaturas .table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-    
-    /* Ajustar márgenes para border-radius */
-    #tabla_grupos,
-    #tabla_asignaturas {
-        margin-left: 0.75rem;
-        margin-right: 0.75rem;
-        width: calc(100% - 1.5rem);
-    }
-}
-
-@media (max-width: 576px) {
-    #tabla_grupos .table td,
-    #tabla_grupos .table th,
-    #tabla_asignaturas .table td,
-    #tabla_asignaturas .table th {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.8rem;
-    }
-    
-    /* Márgenes más pequeños */
-    #tabla_grupos,
-    #tabla_asignaturas {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-        width: calc(100% - 1rem);
-    }
-}
-
-@media (max-width: 420px) {
-    /* Márgenes mínimos para móviles pequeños */
-    #tabla_grupos,
-    #tabla_asignaturas {
-        margin-left: 0.25rem;
-        margin-right: 0.25rem;
-        width: calc(100% - 0.5rem);
-    }
-}
-
-@media (max-width: 400px) {
-    #tabla_grupos .table td,
-    #tabla_grupos .table th,
-    #tabla_asignaturas .table td,
-    #tabla_asignaturas .table th {
-        padding: 0.3rem 0.4rem;
-        font-size: 0.7rem;
-    }
-}
-
-/* ============================================
-   FIX MODAL AGREGAR CURSO - RESPONSIVE
-   ============================================ */
-
-/* Optimización de lista de horarios en móviles */
-@media (max-width: 768px) {
     #listaHorarios {
         max-height: 200px;
         font-size: 0.8rem;
@@ -1645,9 +1960,355 @@ body:not(.oscuro) .navbar-toggler:hover {
     .btn-editar-horario i {
         font-size: 0.75rem;
     }
+    
+    #tabla_grupos .table,
+    #tabla_asignaturas .table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    #tabla_grupos,
+    #tabla_asignaturas {
+        margin-left: 0.75rem;
+        margin-right: 0.75rem;
+        width: calc(100% - 1.5rem);
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .table thead th {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.25rem;
+    }
+    
+    .table tbody td {
+        font-size: 0.7rem;
+        padding: 0.5rem 0.25rem;
+    }
+    
+    .table .badge {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.4rem;
+    }
+    
+    #contenedorTablaHorariosDocente .table {
+        font-size: 0.875rem;
+    }
+    
+    #contenedorTablaHorariosDocente .table thead th,
+    #contenedorTablaHorariosDocente .table tbody td {
+        padding: 0.5rem 0.25rem;
+    }
+    
+    #contenedorTablaHorariosDocente .badge {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.5rem;
+    }
+    
+    #HorariosDocente .card {
+        max-width: 100%;
+    }
+    
+    .alert-success .badge {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
 }
 
+/* Móviles medianos - 576px y menos */
 @media (max-width: 576px) {
+    .logo img { width: 8rem; padding: 10px; }
+    .btn-lg { font-size: 0.85rem; padding: 12px; }
+    .botones { gap: 10px; }
+    .hero-docentes h1 { font-size: 1.5rem; }
+    .hero-docentes p { font-size: 0.85rem; }
+    
+    #tabla_reservas_docente h3,
+    #title_reserva,
+    #title_reservasdocente { font-size: 1rem; }
+    
+    #tabla_reservas_docente .table td,
+    #tabla_reservas_docente .table th,
+    #tabla_docentes .table td,
+    #tabla_docentes .table th,
+    #tabla_cursos .table td,
+    #tabla_cursos .table th,
+    #tabla_grupos .table td,
+    #tabla_grupos .table th,
+    #tabla_asignaturas .table td,
+    #tabla_asignaturas .table th { 
+        padding: 0.4rem 0.6rem; 
+        font-size: 0.8rem; 
+    }
+    
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+    
+    .modal-content {
+        border-radius: 15px;
+    }
+    
+    .modal-header h5 {
+        font-size: 1rem;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+    }
+    
+    .modal-footer {
+        padding: 0.75rem;
+    }
+    
+    .modal-footer .btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.85rem;
+    }
+    
+    #listaHorarios {
+        max-height: 150px;
+        font-size: 0.85rem;
+    }
+    
+    .horario-item {
+        padding: 0.35rem;
+    }
+    
+    #contenedorTablaHorarios .alert {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+    
+    #guardarCambiosHorarios,
+    #limpiarHorarios {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .d-flex.gap-3 {
+        flex-direction: column;
+        gap: 0.5rem !important;
+    }
+    
+    #grupoSelectHorarios {
+        font-size: 0.9rem;
+    }
+    
+    .card-body label {
+        font-size: 0.9rem;
+    }
+    
+    .titulo-adscripta {
+        padding: 30px 15px;
+        margin: 20px 10px;
+    }
+    
+    .titulo-adscripta h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    .titulo-adscripta p {
+        font-size: 0.9rem;
+    }
+    
+    .tinylogo {
+        width: 6rem;
+    }
+    
+    .blue_icon {
+        width: 3.5rem;
+    }
+    
+    .docente-card .card-body {
+        padding: 1rem;
+    }
+    
+    .docente-card .card-title {
+        font-size: 1rem;
+    }
+    
+    .avatar-circle {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 1.5rem !important;
+    }
+    
+    .badge {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.5rem;
+    }
+    
+    .hero {
+        margin: 20px 10px;
+    }
+    
+    .hero-imagen {
+        min-height: 300px;
+    }
+    
+    .hero-content .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .d-flex.gap-3.justify-content-center {
+        flex-direction: column;
+    }
+    
+    #watch .fecha {
+        font-size: 0.85rem;
+    }
+    
+    #watch .hora {
+        font-size: 1.5rem !important;
+    }
+    
+    #tabla_grupos,
+    #tabla_asignaturas {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        width: calc(100% - 1rem);
+    }
+    
+    #tabla_grupos .table td,
+    #tabla_grupos .table th,
+    #tabla_asignaturas .table td,
+    #tabla_asignaturas .table th {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    
+    .alert {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+    }
+    
+    .btn {
+        font-size: 0.85rem;
+    }
+    
+    #tabla_reservas_adscripta .card {
+        margin-bottom: 1rem;
+    }
+    
+    #tabla_reservas_adscripta .card-header h5 {
+        font-size: 0.9rem;
+    }
+    
+    #tabla_reservas_adscripta .card-body {
+        padding: 0.75rem;
+    }
+    
+    #tabla_reservas_adscripta .card-body ul li {
+        font-size: 0.85rem;
+    }
+    
+    #tabla_reservas_adscripta .btn {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    body.oscuro .titulo-adscripta {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+    }
+    
+    body.oscuro .alert-info {
+        background-color: #2c3e50;
+        border-color: #34495e;
+        color: #ecf0f1;
+    }
+    
+    .table-responsive::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    .table-responsive::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    .table-responsive::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+    
+    .table-responsive::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+    body.oscuro .table-responsive::-webkit-scrollbar-track {
+        background: var(--bg-dark-card);
+    }
+    
+    body.oscuro .table-responsive::-webkit-scrollbar-thumb {
+        background: #555;
+    }
+    
+    body.oscuro .table-responsive::-webkit-scrollbar-thumb:hover {
+        background: #777;
+    }
+    
+    .form-control,
+    .form-select {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    
+    .form-label {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .form-text {
+        font-size: 0.75rem;
+    }
+    
+    .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    
+    .row {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+    }
+    
+    .row > * {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    #opcionEstudiante {
+        font-size: 0.85rem;
+    }
+    
+    footer {
+        padding: 1.5rem 0;
+    }
+    
+    footer .container {
+        font-size: 0.85rem;
+    }
+    
+    footer a {
+        display: block;
+        margin: 0.25rem 0;
+    }
+    
+    #metamatelogo {
+        width: 150px;
+    }
+    
+    .navbar-toggler {
+        padding: 0.4rem 0.6rem;
+        font-size: 1.1rem;
+    }
+    
     #listaHorarios {
         max-height: 180px;
         font-size: 0.75rem;
@@ -1693,10 +2354,7 @@ body:not(.oscuro) .navbar-toggler:hover {
         margin-top: 0.25rem;
         align-self: flex-start;
     }
-}
-
-/* Botones del modal de curso en móviles */
-@media (max-width: 576px) {
+    
     #agregarCursoModal .btn-group-sm .btn {
         font-size: 0.7rem;
         padding: 0.3rem 0.5rem;
@@ -1721,9 +2379,75 @@ body:not(.oscuro) .navbar-toggler:hover {
     #agregarCursoModal .form-label.mb-0 {
         margin-bottom: 0.5rem !important;
     }
+    
+    #agregarCursoModal .modal-dialog {
+        margin: 0.5rem;
+        max-width: calc(100% - 1rem);
+    }
+    
+    #agregarCursoModal .modal-body {
+        padding: 0.75rem;
+    }
+    
+    #agregarCursoModal .mb-3 {
+        margin-bottom: 0.75rem !important;
+    }
+    
+    #tablaHorarios thead th {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.25rem;
+    }
+    
+    #GestionHorarios {
+        font-size: 1.5rem;
+    }
+    
+    #HorariosDocente h2 {
+        font-size: 1.5rem;
+    }
 }
 
-/* Mejorar scrollbar en lista de horarios */
+/* Móviles pequeños - 400px y menos */
+@media (max-width: 400px) {
+    .logo img { width: 6rem; }
+    .btn-lg { font-size: 0.75rem; padding: 10px; }
+    .hero-docentes h1 { font-size: 1.3rem; }
+    .hero-docentes p { font-size: 0.8rem; }
+    .botones button { width: 100%; padding: 10px; font-size: 0.75rem; }
+    
+    #tabla_reservas_docente .table td,
+    #tabla_reservas_docente .table th,
+    #tabla_docentes .table td,
+    #tabla_docentes .table th,
+    #tabla_cursos .table td,
+    #tabla_cursos .table th,
+    #tabla_grupos .table td,
+    #tabla_grupos .table th,
+    #tabla_asignaturas .table td,
+    #tabla_asignaturas .table th { 
+        padding: 0.3rem 0.4rem; 
+        font-size: 0.7rem; 
+    }
+    
+    #scrollTopBtn { bottom: 10px; right: 10px; }
+    
+    #tabla_grupos,
+    #tabla_asignaturas {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+        width: calc(100% - 0.5rem);
+    }
+    
+    #tabla_grupos .table td,
+    #tabla_grupos .table th,
+    #tabla_asignaturas .table td,
+    #tabla_asignaturas .table th {
+        padding: 0.3rem 0.4rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* Mejoras scrollbar para listas */
 #listaHorarios::-webkit-scrollbar {
     width: 6px;
 }
@@ -1743,7 +2467,7 @@ body:not(.oscuro) .navbar-toggler:hover {
 }
 
 body.oscuro #listaHorarios::-webkit-scrollbar-track {
-    background: #2c2c2c;
+    background: var(--bg-dark-card);
 }
 
 body.oscuro #listaHorarios::-webkit-scrollbar-thumb {
@@ -1752,1063 +2476,4 @@ body.oscuro #listaHorarios::-webkit-scrollbar-thumb {
 
 body.oscuro #listaHorarios::-webkit-scrollbar-thumb:hover {
     background: #777;
-}
-
-/* Ajustar tamaño del modal en móviles */
-@media (max-width: 576px) {
-    #agregarCursoModal .modal-dialog {
-        margin: 0.5rem;
-        max-width: calc(100% - 1rem);
-    }
-    
-    #agregarCursoModal .modal-body {
-        padding: 0.75rem;
-    }
-    
-    #agregarCursoModal .mb-3 {
-        margin-bottom: 0.75rem !important;
-    }
-}
-
-
-/* ============================================
-   SECCIÓN GESTIÓN DE HORARIOS
-   ============================================ */
-
-/* Contenedor principal */
-#GestionHorarios {
-    margin-bottom: 2rem;
-}
-
-/* Card del selector de grupo */
-#grupoSelectHorarios {
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-/* Tabla de horarios */
-#tablaHorarios {
-    margin: 0 auto;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-#tablaHorarios thead th {
-    background-color: #1a73e8 !important;
-    color: #ffffff !important;
-    font-weight: 700;
-    padding: 1rem;
-    border: none;
-}
-
-#tablaHorarios tbody td {
-    padding: 0.75rem;
-    vertical-align: middle;
-    border: 1px solid #dee2e6;
-}
-
-#tablaHorarios tbody .bg-light {
-    background-color: #f8f9fa !important;
-}
-
-/* Selects dentro de la tabla */
-#tablaHorarios select.form-select {
-    font-size: 0.9rem;
-    padding: 0.5rem;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-#tablaHorarios select.form-select:focus {
-    border-color: #1a73e8;
-    box-shadow: 0 0 0 0.2rem rgba(26, 115, 232, 0.25);
-}
-
-/* Alert informativo */
-.alert-info {
-    background-color: #d1ecf1;
-    border-color: #bee5eb;
-    color: #0c5460;
-}
-
-/* Spinner de carga */
-#estadoCarga {
-    padding: 3rem 0;
-}
-
-#estadoCarga .spinner-border {
-    width: 3rem;
-    height: 3rem;
-}
-
-/* Mensaje inicial */
-#mensajeInicialHorarios {
-    padding: 3rem 0;
-}
-
-#mensajeInicialHorarios i {
-    color: #6c757d;
-}
-
-/* Botones de acción */
-#limpiarHorarios,
-#guardarCambiosHorarios {
-    min-width: 180px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-#limpiarHorarios:hover {
-    background-color: #6c757d;
-    color: white;
-    border-color: #6c757d;
-}
-
-#guardarCambiosHorarios:hover {
-    background-color: #157347;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(21, 115, 71, 0.3);
-}
-
-/* ============================================
-   MODO OSCURO - GESTIÓN DE HORARIOS
-   ============================================ */
-
-body.oscuro #GestionHorarios {
-    color: #f5f5f5;
-}
-
-/* Card del selector */
-body.oscuro .card {
-    background-color: #2c2c2c;
-    border-color: #444;
-}
-
-body.oscuro .card-body {
-    background-color: #2c2c2c;
-    color: #f5f5f5;
-}
-
-body.oscuro .form-label {
-    color: #f5f5f5;
-}
-
-/* Select del grupo */
-body.oscuro #grupoSelectHorarios {
-    background-color: #333;
-    color: #f5f5f5;
-    border-color: #555;
-}
-
-body.oscuro #grupoSelectHorarios:focus {
-    background-color: #333;
-    color: #f5f5f5;
-    border-color: #1a73e8;
-    box-shadow: 0 0 0 0.2rem rgba(26, 115, 232, 0.25);
-}
-
-body.oscuro #grupoSelectHorarios option {
-    background-color: #333;
-    color: #f5f5f5;
-}
-
-/* Alert info en modo oscuro */
-body.oscuro .alert-info {
-    background-color: #1a3a52;
-    border-color: #2c5d7f;
-    color: #a8d5f2;
-}
-
-/* Tabla de horarios en modo oscuro */
-body.oscuro #tablaHorarios {
-    background-color: #2b2b2b;
-    color: #f5f5f5;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-}
-
-body.oscuro #tablaHorarios thead th {
-    background-color: #1565c0 !important;
-    color: #ffffff !important;
-    border-color: #444;
-}
-
-body.oscuro #tablaHorarios tbody td {
-    background-color: #3a3a3a;
-    color: #f5f5f5;
-    border-color: #555;
-}
-
-body.oscuro #tablaHorarios tbody .bg-light {
-    background-color: #2c2c2c !important;
-    color: #f5f5f5;
-}
-
-body.oscuro #tablaHorarios tbody tr:hover td {
-    background-color: #505050;
-}
-
-/* Selects en modo oscuro */
-body.oscuro #tablaHorarios select.form-select {
-    background-color: #333;
-    color: #f5f5f5;
-    border-color: #555;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-}
-
-body.oscuro #tablaHorarios select.form-select:focus {
-    background-color: #333;
-    color: #f5f5f5;
-    border-color: #1a73e8;
-}
-
-body.oscuro #tablaHorarios select.form-select option {
-    background-color: #333;
-    color: #f5f5f5;
-}
-
-/* Mensaje inicial en modo oscuro */
-body.oscuro #mensajeInicialHorarios {
-    color: #adb5bd;
-}
-
-body.oscuro #mensajeInicialHorarios i {
-    color: #6c757d;
-}
-
-/* Estado de carga en modo oscuro */
-body.oscuro #estadoCarga {
-    color: #f5f5f5;
-}
-
-body.oscuro #estadoCarga .spinner-border {
-    color: #6ea8fe;
-}
-
-/* Botones en modo oscuro */
-body.oscuro #limpiarHorarios {
-    background-color: transparent;
-    color: #adb5bd;
-    border-color: #6c757d;
-}
-
-body.oscuro #limpiarHorarios:hover {
-    background-color: #6c757d;
-    color: #fff;
-    border-color: #6c757d;
-}
-
-body.oscuro #guardarCambiosHorarios {
-    background-color: #198754;
-    border-color: #198754;
-    color: #fff;
-}
-
-body.oscuro #guardarCambiosHorarios:hover {
-    background-color: #157347;
-    border-color: #157347;
-}
-
-/* === MODO CLARO (por defecto) === */
-body:not(.oscuro) p.text-muted,
-body:not(.oscuro) #mensajeInicialHorarios,
-body:not(.oscuro) #mensajeInicialHorarios p,
-body:not(.oscuro) #mensajeInicialHorarios i {
-  color: #6c757d !important; /* gris suave para modo claro */
-}
-
-/* === MODO OSCURO === */
-body.oscuro p.text-muted,
-body.oscuro #mensajeInicialHorarios,
-body.oscuro #mensajeInicialHorarios p,
-body.oscuro #mensajeInicialHorarios i {
-  color: #d1d1d1 !important; /* gris claro sobre fondo oscuro */
-}
-
-/* Texto tenue (modo claro por defecto) */
-.text-muted {
-  color: #6c757d !important; /* gris por defecto de Bootstrap */
-  transition: color 0.3s ease;
-}
-
-/* Modo oscuro activo */
-.oscuro .text-muted {
-  color: #e0e0e0 !important; /* gris claro tirando a blanco */
-}
-
-
-/* ============================================
-   HERO ESPECÍFICOS - DOCENTE
-   ============================================ */
-
-.hero-reservas {
-    background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    min-height: 400px;
-    border-radius: 20px;
-}
-
-
-/* Estilos para la página de Docentes de Estudiantes */
-
-/* Avatar circular */
-.avatar-circle {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-/* Card de docente con efecto hover */
-.docente-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.docente-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-}
-
-/* Botón scroll top */
-#scrollTopBtn {
-    z-index: 999;
-    font-size: 28px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s, transform 0.5s;
-}
-
-#scrollTopBtn.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Icono principal */
-.icon-main {
-    font-size: 4rem;
-    color: #0d6efd;
-}
-
-/* Mejoras visuales */
-.card-body .badge {
-    font-size: 0.875rem;
-    padding: 0.375rem 0.75rem;
-}
-
-.avatar-circle:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
-
-
-/* Estilos para la página de Estudiante - Horarios */
-
-/* Icono principal */
-.icon-calendar-main {
-    font-size: 4rem;
-    color: #0d6efd;
-}
-
-/* Estilos para la tabla de horarios */
-.table {
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.table thead th {
-    font-weight: 700;
-    font-size: 1rem;
-    vertical-align: middle;
-    padding: 1rem;
-    background-color: #0d6efd !important;
-    color: white !important;
-}
-
-.table tbody td {
-    vertical-align: middle;
-    padding: 1rem;
-}
-
-.table tbody tr {
-    transition: background-color 0.2s;
-}
-
-.table tbody tr:hover {
-    background-color: rgba(13, 110, 253, 0.1);
-}
-
-.badge {
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    white-space: normal;
-    line-height: 1.4;
-}
-
-/* Animación de aparición de la tabla */
-#tablaHorariosContainer {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Modo oscuro */
-body.oscuro .table {
-    background-color: #2b2b2b;
-    color: #f5f5f5;
-}
-
-body.oscuro .table thead th {
-    background-color: #1565c0 !important;
-}
-
-body.oscuro .table tbody td {
-    background-color: #3a3a3a;
-    color: #f5f5f5;
-    border-color: #555;
-}
-
-body.oscuro .table tbody tr:hover {
-    background-color: #505050;
-}
-
-body.oscuro .bg-light {
-    background-color: #3a3a3a !important;
-    color: #f5f5f5 !important;
-}
-
-body.oscuro .text-muted {
-    color: #adb5bd !important;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .table {
-        font-size: 0.875rem;
-    }
-    
-    .table thead th,
-    .table tbody td {
-        padding: 0.5rem 0.25rem;
-    }
-    
-    .badge {
-        font-size: 0.75rem;
-        padding: 0.35rem 0.5rem;
-    }
-}
-
-/* Estilos para Sección de Horarios de Docentes */
-
-/* Card del selector de grupo */
-#HorariosDocente .card {
-    max-width: 500px;
-    width: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#HorariosDocente .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* Selector de grupo */
-#grupoSelectDocente {
-    cursor: pointer;
-    transition: border-color 0.3s ease;
-}
-
-#grupoSelectDocente:hover {
-    border-color: #198754;
-}
-
-/* Contenedor de asignaturas */
-#asignaturasDocente {
-    animation: slideDown 0.3s ease-out;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Estado de carga */
-#estadoCargaDocente {
-    padding: 3rem 0;
-}
-
-#estadoCargaDocente .spinner-border {
-    width: 3rem;
-    height: 3rem;
-}
-
-/* Estilos para la tabla de horarios docente */
-#contenedorTablaHorariosDocente .table {
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-#contenedorTablaHorariosDocente .table thead th {
-    font-weight: 700;
-    font-size: 1rem;
-    vertical-align: middle;
-    padding: 1rem;
-    background-color: #198754 !important;
-    color: white !important;
-}
-
-#contenedorTablaHorariosDocente .table tbody td {
-    vertical-align: middle;
-    padding: 1rem;
-}
-
-#contenedorTablaHorariosDocente .table tbody tr {
-    transition: background-color 0.2s;
-}
-
-#contenedorTablaHorariosDocente .table tbody tr:hover {
-    background-color: rgba(25, 135, 84, 0.1);
-}
-
-#contenedorTablaHorariosDocente .badge {
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    white-space: normal;
-    line-height: 1.4;
-}
-
-/* Mensaje inicial */
-#mensajeInicialHorariosDocente {
-    padding: 3rem 0;
-}
-
-#mensajeInicialHorariosDocente .bi-arrow-up-circle {
-    color: #6c757d;
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-/* Alert de información */
-.alert-info {
-    border-left: 4px solid #0dcaf0;
-}
-
-/* Alert de éxito (asignaturas) */
-.alert-success {
-    border-left: 4px solid #198754;
-}
-
-.alert-success .badge {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-}
-
-/* Leyenda */
-.text-muted small {
-    font-size: 0.875rem;
-}
-
-/* Animación de entrada de la tabla */
-#contenedorTablaHorariosDocente {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Modo oscuro */
-body.oscuro #contenedorTablaHorariosDocente .table {
-    background-color: #2b2b2b;
-    color: #f5f5f5;
-}
-
-body.oscuro #contenedorTablaHorariosDocente .table thead th {
-    background-color: #157347 !important;
-}
-
-body.oscuro #contenedorTablaHorariosDocente .table tbody td {
-    background-color: #3a3a3a;
-    color: #f5f5f5;
-    border-color: #555;
-}
-
-body.oscuro #contenedorTablaHorariosDocente .table tbody tr:hover {
-    background-color: #505050;
-}
-
-body.oscuro #contenedorTablaHorariosDocente .bg-light {
-    background-color: #3a3a3a !important;
-    color: #f5f5f5 !important;
-}
-
-body.oscuro .alert-info {
-    background-color: #2c3e50 !important;
-    border-color: #34495e !important;
-    color: #ecf0f1 !important;
-}
-
-body.oscuro .alert-success {
-    background-color: #1e4d2b !important;
-    border-color: #2d5a37 !important;
-    color: #d4edda !important;
-}
-
-body.oscuro #HorariosDocente .card {
-    background-color: #2b2b2b;
-    border-color: #444;
-}
-
-body.oscuro #grupoSelectDocente {
-    background-color: #3a3a3a;
-    color: #f5f5f5;
-    border-color: #555;
-}
-
-body.oscuro #grupoSelectDocente:hover {
-    border-color: #198754;
-}
-
-body.oscuro #estadoCargaDocente .spinner-border {
-    color: #198754;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    #contenedorTablaHorariosDocente .table {
-        font-size: 0.875rem;
-    }
-    
-    #contenedorTablaHorariosDocente .table thead th,
-    #contenedorTablaHorariosDocente .table tbody td {
-        padding: 0.5rem 0.25rem;
-    }
-    
-    #contenedorTablaHorariosDocente .badge {
-        font-size: 0.75rem;
-        padding: 0.35rem 0.5rem;
-    }
-    
-    #HorariosDocente .card {
-        max-width: 100%;
-    }
-    
-    .alert-success .badge {
-        font-size: 0.8rem;
-        padding: 0.3rem 0.6rem;
-    }
-}
-
-@media (max-width: 576px) {
-    #HorariosDocente h2 {
-        font-size: 1.5rem;
-    }
-    
-    .alert {
-        font-size: 0.875rem;
-    }
-}
-
-/* Mejoras de accesibilidad */
-#grupoSelectDocente:focus {
-    border-color: #198754;
-    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
-}
-
-body.oscuro #grupoSelectDocente:focus {
-    border-color: #198754;
-    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
-}
-
-
-/* Estilos para Sección de Gestión de Horarios */
-
-/* FORZAR VISIBILIDAD DE LA TABLA */
-#contenedorTablaHorarios {
-    display: block !important;
-}
-
-#tablaHorarios {
-    display: table !important;
-    visibility: visible !important;
-    width: 100% !important;
-}
-
-#cuerpoTablaHorarios {
-    display: table-row-group !important;
-    visibility: visible !important;
-}
-
-#cuerpoTablaHorarios tr {
-    display: table-row !important;
-    visibility: visible !important;
-}
-
-#cuerpoTablaHorarios td {
-    display: table-cell !important;
-    visibility: visible !important;
-}
-
-/* Card del selector de grupo */
-#GestionHorarios ~ p + .d-flex .card {
-    max-width: 500px;
-    width: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#GestionHorarios ~ p + .d-flex .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* Selector de grupo */
-#grupoSelectHorarios {
-    cursor: pointer;
-    transition: border-color 0.3s ease;
-}
-
-#grupoSelectHorarios:hover {
-    border-color: #0d6efd;
-}
-
-#grupoSelectHorarios:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-}
-
-/* Estado de carga */
-#estadoCarga {
-    padding: 3rem 0;
-}
-
-#estadoCarga .spinner-border {
-    width: 3rem;
-    height: 3rem;
-}
-
-/* Contenedor de tabla */
-#contenedorTablaHorarios {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Alert de información */
-#contenedorTablaHorarios .alert-info {
-    border-left: 4px solid #0dcaf0;
-}
-
-/* Tabla de horarios */
-#tablaHorarios {
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-#tablaHorarios thead th {
-    font-weight: 700;
-    font-size: 1rem;
-    vertical-align: middle;
-    padding: 1rem;
-    background-color: #0d6efd !important;
-    color: white !important;
-}
-
-#tablaHorarios tbody td {
-    vertical-align: middle;
-    padding: 0.5rem;
-}
-
-#tablaHorarios tbody tr {
-    transition: background-color 0.2s;
-}
-
-#tablaHorarios tbody tr:hover {
-    background-color: rgba(13, 110, 253, 0.05);
-}
-
-/* Selects dentro de la tabla */
-#tablaHorarios .form-select {
-    font-size: 0.875rem;
-    border-radius: 6px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#tablaHorarios .form-select:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
-}
-
-#tablaHorarios .form-select option {
-    padding: 0.5rem;
-}
-
-/* Columna de hora */
-#tablaHorarios .bg-light {
-    background-color: #f8f9fa !important;
-}
-
-/* Botones de acción */
-#limpiarHorarios,
-#guardarCambiosHorarios {
-    min-width: 150px;
-    transition: all 0.3s ease;
-}
-
-#limpiarHorarios:hover {
-    background-color: #6c757d;
-    border-color: #6c757d;
-    color: white;
-    transform: translateY(-2px);
-}
-
-#guardarCambiosHorarios:hover {
-    background-color: #157347;
-    border-color: #146c43;
-    transform: translateY(-2px);
-}
-
-#limpiarHorarios:active,
-#guardarCambiosHorarios:active {
-    transform: translateY(0);
-}
-
-/* Mensaje inicial */
-#mensajeInicialHorarios {
-    padding: 3rem 0;
-}
-
-#mensajeInicialHorarios .bi-arrow-up-circle {
-    color: #6c757d;
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-/* Modo oscuro */
-body.oscuro #contenedorTablaHorarios .card {
-    background-color: #2b2b2b;
-    border-color: #444;
-}
-
-body.oscuro #grupoSelectHorarios {
-    background-color: #3a3a3a;
-    color: #f5f5f5;
-    border-color: #555;
-}
-
-body.oscuro #grupoSelectHorarios:hover {
-    border-color: #0d6efd;
-}
-
-body.oscuro #grupoSelectHorarios:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.5);
-}
-
-body.oscuro #estadoCarga .spinner-border {
-    color: #0d6efd;
-}
-
-body.oscuro .alert-info {
-    background-color: #2c3e50 !important;
-    border-color: #34495e !important;
-    color: #ecf0f1 !important;
-}
-
-body.oscuro #tablaHorarios {
-    background-color: #2b2b2b;
-    color: #f5f5f5;
-}
-
-body.oscuro #tablaHorarios thead th {
-    background-color: #0a58ca !important;
-}
-
-body.oscuro #tablaHorarios tbody td {
-    background-color: #3a3a3a;
-    color: #f5f5f5;
-    border-color: #555;
-}
-
-body.oscuro #tablaHorarios tbody tr:hover {
-    background-color: #404040;
-}
-
-body.oscuro #tablaHorarios .bg-light {
-    background-color: #3a3a3a !important;
-    color: #f5f5f5 !important;
-}
-
-body.oscuro #tablaHorarios .form-select {
-    background-color: #2b2b2b;
-    color: #f5f5f5;
-    border-color: #555;
-}
-
-body.oscuro #tablaHorarios .form-select:focus {
-    background-color: #3a3a3a;
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.5);
-}
-
-body.oscuro #tablaHorarios .form-select option {
-    background-color: #2b2b2b;
-    color: #f5f5f5;
-}
-
-body.oscuro #limpiarHorarios:hover {
-    background-color: #5c636a;
-    border-color: #565e64;
-}
-
-body.oscuro #guardarCambiosHorarios {
-    background-color: #198754;
-}
-
-body.oscuro #guardarCambiosHorarios:hover {
-    background-color: #146c43;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    #tablaHorarios {
-        font-size: 0.875rem;
-    }
-    
-    #tablaHorarios thead th,
-    #tablaHorarios tbody td {
-        padding: 0.5rem 0.25rem;
-    }
-    
-    #tablaHorarios .form-select {
-        font-size: 0.75rem;
-        padding: 0.25rem 0.5rem;
-    }
-    
-    #limpiarHorarios,
-    #guardarCambiosHorarios {
-        min-width: auto;
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
-    
-    .d-flex.gap-3 {
-        flex-direction: column;
-        gap: 0 !important;
-    }
-}
-
-@media (max-width: 576px) {
-    #GestionHorarios {
-        font-size: 1.5rem;
-    }
-    
-    .alert {
-        font-size: 0.875rem;
-    }
-    
-    #tablaHorarios thead th {
-        font-size: 0.75rem;
-        padding: 0.5rem 0.25rem;
-    }
-}
-
-/* Mejoras visuales adicionales */
-#tablaHorarios tbody td.p-2 {
-    padding: 0.75rem !important;
-}
-
-.table-responsive {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-body.oscuro .table-responsive {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Estados de validación */
-#tablaHorarios .form-select.is-valid {
-    border-color: #198754;
-}
-
-#tablaHorarios .form-select.is-invalid {
-    border-color: #dc3545;
-}
-
-/* Loading state para botones */
-#guardarCambiosHorarios.loading {
-    pointer-events: none;
-    opacity: 0.6;
-}
-
-#guardarCambiosHorarios.loading::after {
-    content: '';
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    margin-left: 0.5rem;
-    border: 2px solid white;
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
 }
