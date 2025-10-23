@@ -28,8 +28,7 @@ $id_docente = $_SESSION['id_usuario'];
 <?php include '../tools/sections/seccion_horarios_docente.php'; ?>
 
 <!-- Hero Reservas -->
-<div class="hero hero-imagen text-white d-flex align-items-center justify-content-center py-5" id="reservashero"
-     style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop');">
+<div class="hero hero-imagen hero-reservas text-white d-flex align-items-center justify-content-center py-5" id="reservashero">
     <div class="hero-overlay"></div>
     <div class="container text-center hero-content">
         <h2 class="display-6 fw-semibold mb-3" data-traducible="Sistema de Reservas">Sistema de Reservas</h2>
@@ -68,10 +67,12 @@ $id_docente = $_SESSION['id_usuario'];
                             ?>
                         </select>
                     </div>
+                    
                     <div class="mb-3">
                         <label class="form-label" data-traducible="Fecha">Fecha</label>
                         <input type="date" name="fecha_reserva" class="form-control" required>
                     </div>
+                    
                     <div class="mb-3">
                         <label class="form-label" data-traducible="Horario">Horario</label>
                         <select name="id_horario" class="form-select" required>
@@ -88,12 +89,14 @@ $id_docente = $_SESSION['id_usuario'];
                             ?>
                         </select>
                     </div>
-                    <!-- Nueva sección para recursos -->
+                    
+                    <!-- Sección para recursos (cargada dinámicamente) -->
                     <div class="mb-3" id="recursos-container" style="display: none;">
                         <label class="form-label" data-traducible="Selecciona los recursos">Selecciona los recursos</label>
                         <div id="recursos-list"></div>
                     </div>
                 </div>
+                
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
                     <button type="submit" class="btn btn-success submit_btn" data-traducible="Reservar">Reservar</button>
@@ -120,84 +123,8 @@ $id_docente = $_SESSION['id_usuario'];
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
 <script src="../../js/scroll-top.js"></script>
-
-<?php if (isset($_GET['reserva'])): ?>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const isDark = document.body.classList.contains('oscuro');
-  
-  <?php if ($_GET['reserva'] === 'success'): ?>
-    Swal.fire({
-      icon: 'success',
-      title: '¡Reserva realizada!',
-      text: 'Tu reserva fue registrada correctamente.',
-      confirmButtonColor: '#198754',
-      background: isDark ? '#2c2c2c' : '#fff',
-      color: isDark ? '#f5f5f5' : '#212529'
-    });
-  <?php elseif ($_GET['reserva'] === 'error_fecha'): ?>
-    Swal.fire({
-      icon: 'error',
-      title: 'Fecha u hora inválida',
-      text: 'No puedes reservar en una fecha u hora pasada.',
-      confirmButtonColor: '#dc3545',
-      background: isDark ? '#2c2c2c' : '#fff',
-      color: isDark ? '#f5f5f5' : '#212529'
-    });
-  <?php elseif ($_GET['reserva'] === 'error'): ?>
-    Swal.fire({
-      icon: 'error',
-      title: 'Error al reservar',
-      text: 'Ocurrió un error al registrar tu reserva. Intenta nuevamente.',
-      confirmButtonColor: '#dc3545',
-      background: isDark ? '#2c2c2c' : '#fff',
-      color: isDark ? '#f5f5f5' : '#212529'
-    });
-  <?php endif; ?>
-});
-</script>
-<?php endif; ?>
-
-<script>
-document.getElementById('nombre_salon').addEventListener('change', function() {
-    const idEspacio = this.value;
-    const recursosContainer = document.getElementById('recursos-container');
-    const recursosList = document.getElementById('recursos-list');
-    
-    if (idEspacio) {
-        // Hacer petición AJAX para obtener recursos
-        fetch(`../funciones/obtener_recursos.php?id_espacio=${idEspacio}`)
-            .then(response => response.json())
-            .then(data => {
-                recursosList.innerHTML = ''; // Limpiar lista anterior
-                if (data.length > 0) {
-                    data.forEach(recurso => {
-                        const checkbox = document.createElement('input');
-                        checkbox.type = 'checkbox';
-                        checkbox.name = 'recursos[]';
-                        checkbox.value = recurso.id_recurso;
-                        checkbox.id = `recurso-${recurso.id_recurso}`;
-                        
-                        const label = document.createElement('label');
-                        label.htmlFor = `recurso-${recurso.id_recurso}`;
-                        label.textContent = recurso.nombre_recurso;
-                        
-                        const div = document.createElement('div');
-                        div.appendChild(checkbox);
-                        div.appendChild(label);
-                        recursosList.appendChild(div);
-                    });
-                    recursosContainer.style.display = 'block'; // Mostrar sección
-                } else {
-                    recursosContainer.style.display = 'none'; // Ocultar si no hay recursos
-                }
-            })
-            .catch(error => console.error('Error al cargar recursos:', error));
-    } else {
-        recursosContainer.style.display = 'none';
-    }
-});
-</script>
+<script src="../../js/notificaciones-docente.js"></script>
+<script src="../../js/recursos-reserva.js"></script>
 
 </body>
 </html>

@@ -2035,3 +2035,17 @@ body.oscuro #mensajeInicialHorarios i {
 .oscuro .text-muted {
   color: #e0e0e0 !important; /* gris claro tirando a blanco */
 }
+
+
+/* ============================================
+   HERO ESPECÍFICOS - DOCENTE
+   ============================================ */
+
+.hero-reservas {
+    background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 400px;
+    border-radius: 20px;
+}
