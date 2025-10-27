@@ -69,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/editar_asignatura.css">
 
 <body>
 <header>
@@ -96,16 +97,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </header>
 
 <!-- Hero -->
-<div class="hero text-white py-5 d-flex align-items-center justify-content-center"
-     style="background-image: url('https://images.unsplash.com/photo-1587691592099-24045742c181?q=80&w=2073&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            min-height: 400px;
-            border-radius: 20px;">
-  <div style="position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); border-radius: 20px;"></div>
+<div class="hero-editar-asignatura text-white py-5 d-flex align-items-center justify-content-center">
+  <div class="hero-overlay"></div>
 
-  <div class="container text-center" style="position: relative; z-index: 1;">
+  <div class="container text-center hero-content">
     <h2 class="display-6 fw-semibold" data-traducible="Editar Asignatura">Editar Asignatura</h2>
     <p class="mb-4" data-traducible="Modifica los datos de la asignatura seleccionada">
       Modifica los datos de la asignatura seleccionada
@@ -116,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!-- Formulario -->
 <div class="container my-5">
   <div class="card shadow-lg border-0 rounded-4 p-4">
-    <form method="POST">
+    <form method="POST" id="form-editar-asignatura">
       <div class="mb-3">
         <label class="form-label" data-traducible="Nombre de la Asignatura">Nombre de la Asignatura</label>
         <input type="text" name="nombre_asignatura" class="form-control" required
@@ -158,6 +153,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
+<script src="../../js/editar_asignatura.js"></script>
+
 <?php include '../tools/footer.php'; ?>
 </body>
 </html>
