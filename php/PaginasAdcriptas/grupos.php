@@ -24,6 +24,7 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
 ?>
 
 <link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/lista_grupos.css">
 
 <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -56,26 +57,16 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
 <body>
 
 <!-- Hero Grupos -->
-<div class="hero text-white py-5 d-flex align-items-center justify-content-center"
-     style="background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
-            background-size: cover; 
-            background-position: center; 
-            position: relative; 
-            min-height: 400px; 
-            border-radius: 20px;">
-  
-  <div style="position: absolute; top:0; left:0; right:0; bottom:0; 
-              background: rgba(0,0,0,0.4); 
-              border-radius: 20px;"></div>
+<div class="hero-grupos text-white py-5 d-flex align-items-center justify-content-center">
+  <div class="hero-overlay"></div>
 
-  <div class="container text-center" style="position: relative; z-index: 1; max-width: 900px;">
+  <div class="container text-center hero-content">
     <h2 class="display-6 fw-semibold" data-traducible="Lista de Grupos Registrados">Lista de Grupos Registrados</h2>
     <p class="mb-4" data-traducible="Aquí puedes ver y gestionar los grupos del sistema">Aquí puedes ver y gestionar los grupos del sistema</p>
 
     <div class="d-flex justify-content-center gap-3">
       <a href="../usuarios/adscripta.php" 
-         class="btn btn-outline-light px-3 py-2"
-         style="font-size: 0.95rem;"
+         class="btn btn-outline-light btn-volver"
          data-traducible="Volver al Panel">
        Volver al Panel
       </a>
@@ -131,8 +122,8 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
 
                     <!-- Botón Eliminar -->
                     <a href="eliminar_grupo.php?id=<?= urlencode($row['id_grupo']) ?>"
-                       class="btn btn-danger btn-sm"
-                       onclick="return confirm('¿Seguro que deseas eliminar el grupo <?= addslashes(htmlspecialchars($row['nombre_grupo'])) ?>?');"
+                       class="btn btn-danger btn-sm btn-eliminar"
+                       data-nombre="<?= addslashes(htmlspecialchars($row['nombre_grupo'])) ?>"
                        title="Eliminar"
                        data-bs-toggle="tooltip"
                        data-bs-placement="top">
@@ -174,7 +165,6 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
                                       $sel = ($row['id_curso'] == $c['id_curso']) ? 'selected' : '';
                                       echo '<option value="' . htmlspecialchars($c['id_curso']) . "\" $sel>" . htmlspecialchars($c['nombre_curso']) . '</option>';
                                   }
-                                  // rewind cursos pointer not strictly necessary because we re-query each modal? we've used data_seek(0).
                                   $cursos->data_seek(0);
                               }
                               ?>
@@ -225,16 +215,9 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
 
 <!-- SCRIPTS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
-  });
-</script>
-
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
+<script src="../../js/lista_grupos.js"></script>
 
 <?php include '../tools/footer.php'; ?>
 <?php $conn->close(); ?>
