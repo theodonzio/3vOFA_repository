@@ -87,10 +87,10 @@ $id_docente = $_SESSION['id_usuario'];
                     </div>
                     
                     
-                    <div class="mb-3" id="recursos-container" style="display: none;">
-                        <label class="form-label" data-traducible="Selecciona los recursos">Selecciona los recursos</label>
-                        <div id="recursos-list"></div>
-                    </div>
+                    <div class="mb-3" id="recursos-container" style="display:none;">
+  <label class="form-label" data-traducible="Selecciona los recursos">Selecciona los recursos</label>
+  <div id="recursos-list"></div>
+</div>
                 </div>
                 
                 <div class="modal-footer">

@@ -146,17 +146,35 @@ include '../funciones/limpiar_reservas_antiguas.php';
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
 
-        <div class="modal-body">
-          <div class="mb-3">
-            <label class="form-label" data-traducible="Nombre del Recurso">Nombre del Recurso</label>
-            <input type="text" name="nombre_recurso" class="form-control" required>
-          </div>
+<div class="modal-body">
+  <div class="mb-3">
+    <label class="form-label" data-traducible="Nombre del Recurso">Nombre del Recurso</label>
+    <input type="text" name="nombre_recurso" class="form-control" required>
+  </div>
 
-          <div class="mb-3">
-            <label class="form-label" data-traducible="Tipo">Tipo</label>
-            <input type="text" name="tipo" class="form-control">
-          </div>
-        </div>
+  <div class="mb-3">
+    <label class="form-label" data-traducible="Tipo">Tipo</label>
+    <input type="text" name="tipo" class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" data-traducible="Asignar al Espacio">Asignar al Espacio</label>
+    <select name="id_espacio" class="form-select" required>
+      <option value="" selected disabled>Seleccione un espacio</option>
+      <?php
+      include '../login/conexion_bd.php';
+      $sql = "SELECT id_espacio, nombre_espacio, tipo FROM espacio ORDER BY nombre_espacio ASC";
+      $result = $conn->query($sql);
+      if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+              $nombre = htmlspecialchars($row['nombre_espacio'] . ' (' . $row['tipo'] . ')');
+              echo "<option value='{$row['id_espacio']}'>{$nombre}</option>";
+          }
+      }
+      ?>
+    </select>
+  </div>
+</div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
@@ -165,9 +183,7 @@ include '../funciones/limpiar_reservas_antiguas.php';
       </form>
     </div>
   </div>
-</div>
-
-
+</div>  
 
 
 <div id="HeroEspacios" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
