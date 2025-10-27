@@ -45,7 +45,7 @@ const diccionario = {
 "Ver Docentes": { en: "View Teachers", es: "Ver Docentes" },
 "Nombre": { en: "Name", es: "Nombre" },
 "Apellido": { en: "Last Name", es: "Apellido" },
-"Cédula": { en: "ID", es: "Cédula" },
+"Cédula": { en: "ID/C.I", es: "Cédula" },
 "Email": { en: "Email", es: "Email" },
 "Gestión de Espacios": { en: "Space Management", es: "Gestión de Espacios" },
 "Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos": { en: "From here you can add new spaces to the system and assign resources", es: "Desde aquí podés agregar nuevos espacios al sistema y asignarles recursos" },
@@ -95,6 +95,13 @@ const diccionario = {
 "Desde aquí puedes gestionar las asignaturas registradas en el sistema":{en:"From here you can manage the subjects registered in the system", es:"Desde aquí puedes gestionar las asignaturas registradas en el sistema"},
 "Seleccioná un grupo para asignarle horarios y materias":{en:"Select a group to assign schedules and subjects", es:"Seleccioná un grupo para asignarle horarios y materias"},
 "Seleccioná un grupo para comenzar":{en:"Select a group to start", es:"Seleccioná un grupo para comenzar"},
+"8 dígitos sin puntos ni guiones":{en:"8 digits without periods or hyphens", es:"8 dígitos sin puntos ni guiones"},
+"Mínimo 6 caracteres, al menos una letra y un número":{en:"Minimum 6 characters, at least one letter and one number", es:"Mínimo 6 caracteres, al menos una letra y un número"},
+"Guardar cambios":{en:"Save Changes", es:"Guardar Cambios"},
+"Editar Docente #":{en:"Edit Teacher", es:"Editar Docente"},
+"Desde aquí puedes agregar, visualizar y administrar los horarios del sistema":{en: "From here you can add, view, and manage the system schedules.", es:"Desde aquí puedes agregar, visualizar y administrar los horarios del sistema"},
+"Agregar Horario":{en: "Add Schedule",es: "Agregar Horario"},
+
 
 // Gestión de Horarios 
 "Gestión de Horarios por Grupo": { en: "Schedule Management by Group", es: "Gestión de Horarios por Grupo" },
@@ -211,6 +218,8 @@ const diccionario = {
 "Aún no se han asignado docentes a tu grupo.": { en: "No teachers have been assigned to your group yet.", es: "Aún no se han asignado docentes a tu grupo." },
 "Volver a mi horario": { en: "Back to my schedule", es: "Volver a mi horario" },
 
+// Footer
+"2025 OneForAll. Todos los derechos reservados.":{en: "© 2025 OneForAll. All rights reserved.", es: "© 2025 OneForAll. Todos los derechos reservados."},
 };  
 
 // Función para traducir todos los elementos con data-traducible

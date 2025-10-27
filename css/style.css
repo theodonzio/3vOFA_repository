@@ -259,6 +259,15 @@ body.oscuro .botones .btn img.indexlogo {
     color: #666;
 }
 
+.dropdown-item.active {
+    background-color: white !important;
+    color: black !important;
+}
+
+body.oscuro .dropdown-item.active {
+    background-color: #333 !important;
+}
+
 .dropdown-item:focus,
 .dropdown-item:active {
     background-color: transparent;

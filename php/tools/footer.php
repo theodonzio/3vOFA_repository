@@ -24,7 +24,7 @@
     </div>
 
     <div class="mt-3">
-      <small>&copy; 2025 OneForAll. Todos los derechos reservados.</small>
+      <small data-traducible="2025 OneForAll. Todos los derechos reservados.">&copy; 2025 OneForAll. Todos los derechos reservados.</small>
     </div>
   </div>
 </footer>
