@@ -121,7 +121,7 @@ include '../funciones/limpiar_reservas_antiguas.php';
      style="background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
     <div class="container text-center hero-content">
-        <h2 data-traducible="Cursos" class="display-6 fw-semibold">Recursos</h2>
+        <h2 class="display-6 fw-semibold">Recursos</h2>
         <p data-traducible="Desde aquí puedes agregar nuevos Recursos al sistema" class="mb-4">
             Desde aquí puedes agregar nuevos recursos al sistema
         </p>
