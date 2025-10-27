@@ -16,6 +16,7 @@ $result = $conn->query($sql);
 ?>
 
 <link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/lista_recursos.css">
 
 <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -50,25 +51,16 @@ $result = $conn->query($sql);
 <body>
 
 <!-- Hero Recursos -->
-<div class="hero text-white py-5 d-flex align-items-center justify-content-center"
-     style="background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            min-height: 400px;
-            border-radius: 20px;">
-  <div style="position: absolute; top:0; left:0; right:0; bottom:0;
-              background: rgba(0,0,0,0.4);
-              border-radius: 20px;"></div>
+<div class="hero-recursos text-white py-5 d-flex align-items-center justify-content-center">
+  <div class="hero-overlay"></div>
 
-  <div class="container text-center" style="position: relative; z-index: 1; max-width: 900px;">
+  <div class="container text-center hero-content">
     <h2 class="display-6 fw-semibold" data-traducible="Lista de Recursos Registrados">Lista de Recursos Registrados</h2>
     <p class="mb-4" data-traducible="Aquí puedes ver los recursos del sistema">Aquí puedes ver los recursos del sistema</p>
 
     <div class="d-flex justify-content-center gap-3">
       <a href="../usuarios/adscripta.php" 
-         class="btn btn-outline-light px-3 py-2"
-         style="font-size: 0.95rem;"
+         class="btn btn-outline-light btn-volver"
          data-traducible="Volver al Panel">
         Volver al Panel
       </a>
@@ -122,8 +114,8 @@ $result = $conn->query($sql);
 
                     <!-- Botón Eliminar -->
                     <a href="eliminar_recurso.php?id=<?= urlencode($row['id_recurso']) ?>" 
-                       class="btn btn-danger btn-sm"
-                       onclick="return confirm('¿Seguro que deseas eliminar el recurso <?= addslashes(htmlspecialchars($row['nombre_recurso'])) ?>?');"
+                       class="btn btn-danger btn-sm btn-eliminar"
+                       data-nombre="<?= addslashes(htmlspecialchars($row['nombre_recurso'])) ?>"
                        title="Eliminar">
                       <i class="bi bi-trash"></i>
                     </a>
@@ -191,6 +183,7 @@ $result = $conn->query($sql);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
+<script src="../../js/recursos.js"></script>
 
 <?php include '../tools/footer.php'; ?>
 <?php $conn->close(); ?>

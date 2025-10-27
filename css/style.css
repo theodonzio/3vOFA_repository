@@ -2533,3 +2533,34 @@ body.oscuro #listaHorarios::-webkit-scrollbar-thumb:hover {
 .btn-volver {
     font-size: 0.95rem;
 }
+
+/* Hero Recursos */
+.hero-recursos {
+    background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 400px;
+    border-radius: 20px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+}
+
+.btn-volver {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+}
