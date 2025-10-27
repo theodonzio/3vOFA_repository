@@ -217,7 +217,7 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
-<script src="../../js/lista_grupos.js"></script>
+<script src="../../js/grupos.js"></script>
 
 <?php include '../tools/footer.php'; ?>
 <?php $conn->close(); ?>
