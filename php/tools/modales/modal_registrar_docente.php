@@ -18,7 +18,7 @@
           <div class="mb-3">
             <label class="form-label" data-traducible="Cédula">Cédula</label>
             <input type="text" name="cedula" class="form-control" placeholder="Cédula" data-traducible="Cédula" maxlength="8" pattern="[0-9]{8}" required>
-            <small class="form-text text-muted">8 dígitos sin puntos ni guiones</small>
+            <small class="form-text text-muted" data-traducible="8 dígitos sin puntos ni guiones">8 dígitos sin puntos ni guiones</small>
           </div>
           <div class="mb-3">
             <label class="form-label" data-traducible="Email">Email</label>
@@ -28,7 +28,7 @@
             <label class="form-label" data-traducible="Contraseña">Contraseña</label>
             <input type="password" name="contrasena" class="form-control" placeholder="Contraseña" data-traducible="Contraseña" 
                    pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$" required>
-            <small class="form-text text-muted">Mínimo 6 caracteres, al menos una letra y un número</small>
+            <small class="form-text text-muted" data-traducible="Mínimo 6 caracteres, al menos una letra y un número">Mínimo 6 caracteres, al menos una letra y un número</small>
           </div>
           <input type="hidden" name="id_rol" value="2">
         </div>

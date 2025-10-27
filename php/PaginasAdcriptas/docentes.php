@@ -34,8 +34,8 @@ $result = $conn->query($sql);
           
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-tema">
             <li><h6 class="dropdown-header" data-traducible="Tema">Tema</h6></li>
-            <li><a class="dropdown-item" href="#" id="tema-claro" data-traducible="Claro"><img class="icono">Claro</a></li>
-            <li><a class="dropdown-item" href="#" id="tema-oscuro" data-traducible="Oscuro"><img class="icono">Oscuro</a></li>
+            <li><a class="dropdown-item" href="#" id="tema-claro" data-traducible="Claro">Claro</a></li>
+            <li><a class="dropdown-item" href="#" id="tema-oscuro" data-traducible="Oscuro">Oscuro</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><h6 class="dropdown-header" data-traducible="Lenguaje">Lenguaje</h6></li>
             <li><a class="dropdown-item" href="#" id="lenguaje-es" data-traducible="Español">Español</a></li>
@@ -129,7 +129,6 @@ $result = $conn->query($sql);
                     <a href="eliminar_docente.php?id=<?= urlencode($row['id_usuario']) ?>" 
                        class="btn btn-danger btn-sm"
                        onclick="return confirm('¿Seguro que deseas eliminar al docente <?= addslashes(htmlspecialchars($row['nombre'] . ' ' . $row['apellido'])) ?>?');"
-                       title="Eliminar"
                        data-bs-toggle="tooltip"
                        data-bs-placement="top">
                       <i class="bi bi-trash"></i>
@@ -143,7 +142,7 @@ $result = $conn->query($sql);
                     <div class="modal-content">
                       <form action="editar_docente.php" method="POST">
                         <div class="modal-header">
-                          <h5 class="modal-title">Editar Docente #<?= htmlspecialchars($row['id_usuario']) ?></h5>
+                          <h5 class="modal-title" data-traducible="Editar Docente #">Editar Docente</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                         </div>
                         <div class="modal-body">
@@ -166,8 +165,8 @@ $result = $conn->query($sql);
                           </div>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+                          <button type="submit" class="btn btn-primary" data-traducible="Guardar cambios">Guardar cambios</button>
                         </div>
                       </form>
                     </div>

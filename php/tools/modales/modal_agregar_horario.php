@@ -1,5 +1,5 @@
 <div class="modal fade" id="agregarHorarioModal" tabindex="-1" aria-labelledby="agregarHorarioLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <form action="../funciones/agregar_horario.php" method="POST">
         <div class="modal-header">
