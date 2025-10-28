@@ -252,3 +252,37 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState({}, document.title, window.location.pathname);
     }
 });
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+
+    // ✅ Si el horario se agregó correctamente
+    if (params.get("success") === "horario") {
+      Swal.fire({
+        title: "¡Horario agregado!",
+        text: "El nuevo horario fue guardado exitosamente.",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+        confirmButtonColor: "#3085d6",
+        timer: 2500,
+        timerProgressBar: true
+      }).then(() => {
+        // Limpia el parámetro de la URL
+        const newURL = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, newURL);
+      });
+    }
+
+    // ❌ Si hubo un error al agregar
+    if (params.get("error") === "horario") {
+      Swal.fire({
+        title: "Error",
+        text: "No se pudo agregar el horario. Intenta nuevamente.",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+        confirmButtonColor: "#d33"
+      }).then(() => {
+        const newURL = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, newURL);
+      });
+    }
+  });
