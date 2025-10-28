@@ -56,16 +56,23 @@
             // Obtener recursos de la reserva
             $id_reserva = $row['id_reserva'];
             $recursos_reserva = [];
-            $stmt_rec = $conn->prepare("SELECT r.nombre_recurso FROM reserva_recurso rr JOIN recurso r ON rr.id_recurso = r.id_recurso WHERE rr.id_reserva = ?");
+            $stmt_rec = $conn->prepare("SELECT rec.nombre_recurso, rec.tipo 
+                                        FROM reserva_recurso rr 
+                                        JOIN recurso rec ON rr.id_recurso = rec.id_recurso 
+                                        WHERE rr.id_reserva = ?");
             $stmt_rec->bind_param("i", $id_reserva);
             $stmt_rec->execute();
             $result_rec = $stmt_rec->get_result();
             while ($rec = $result_rec->fetch_assoc()) {
-                $recursos_reserva[] = $rec['nombre_recurso'];
+                $nombre = htmlspecialchars($rec['nombre_recurso']);
+                $tipo = $rec['tipo'] ? ' (' . htmlspecialchars($rec['tipo']) . ')' : '';
+                $recursos_reserva[] = $nombre . $tipo;
             }
             $stmt_rec->close();
 
-            $recursos_html = !empty($recursos_reserva) ? '<ul><li>' . implode('</li><li>', $recursos_reserva) . '</li></ul>' : '<em>Sin recursos</em>';
+            $recursos_html = !empty($recursos_reserva) 
+                ? '<span class="badge bg-secondary me-1 mb-1">' . implode('</span><span class="badge bg-secondary me-1 mb-1">', $recursos_reserva) . '</span>' 
+                : '<em class="text-muted">Sin recursos solicitados</em>';
     ?>
             <div class="col-md-4 mb-4">
                 <div class="card border-0 shadow-lg h-100 rounded-4 overflow-hidden">
@@ -84,7 +91,12 @@
                             <li><strong data-traducible="Salón:">Salón:</strong> <?php echo htmlspecialchars($row['nombre_espacio'] . ' (' . $row['tipo_salon'] . ')'); ?></li>
                             <li><strong data-traducible="Fecha:">Fecha:</strong> <?php echo htmlspecialchars($row['fecha']); ?></li>
                             <li><strong data-traducible="Horario:">Horario:</strong> <?php echo htmlspecialchars($row['hora_inicio'] . ' - ' . $row['hora_fin']); ?></li>
-                            <li><strong data-traducible="Recursos:">Recursos:</strong> <?php echo $recursos_html; ?></li>
+                            <li class="mt-2">
+                                <strong data-traducible="Recursos solicitados:">Recursos solicitados:</strong><br>
+                                <div class="mt-1">
+                                    <?php echo $recursos_html; ?>
+                                </div>
+                            </li>
                         </ul>
 
                         <?php if ($estado == 'Pendiente') { ?>
@@ -95,7 +107,7 @@
                                     data-salon="<?php echo $salonJs; ?>"
                                     data-fecha="<?php echo $fechaJs; ?>"
                                     data-horario="<?php echo $horarioJs; ?>"
-                                    data-recursos="<?php echo htmlspecialchars($recursos_html, ENT_QUOTES); ?>">
+                                    data-recursos="<?php echo htmlspecialchars(implode(', ', $recursos_reserva), ENT_QUOTES); ?>">
                                 <i class="bi bi-check-lg"></i> <span data-traducible="Aprobar">Aprobar</span>
                             </button>
                             
@@ -105,7 +117,7 @@
                                     data-salon="<?php echo $salonJs; ?>"
                                     data-fecha="<?php echo $fechaJs; ?>"
                                     data-horario="<?php echo $horarioJs; ?>"
-                                    data-recursos="<?php echo htmlspecialchars($recursos_html, ENT_QUOTES); ?>">
+                                    data-recursos="<?php echo htmlspecialchars(implode(', ', $recursos_reserva), ENT_QUOTES); ?>">
                                 <i class="bi bi-x-lg"></i> <span data-traducible="Rechazar">Rechazar</span>
                             </button>
                         </div>

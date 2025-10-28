@@ -4,7 +4,7 @@
  * Devuelve los recursos asociados a un espacio en formato JSON
  */
 
-include '../login/conexion_bd.php'; // Ajusta la ruta si es necesario
+include '../login/conexion_bd.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -12,9 +12,9 @@ $id_espacio = isset($_GET['id_espacio']) ? intval($_GET['id_espacio']) : 0;
 
 if ($id_espacio > 0) {
     // Traer todos los recursos disponibles de ese espacio
-    $sql = "SELECT id_recurso, nombre_recurso 
+    $sql = "SELECT id_recurso, nombre_recurso, tipo 
             FROM recurso 
-            WHERE id_espacio = ? 
+            WHERE id_espacio = ? AND estado = 'Disponible'
             ORDER BY nombre_recurso ASC";
     
     $stmt = $conn->prepare($sql);
@@ -24,7 +24,11 @@ if ($id_espacio > 0) {
     
     $recursos = [];
     while ($row = $result->fetch_assoc()) {
-        $recursos[] = $row;
+        $recursos[] = [
+            'id_recurso' => $row['id_recurso'],
+            'nombre_recurso' => $row['nombre_recurso'],
+            'tipo' => $row['tipo']
+        ];
     }
     
     echo json_encode($recursos);

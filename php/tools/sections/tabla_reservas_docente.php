@@ -39,6 +39,7 @@
                             <th data-traducible="Tipo">Tipo</th>
                             <th data-traducible="Fecha">Fecha</th>
                             <th data-traducible="Horario">Horario</th>
+                            <th data-traducible="Recursos">Recursos</th>
                             <th data-traducible="Estado">Estado</th>
                         </tr>
                     </thead>
@@ -57,12 +58,34 @@
                                 $badge_class = 'bg-danger';
                                 $icono = 'x-circle-fill';
                             }
+                            
+                            // Obtener recursos de la reserva
+                            $id_reserva = $row['id_reserva'];
+                            $recursos_reserva = [];
+                            $stmt_rec = $conn->prepare("SELECT rec.nombre_recurso, rec.tipo 
+                                                        FROM reserva_recurso rr 
+                                                        JOIN recurso rec ON rr.id_recurso = rec.id_recurso 
+                                                        WHERE rr.id_reserva = ?");
+                            $stmt_rec->bind_param("i", $id_reserva);
+                            $stmt_rec->execute();
+                            $result_rec = $stmt_rec->get_result();
+                            while ($rec = $result_rec->fetch_assoc()) {
+                                $nombre = htmlspecialchars($rec['nombre_recurso']);
+                                $tipo = $rec['tipo'] ? ' (' . htmlspecialchars($rec['tipo']) . ')' : '';
+                                $recursos_reserva[] = $nombre . $tipo;
+                            }
+                            $stmt_rec->close();
+                            
+                            $recursos_html = !empty($recursos_reserva) 
+                                ? '<span class="badge bg-secondary me-1 mb-1">' . implode('</span><br><span class="badge bg-secondary me-1 mb-1">', $recursos_reserva) . '</span>' 
+                                : '<em class="text-muted">Sin recursos</em>';
                         ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($row['nombre_espacio']); ?></td>
                                 <td><?php echo htmlspecialchars($row['tipo_salon']); ?></td>
                                 <td><?php echo htmlspecialchars($row['fecha']); ?></td>
                                 <td><?php echo htmlspecialchars($row['hora_inicio'] . ' - ' . $row['hora_fin']); ?></td>
+                                <td><?php echo $recursos_html; ?></td>
                                 <td class="text-center">
                                   <span class="badge <?php echo $badge_class; ?> px-3 py-2" data-traducible="<?php echo ucfirst($estado); ?>">
                                       <?php echo htmlspecialchars($estado); ?>

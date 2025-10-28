@@ -1,60 +1,100 @@
+/**
+ * Script para cargar recursos dinámicamente cuando se selecciona un espacio
+ * y mostrarlos con checkboxes para que el docente pueda seleccionarlos
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
-  const selectEspacio = document.getElementById('nombre_salon');
-  const contenedorRecursos = document.getElementById('recursos-container');
-  const listaRecursos = document.getElementById('recursos-list');
+    const espacioSelect = document.getElementById('nombre_salon');
+    const recursosContainer = document.getElementById('recursos-container');
+    const recursosList = document.getElementById('recursos-list');
 
-  if (!selectEspacio || !contenedorRecursos || !listaRecursos) return;
-
-  selectEspacio.addEventListener('change', function() {
-    const idEspacio = this.value;
-
-    // Si no hay selección, ocultamos el bloque
-    if (!idEspacio) {
-      contenedorRecursos.style.display = 'none';
-      listaRecursos.innerHTML = '';
-      return;
+    if (!espacioSelect || !recursosContainer || !recursosList) {
+        console.error('Elementos necesarios no encontrados en el DOM');
+        return;
     }
 
-    // Cargar recursos mediante AJAX
-    fetch(`../funciones/obtener_recursos.php?id_espacio=${idEspacio}`)
-      .then(response => response.json())
-      .then(data => {
-        listaRecursos.innerHTML = '';
-
-        if (data.length === 0) {
-          listaRecursos.innerHTML = '<p class="text-muted">Este espacio no tiene recursos disponibles.</p>';
-          contenedorRecursos.style.display = 'block';
-          return;
+    // Escuchar cambios en el selector de espacio
+    espacioSelect.addEventListener('change', function() {
+        const idEspacio = this.value;
+        
+        if (!idEspacio) {
+            // Si no hay espacio seleccionado, ocultar recursos
+            recursosContainer.style.display = 'none';
+            recursosList.innerHTML = '';
+            return;
         }
 
-        // Crear checkbox por cada recurso
-        data.forEach(recurso => {
-          const div = document.createElement('div');
-          div.classList.add('form-check', 'mb-1');
+        // Hacer petición para obtener recursos del espacio
+        fetch(`../funciones/obtener_recursos.php?id_espacio=${idEspacio}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+                return response.json();
+            })
+            .then(recursos => {
+                // Limpiar lista anterior
+                recursosList.innerHTML = '';
 
-          const input = document.createElement('input');
-          input.type = 'checkbox';
-          input.classList.add('form-check-input');
-          input.name = 'recursos[]';
-          input.value = recurso.id_recurso;
-          input.id = `recurso_${recurso.id_recurso}`;
+                if (recursos.length === 0) {
+                    // No hay recursos disponibles
+                    recursosList.innerHTML = `
+                        <div class="alert alert-info mb-0">
+                            <i class="bi bi-info-circle me-2"></i>
+                            Este espacio no tiene recursos disponibles.
+                        </div>
+                    `;
+                    recursosContainer.style.display = 'block';
+                    return;
+                }
 
-          const label = document.createElement('label');
-          label.classList.add('form-check-label');
-          label.htmlFor = input.id;
-          label.textContent = recurso.nombre_recurso;
+                // Crear checkboxes para cada recurso
+                recursos.forEach(recurso => {
+                    const div = document.createElement('div');
+                    div.className = 'form-check mb-2';
+                    
+                    const checkbox = document.createElement('input');
+                    checkbox.className = 'form-check-input';
+                    checkbox.type = 'checkbox';
+                    checkbox.name = 'recursos[]';
+                    checkbox.value = recurso.id_recurso;
+                    checkbox.id = `recurso_${recurso.id_recurso}`;
+                    
+                    const label = document.createElement('label');
+                    label.className = 'form-check-label';
+                    label.htmlFor = `recurso_${recurso.id_recurso}`;
+                    
+                    const nombreSpan = document.createElement('strong');
+                    nombreSpan.textContent = recurso.nombre_recurso;
+                    label.appendChild(nombreSpan);
+                    
+                    if (recurso.tipo) {
+                        const tipoSpan = document.createElement('span');
+                        tipoSpan.className = 'text-muted ms-2';
+                        tipoSpan.textContent = `(${recurso.tipo})`;
+                        label.appendChild(tipoSpan);
+                    }
+                    
+                    div.appendChild(checkbox);
+                    div.appendChild(label);
+                    recursosList.appendChild(div);
+                });
 
-          div.appendChild(input);
-          div.appendChild(label);
-          listaRecursos.appendChild(div);
-        });
+                // Mostrar el contenedor de recursos
+                recursosContainer.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error al cargar recursos:', error);
+                recursosList.innerHTML = `
+                    <div class="alert alert-danger mb-0">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        Error al cargar los recursos. Por favor, intenta nuevamente.
+                    </div>
+                `;
+                recursosContainer.style.display = 'block';
+            });
+    });
 
-        contenedorRecursos.style.display = 'block';
-      })
-      .catch(error => {
-        console.error('Error cargando recursos:', error);
-        listaRecursos.innerHTML = '<p class="text-danger">Error al cargar los recursos.</p>';
-        contenedorRecursos.style.display = 'block';
-      });
-  });
+    // Ocultar recursos al inicio
+    recursosContainer.style.display = 'none';
 });

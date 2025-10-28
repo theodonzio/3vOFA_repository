@@ -40,19 +40,26 @@ $id_docente = $_SESSION['id_usuario'];
 </div>
 
 <div class="modal fade" id="realizarReservaModal" tabindex="-1" aria-labelledby="realizarReservaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <form action="../funciones/realizar_reserva.php" method="POST">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="realizarReservaLabel" data-traducible="Realizar Reserva">Realizar Reserva</h5>
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="realizarReservaLabel">
+                        <i class="bi bi-bookmark-plus me-2"></i>
+                        <span data-traducible="Realizar Reserva">Realizar Reserva</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label" data-traducible="Selecciona un Espacio">Selecciona un Espacio</label>
-                        <select name="id_espacio" id="nombre_salon" class="form-select" required>
+                        <label class="form-label fw-semibold" data-traducible="Selecciona un Espacio">
+                            <i class="bi bi-door-open me-2"></i>Selecciona un Espacio
+                        </label>
+                        <select name="id_espacio" id="nombre_salon" class="form-select form-select-lg" required>
                             <option value="" data-traducible="Seleccione un salón">Seleccione un salón</option>
                             <?php
-                            $sql = "SELECT id_espacio, nombre_espacio, tipo FROM espacio ORDER BY nombre_espacio ASC";
+                            $sql = "SELECT id_espacio, nombre_espacio, tipo FROM espacio ORDER BY tipo, nombre_espacio ASC";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
@@ -64,38 +71,50 @@ $id_docente = $_SESSION['id_usuario'];
                         </select>
                     </div>
                     
-                    <div class="mb-3">
-                        <label class="form-label" data-traducible="Fecha">Fecha</label>
-                        <input type="date" name="fecha_reserva" class="form-control" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label class="form-label" data-traducible="Horario">Horario</label>
-                        <select name="id_horario" class="form-select" required>
-                            <option value="" data-traducible="Seleccione un horario">Seleccione un horario</option>
-                            <?php
-                            $sql = "SELECT id_horario, nombre_horario, hora_inicio, hora_fin FROM horario ORDER BY id_horario ASC";
-                            $result = $conn->query($sql);
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    $horario = htmlspecialchars($row['nombre_horario'] . ' (' . $row['hora_inicio'] . ' - ' . $row['hora_fin'] . ')');
-                                    echo "<option value='".$row['id_horario']."'>{$horario}</option>";
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold" data-traducible="Fecha">
+                                <i class="bi bi-calendar-event me-2"></i>Fecha
+                            </label>
+                            <input type="date" name="fecha_reserva" class="form-control form-control-lg" required>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold" data-traducible="Horario">
+                                <i class="bi bi-clock me-2"></i>Horario
+                            </label>
+                            <select name="id_horario" class="form-select form-select-lg" required>
+                                <option value="" data-traducible="Seleccione un horario">Seleccione un horario</option>
+                                <?php
+                                $sql = "SELECT id_horario, nombre_horario, hora_inicio, hora_fin FROM horario ORDER BY hora_inicio ASC";
+                                $result = $conn->query($sql);
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $horario = htmlspecialchars($row['nombre_horario'] . ' (' . $row['hora_inicio'] . ' - ' . $row['hora_fin'] . ')');
+                                        echo "<option value='".$row['id_horario']."'>{$horario}</option>";
+                                    }
                                 }
-                            }
-                            ?>
-                        </select>
+                                ?>
+                            </select>
+                        </div>
                     </div>
-                    
                     
                     <div class="mb-3" id="recursos-container" style="display:none;">
-  <label class="form-label" data-traducible="Selecciona los recursos">Selecciona los recursos</label>
-  <div id="recursos-list"></div>
-</div>
+                        <label class="form-label fw-semibold" data-traducible="Recursos disponibles">
+                            <i class="bi bi-gear me-2"></i>Recursos disponibles
+                        </label>
+                        <small class="d-block text-muted mb-2">Selecciona los recursos que necesitas para tu clase</small>
+                        <div id="recursos-list" class="border rounded p-3 bg-light" style="max-height: 200px; overflow-y: auto;"></div>
+                    </div>
                 </div>
                 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
-                    <button type="submit" class="btn btn-success submit_btn" data-traducible="Reservar">Reservar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">
+                        <i class="bi bi-x-circle me-2"></i>Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-success" data-traducible="Reservar">
+                        <i class="bi bi-check-circle me-2"></i>Confirmar Reserva
+                    </button>
                 </div>
             </form>
         </div>

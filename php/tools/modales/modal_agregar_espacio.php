@@ -34,10 +34,11 @@
 
           <!-- Recursos dinámicos -->
           <label data-traducible="Selecciona los recursos que contiene:" class="form-label">Selecciona los recursos que contiene:</label><br>
-          <div class="recursos">
+          <div class="recursos" style="max-height: 300px; overflow-y: auto; border: 1px solid #dee2e6; padding: 10px; border-radius: 5px;">
             <?php
             // Conexión a la BD
             include '../login/conexion_bd.php';
+            // Obtener recursos disponibles (sin espacio asignado o cualquier recurso)
             $sql = "SELECT id_recurso, nombre_recurso, tipo FROM recurso ORDER BY nombre_recurso ASC";
             $result = $conn->query($sql);
 
@@ -47,15 +48,17 @@
                 $nombre = htmlspecialchars($row['nombre_recurso']);
                 $tipo = htmlspecialchars($row['tipo']);
             ?>
-              <input type="checkbox" id="recurso<?= $id ?>" name="recursos[]" value="<?= $id ?>">
-              <label for="recurso<?= $id ?>">
-                <span><?= $nombre ?> <?= $tipo ? "($tipo)" : "" ?></span>
-              </label><br>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="recurso<?= $id ?>" name="recursos[]" value="<?= $id ?>">
+                <label class="form-check-label" for="recurso<?= $id ?>">
+                  <strong><?= $nombre ?></strong> <?= $tipo ? "($tipo)" : "" ?>
+                </label>
+              </div>
             <?php
               endwhile;
             else:
             ?>
-              <p data-traducible="No hay recursos disponibles">No hay recursos disponibles</p>
+              <p class="text-muted" data-traducible="No hay recursos disponibles">No hay recursos disponibles. Por favor, agregue recursos primero.</p>
             <?php endif; ?>
           </div>
         </div>

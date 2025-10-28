@@ -121,7 +121,7 @@ include '../funciones/limpiar_reservas_antiguas.php';
      style="background-image: url('https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2072');">
     <div class="hero-overlay"></div>
     <div class="container text-center hero-content">
-        <h2 class="display-6 fw-semibold">Recursos</h2>
+        <h2 class="display-6 fw-semibold" data-traducible="Recursos">Recursos</h2>
         <p data-traducible="Desde aquí puedes agregar nuevos Recursos al sistema" class="mb-4">
             Desde aquí puedes agregar nuevos recursos al sistema
         </p>
@@ -135,56 +135,72 @@ include '../funciones/limpiar_reservas_antiguas.php';
     </div>
 </div>
 
-
-<!--  Modal Agregar Recurso -->
+<!-- ============================================ -->
+<!-- MODAL AGREGAR RECURSO ACTUALIZADO -->
+<!-- ============================================ -->
 <div class="modal fade" id="agregarRecursoModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <form action="../PaginasAdcriptas/agregar_recurso.php" method="POST">
-        <div class="modal-header">
-          <h5 class="modal-title" data-traducible="Agregar Nuevo Recurso">Agregar Nuevo Recurso</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">
+            <i class="bi bi-plus-circle me-2"></i>
+            <span data-traducible="Agregar Nuevo Recurso">Agregar Nuevo Recurso</span>
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
 
-<div class="modal-body">
-  <div class="mb-3">
-    <label class="form-label" data-traducible="Nombre del Recurso">Nombre del Recurso</label>
-    <input type="text" name="nombre_recurso" class="form-control" required>
-  </div>
+        <div class="modal-body">
+          <div class="alert alert-info mb-3">
+            <i class="bi bi-info-circle me-2"></i>
+            <small data-traducible="Los recursos se asignarán a espacios al crear o editar un espacio">
+              Los recursos se asignarán a espacios al crear o editar un espacio
+            </small>
+          </div>
 
-  <div class="mb-3">
-    <label class="form-label" data-traducible="Tipo">Tipo</label>
-    <input type="text" name="tipo" class="form-control">
-  </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" data-traducible="Nombre del Recurso">
+              <i class="bi bi-gear me-2"></i>Nombre del Recurso
+            </label>
+            <input 
+              type="text" 
+              name="nombre_recurso" 
+              class="form-control form-control-lg" 
+              placeholder="Ej: Proyector"
+              data-traducible="Ej: Proyector"
+              required>
+            <small class="text-muted">Nombre descriptivo del recurso</small>
+          </div>
 
-  <div class="mb-3">
-    <label class="form-label" data-traducible="Asignar al Espacio">Asignar al Espacio</label>
-    <select name="id_espacio" class="form-select" required>
-      <option value="" selected disabled>Seleccione un espacio</option>
-      <?php
-      include '../login/conexion_bd.php';
-      $sql = "SELECT id_espacio, nombre_espacio, tipo FROM espacio ORDER BY nombre_espacio ASC";
-      $result = $conn->query($sql);
-      if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
-              $nombre = htmlspecialchars($row['nombre_espacio'] . ' (' . $row['tipo'] . ')');
-              echo "<option value='{$row['id_espacio']}'>{$nombre}</option>";
-          }
-      }
-      ?>
-    </select>
-  </div>
-</div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" data-traducible="Tipo">
+              <i class="bi bi-tag me-2"></i>Tipo
+            </label>
+            <input 
+              type="text" 
+              name="tipo" 
+              class="form-control form-control-lg" 
+              placeholder="Ej: Audiovisual"
+              data-traducible="Ej: Audiovisual"
+              required>
+            <small class="text-muted">Categoría del recurso (Audiovisual, Informático, Climatización, etc.)</small>
+          </div>
+        </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
-          <button type="submit" class="btn btn-primary" data-traducible="Agregar">Agregar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            <i class="bi bi-x-circle me-2"></i>
+            <span data-traducible="Cancelar">Cancelar</span>
+          </button>
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-check-circle me-2"></i>
+            <span data-traducible="Agregar Recurso">Agregar Recurso</span>
+          </button>
         </div>
       </form>
     </div>
   </div>
-</div>  
-
+</div>
 
 <div id="HeroEspacios" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1604134967494-8a9ed3adea0d?q=80&w=1974&auto=format&fit=crop');">
@@ -225,3 +241,5 @@ include '../funciones/limpiar_reservas_antiguas.php';
 
 </body>
 </html>
+
+
