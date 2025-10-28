@@ -4,7 +4,6 @@
       <form action="../funciones/agregar_grupo.php" method="POST">
         <div class="modal-header">
           <h5 class="modal-title fw-semibold" id="agregarGrupoLabel">
-            <i class="bi bi-people-fill me-2 text-primary"></i>
             <span data-traducible="Agregar Grupo">Agregar Grupo</span>
           </h5>
         </div>
