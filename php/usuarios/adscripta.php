@@ -88,6 +88,7 @@ include '../funciones/limpiar_reservas_antiguas.php';
         </p>
         <div class="d-flex justify-content-center gap-3">
             <button class="btn btn-light btn-lg btn_wicon" data-bs-toggle="modal" data-bs-target="#agregarGrupoModal">
+                <i class="bi bi-people-fill"></i>
                 <span data-traducible="Agregar Grupo">Agregar Grupo</span>
             </button>
             <a href="../PaginasAdcriptas/grupos.php" class="btn btn-outline-light btn-lg" data-traducible="Ver Grupos">Ver Grupos</a>
