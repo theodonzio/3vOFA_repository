@@ -286,3 +286,39 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+document.addEventListener('DOMContentLoaded', function () {
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // ✅ Cuando se agrega un recurso con éxito
+  if (urlParams.has('add') && urlParams.get('add') === 'success') {
+    Swal.fire({
+      icon: 'success',
+      title: '¡Recurso agregado!',
+      text: 'El recurso se registró correctamente en el sistema.',
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: '#0d6efd',
+      background: '#fefefe',
+      color: '#333',
+    }).then(() => {
+      // Eliminar el parámetro de la URL sin recargar
+      const url = new URL(window.location);
+      url.searchParams.delete('add');
+      window.history.replaceState({}, document.title, url);
+    });
+  }
+
+  // ⚠️ Si hay error al agregar
+  if (urlParams.has('add') && urlParams.get('add') === 'error') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Hubo un problema al registrar el recurso. Intenta nuevamente.',
+      confirmButtonText: 'Cerrar',
+      confirmButtonColor: '#dc3545',
+    }).then(() => {
+      const url = new URL(window.location);
+      url.searchParams.delete('add');
+      window.history.replaceState({}, document.title, url);
+    });
+  }
+});
