@@ -2629,3 +2629,208 @@ body.oscuro #listaHorarios::-webkit-scrollbar-thumb:hover {
     position: relative;
     z-index: 1;
 }
+
+/* ============================================
+   SWEETALERT2 - ESTILOS UNIFICADOS
+   ============================================ */
+
+/* Modo Claro (por defecto) */
+body:not(.oscuro) .swal2-popup {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+body:not(.oscuro) .swal2-title {
+    color: #000000 !important;
+}
+
+body:not(.oscuro) .swal2-html-container,
+body:not(.oscuro) .swal2-content {
+    color: #333333 !important;
+}
+
+body:not(.oscuro) .swal2-input,
+body:not(.oscuro) .swal2-textarea {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #ced4da !important;
+}
+
+body:not(.oscuro) .swal2-input::placeholder,
+body:not(.oscuro) .swal2-textarea::placeholder {
+    color: #6c757d !important;
+}
+
+body:not(.oscuro) .swal2-input:focus,
+body:not(.oscuro) .swal2-textarea:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(26, 115, 232, 0.25) !important;
+}
+
+/* Modo Oscuro */
+body.oscuro .swal2-popup {
+    background-color: var(--bg-dark-alt) !important;
+    color: #f5f5f5 !important;
+    border: 1px solid var(--border-dark) !important;
+}
+
+body.oscuro .swal2-title {
+    color: #f5f5f5 !important;
+}
+
+body.oscuro .swal2-html-container,
+body.oscuro .swal2-content {
+    color: #e0e0e0 !important;
+}
+
+body.oscuro .swal2-input,
+body.oscuro .swal2-textarea {
+    background-color: #333 !important;
+    color: #f5f5f5 !important;
+    border: 1px solid #555 !important;
+}
+
+body.oscuro .swal2-input::placeholder,
+body.oscuro .swal2-textarea::placeholder {
+    color: #adb5bd !important;
+}
+
+body.oscuro .swal2-input:focus,
+body.oscuro .swal2-textarea:focus {
+    background-color: #3a3a3a !important;
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(26, 115, 232, 0.5) !important;
+}
+
+body.oscuro .swal2-close {
+    color: #f5f5f5 !important;
+}
+
+body.oscuro .swal2-close:hover {
+    color: #ffffff !important;
+}
+
+/* Botones SweetAlert2 - Modo Claro */
+body:not(.oscuro) .swal2-confirm,
+body:not(.oscuro) .swal2-deny,
+body:not(.oscuro) .swal2-cancel {
+    color: #fff !important;
+}
+
+body:not(.oscuro) .swal2-confirm {
+    background-color: var(--color-success) !important;
+}
+
+body:not(.oscuro) .swal2-confirm:hover {
+    background-color: var(--color-success-dark) !important;
+}
+
+body:not(.oscuro) .swal2-deny {
+    background-color: var(--color-danger) !important;
+}
+
+body:not(.oscuro) .swal2-cancel {
+    background-color: var(--color-secondary) !important;
+}
+
+/* Botones SweetAlert2 - Modo Oscuro */
+body.oscuro .swal2-confirm,
+body.oscuro .swal2-deny,
+body.oscuro .swal2-cancel {
+    color: #fff !important;
+    border: none !important;
+}
+
+body.oscuro .swal2-confirm {
+    background-color: var(--color-success) !important;
+}
+
+body.oscuro .swal2-confirm:hover {
+    background-color: var(--color-success-dark) !important;
+}
+
+body.oscuro .swal2-deny {
+    background-color: var(--color-danger) !important;
+}
+
+body.oscuro .swal2-deny:hover {
+    background-color: #bb2d3b !important;
+}
+
+body.oscuro .swal2-cancel {
+    background-color: var(--color-secondary) !important;
+}
+
+body.oscuro .swal2-cancel:hover {
+    background-color: #5a6268 !important;
+}
+
+/* Iconos SweetAlert2 */
+body.oscuro .swal2-icon {
+    border-color: #f5f5f5 !important;
+}
+
+body.oscuro .swal2-success-ring {
+    border-color: rgba(165, 220, 134, 0.3) !important;
+}
+
+body.oscuro .swal2-error [class^='swal2-x-mark-line'] {
+    background-color: #f27474 !important;
+}
+
+/* Loader/Spinner en modo oscuro */
+body.oscuro .swal2-loader {
+    border-color: var(--color-primary) transparent var(--color-primary) transparent !important;
+}
+
+/* Progress bar en modo oscuro */
+body.oscuro .swal2-progress-steps {
+    background-color: var(--bg-dark-table) !important;
+}
+
+body.oscuro .swal2-progress-steps .swal2-progress-step {
+    background-color: var(--color-primary) !important;
+}
+
+body.oscuro .swal2-progress-steps .swal2-progress-step-line {
+    background-color: #555 !important;
+}
+
+/* Validation message en modo oscuro */
+body.oscuro .swal2-validation-message {
+    background-color: #333 !important;
+    color: #f5f5f5 !important;
+}
+
+/* Footer en modo oscuro */
+body.oscuro .swal2-footer {
+    border-top-color: var(--border-dark) !important;
+    color: #adb5bd !important;
+}
+
+/* Timer progress bar */
+body.oscuro .swal2-timer-progress-bar {
+    background-color: rgba(26, 115, 232, 0.6) !important;
+}
+
+body:not(.oscuro) .swal2-timer-progress-bar {
+    background-color: rgba(26, 115, 232, 0.8) !important;
+}
+
+/* Backdrop en modo oscuro */
+body.oscuro .swal2-container.swal2-backdrop-show {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Selectores y radio buttons en modo oscuro */
+body.oscuro .swal2-radio label,
+body.oscuro .swal2-checkbox label {
+    color: #f5f5f5 !important;
+}
+
+body.oscuro .swal2-file,
+body.oscuro .swal2-range input {
+    background-color: #333 !important;
+    color: #f5f5f5 !important;
+    border-color: #555 !important;
+}
