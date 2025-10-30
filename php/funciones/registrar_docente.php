@@ -1,8 +1,8 @@
 <?php
-include '../login/conexion_bd.php'; // tu archivo de conexión a la BD
+include '../login/conexion_bd.php'; // conexión BD
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Sanitizar y normalizar entradas
+    // --- Sanitizar y normalizar entradas ---
     $nombre = trim($_POST['nombre']);
     $apellido = trim($_POST['apellido']);
     $cedula = trim($_POST['cedula']);
@@ -10,28 +10,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena = $_POST['contrasena'];
     $id_rol = $_POST['id_rol']; // siempre 2 (docente)
 
-    // --- VALIDACIONES ---
-
-    // 1️⃣ Nombre y apellido: primera letra mayúscula, resto minúscula
+    // --- Validaciones ---
     $nombre = ucfirst(strtolower($nombre));
     $apellido = ucfirst(strtolower($apellido));
 
-    // 2️⃣ Cédula: debe tener exactamente 8 dígitos numéricos
+    // Validar formato de cédula
     if (!preg_match('/^\d{8}$/', $cedula)) {
         header("Location: ../usuarios/adscripta.php?docente=cedula_invalida");
         exit;
     }
 
-    // 3️⃣ Contraseña: al menos una letra y un número, mínimo 6 caracteres
-    if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/', $contrasena)) {
+    // Validar contraseña
+    if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+=-]{6,}$/', $contrasena)) {
         header("Location: ../usuarios/adscripta.php?docente=contrasena_invalida");
         exit;
     }
 
-    // 4️⃣ Hashear contraseña solo después de validar
-    $contrasena_hash = password_hash($contrasena, PASSWORD_DEFAULT);
+    // --- Verificar duplicados (cedula o email) ---
+    $check = $conn->prepare("SELECT id_usuario FROM usuario WHERE cedula = ? OR email = ?");
+    $check->bind_param("ss", $cedula, $email);
+    $check->execute();
+    $check->store_result();
 
-    // --- Inserción en la base de datos ---
+    if ($check->num_rows > 0) {
+        // Ya existe un usuario con la misma cédula o email
+        $check->close();
+        $conn->close();
+        header("Location: ../usuarios/adscripta.php?docente=duplicado");
+        exit;
+    }
+
+    $check->close();
+
+    // --- Hashear y guardar ---
+    $contrasena_hash = password_hash($contrasena, PASSWORD_DEFAULT);
     $sql = "INSERT INTO usuario (nombre, apellido, cedula, email, contrasena, id_rol)
             VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -43,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     } else {
         header("Location: ../usuarios/adscripta.php?docente=error");
+        exit;
     }
 
     $stmt->close();

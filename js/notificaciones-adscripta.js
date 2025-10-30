@@ -322,3 +322,60 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const docente = params.get("docente");
+
+  if (docente === "success") {
+    Swal.fire({
+      icon: "success",
+      title: "¡Docente registrado!",
+      text: "El nuevo docente fue agregado exitosamente.",
+      confirmButtonColor: "#3085d6",
+      timer: 2500,
+      timerProgressBar: true
+    });
+  }
+
+  if (docente === "duplicado") {
+    Swal.fire({
+      icon: "warning",
+      title: "Datos duplicados",
+      text: "Ya existe un usuario con esa cédula o correo electrónico.",
+      confirmButtonColor: "#f0ad4e"
+    });
+  }
+
+  if (docente === "cedula_invalida") {
+    Swal.fire({
+      icon: "error",
+      title: "Cédula inválida",
+      text: "La cédula debe tener exactamente 8 dígitos numéricos.",
+      confirmButtonColor: "#d33"
+    });
+  }
+
+  if (docente === "contrasena_invalida") {
+    Swal.fire({
+      icon: "error",
+      title: "Contraseña inválida",
+      text: "Debe tener al menos 6 caracteres, incluyendo letras y números.",
+      confirmButtonColor: "#d33"
+    });
+  }
+
+  if (docente === "error") {
+    Swal.fire({
+      icon: "error",
+      title: "Error al registrar",
+      text: "Ocurrió un problema al intentar guardar el docente.",
+      confirmButtonColor: "#d33"
+    });
+  }
+
+  // Limpia el parámetro de la URL después de mostrar el alerta
+  if (docente) {
+    const newURL = window.location.origin + window.location.pathname;
+    window.history.replaceState({}, document.title, newURL);
+  }
+});
