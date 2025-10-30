@@ -135,6 +135,7 @@ include '../funciones/limpiar_reservas_antiguas.php';
     </div>
 </div>
 
+
 <!-- ============================================ -->
 <!-- MODAL AGREGAR RECURSO ACTUALIZADO -->
 <!-- ============================================ -->
@@ -142,12 +143,12 @@ include '../funciones/limpiar_reservas_antiguas.php';
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <form action="../PaginasAdcriptas/agregar_recurso.php" method="POST">
-        <div class="modal-header bg-primary text-white">
+        <div class="modal-header">
           <h5 class="modal-title">
             <i class="bi bi-plus-circle me-2"></i>
             <span data-traducible="Agregar Nuevo Recurso">Agregar Nuevo Recurso</span>
           </h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
 
         <div class="modal-body">
@@ -160,12 +161,12 @@ include '../funciones/limpiar_reservas_antiguas.php';
 
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Nombre del Recurso">
-              <i class="bi bi-gear me-2"></i>Nombre del Recurso
+              Nombre del Recurso
             </label>
             <input 
               type="text" 
               name="nombre_recurso" 
-              class="form-control form-control-lg" 
+              class="form-control" 
               placeholder="Ej: Proyector"
               data-traducible="Ej: Proyector"
               required>
@@ -174,12 +175,12 @@ include '../funciones/limpiar_reservas_antiguas.php';
 
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Tipo">
-              <i class="bi bi-tag me-2"></i>Tipo
+              Tipo
             </label>
             <input 
               type="text" 
               name="tipo" 
-              class="form-control form-control-lg" 
+              class="form-control" 
               placeholder="Ej: Audiovisual"
               data-traducible="Ej: Audiovisual"
               required>
@@ -189,12 +190,10 @@ include '../funciones/limpiar_reservas_antiguas.php';
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            <i class="bi bi-x-circle me-2"></i>
             <span data-traducible="Cancelar">Cancelar</span>
           </button>
-          <button type="submit" class="btn btn-primary">
-            <i class="bi bi-check-circle me-2"></i>
-            <span data-traducible="Agregar Recurso">Agregar Recurso</span>
+          <button type="submit" class="btn btn-success">
+              <span data-traducible="Agregar Recurso">Agregar Recurso</span>
           </button>
         </div>
       </form>
@@ -239,7 +238,7 @@ include '../funciones/limpiar_reservas_antiguas.php';
 <script src="../../js/adscripta-scripts.js"></script>
 <script src="../../js/notificaciones-adscripta.js"></script>
 <script src="../../js/scroll-top.js"></script>
-<script src="../../js/session-timeout.js"></script>
+<script src="../../js/timeout.js"></script>
 
 </body>
 </html>

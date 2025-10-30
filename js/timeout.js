@@ -7,8 +7,8 @@
   'use strict';
 
   // Configuración
-  const INACTIVITY_TIME = 1 * 60 * 1000; // 15 minutos en milisegundos
-  const WARNING_TIME = 0.5 * 60 * 1000; // Mostrar advertencia 1 minuto antes
+  const INACTIVITY_TIME = 15 * 60 * 1000; // 15 minutos en milisegundos
+  const WARNING_TIME = 14 * 60 * 1000; // Mostrar advertencia 1 minuto antes
   
   let inactivityTimer;
   let warningTimer;
@@ -112,7 +112,7 @@
       color: isDarkMode ? '#f5f5f5' : '#212529'
     }).then(() => {
       // Cerrar sesión y redirigir
-      window.location.href = '../php/login/logout.php';
+      window.location.href = '../index.php';
     });
   }
 
