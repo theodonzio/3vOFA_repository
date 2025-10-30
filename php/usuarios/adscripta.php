@@ -239,6 +239,7 @@ include '../funciones/limpiar_reservas_antiguas.php';
 <script src="../../js/adscripta-scripts.js"></script>
 <script src="../../js/notificaciones-adscripta.js"></script>
 <script src="../../js/scroll-top.js"></script>
+<script src="../../js/session-timeout.js"></script>
 
 </body>
 </html>

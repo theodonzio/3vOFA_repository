@@ -52,6 +52,7 @@ include '../tools/headers/header_estudiante.php';
 <script src="../../js/scroll-top.js"></script>
 <script src="../../js/watchFunction.js"></script>
 <script src="../../js/estudiante.js"></script>
+<script src="../../js/session-timeout.js"></script>
 
 </body>
 </html>

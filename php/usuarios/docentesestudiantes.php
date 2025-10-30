@@ -169,6 +169,7 @@ $stmt->close();
 <script src="../../js/traductor.js"></script>
 <script src="../../js/scroll-top.js"></script>
 <script src="../../js/watchFunction.js"></script>
+<script src="../../js/session-timeout.js"></script>
 
 </body>
 </html>

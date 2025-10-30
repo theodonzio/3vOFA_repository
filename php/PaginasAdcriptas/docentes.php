@@ -200,6 +200,7 @@ $result = $conn->query($sql);
 
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
+<script src="../../../js/session-timeout.js"></script>
 
 <?php include '../tools/footer.php'; ?>
 <?php $conn->close(); ?>

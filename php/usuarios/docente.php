@@ -137,6 +137,7 @@ $id_docente = $_SESSION['id_usuario'];
 <script src="../../js/scroll-top.js"></script>
 <script src="../../js/notificaciones-docente.js"></script>
 <script src="../../js/recursos-reserva.js"></script>
+<script src="../../js/session-timeout.js"></script>
 
 </body>
 </html>
