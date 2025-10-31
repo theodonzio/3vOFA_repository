@@ -364,6 +364,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+ if (docente === "cedula_dv_invalido") {
+    Swal.fire({
+      icon: "error",
+      title: "Cédula inválida",
+      text: "La cédula ingresada no es válida",
+      confirmButtonColor: "#d33"
+    });
+  }
+
   if (docente === "error") {
     Swal.fire({
       icon: "error",
