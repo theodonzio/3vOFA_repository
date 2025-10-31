@@ -210,7 +210,18 @@ const diccionario = {
 
 // Footer
 "2025 OneForAll. Todos los derechos reservados.":{en: "© 2025 OneForAll. All rights reserved.", es: "© 2025 OneForAll. Todos los derechos reservados."},
+
+//estudiantes.php
+"Cargando...": { en: "Loading...", es: "Cargando..." },
+"Aquí verás tu horario académico": { en: "Here you will see your academic schedule", es: "Aquí verás tu horario académico" },
+"Reloj": { en: "Clock", es: "Reloj" },
+"Selecciona un grupo para ver tu horario": { en: "Select a group to see your schedule", es: "Selecciona un grupo para ver tu horario" },
+"Evento del calendario": { en: "Calendar Event", es: "Evento del calendario" },
+
 };  
+
+
+
 
 // Función para traducir todos los elementos con data-traducible
 function traducir(idioma) {
