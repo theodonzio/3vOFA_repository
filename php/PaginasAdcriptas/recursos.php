@@ -123,46 +123,46 @@ $result = $conn->query($sql);
                 </tr>
 
                 <!-- Modal Editar Recurso -->
-                <div class="modal fade" id="editarRecursoModal<?= $row['id_recurso'] ?>" tabindex="-1" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <form action="editar_recurso.php" method="POST">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Editar Recurso #<?= htmlspecialchars($row['id_recurso']) ?></h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                        </div>
-                        <div class="modal-body">
-                          <input type="hidden" name="id_recurso" value="<?= htmlspecialchars($row['id_recurso']) ?>">
-                          
-                          <div class="mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" name="nombre_recurso" class="form-control" value="<?= htmlspecialchars($row['nombre_recurso']) ?>" required>
-                          </div>
+<div class="modal fade" id="editarRecursoModal<?= $row['id_recurso'] ?>" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="editar_recurso.php" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" data-traducible="Editar Recurso">Editar Recurso #<?= htmlspecialchars($row['id_recurso']) ?></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id_recurso" value="<?= htmlspecialchars($row['id_recurso']) ?>">
+          
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Nombre">Nombre</label>
+            <input type="text" name="nombre_recurso" class="form-control" value="<?= htmlspecialchars($row['nombre_recurso']) ?>" required>
+          </div>
 
-                          <div class="mb-3">
-                            <label class="form-label">Tipo</label>
-                            <input type="text" name="tipo" class="form-control" value="<?= htmlspecialchars($row['tipo']) ?>">
-                          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Tipo">Tipo</label>
+            <input type="text" name="tipo" class="form-control" value="<?= htmlspecialchars($row['tipo']) ?>">
+          </div>
 
-                          <div class="mb-3">
-                            <label class="form-label">Estado</label>
-                            <input type="text" name="estado" class="form-control" value="<?= htmlspecialchars($row['estado']) ?>">
-                          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Estado">Estado</label>
+            <input type="text" name="estado" class="form-control" value="<?= htmlspecialchars($row['estado']) ?>">
+          </div>
 
-                          <div class="mb-3">
-                            <label class="form-label">ID Espacio (FK)</label>
-                            <input type="number" name="id_espacio" class="form-control" value="<?= htmlspecialchars($row['id_espacio']) ?>">
-                          </div>
-                        </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="ID Espacio">ID Espacio (FK)</label>
+            <input type="number" name="id_espacio" class="form-control" value="<?= htmlspecialchars($row['id_espacio']) ?>">
+          </div>
+        </div>
 
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                          <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-primary" data-traducible="Guardar cambios">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
                 <!-- /Modal Editar -->
 
               <?php endwhile; ?>

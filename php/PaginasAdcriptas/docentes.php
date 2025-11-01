@@ -137,41 +137,41 @@ $result = $conn->query($sql);
                 </tr>
 
                 <!-- Modal Editar por cada docente -->
-                <div class="modal fade" id="editarDocenteModal<?= $row['id_usuario'] ?>" tabindex="-1" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <form action="editar_docente.php" method="POST">
-                        <div class="modal-header">
-                          <h5 class="modal-title" data-traducible="Editar Docente #">Editar Docente</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                        </div>
-                        <div class="modal-body">
-                          <input type="hidden" name="id_usuario" value="<?= htmlspecialchars($row['id_usuario']) ?>">
-                          <div class="mb-3">
-                            <label class="form-label" data-traducible="Nombre">Nombre</label>
-                            <input type="text" name="nombre" class="form-control" value="<?= htmlspecialchars($row['nombre']) ?>" required>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" data-traducible="Apellido">Apellido</label>
-                            <input type="text" name="apellido" class="form-control" value="<?= htmlspecialchars($row['apellido']) ?>" required>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" data-traducible="Cédula">Cédula</label>
-                            <input type="text" name="cedula" class="form-control" value="<?= htmlspecialchars($row['cedula']) ?>" required>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" data-traducible="Email">Email</label>
-                            <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($row['email']) ?>" required>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
-                          <button type="submit" class="btn btn-primary" data-traducible="Guardar cambios">Guardar cambios</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+<div class="modal fade" id="editarDocenteModal<?= $row['id_usuario'] ?>" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="editar_docente.php" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" data-traducible="Editar Docente">Editar Docente #<?= htmlspecialchars($row['id_usuario']) ?></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id_usuario" value="<?= htmlspecialchars($row['id_usuario']) ?>">
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Nombre">Nombre</label>
+            <input type="text" name="nombre" class="form-control" value="<?= htmlspecialchars($row['nombre']) ?>" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Apellido">Apellido</label>
+            <input type="text" name="apellido" class="form-control" value="<?= htmlspecialchars($row['apellido']) ?>" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Cédula">Cédula</label>
+            <input type="text" name="cedula" class="form-control" value="<?= htmlspecialchars($row['cedula']) ?>" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Email">Email</label>
+            <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($row['email']) ?>" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-primary" data-traducible="Guardar cambios">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
                 <!-- /Modal Editar -->
 
               <?php endwhile; ?>

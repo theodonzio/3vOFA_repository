@@ -12,17 +12,17 @@
         <div class="modal-body p-4">
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Nombre del Curso">Nombre del Curso</label>
-            <input type="text" name="nombre_curso" class="form-control" placeholder="Ej: Técnico en Informática" required>
+            <input type="text" name="nombre_curso" class="form-control" placeholder="Ej: Técnico en Informática" data-traducible="Ej: Técnico en Informática" required>
           </div>
 
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Descripción">Descripción</label>
-            <textarea name="descripcion" class="form-control" rows="2" placeholder="Descripción del curso"></textarea>
+            <textarea name="descripcion" class="form-control" rows="2" placeholder="Descripción del curso" data-traducible="Descripción del curso"></textarea>
           </div>
 
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Duración en años">Duración en años</label>
-            <input type="number" name="duracion_anos" class="form-control" min="1" max="10" placeholder="Ej: 3" required>
+            <input type="number" name="duracion_anos" class="form-control" min="1" max="10" placeholder="Ej: 3" data-traducible="Ej: 3" required>
           </div>
 
           <div class="mb-3">
@@ -32,17 +32,17 @@
               </label>
               <div class="btn-group btn-group-sm" role="group">
                 <button type="button" class="btn btn-outline-primary" id="btnSeleccionarTodos">
-                  <i class="bi bi-check-all"></i> Seleccionar todos
+                  <i class="bi bi-check-all"></i> <span data-traducible="Seleccionar todos">Seleccionar todos</span>
                 </button>
                 <button type="button" class="btn btn-outline-secondary" id="btnDeseleccionarTodos">
-                  <i class="bi bi-x-lg"></i> Deseleccionar todos
+                  <i class="bi bi-x-lg"></i> <span data-traducible="Deseleccionar todos">Deseleccionar todos</span>
                 </button>
                 <button type="button" class="btn btn-outline-danger" id="btnEliminarSeleccionados">
-                  <i class="bi bi-trash"></i> Eliminar seleccionados
+                  <i class="bi bi-trash"></i> <span data-traducible="Eliminar seleccionados">Eliminar seleccionados</span>
                 </button>
               </div>
             </div>
-            <small class="d-block text-muted mb-2">Marcá los horarios en los que se dictará este curso</small>
+            <small class="d-block text-muted mb-2" data-traducible="Marcá los horarios en los que se dictará este curso">Marcá los horarios en los que se dictará este curso</small>
             
             <div id="listaHorarios" class="p-3 border rounded bg-light" style="max-height: 300px; overflow-y: auto;">
               <?php
@@ -76,7 +76,7 @@
                   </div>';
                 }
               } else {
-                echo '<p class="text-muted text-center">No hay horarios disponibles. Por favor, crea horarios primero.</p>';
+                echo '<p class="text-muted text-center" data-traducible="No hay horarios disponibles. Por favor, crea horarios primero.">No hay horarios disponibles. Por favor, crea horarios primero.</p>';
               }
               ?>
             </div>
@@ -93,4 +93,3 @@
 </div>
 
 <script src="../../js/modal_agregar_curso.js"></script>
-  

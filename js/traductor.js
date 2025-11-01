@@ -218,6 +218,86 @@ const diccionario = {
 "Selecciona un grupo para ver tu horario": { en: "Select a group to see your schedule", es: "Selecciona un grupo para ver tu horario" },
 "Evento del calendario": { en: "Calendar Event", es: "Evento del calendario" },
 
+
+// Recursos
+"Recursos": { en: "Resources", es: "Recursos" },
+"Desde aquí puedes agregar nuevos Recursos al sistema": { en: "From here you can add new resources to the system", es: "Desde aquí puedes agregar nuevos Recursos al sistema" },
+"Agregar Recurso": { en: "Add Resource", es: "Agregar Recurso" },
+"Ver Recursos": { en: "View Resources", es: "Ver Recursos" },
+"Agregar Nuevo Recurso": { en: "Add New Resource", es: "Agregar Nuevo Recurso" },
+"Los recursos se asignarán a espacios al crear o editar un espacio": { en: "Resources will be assigned to spaces when creating or editing a space", es: "Los recursos se asignarán a espacios al crear o editar un espacio" },
+"Nombre del Recurso": { en: "Resource Name", es: "Nombre del Recurso" },
+"Ej: Proyector": { en: "Ex: Projector", es: "Ej: Proyector" },
+"Tipo": { en: "Type", es: "Tipo" },
+"Ej: Audiovisual": { en: "Ex: Audiovisual", es: "Ej: Audiovisual" },
+
+"Ver Asignaturas": { en: "View Subjects", es: "Ver Asignaturas" },
+
+// Reservas Docente
+"Recursos disponibles": { en: "Available resources", es: "Recursos disponibles" },
+"Confirmar Reserva": { en: "Confirm Reservation", es: "Confirmar Reserva" },
+
+"Gestión de Horarios": { en: "Schedule Management", es: "Gestión de Horarios" },
+"Limpiar Todo": { en: "Clean all", es: "Limpiar Todo" },
+
+// Modal Agregar Curso 
+"Seleccionar Horarios del Curso": { en: "Select Course Schedules", es: "Seleccionar Horarios del Curso" },
+"Seleccionar todos": { en: "Select all", es: "Seleccionar todos" },
+"Deseleccionar todos": { en: "Deselect all", es: "Deseleccionar todos" },
+"Eliminar seleccionados": { en: "Delete selected", es: "Eliminar seleccionados" },
+"Marcá los horarios en los que se dictará este curso": { en: "Check the schedules in which this course will be taught", es: "Marcá los horarios en los que se dictará este curso" },
+"No hay horarios disponibles. Por favor, crea horarios primero.": { en: "No schedules available. Please create schedules first.", es: "No hay horarios disponibles. Por favor, crea horarios primero." },
+"Guardar Curso": { en: "Save Course", es: "Guardar Curso" },
+
+// Modal Agregar Grupo 
+"Ejemplo: 1A, 2B, 3MD": { en: "Example: 1A, 2B, 3MD", es: "Ejemplo: 1A, 2B, 3MD" },
+
+// Modal Agregar Espacio 
+"No hay recursos disponibles. Por favor, agregue recursos primero.": { en: "No resources available. Please add resources first.", es: "No hay recursos disponibles. Por favor, agregue recursos primero." },
+
+// Modal Horarios
+"Nombre del horario": { en: "Schedule name", es: "Nombre del horario" },
+"Hora de inicio": { en: "Start time", es: "Hora de inicio" },
+"Hora de fin": { en: "End time", es: "Hora de fin" },
+"Editar Horario": { en: "Edit Schedule", es: "Editar Horario" },
+"Actualizar": { en: "Update", es: "Actualizar" },
+
+"Acciones": { en: "Actions", es: "Acciones" },
+"Año": { en: "Year", es: "Año" },
+"ID Espacio": { en: "ID Space", es: "ID Espacio" },
+
+
+// Editar Asignatura
+"Editar Asignatura": { en: "Edit Subject", es: "Editar Asignatura" },
+"Modifica los datos de la asignatura seleccionada": { en: "Modify the data of the selected subject", es: "Modifica los datos de la asignatura seleccionada" },
+"Seleccione un docente": { en: "Select a teacher", es: "Seleccione un docente" },
+"Seleccione un grupo": { en: "Select a group", es: "Seleccione un grupo" },
+
+// Modales de Edición
+"Editar Curso": { en: "Edit Course", es: "Editar Curso" },
+"Editar Grupo": { en: "Edit Group", es: "Editar Grupo" },
+"Editar Docente": { en: "Edit Teacher", es: "Editar Docente" },
+"Editar Recurso": { en: "Edit Resource", es: "Editar Recurso" },
+"Guardar cambios": { en: "Save changes", es: "Guardar cambios" },
+"Año": { en: "Year", es: "Año" },
+"-- Seleccionar curso --": { en: "-- Select course --", es: "-- Seleccionar curso --" },
+"-- Seleccionar turno --": { en: "-- Select shift --", es: "-- Seleccionar turno --" },
+"ID Espacio": { en: "Space ID", es: "ID Espacio" },
+
+// Textos de asignaturas.php adicionales
+"No hay asignaturas registradas": { en: "No subjects registered", es: "No hay asignaturas registradas" },
+"Acciones": { en: "Actions", es: "Acciones" },
+
+// Textos de recursos.php adicionales
+"Lista de Recursos Registrados": { en: "List of Registered Resources", es: "Lista de Recursos Registrados" },
+"Aquí puedes ver los recursos del sistema": { en: "Here you can see the system resources", es: "Aquí puedes ver los recursos del sistema" },
+"No hay recursos registrados": { en: "No resources registered", es: "No hay recursos registrados" },
+
+// docentesestudiantes.php - Textos faltantes
+"Grupo:": { en: "Group:", es: "Grupo:" },
+"Curso:": { en: "Course:", es: "Curso:" },
+"Turno:": { en: "Shift:", es: "Turno:" },
+
 };  
 
 

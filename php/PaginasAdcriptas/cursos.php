@@ -120,37 +120,37 @@ $result = $conn->query($sql);
                 </tr>
 
                 <!-- Modal Editar por cada fila -->
-                <div class="modal fade" id="editarCursoModal<?= $row['id_curso'] ?>" tabindex="-1" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <form action="editar_curso.php" method="POST">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Editar Curso #<?= htmlspecialchars($row['id_curso']) ?></h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                        </div>
-                        <div class="modal-body">
-                          <input type="hidden" name="id_curso" value="<?= htmlspecialchars($row['id_curso']) ?>">
-                          <div class="mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" name="nombre_curso" class="form-control" value="<?= htmlspecialchars($row['nombre_curso']) ?>" required>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label">Descripción</label>
-                            <textarea name="descripcion" class="form-control" rows="3"><?= htmlspecialchars($row['descripcion']) ?></textarea>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label">Duración (Años)</label>
-                            <input type="number" min="0" name="duracion_anos" class="form-control" value="<?= htmlspecialchars($row['duracion_anos']) ?>">
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                          <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+<div class="modal fade" id="editarCursoModal<?= $row['id_curso'] ?>" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="editar_curso.php" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" data-traducible="Editar Curso">Editar Curso #<?= htmlspecialchars($row['id_curso']) ?></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id_curso" value="<?= htmlspecialchars($row['id_curso']) ?>">
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Nombre">Nombre</label>
+            <input type="text" name="nombre_curso" class="form-control" value="<?= htmlspecialchars($row['nombre_curso']) ?>" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Descripción">Descripción</label>
+            <textarea name="descripcion" class="form-control" rows="3"><?= htmlspecialchars($row['descripcion']) ?></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Duración (Años)">Duración (Años)</label>
+            <input type="number" min="0" name="duracion_anos" class="form-control" value="<?= htmlspecialchars($row['duracion_anos']) ?>">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-primary" data-traducible="Guardar cambios">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
                 <!-- /Modal Editar -->
 
               <?php endwhile; ?>
