@@ -21,11 +21,11 @@ $result = $conn->query($sql);
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
       <div class="logo">
-        <img src="../img/ofalogos/fulltextnegativo.png" id="logo-barra">
+        <img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra">
         
         <div class="dropdown">
           <img 
-            src="../img/icons/config_icon(black).png"
+            src="../../img/icons/config_icon(black).png"
             class="theme_icon_mode dropdown-toggle"
             id="boton-tema"
             data-bs-toggle="dropdown"
@@ -79,15 +79,8 @@ $result = $conn->query($sql);
   </div>
 </div>
 
-<!-- Mensajes simples -->
-<div class="container mt-4">
-  <?php if (isset($_GET['edit']) && $_GET['edit'] === 'success'): ?>
-    <div class="alert alert-success">Docente actualizado correctamente.</div>
-  <?php endif; ?>
-  <?php if (isset($_GET['delete']) && $_GET['delete'] === 'success'): ?>
-    <div class="alert alert-success">Docente eliminado correctamente.</div>
-  <?php endif; ?>
-</div>
+<!-- Mensajes con SweetAlert -->
+<div class="container mt-4"></div>
 
 <!-- Tabla Docentes -->
 <div class="mb-5 hero">
@@ -137,41 +130,43 @@ $result = $conn->query($sql);
                 </tr>
 
                 <!-- Modal Editar por cada docente -->
-                <div class="modal fade" id="editarDocenteModal<?= $row['id_usuario'] ?>" tabindex="-1" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <form action="editar_docente.php" method="POST">
-                        <div class="modal-header">
-                          <h5 class="modal-title" data-traducible="Editar Docente #">Editar Docente</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                        </div>
-                        <div class="modal-body">
-                          <input type="hidden" name="id_usuario" value="<?= htmlspecialchars($row['id_usuario']) ?>">
-                          <div class="mb-3">
-                            <label class="form-label" data-traducible="Nombre">Nombre</label>
-                            <input type="text" name="nombre" class="form-control" value="<?= htmlspecialchars($row['nombre']) ?>" required>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" data-traducible="Apellido">Apellido</label>
-                            <input type="text" name="apellido" class="form-control" value="<?= htmlspecialchars($row['apellido']) ?>" required>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" data-traducible="Cédula">Cédula</label>
-                            <input type="text" name="cedula" class="form-control" value="<?= htmlspecialchars($row['cedula']) ?>" required>
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" data-traducible="Email">Email</label>
-                            <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($row['email']) ?>" required>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
-                          <button type="submit" class="btn btn-primary" data-traducible="Guardar cambios">Guardar cambios</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+<div class="modal fade" id="editarDocenteModal<?= $row['id_usuario'] ?>" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="editar_docente.php" method="POST" id="formEditarDocente<?= $row['id_usuario'] ?>">
+        <div class="modal-header">
+          <h5 class="modal-title" data-traducible="Editar Docente">Editar Docente #<?= htmlspecialchars($row['id_usuario']) ?></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id_usuario" value="<?= htmlspecialchars($row['id_usuario']) ?>">
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Nombre">Nombre</label>
+            <input type="text" name="nombre" class="form-control" value="<?= htmlspecialchars($row['nombre']) ?>" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Apellido">Apellido</label>
+            <input type="text" name="apellido" class="form-control" value="<?= htmlspecialchars($row['apellido']) ?>" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Cédula">Cédula</label>
+            <input type="text" name="cedula" class="form-control" value="<?= htmlspecialchars($row['cedula']) ?>" 
+                   maxlength="8" pattern="[0-9]{8}" required>
+            <small class="form-text text-muted" data-traducible="8 dígitos sin puntos ni guiones">8 dígitos sin puntos ni guiones</small>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Email">Email</label>
+            <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($row['email']) ?>" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-primary" data-traducible="Guardar cambios">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
                 <!-- /Modal Editar -->
 
               <?php endwhile; ?>
@@ -189,18 +184,109 @@ $result = $conn->query($sql);
 </div>
 
 <!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Tooltips
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
+
+    // Notificaciones SweetAlert
+    const params = new URLSearchParams(window.location.search);
+    const isDarkMode = document.body.classList.contains('oscuro');
+    
+    const swalConfig = {
+      background: isDarkMode ? '#2c2c2c' : '#fff',
+      color: isDarkMode ? '#f5f5f5' : '#212529'
+    };
+
+    // Éxito al editar
+    if (params.get('edit') === 'success') {
+      Swal.fire({
+        icon: 'success',
+        title: '¡Docente actualizado!',
+        text: 'Los datos del docente se actualizaron correctamente.',
+        confirmButtonColor: '#198754',
+        timer: 2500,
+        ...swalConfig
+      }).then(() => {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      });
+    }
+
+    // Éxito al eliminar
+    if (params.get('delete') === 'success') {
+      Swal.fire({
+        icon: 'success',
+        title: '¡Docente eliminado!',
+        text: 'El docente fue eliminado del sistema correctamente.',
+        confirmButtonColor: '#198754',
+        timer: 2500,
+        ...swalConfig
+      }).then(() => {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      });
+    }
+
+    // Error: Cédula inválida (formato)
+    if (params.get('edit') === 'cedula_invalida') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Cédula inválida',
+        text: 'La cédula debe tener exactamente 8 dígitos numéricos sin puntos ni guiones.',
+        confirmButtonColor: '#dc3545',
+        ...swalConfig
+      }).then(() => {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      });
+    }
+
+    // Error: Dígito verificador inválido
+    if (params.get('edit') === 'cedula_dv_invalido') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Cédula inválida',
+        text: 'La cédula ingresada no es válida. El dígito verificador no coincide.',
+        confirmButtonColor: '#dc3545',
+        ...swalConfig
+      }).then(() => {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      });
+    }
+
+    // Error: Duplicado (cédula o email ya existe)
+    if (params.get('edit') === 'duplicado') {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Datos duplicados',
+        text: 'Ya existe otro docente con esa cédula o correo electrónico.',
+        confirmButtonColor: '#ffc107',
+        ...swalConfig
+      }).then(() => {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      });
+    }
+
+    // Error general
+    if (params.get('edit') === 'error' || params.get('delete') === 'error') {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Ocurrió un error al procesar la operación. Intenta nuevamente.',
+        confirmButtonColor: '#dc3545',
+        ...swalConfig
+      }).then(() => {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      });
+    }
   });
 </script>
 
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
-<script src="../../../js/timeout.js"></script>
+<script src="../../js/timeout.js"></script>
 
 <?php include '../tools/footer.php'; ?>
 <?php $conn->close(); ?>
