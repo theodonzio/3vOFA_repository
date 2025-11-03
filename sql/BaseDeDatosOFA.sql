@@ -196,7 +196,7 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla usuario
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `cedula`, `email`, `contrasena`, `id_rol`) VALUES
-(1, 'María', 'González', '12345678', 'maria@instituto.edu.uy', '$2y$10$1iij6THLthJZpCI94TuoVOutBeTWANIkMbPVi78qqAr.d7/D1xJA2', 1);
+(1, 'María', 'González', '12345678', 'maria@instituto.edu.uy', 'pass123', 1);
 
 -- Índices de tablas
 
