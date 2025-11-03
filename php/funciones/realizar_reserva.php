@@ -6,6 +6,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_docente = $_SESSION['id_usuario'];
     $id_espacio = $_POST['id_espacio'];
     $fecha_reserva = $_POST['fecha_reserva'];
+    // Evitar reservas en fin de semana (sábado o domingo)
+    $dia_semana = date('N', strtotime($fecha_reserva)); // 1 = lunes, 7 = domingo
+    if ($dia_semana == 6 || $dia_semana == 7) {
+    header("Location: ../usuarios/docente.php?reserva=error_dia");
+    exit;
+}
     $id_horario = $_POST['id_horario'];
     $recursos_seleccionados = $_POST['recursos'] ?? []; // Recursos seleccionados
 
