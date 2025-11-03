@@ -121,14 +121,15 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
                     </button>
 
                     <!-- Botón Eliminar -->
-                    <a href="eliminar_grupo.php?id=<?= urlencode($row['id_grupo']) ?>"
-                       class="btn btn-danger btn-sm btn-eliminar"
-                       data-nombre="<?= addslashes(htmlspecialchars($row['nombre_grupo'])) ?>"
-                       title="Eliminar"
-                       data-bs-toggle="tooltip"
-                       data-bs-placement="top">
-                      <i class="bi bi-trash"></i>
-                    </a>
+                   <button 
+  class="btn btn-danger btn-sm eliminar-grupo"
+  data-id="<?= htmlspecialchars($row['id_grupo']) ?>"
+  data-nombre="<?= htmlspecialchars($row['nombre_grupo']) ?>"
+  title="Eliminar"
+  data-bs-toggle="tooltip"
+  data-bs-placement="top">
+  <i class="bi bi-trash"></i>
+</button>
                   </td>
                 </tr>
 
@@ -219,7 +220,66 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
 <script src="../../js/traductor.js"></script>
 <script src="../../js/grupos.js"></script>
 <script src="../../../js/timeout.js"></script>
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Detectar modo oscuro
+  const isDarkMode = document.body.classList.contains('oscuro');
+
+  // Confirmación para eliminar grupo
+  document.querySelectorAll('.eliminar-grupo').forEach(boton => {
+    boton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = boton.dataset.id;
+      const nombre = boton.dataset.nombre;
+
+      Swal.fire({
+        title: '¿Eliminar grupo?',
+        text: `Se eliminará el grupo "${nombre}" del sistema.`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar',
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6c757d',
+        background: isDarkMode ? '#2c2c2c' : '#fff',
+        color: isDarkMode ? '#f5f5f5' : '#212529'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = `eliminar_grupo.php?id=${id}`;
+        }
+      });
+    });
+  });
+
+  // Mensajes automáticos de éxito
+  const urlParams = new URLSearchParams(window.location.search);
+
+  if (urlParams.get('delete') === 'success') {
+    Swal.fire({
+      icon: 'success',
+      title: 'Grupo eliminado correctamente',
+      showConfirmButton: false,
+      timer: 1800,
+      background: isDarkMode ? '#2c2c2c' : '#fff',
+      color: isDarkMode ? '#f5f5f5' : '#212529'
+    });
+  }
+
+  if (urlParams.get('edit') === 'success') {
+    Swal.fire({
+      icon: 'success',
+      title: 'Grupo actualizado correctamente',
+      showConfirmButton: false,
+      timer: 1800,
+      background: isDarkMode ? '#2c2c2c' : '#fff',
+      color: isDarkMode ? '#f5f5f5' : '#212529'
+    });
+  }
+});
+</script>
 <?php include '../tools/footer.php'; ?>
 <?php $conn->close(); ?>
 
