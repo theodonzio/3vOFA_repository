@@ -51,7 +51,7 @@ $result = $conn->query($sql);
 <body>
 
 <!-- Hero Recursos -->
-<div class="hero-recursos text-white py-5 d-flex align-items-center justify-content-center">
+<div class="hero-recursos text-white py-5 d-flex align-items-center justify-content-center hero">
   <div class="hero-overlay"></div>
 
   <div class="container text-center hero-content">

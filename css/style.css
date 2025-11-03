@@ -463,7 +463,6 @@ body.oscuro .modal-content .form-label {
     color: #f5f5f5;
 }
 
-body.oscuro .modal-content .text-muted,
 body.oscuro .modal-content .form-text {
     color: #adb5bd !important;
 }
@@ -1354,7 +1353,6 @@ body:not(.oscuro) #mensajeInicialHorarios i {
     color: var(--color-secondary) !important;
 }
 
-body.oscuro p.text-muted,
 body.oscuro #mensajeInicialHorarios,
 body.oscuro #mensajeInicialHorarios p,
 body.oscuro #mensajeInicialHorarios i {
@@ -1364,10 +1362,6 @@ body.oscuro #mensajeInicialHorarios i {
 .text-muted {
     color: var(--color-secondary) !important;
     transition: color var(--transition-normal);
-}
-
-.oscuro .text-muted {
-    color: #e0e0e0 !important;
 }
 
 /* ============================================
@@ -1500,10 +1494,6 @@ body.oscuro .table tbody tr:hover {
 body.oscuro .bg-light {
     background-color: var(--bg-dark-table) !important;
     color: #f5f5f5 !important;
-}
-
-body.oscuro .text-muted {
-    color: #adb5bd !important;
 }
 
 /* Sección de Horarios Docente */
@@ -2545,7 +2535,7 @@ body.oscuro #listaHorarios::-webkit-scrollbar-thumb:hover {
 
 /* Hero Recursos */
 .hero-recursos {
-    background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop');
+    background-image: url('https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2072');
     background-size: cover;
     background-position: center;
     position: relative;

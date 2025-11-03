@@ -57,7 +57,7 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
 <body>
 
 <!-- Hero Grupos -->
-<div class="hero-grupos text-white py-5 d-flex align-items-center justify-content-center">
+<div class="hero-grupos text-white py-5 d-flex align-items-center justify-content-center hero">
   <div class="hero-overlay"></div>
 
   <div class="container text-center hero-content">
