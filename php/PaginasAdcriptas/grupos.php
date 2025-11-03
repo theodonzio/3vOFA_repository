@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Verificar sesión
+// Verifica sesión
 if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
     header("Location: ../../index.php?login=" . (!isset($_SESSION['id_usuario']) ? 'required' : 'unauthorized'));
     exit;
@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
 include '../tools/head.php';
 include '../login/conexion_bd.php';
 
-// Obtener todos los grupos (con su curso y turno) incluyendo ids para usar en los modales
+// Obtiene todos los grupos (con su curso y turno) incluyendo ids para usar en los modales
 $sql = "SELECT g.id_grupo, g.nombre_grupo, g.anio_curso, g.id_curso, g.id_turno, c.nombre_curso, t.nombre_turno
         FROM grupo g
         LEFT JOIN curso c ON g.id_curso = c.id_curso
@@ -18,7 +18,7 @@ $sql = "SELECT g.id_grupo, g.nombre_grupo, g.anio_curso, g.id_curso, g.id_turno,
         ORDER BY g.id_grupo ASC";
 $result = $conn->query($sql);
 
-// Obtener lista de cursos y turnos para los select de los modales
+// Obtiene lista de cursos y turnos para los select de los modales
 $cursos = $conn->query("SELECT id_curso, nombre_curso FROM curso ORDER BY nombre_curso ASC");
 $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_turno ASC");
 ?>

@@ -1,5 +1,5 @@
 <?php
-// Obtener id_grupo de la URL o sesión
+// Obtiene id_grupo de la URL o sesión
 $id_grupo_header = isset($_GET['id_grupo']) ? intval($_GET['id_grupo']) : (isset($id_grupo_actual) ? $id_grupo_actual : 0);
 ?>
 

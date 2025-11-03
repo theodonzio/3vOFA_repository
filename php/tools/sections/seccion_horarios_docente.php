@@ -4,7 +4,7 @@
  * Muestra SOLO las clases del docente (no otras asignaturas)
  */
 
-// Obtener ID del docente de la sesión
+// Obtiene ID del docente de la sesión
 $id_docente_actual = $_SESSION['id_usuario'];
 ?>
 
@@ -34,7 +34,7 @@ $id_docente_actual = $_SESSION['id_usuario'];
           <option value="" data-traducible="-- Seleccionar grupo --">-- Seleccionar grupo --</option>
           <?php
           if (isset($conn)) {
-              // Obtener grupos donde el docente está asignado
+              // Obtiene grupos donde el docente está asignado
               $sql = "SELECT DISTINCT g.id_grupo, g.nombre_grupo, c.nombre_curso, t.nombre_turno,
                              GROUP_CONCAT(DISTINCT a.nombre_asignatura SEPARATOR ', ') as asignaturas
                       FROM grupo_asignatura ga
@@ -75,7 +75,7 @@ $id_docente_actual = $_SESSION['id_usuario'];
           ?>
         </select>
         
-        <!-- Mostrar asignaturas del docente en este grupo -->
+        <!-- Muestra asignaturas del docente en este grupo -->
         <div id="asignaturasDocente" class="mt-3" style="display: none;">
           <div class="alert alert-success mb-0">
             <strong><i class="bi bi-book me-2"></i>Tus asignaturas en este grupo:</strong>
@@ -120,7 +120,6 @@ $id_docente_actual = $_SESSION['id_usuario'];
       </table>
     </div>
 
-    <!-- Leyenda -->
     <div class="mt-3 text-center">
       <small class="text-muted">
         <i class="bi bi-info-circle me-1"></i>

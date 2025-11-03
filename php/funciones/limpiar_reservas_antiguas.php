@@ -4,7 +4,7 @@
  * Las reservas se eliminan SOLO después de que pase su fecha_fin
  */
 
-// Evitar que se ejecute múltiples veces en la misma carga
+// Evita que se ejecute múltiples veces en la misma carga
 if (defined('LIMPIEZA_RESERVAS_EJECUTADA')) {
     return;
 }
@@ -15,17 +15,17 @@ if (!isset($conn)) {
     include_once __DIR__ . '/../login/conexion_bd.php';
 }
 
-// Configurar zona horaria
+// Configura zona horaria
 date_default_timezone_set('America/Montevideo');
 
 try {
-    // Eliminar reservas cuya fecha_fin ya pasó
+    // Elimina reservas cuya fecha_fin ya pasó
     $sql = "DELETE FROM reserva WHERE fecha_fin < NOW()";
     
     if ($conn->query($sql) === TRUE) {
         $eliminadas = $conn->affected_rows;
         
-        // Log para debugging (puedes comentar en producción)
+        // Log para debugging 
         if ($eliminadas > 0) {
             error_log("[" . date('Y-m-d H:i:s') . "] Limpieza automática: Se eliminaron $eliminadas reserva(s) antigua(s)");
         }
@@ -82,7 +82,7 @@ try {
     }
 }
 
-// No cerrar conexión si fue incluido desde otro archivo
+// No cierra conexión si fue incluido desde otro archivo
 if (basename($_SERVER['PHP_SELF']) === 'limpiar_reservas_antiguas.php' && isset($conn)) {
     $conn->close();
 }

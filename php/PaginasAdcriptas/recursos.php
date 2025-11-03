@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Verificar sesión (solo adscripta - rol 1)
+// Verifica sesión (solo adscripta - rol 1)
 if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
     header("Location: ../../index.php?login=" . (!isset($_SESSION['id_usuario']) ? 'required' : 'unauthorized'));
     exit;
@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
 include '../tools/head.php';
 include '../login/conexion_bd.php';
 
-// Consultar los recursos
+// Consulta los recursos
 $sql = "SELECT * FROM recurso ORDER BY id_recurso ASC";
 $result = $conn->query($sql);
 ?>

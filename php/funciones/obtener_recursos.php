@@ -1,8 +1,5 @@
 <?php
-/**
- * obtener_recursos.php
- * Devuelve los recursos asociados a un espacio en formato JSON
- */
+/** Devuelve los recursos asociados a un espacio en formato JSON */
 
 include '../login/conexion_bd.php';
 
@@ -11,7 +8,7 @@ header('Content-Type: application/json; charset=utf-8');
 $id_espacio = isset($_GET['id_espacio']) ? intval($_GET['id_espacio']) : 0;
 
 if ($id_espacio > 0) {
-    // Traer todos los recursos disponibles de ese espacio
+    // Trae todos los recursos disponibles de ese espacio
     $sql = "SELECT id_recurso, nombre_recurso, tipo 
             FROM recurso 
             WHERE id_espacio = ? AND estado = 'Disponible'
@@ -35,7 +32,7 @@ if ($id_espacio > 0) {
     $stmt->close();
     $conn->close();
 } else {
-    // Retornar array vacío si no hay id_espacio
+    // Retorna array vacío si no hay id_espacio
     echo json_encode([]);
 }
 ?>

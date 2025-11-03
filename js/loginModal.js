@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         inputRol.value = "docente";
       }
 
-      // ✅ Siempre apuntar al archivo correcto
+      // Siempre apuntar al archivo correcto
       formLogin.action = "../php/login/validar_login.php";
     });
   }

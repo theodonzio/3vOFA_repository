@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Verificar sesión
+// Verifica sesión
 if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
     header("Location: ../index.php?login=" . (!isset($_SESSION['id_usuario']) ? 'required' : 'unauthorized'));
     exit;
@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
 include '../tools/head.php';
 include '../tools/headers/header_adscripta.php';
 include '../login/conexion_bd.php';
-// Limpiar reservas antiguas automáticamente
+// Limpia reservas antiguas automáticamente
 include '../funciones/limpiar_reservas_antiguas.php';
 ?>
 
@@ -96,7 +96,7 @@ include '../funciones/limpiar_reservas_antiguas.php';
     </div>
 </div>
 
-<div class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
+<div id="HeroAsignaturas" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1587691592099-24045742c181?q=80&w=2073&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
     <div class="container text-center hero-content">

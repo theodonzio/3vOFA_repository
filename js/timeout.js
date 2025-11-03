@@ -29,7 +29,7 @@
   ];
 
   /**
-   * Registrar actividad del usuario
+   * Registra actividad del usuario
    */
   function registerActivity() {
     lastActivityTime = Date.now();
@@ -39,7 +39,7 @@
   }
 
   /**
-   * Limpiar todos los temporizadores
+   * Limpia todos los temporizadores
    */
   function clearAllTimers() {
     if (inactivityTimer) {
@@ -51,7 +51,7 @@
   }
 
   /**
-   * Iniciar el temporizador de inactividad
+   * Inicia el temporizador de inactividad
    */
   function startInactivityTimer() {
     // Temporizador para mostrar advertencia
@@ -62,7 +62,7 @@
   }
 
   /**
-   * Mostrar advertencia de sesión por expirar
+   * Muestra advertencia de sesión por expirar
    */
   function showWarning() {
     if (warningShown) return;
@@ -84,7 +84,7 @@
       timer: 60000,
       timerProgressBar: true,
       didOpen: () => {
-        // Si el usuario interactúa con el alert, resetear inactividad
+        // Si el usuario interactúa con el alert, resetea inactividad
         const confirmButton = Swal.getConfirmButton();
         if (confirmButton) {
           confirmButton.addEventListener('click', registerActivity);
@@ -94,7 +94,7 @@
   }
 
   /**
-   * Cerrar sesión por inactividad
+   * Cierra sesión por inactividad
    */
   function endSession() {
     const isDarkMode = document.body.classList.contains('oscuro');
@@ -111,37 +111,37 @@
       background: isDarkMode ? '#2c2c2c' : '#fff',
       color: isDarkMode ? '#f5f5f5' : '#212529'
     }).then(() => {
-      // Cerrar sesión y redirigir
+      // Cierra sesión y redirigir
       window.location.href = '../index.php';
     });
   }
 
   /**
-   * Inicializar el sistema
+   * Inicializa el sistema
    */
   function init() {
-    // Solo ejecutar si estamos en una página autenticada
+    // Solo ejecuta si estamos en una página autenticada
     if (!isUserLoggedIn()) {
       return;
     }
 
-    // Registrar eventos de actividad
+    // Registra eventos de actividad
     activityEvents.forEach(event => {
       document.addEventListener(event, registerActivity, true);
     });
 
-    // Iniciar temporizador
+    // Inicia temporizador
     startInactivityTimer();
 
     console.log('✓ Sistema de inactividad inicializado (15 minutos)');
   }
 
   /**
-   * Verificar si el usuario está autenticado
-   * Comprobamos si existe el elemento de header autenticado
+   * Verifica si el usuario está autenticado
+   * Comprueba si existe el elemento de header autenticado
    */
   function isUserLoggedIn() {
-    // Verificar si existen headers de usuario autenticado
+    // Verifica si existen headers de usuario autenticado
     const headerAdscripta = document.querySelector('#header_nav');
     const headerDocente = document.querySelector('#header_nav');
     const headerEstudiante = document.querySelector('#header_nav');
@@ -150,7 +150,7 @@
   }
 
   /**
-   * Cleanup: limpiar eventos al descargar
+   * Limpia eventos al descargar
    */
   window.addEventListener('beforeunload', () => {
     clearAllTimers();
@@ -159,14 +159,14 @@
     });
   });
 
-  // Inicializar cuando el DOM esté listo
+  // Inicializa cuando el DOM esté listo
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
 
-  // Exportar para uso manual si es necesario
+  // Exporta para uso manual si es necesario
   window.SessionManager = {
     resetTimer: registerActivity,
     endSession: endSession,

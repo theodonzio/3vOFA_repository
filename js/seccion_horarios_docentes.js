@@ -1,7 +1,4 @@
-/**
- * Sección de Horarios para Docentes
- * Muestra SOLO las clases del docente (no otras asignaturas)
- */
+/** Muestra SOLO las clases del docente (no otras asignaturas) */
 
 (function() {
   'use strict';
@@ -35,9 +32,7 @@
     // Event listener para el selector de grupo
     grupoSelect.addEventListener("change", cargarHorariosDocente);
 
-    /**
-     * Cargar horarios del docente para el grupo seleccionado
-     */
+    /** Carga horarios del docente para el grupo seleccionado */
     async function cargarHorariosDocente() {
       const idGrupo = grupoSelect.value;
       console.log('Grupo seleccionado:', idGrupo);
@@ -50,7 +45,7 @@
         return;
       }
 
-      // Mostrar asignaturas del docente
+      // Muestra asignaturas del docente
       const opcionSeleccionada = grupoSelect.options[grupoSelect.selectedIndex];
       const asignaturas = opcionSeleccionada.getAttribute('data-asignaturas');
       
@@ -64,13 +59,13 @@
         asignaturasDiv.style.display = "block";
       }
 
-      // Mostrar estado de carga
+      // Muestra estado de carga
       mensajeInicial.style.display = "none";
       tablaContainer.style.display = "none";
       estadoCarga.style.display = "block";
 
       try {
-        // Obtener información del grupo
+        // Obtiene información del grupo
         console.log('Obteniendo información del grupo...');
         const urlInfo = `../funciones/obtener_info_grupo.php?id_grupo=${idGrupo}&t=${Date.now()}`;
         const respInfo = await fetch(urlInfo);
@@ -87,7 +82,7 @@
           infoCurso.textContent = dataInfo.nombre_curso || 'N/A';
         }
 
-        // Obtener horarios del grupo
+        // Obtiene horarios del grupo
         console.log('Obteniendo horarios del grupo...');
         const urlHorarios = `../funciones/obtener_horario_estudiante.php?id_grupo=${idGrupo}&t=${Date.now()}`;
         const respHorarios = await fetch(urlHorarios);
@@ -107,11 +102,11 @@
           throw new Error('Este grupo no tiene horarios asignados');
         }
 
-        // Construir tabla (SOLO MIS CLASES)
+        // Construye tabla (SOLO MIS CLASES)
         console.log('Construyendo tabla con SOLO MIS CLASES...');
         construirTablaDocente(dataHorarios, asignaturas);
 
-        // Mostrar tabla
+        // Muestra tabla
         estadoCarga.style.display = "none";
         tablaContainer.style.display = "block";
         
@@ -121,7 +116,7 @@
         console.error('ERROR en cargarHorariosDocente:', error);
         estadoCarga.style.display = "none";
         
-        // Mostrar error con SweetAlert2 si está disponible
+        // Muestra error con SweetAlert2 si está disponible
         if (typeof Swal !== 'undefined') {
           Swal.fire({
             icon: 'error',
@@ -134,31 +129,31 @@
           alert('Error al cargar horarios: ' + error.message);
         }
         
-        // Volver a mostrar mensaje inicial
+        // Vuelve a mostrar mensaje inicial
         mensajeInicial.style.display = "block";
       }
     }
 
     /**
-     * Construir tabla de horarios mostrando SOLO las clases del docente
+     * Construye tabla de horarios mostrando SOLO las clases del docente
      * @param {Object} datos - Datos de horarios del grupo
      * @param {string} misAsignaturas - String con las asignaturas del docente separadas por coma
      */
     function construirTablaDocente(datos, misAsignaturas) {
       console.log('Construyendo tabla SOLO con mis clases');
       
-      // Limpiar tabla
+      // Limpia tabla
       tablaBody.innerHTML = '';
 
-      // Convertir mis asignaturas a array
+      // Convierte mis asignaturas a array
       const misAsignaturasArray = misAsignaturas ? misAsignaturas.split(', ') : [];
       console.log('Mis asignaturas:', misAsignaturasArray);
 
-      // Organizar horarios por hora (SOLO MIS CLASES)
+      // Organiza horarios por hora (SOLO MIS CLASES)
       const horariosPorHora = {};
       
       datos.horarios.forEach(h => {
-        // ✅ FILTRAR: Solo procesar si es una de mis asignaturas
+        // FILTRA: Solo procesar si es una de mis asignaturas
         if (h.nombre_asignatura && misAsignaturasArray.includes(h.nombre_asignatura)) {
           if (!horariosPorHora[h.id_horario]) {
             horariosPorHora[h.id_horario] = {
@@ -173,7 +168,7 @@
         }
       });
 
-      // Verificar si tengo clases
+      // Verifica si tengo clases
       if (Object.keys(horariosPorHora).length === 0) {
         tablaBody.innerHTML = `
           <tr>
@@ -186,10 +181,10 @@
         return;
       }
 
-      // Ordenar horarios
+      // Ordena horarios
       const horariosOrdenados = Object.values(horariosPorHora).sort((a, b) => a.id - b.id);
 
-      // Construir filas
+      // Construye filas
       horariosOrdenados.forEach(horario => {
         const tr = document.createElement('tr');
         

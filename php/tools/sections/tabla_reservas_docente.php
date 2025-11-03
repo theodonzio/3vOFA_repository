@@ -1,4 +1,3 @@
-<!-- Tabla de Reservas del Docente -->
 <div class="padre_tabla">
     <div class="container" id="tabla_reservas_docente">
         <h3 id="title_reservasdocente" data-traducible="Mis Reservas">Mis Reservas</h3>

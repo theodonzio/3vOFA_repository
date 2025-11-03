@@ -1,15 +1,13 @@
 <?php
-/**
- * Obtener información de un grupo específico
- * Ubicación: php/funciones/obtener_info_grupo.php
- */
+/** Obtiene información de un grupo específico */
+
 header('Content-Type: application/json');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 include_once '../login/conexion_bd.php';
 
-// Validar parámetro
+// Valida parámetro
 if (!isset($_GET['id_grupo'])) {
     echo json_encode([
         'error' => 'No se especificó grupo',
@@ -20,7 +18,7 @@ if (!isset($_GET['id_grupo'])) {
 
 $id_grupo = intval($_GET['id_grupo']);
 
-// Verificar conexión
+// Verifica conexión
 if (!$conn) {
     echo json_encode([
         'error' => 'Error de conexión a la base de datos',
@@ -30,7 +28,7 @@ if (!$conn) {
 }
 
 try {
-    // Obtener información del grupo
+    // Obtiene información del grupo
     $sql = "
         SELECT 
             g.id_grupo,

@@ -1,7 +1,4 @@
-/**
- * Manejo de notificaciones para la página de inicio
- * Gestiona SweetAlert para diferentes estados de login
- */
+/** Gestiona SweetAlert para diferentes estados de login */
 
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -24,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showConfirmButton: false,
             ...swalConfig
         }).then(() => {
+            
             // Redirigir según rol
             if (rol === '1') {
                 window.location.href = 'usuarios/adscripta.php';

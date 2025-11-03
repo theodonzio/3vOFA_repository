@@ -10,7 +10,7 @@ include '../login/conexion_bd.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Limpiar id (siempre usar prepared statements)
+    // Limpia id 
     $sql = "DELETE FROM curso WHERE id_curso = ?";
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("i", $id);

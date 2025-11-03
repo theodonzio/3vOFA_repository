@@ -56,7 +56,7 @@
             <select class="form-select" id="opcionEstudiante" name="id_grupo" required>
               <option value="" selected disabled data-traducible="-- Seleccionar grupo --">-- Seleccionar grupo --</option>
               <?php
-              // Incluir conexión si no está definida
+              // Incluye conexión si no está definida
               if (!isset($conn)) {
                 include '../php/login/conexion_bd.php';
               }

@@ -19,13 +19,13 @@ $horarios = $data['horarios'];
 $conn->begin_transaction();
 
 try {
-    // Borrar horarios anteriores del grupo
+    // Borra horarios anteriores del grupo
     $del = $conn->prepare("DELETE FROM horario_grupo_asignatura WHERE id_grupo = ?");
     $del->bind_param("i", $id_grupo);
     $del->execute();
     $del->close();
 
-    // Insertar los nuevos horarios
+    // Inserta los nuevos horarios
     $ins = $conn->prepare("INSERT INTO horario_grupo_asignatura (id_grupo, id_horario, dia_semana, id_asignatura) VALUES (?, ?, ?, ?)");
     
     foreach ($horarios as $h) {

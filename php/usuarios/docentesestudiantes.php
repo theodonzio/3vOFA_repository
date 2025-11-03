@@ -1,5 +1,5 @@
 <?php
-// Obtener el ID del grupo desde la URL y guardarlo ANTES de incluir el header
+// Obtiene el ID del grupo desde la URL y guardarlo ANTES de incluir el header
 $id_grupo_actual = isset($_GET['id_grupo']) ? intval($_GET['id_grupo']) : null;
 $id_grupo = $id_grupo_actual; // Para usar en el resto del archivo
 
@@ -59,7 +59,7 @@ $stmt->close();
 <div class="container my-5">
     <div class="row g-4">
         <?php
-        // Obtener docentes del grupo con sus asignaturas
+        // Obtiene docentes del grupo con sus asignaturas
         $sql = "SELECT DISTINCT 
                     u.id_usuario,
                     u.nombre,
@@ -84,7 +84,7 @@ $stmt->close();
                 $email = htmlspecialchars($docente['email']);
                 $materias = htmlspecialchars($docente['materias'] ?? 'Sin asignaturas asignadas');
                 
-                // Generar iniciales para el avatar
+                // Genera iniciales para el avatar
                 $iniciales = strtoupper(substr($docente['nombre'], 0, 1) . substr($docente['apellido'], 0, 1));
                 
                 // Color aleatorio pero consistente basado en el ID

@@ -38,7 +38,7 @@
             <?php
             // Conexión a la BD
             include '../login/conexion_bd.php';
-            // Obtener recursos disponibles (sin espacio asignado o cualquier recurso)
+            // Obtiene recursos disponibles (sin espacio asignado o cualquier recurso)
             $sql = "SELECT id_recurso, nombre_recurso, tipo FROM recurso ORDER BY nombre_recurso ASC";
             $result = $conn->query($sql);
 

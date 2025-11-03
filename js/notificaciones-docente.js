@@ -1,6 +1,5 @@
 /**
- * Manejo de notificaciones para la página de docente
- * Gestiona SweetAlert para diferentes estados de reservas
+  Gestiona SweetAlert para diferentes estados de reservas
  */
 
 document.addEventListener('DOMContentLoaded', () => {

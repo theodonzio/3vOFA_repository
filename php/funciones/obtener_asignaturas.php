@@ -1,6 +1,6 @@
 <?php
 /**
- * Obtener asignaturas de un grupo específico
+ * Obtiene asignaturas de un grupo específico
  */
 header('Content-Type: application/json');
 include_once '../login/conexion_bd.php';
@@ -13,7 +13,7 @@ if (!isset($_GET['id_grupo'])) {
 $id_grupo = intval($_GET['id_grupo']);
 
 try {
-    // Obtener las asignaturas asignadas a este grupo
+    // Obtiene las asignaturas asignadas a este grupo
     $sql = "SELECT DISTINCT a.id_asignatura, a.nombre_asignatura 
             FROM grupo_asignatura ga
             JOIN asignatura a ON ga.id_asignatura = a.id_asignatura
@@ -42,7 +42,7 @@ try {
     $stmt->close();
     
 } catch (Exception $e) {
-    // En caso de error, devolver array vacío
+    // En caso de error, devuelve array vacío
     error_log("Error en obtener_asignaturas.php: " . $e->getMessage());
     echo json_encode([]);
 }
