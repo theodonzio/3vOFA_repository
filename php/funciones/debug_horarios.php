@@ -18,7 +18,7 @@ $debug = [
 ];
 
 try {
-    // 1. Info del grupo
+    // Información del grupo
     $sql = "SELECT g.*, c.nombre_curso FROM grupo g 
             LEFT JOIN curso c ON g.id_curso = c.id_curso 
             WHERE g.id_grupo = ?";
@@ -32,7 +32,7 @@ try {
     if ($debug['grupo_info']) {
         $id_curso = $debug['grupo_info']['id_curso'];
         
-        // 2. Info del curso
+        // Información del curso
         $sql = "SELECT * FROM curso WHERE id_curso = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id_curso);
@@ -41,7 +41,7 @@ try {
         $debug['curso_info'] = $result->fetch_assoc();
         $stmt->close();
 
-        // 3. Horarios del curso
+        // Horarios del curso
         $sql = "SELECT ch.*, h.nombre_horario, h.hora_inicio, h.hora_fin 
                 FROM curso_horario ch
                 JOIN horario h ON ch.id_horario = h.id_horario
@@ -56,7 +56,7 @@ try {
         }
         $stmt->close();
 
-        // 4. Asignaturas del grupo
+        // Asignaturas del grupo
         $sql = "SELECT a.* FROM grupo_asignatura ga
                 JOIN asignatura a ON ga.id_asignatura = a.id_asignatura
                 WHERE ga.id_grupo = ?";
@@ -69,7 +69,7 @@ try {
         }
         $stmt->close();
 
-        // 5. Horarios guardados
+        // Horarios guardados
         $sql = "SELECT * FROM horario_grupo_asignatura WHERE id_grupo = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id_grupo);

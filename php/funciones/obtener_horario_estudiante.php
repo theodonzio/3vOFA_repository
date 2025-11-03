@@ -1,15 +1,15 @@
 <?php
 /**
- * Obtener horarios de un grupo específico para estudiantes
- * Ubicación: php/funciones/obtener_horario_estudiante.php
+ * Obtiene horarios de un grupo específico para estudiantes
  */
+
 header('Content-Type: application/json');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 include_once '../login/conexion_bd.php';
 
-// Validar parámetro
+// Valida parámetro
 if (!isset($_GET['id_grupo'])) {
     echo json_encode([
         'error' => 'No se especificó grupo',
@@ -20,7 +20,7 @@ if (!isset($_GET['id_grupo'])) {
 
 $id_grupo = intval($_GET['id_grupo']);
 
-// Verificar conexión a BD
+// Verifica conexión a BD
 if (!$conn) {
     echo json_encode([
         'error' => 'Error de conexión a la base de datos',
@@ -30,7 +30,7 @@ if (!$conn) {
 }
 
 try {
-    // Obtener horarios del grupo con sus asignaturas
+    // Obtiene horarios del grupo con sus asignaturas
     $sql = "
         SELECT 
             h.id_horario,

@@ -6,7 +6,7 @@ if (!empty($_POST['nombre_asignatura']) && !empty($_POST['id_docente']) && !empt
     $docente = intval($_POST['id_docente']);
     $grupo = intval($_POST['id_grupo']);
 
-    // Verificar o crear la asignatura
+    // Verifica o crear la asignatura
     $check = $conn->query("SELECT id_asignatura FROM asignatura WHERE nombre_asignatura = '$nombre'");
     if ($check->num_rows > 0) {
         $asig = $check->fetch_assoc();
@@ -16,7 +16,7 @@ if (!empty($_POST['nombre_asignatura']) && !empty($_POST['id_docente']) && !empt
         $id_asig = $conn->insert_id;
     }
 
-    // Verificar si la relación ya existe
+    // Verifica si la relación ya existe
     $existe = $conn->query("SELECT * FROM grupo_asignatura 
                             WHERE id_grupo = $grupo 
                             AND id_asignatura = $id_asig 

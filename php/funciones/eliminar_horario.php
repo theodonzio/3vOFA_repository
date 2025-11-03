@@ -15,7 +15,7 @@ try {
         exit;
     }
 
-    // Validar que todos sean números
+    // Valida que todos sean números
     $ids = array_map('intval', $ids);
     $ids = array_filter($ids, function($id) { return $id > 0; });
 
@@ -30,7 +30,7 @@ try {
 
     $ids_list = implode(',', $ids);
 
-    // Verificar si están en uso
+    // Verifica si están en uso
     $check = $conn->query("SELECT COUNT(*) as count FROM curso_horario WHERE id_horario IN ($ids_list)");
     $row = $check->fetch_assoc();
     
@@ -43,7 +43,7 @@ try {
         exit;
     }
 
-    // Eliminar horarios
+    // Elimina horarios
     $sql = "DELETE FROM horario WHERE id_horario IN ($ids_list)";
     
     if ($conn->query($sql)) {

@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descripcion = $_POST['descripcion'];
     $recursos = $_POST['recursos'] ?? [];
 
-    // Insertar el nuevo espacio
+    // Inserta el nuevo espacio
     $sql = "INSERT INTO espacio (nombre_espacio, tipo) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $descripcion, $tipo_salon);
@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id_espacio = $stmt->insert_id;
         $stmt->close();
 
-        // Actualizar los recursos seleccionados para asignarlos a este espacio
+        // Actualiza los recursos seleccionados para asignarlos a este espacio
         if (!empty($recursos)) {
             $stmt_rec = $conn->prepare("UPDATE recurso SET id_espacio = ?, estado = 'Disponible' WHERE id_recurso = ?");
             foreach ($recursos as $id_recurso) {
@@ -26,12 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_rec->close();
         }
 
-        // Redirigir con parámetro de éxito para SweetAlert
+        // Redirige con parámetro de éxito para SweetAlert
         header("Location: ../usuarios/adscripta.php?espacio=success");
         exit;
 
     } else {
-        // Redirigir con parámetro de error para SweetAlert
+        // Redirige con parámetro de error para SweetAlert
         header("Location: ../usuarios/adscripta.php?espacio=error");
     }
 

@@ -2,7 +2,7 @@
 session_start();
 include '../login/conexion_bd.php';
 
-// Verificar sesión (solo adscripta - rol 1)
+// Verifica sesión (solo adscripta - rol 1)
 if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
     header("Location: ../../index.php?login=" . (!isset($_SESSION['id_usuario']) ? 'required' : 'unauthorized'));
     exit;
@@ -13,9 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre_recurso = trim($_POST['nombre_recurso']);
     $tipo = trim($_POST['tipo']);
 
-    // Validar campos requeridos
+    // Valida campos requeridos
     if (!empty($nombre_recurso) && !empty($tipo)) {
-        // Insertar el nuevo recurso sin id_espacio (será NULL)
+        // Inserta el nuevo recurso sin id_espacio (será NULL)
         $sql = "INSERT INTO recurso (nombre_recurso, tipo, estado) VALUES (?, ?, 'Disponible')";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $nombre_recurso, $tipo);

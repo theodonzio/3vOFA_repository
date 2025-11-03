@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_docente = $_SESSION['id_usuario'];
     $id_espacio = $_POST['id_espacio'];
     $fecha_reserva = $_POST['fecha_reserva'];
-    // Evitar reservas en fin de semana (sábado o domingo)
+    // Evita reservas en fin de semana (sábado o domingo)
     $dia_semana = date('N', strtotime($fecha_reserva)); // 1 = lunes, 7 = domingo
     if ($dia_semana == 6 || $dia_semana == 7) {
     header("Location: ../usuarios/docente.php?reserva=error_dia");
@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_horario = $_POST['id_horario'];
     $recursos_seleccionados = $_POST['recursos'] ?? []; // Recursos seleccionados
 
-    // Obtener horas de la tabla horario
+    // Obtiene horas de la tabla horario
     $sql_h = "SELECT hora_inicio, hora_fin FROM horario WHERE id_horario = ?";
     $stmt_h = $conn->prepare($sql_h);
     $stmt_h->bind_param("i", $id_horario);
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Guardar reserva
+    // Guarda reserva
     $sql = "INSERT INTO reserva (fecha_inicio, fecha_fin, tipo_reserva, estado, id_docente, id_espacio) VALUES (?, ?, 'Clase', 'Pendiente', ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssii", $fecha_inicio, $fecha_fin, $id_docente, $id_espacio);
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id_reserva = $stmt->insert_id; // Obtener ID de la reserva recién creada
         $stmt->close();
 
-        // Insertar recursos seleccionados en reserva_recurso
+        // Inserta recursos seleccionados en reserva_recurso
         if (!empty($recursos_seleccionados)) {
             $stmt_rec = $conn->prepare("INSERT INTO reserva_recurso (id_reserva, id_recurso) VALUES (?, ?)");
             foreach ($recursos_seleccionados as $id_recurso) {

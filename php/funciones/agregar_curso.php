@@ -8,14 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_horarios = isset($_POST['id_horarios']) ? $_POST['id_horarios'] : [];
 
     if (!empty($nombre_curso) && $duracion_anos > 0) {
-        // Insertar el curso
+        // Inserta el curso
         $stmt = $conn->prepare("INSERT INTO curso (nombre_curso, descripcion, duracion_anos) VALUES (?, ?, ?)");
         $stmt->bind_param("ssi", $nombre_curso, $descripcion, $duracion_anos);
 
         if ($stmt->execute()) {
             $id_curso = $conn->insert_id;
 
-            // Guardar los horarios asociados al curso
+            // Guarda los horarios asociados al curso
             if (!empty($id_horarios)) {
                 $insert = $conn->prepare("INSERT INTO curso_horario (id_curso, id_horario) VALUES (?, ?)");
                 foreach ($id_horarios as $id_h) {

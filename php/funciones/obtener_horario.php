@@ -1,7 +1,8 @@
 <?php
 /**
- * Obtener horarios guardados de un grupo específico
+ * Obtiene horarios guardados de un grupo específico
  */
+
 header('Content-Type: application/json');
 include_once '../login/conexion_bd.php';
 

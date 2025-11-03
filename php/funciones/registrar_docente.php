@@ -2,25 +2,25 @@
 include '../login/conexion_bd.php'; // conexión BD
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // --- Sanitizar y normalizar entradas ---
+    // --- Sanitiza y normaliza entradas ---
     $nombre = trim($_POST['nombre']);
     $apellido = trim($_POST['apellido']);
-    $cedula = preg_replace('/\D+/', '', $_POST['cedula']); // eliminar puntos o guiones
+    $cedula = preg_replace('/\D+/', '', $_POST['cedula']); // elimina puntos o guiones
     $email = trim($_POST['email']);
     $contrasena = $_POST['contrasena'];
     $id_rol = $_POST['id_rol']; // siempre 2 (docente)
 
-    // --- Normalizar nombres ---
+    // --- Normaliza nombres ---
     $nombre = ucfirst(strtolower($nombre));
     $apellido = ucfirst(strtolower($apellido));
 
-    // --- Validar formato numérico de cédula ---
+    // --- Valida formato numérico de cédula ---
     if (!preg_match('/^\d{8}$/', $cedula)) {
         header("Location: ../usuarios/adscripta.php?docente=cedula_invalida");
         exit;
     }
 
-    // --- Validar dígito verificador de la cédula ---
+    // --- Valida dígito verificador de la cédula ---
     $factores = [2, 9, 8, 7, 6, 3, 4];
     $suma = 0;
     for ($i = 0; $i < 7; $i++) {
@@ -33,13 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // --- Validar contraseña (mínimo 6, letras y números) ---
+    // --- Valida contraseña (mínimo 6, letras y números) ---
     if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+=-]{6,}$/', $contrasena)) {
         header("Location: ../usuarios/adscripta.php?docente=contrasena_invalida");
         exit;
     }
 
-    // --- Verificar duplicados (cédula o email) ---
+    // --- Verifica duplicados (cédula o email) ---
     $check = $conn->prepare("SELECT id_usuario FROM usuario WHERE cedula = ? OR email = ?");
     $check->bind_param("ss", $cedula, $email);
     $check->execute();
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $check->close();
 
-    // --- Hashear y guardar ---
+    // --- Hashea y guarda ---
     $contrasena_hash = password_hash($contrasena, PASSWORD_DEFAULT);
     $sql = "INSERT INTO usuario (nombre, apellido, cedula, email, contrasena, id_rol)
             VALUES (?, ?, ?, ?, ?, ?)";
