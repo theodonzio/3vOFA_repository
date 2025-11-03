@@ -123,7 +123,7 @@ const diccionario = {
 "Ej: 2": { en: "Ex: 2", es: "Ej: 2" },
 
 // Sección Reservas
-"Reservas de los Docentes": { en: "Teachers' Reservations", es: "Reservas de los Docentes" },
+"Reservas de los Docentes": { en: "Teacher's Reservations", es: "Reservas de los Docentes" },
 "ID Reserva:": { en: "Reservation ID:", es: "ID Reserva:" },
 "Rechazar": { en: "Reject", es: "Rechazar" },
 "PENDIENTE": { en: "PENDING", es: "PENDIENTE" },
