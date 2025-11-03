@@ -1,5 +1,5 @@
 <?php
-// Guardar id_grupo ANTES de incluir cualquier cosa
+// Guarda id_grupo ANTES de incluir cualquier cosa
 $id_grupo_actual = isset($_GET['id_grupo']) ? intval($_GET['id_grupo']) : 0;
 
 include '../tools/head.php';
