@@ -1,7 +1,3 @@
-/* ============================================
-   VARIABLES CSS (Agregar al inicio)
-   ============================================ */
-
 :root {
     /* Colores principales */
     --color-primary: #1a73e8;
@@ -197,7 +193,6 @@ body:not(.oscuro) .theme_icon_mode:hover {
     filter: brightness(1.2);
 }
 
-/* Modo oscuro */
 body.oscuro {
     background-color: var(--bg-dark);
     color: #f5f5f5;
@@ -410,7 +405,7 @@ input[type="checkbox"]:checked::after {
 }
 
 /* ============================================
-   MODALES - UNIFICADO
+   MODALES
    ============================================ */
 
 .modal-footer .btn {
@@ -896,7 +891,7 @@ body.oscuro .text-secondary {
     transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
-/* Modo claro */
+
 body:not(.oscuro) #tabla_reservas_docente .table {
     background-color: var(--bg-light);
     color: #000000;
@@ -920,7 +915,6 @@ body:not(.oscuro) #tabla_reservas_docente .table tbody tr:hover td {
     background-color: var(--bg-light-hover);
 }
 
-/* Modo oscuro */
 body.oscuro #tabla_reservas_docente .table {
     background-color: var(--bg-dark-alt);
     color: #f5f5f5 !important;
@@ -1218,7 +1212,6 @@ body.oscuro #scrollTopBtn {
     box-shadow: 0 4px 12px rgba(21, 115, 71, 0.3);
 }
 
-/* Modo oscuro - Gestión de Horarios */
 body.oscuro #GestionHorarios {
     color: #f5f5f5;
 }
