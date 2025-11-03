@@ -27,6 +27,8 @@
                 <a class="dropdown-item" href="#HeroCursos" data-traducible="Cursos">Cursos</a></li>
               <li class="AlinearBotones"><img src="../../img/icons/abc_icon.png" class="icono">
                 <a class="dropdown-item" href="#HeroGrupos" data-traducible="Grupos">Grupos</a></li>
+              <li class="AlinearBotones"><img src="../../img/icons/remote_icon.png" class="icono">
+                <a class="dropdown-item" href="#HeroGrupos" data-traducible="Recursos">Recursos</a></li>
             </ul>
           </li>         
 
