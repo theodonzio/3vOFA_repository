@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['nombre'] = $row['nombre'];
             $_SESSION['id_rol'] = $row['id_rol'];
 
-            // Redirigir con login=success y rol
+            // Redirige con login=success y rol
             header("Location: ../index.php?login=success&rol=" . $row['id_rol']);
             exit;
         } else {
