@@ -1,7 +1,4 @@
-/**
- * Estudiante - Gestión de Horarios
- * Script para cargar y mostrar horarios del estudiante
- */
+/** Script para cargar y mostrar horarios del estudiante */
 
 console.log('=== PÁGINA ESTUDIANTE CARGADA ===');
 
@@ -19,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    // Cargar info del grupo
+    // Cargar información del grupo
     console.log('1. Cargando información del grupo...');
     const responseGrupo = await fetch(`../funciones/obtener_info_grupo.php?id_grupo=${idGrupo}`);
     
@@ -79,14 +76,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /**
- * Construir tabla de horarios
- * @param {Object} datos - Datos de horarios del estudiante
+   Construye tabla de horarios
+   @param {Object} datos - Datos de horarios del estudiante
  */
 function construirTabla(datos) {
   const tbody = document.getElementById('cuerpoTabla');
   tbody.innerHTML = '';
 
-  // Organizar horarios por hora
+  // Organiza horarios por hora
   const horariosPorHora = {};
   
   datos.horarios.forEach(h => {
@@ -103,11 +100,11 @@ function construirTabla(datos) {
     }
   });
 
-  // Ordenar horarios por ID
+  // Ordena horarios por ID
   const horariosOrdenados = Object.values(horariosPorHora).sort((a, b) => a.id - b.id);
   console.log('Horarios ordenados:', horariosOrdenados);
 
-  // Construir filas
+  // Construye filas
   horariosOrdenados.forEach(horario => {
     const tr = document.createElement('tr');
     
@@ -120,7 +117,7 @@ function construirTabla(datos) {
     `;
     tr.appendChild(tdHora);
     
-    // 5 columnas para días (1=Lunes, 2=Martes, etc.)
+    // Las 5 columnas para cada día 
     for (let dia = 1; dia <= 5; dia++) {
       const td = document.createElement('td');
       const asignatura = horario.dias[dia];
@@ -141,8 +138,8 @@ function construirTabla(datos) {
 }
 
 /**
- * Mostrar mensaje de error
- * @param {string} mensaje - Mensaje de error a mostrar
+  Muestra mensaje de error
+  @param {string} mensaje 
  */
 function mostrarError(mensaje) {
   document.getElementById('tituloGrupo').textContent = 'Error al cargar';

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Seleccionar todos los horarios
+  // Selecciona todos los horarios
   document.getElementById('btnSeleccionarTodos')?.addEventListener('click', function() {
     document.querySelectorAll('.checkbox-horario').forEach(cb => {
       cb.checked = true;
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Deseleccionar todos los horarios
+  // Deselecciona todos los horarios
   document.getElementById('btnDeseleccionarTodos')?.addEventListener('click', function() {
     document.querySelectorAll('.checkbox-horario').forEach(cb => {
       cb.checked = false;
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Eliminar horarios seleccionados
+  // Elimina horarios seleccionados
   document.getElementById('btnEliminarSeleccionados')?.addEventListener('click', async function() {
     const seleccionados = Array.from(document.querySelectorAll('.checkbox-horario:checked'))
       .map(cb => parseInt(cb.value));
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (!result.isConfirmed) return;
 
-    // Mostrar loading
+    // Muestra loading
     Swal.fire({
       title: 'Eliminando...',
       allowOutsideClick: false,
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Editar horario individual
+  // Edita horario individual
   document.querySelectorAll('.btn-editar-horario').forEach(btn => {
     btn.addEventListener('click', async function(e) {
       e.preventDefault();
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       if (formValues) {
-        // Mostrar loading
+        // Muestra loading
         Swal.fire({
           title: 'Guardando...',
           allowOutsideClick: false,

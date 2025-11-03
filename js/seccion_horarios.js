@@ -6,7 +6,7 @@
 (function() {
   'use strict';
   
-  // Esperar a que el DOM esté completamente cargado
+  // Espera a que el DOM esté completamente cargado
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', inicializarGestionHorarios);
   } else {
@@ -27,7 +27,7 @@
     const cantidadHorarios = document.getElementById("cantidadHorarios");
     const cantidadAsignaturas = document.getElementById("cantidadAsignaturas");
 
-    // Verificar que todos los elementos existen
+    // Verifica que todos los elementos existen
     if (!grupoSelect || !guardarBtn || !limpiarBtn || !tablaBody) {
       console.error('ERROR: No se encontraron todos los elementos necesarios');
       return;
@@ -46,7 +46,7 @@
     limpiarBtn.addEventListener("click", limpiarTodo);
 
     /**
-     * Cargar datos del grupo seleccionado
+     * Carga datos del grupo seleccionado
      */
     async function cargarDatosGrupo() {
       const idGrupo = grupoSelect.value;
@@ -59,13 +59,13 @@
         return;
       }
 
-      // Mostrar estado de carga
+      // Muestra estado de carga
       mensajeInicial.style.display = "none";
       tablaContainer.style.display = "none";
       estadoCarga.style.display = "block";
 
       try {
-        // 1. Obtener horarios del curso
+        // Obtiene horarios del curso
         console.log('Obteniendo horarios del curso...');
         const urlHorarios = `../funciones/obtener_horarios_curso.php?id_grupo=${idGrupo}&t=${Date.now()}`;
         console.log('URL:', urlHorarios);
@@ -92,7 +92,7 @@
           throw new Error('El curso no tiene horarios configurados');
         }
 
-        // 2. Obtener asignaturas del grupo
+        // Obtiene asignaturas del grupo
         console.log('Obteniendo asignaturas del grupo...');
         const urlAsignaturas = `../funciones/obtener_asignaturas.php?id_grupo=${idGrupo}&t=${Date.now()}`;
         
@@ -114,24 +114,24 @@
         
         console.log('✓ Asignaturas obtenidas:', asignaturasGrupo);
 
-        // 3. Obtener nombre del grupo
+        // Obtiene nombre del grupo
         const selectedOption = grupoSelect.options[grupoSelect.selectedIndex];
         const nombreGrupo = selectedOption.text;
         
-        // Actualizar información
+        // Actualiza información
         infoGrupo.textContent = nombreGrupo;
         cantidadHorarios.textContent = horariosPermitidos.length;
         cantidadAsignaturas.textContent = asignaturasGrupo.length;
 
-        // 4. Construir tabla
+        // Construye tabla
         console.log('Construyendo tabla...');
         construirTabla();
 
-        // 5. Cargar horarios guardados
+        // Carga horarios guardados
         console.log('Cargando horarios guardados...');
         await cargarHorariosGuardados(idGrupo);
 
-        // Mostrar tabla
+        // Muestra tabla
         estadoCarga.style.display = "none";
         tablaContainer.style.display = "block";
         
@@ -142,7 +142,7 @@
         console.error('ERROR en cargarDatosGrupo:', error);
         estadoCarga.style.display = "none";
         
-        // Mostrar error con SweetAlert2
+        // Muestra error con SweetAlert2
         if (typeof Swal !== 'undefined') {
           Swal.fire({
             icon: 'error',
@@ -157,29 +157,29 @@
           alert('Error al cargar datos: ' + error.message);
         }
         
-        // Volver a mostrar mensaje inicial
+        // Vuelve a mostrar mensaje inicial
         mensajeInicial.style.display = "block";
       }
     }
 
     /**
-     * Construir tabla de horarios con selects
+     * Construye tabla de horarios con selects
      */
     function construirTabla() {
       console.log(`Construyendo tabla con ${horariosPermitidos.length} horarios`);
       console.log('Horarios:', horariosPermitidos);
       console.log('Asignaturas:', asignaturasGrupo);
       
-      // Limpiar tabla
+      // Limpia la tabla
       tablaBody.innerHTML = '';
 
-      // Verificar que horariosPermitidos es un array válido
+      // Verifica que horariosPermitidos es un array válido
       if (!Array.isArray(horariosPermitidos) || horariosPermitidos.length === 0) {
         console.error('horariosPermitidos no es válido:', horariosPermitidos);
         return;
       }
 
-      // Construir filas
+      // Construye filas
       horariosPermitidos.forEach((horario, index) => {
         console.log(`Creando fila ${index + 1}:`, horario);
         
@@ -195,12 +195,12 @@
         `;
         tr.appendChild(tdHora);
 
-        // 5 columnas para días (1=Lunes, 2=Martes, etc.)
+        // 5 columnas para días de la semana
         for (let dia = 1; dia <= 5; dia++) {
           const td = document.createElement('td');
           td.className = 'p-2';
           
-          // Crear select
+          // Crea select
           const select = document.createElement('select');
           select.className = 'form-select form-select-sm';
           select.setAttribute('data-dia', dia);
@@ -226,14 +226,14 @@
           tr.appendChild(td);
         }
 
-        // Agregar fila a la tabla
+        // Agrega fila a la tabla
         tablaBody.appendChild(tr);
         console.log(`✓ Fila ${index + 1} agregada`);
       });
 
       console.log(`✓ Tabla construida: ${tablaBody.children.length} filas en el DOM`);
       
-      // Verificar que las filas se agregaron
+      // Verifica que las filas se agregaron
       if (tablaBody.children.length === 0) {
         console.error('ERROR: No se agregaron filas a la tabla');
         console.error('TablaBody:', tablaBody);
@@ -243,8 +243,8 @@
     }
 
     /**
-     * Cargar horarios guardados previamente
-     * @param {number} idGrupo - ID del grupo
+     * Carga horarios guardados previamente
+      @param {number} idGrupo 
      */
     async function cargarHorariosGuardados(idGrupo) {
       try {
@@ -268,7 +268,7 @@
 
         console.log('Horarios guardados:', horariosGuardados);
 
-        // Llenar selects con datos guardados
+        // Llena selects con datos guardados
         horariosGuardados.forEach(item => {
           const select = tablaBody.querySelector(
             `select[data-dia='${item.dia_semana}'][data-horario='${item.id_horario}']`
@@ -286,7 +286,7 @@
     }
 
     /**
-     * Limpiar todos los horarios
+     * Limpia todos los horarios
      */
     function limpiarTodo() {
       if (typeof Swal !== 'undefined') {
@@ -329,7 +329,7 @@
     }
 
     /**
-     * Guardar cambios en el servidor
+     * Guarda cambios en el servidor
      */
     async function guardarCambios() {
       const idGrupo = grupoSelect.value;
@@ -348,7 +348,7 @@
         return;
       }
 
-      // Recopilar todos los datos
+      // Recopila todos los datos
       const datos = [];
       tablaBody.querySelectorAll('select').forEach(select => {
         datos.push({
@@ -360,7 +360,7 @@
 
       console.log('Guardando datos:', datos);
 
-      // Añadir estado de carga al botón
+      // Añade estado de carga al botón
       guardarBtn.classList.add('loading');
       guardarBtn.disabled = true;
 
@@ -411,7 +411,7 @@
           alert('Error: No se pudieron guardar los cambios');
         }
       } finally {
-        // Remover estado de carga del botón
+        // Remueve estado de carga del botón
         guardarBtn.classList.remove('loading');
         guardarBtn.disabled = false;
       }

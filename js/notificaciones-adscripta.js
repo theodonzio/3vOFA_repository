@@ -1,4 +1,3 @@
-// notificaciones-adscripta.js
 // Manejo de notificaciones SweetAlert para la página de adscripta
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ...swalConfig
             });
         }
-        // Limpiar URL
+        // Limpia URL
         window.history.replaceState({}, document.title, window.location.pathname);
     }
 
@@ -255,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
 
-    // ✅ Si el horario se agregó correctamente
+    // Si el horario se agregó correctamente
     if (params.get("success") === "horario") {
       Swal.fire({
         title: "¡Horario agregado!",
@@ -272,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // ❌ Si hubo un error al agregar
+    // Si hubo un error al agregar
     if (params.get("error") === "horario") {
       Swal.fire({
         title: "Error",
@@ -289,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', function () {
   const urlParams = new URLSearchParams(window.location.search);
 
-  // ✅ Cuando se agrega un recurso con éxito
+  // Cuando se agrega un recurso con éxito
   if (urlParams.has('add') && urlParams.get('add') === 'success') {
     Swal.fire({
       icon: 'success',
@@ -300,6 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
       background: '#fefefe',
       color: '#333',
     }).then(() => {
+      
       // Eliminar el parámetro de la URL sin recargar
       const url = new URL(window.location);
       url.searchParams.delete('add');
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ⚠️ Si hay error al agregar
+  // Si hay error al agregar
   if (urlParams.has('add') && urlParams.get('add') === 'error') {
     Swal.fire({
       icon: 'error',

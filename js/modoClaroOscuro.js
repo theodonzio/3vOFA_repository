@@ -5,14 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!botonTema || !logoBarra) return;
 
-  // --- Detección automática de nivel de ruta ---
+  // Detección automática de nivel de ruta 
   const currentPath = window.location.pathname;
 
-  // ✅ AHORA INCLUYE /php/PaginasAdcriptas/
   const isSubfolder = currentPath.includes('/php/usuarios/') || 
                       currentPath.includes('/php/admin/') ||
                       currentPath.includes('/php/reportes/') ||
-                      currentPath.includes('/php/PaginasAdcriptas/'); // 👈 AGREGADO
+                      currentPath.includes('/php/PaginasAdcriptas/'); 
 
   // Ruta base dinámica
   const basePath = isSubfolder ? '../../' : '../';
@@ -33,11 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Aplicar modo guardado o por defecto
+  // Aplica modo guardado o por defecto
   const modoGuardado = localStorage.getItem('modo');
   aplicarModo(modoGuardado || 'claro');
 
-  // === Eventos del menú ===
+  // Eventos del menú 
   document.getElementById('tema-claro').addEventListener('click', (e) => {
     e.preventDefault();
     aplicarModo('claro');

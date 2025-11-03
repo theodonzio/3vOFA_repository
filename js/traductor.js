@@ -318,7 +318,7 @@ function traducir(idioma) {
   localStorage.setItem('idioma', idioma);
 }
 
-// Cargar idioma guardado al iniciar
+// Carga idioma guardado al iniciar
 document.addEventListener("DOMContentLoaded", () => {
   const idiomaGuardado = localStorage.getItem("idioma") || "es";
   traducir(idiomaGuardado);

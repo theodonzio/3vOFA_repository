@@ -1,7 +1,5 @@
-/**
- * Script para cargar recursos dinámicamente cuando se selecciona un espacio
- * y mostrarlos con checkboxes para que el docente pueda seleccionarlos
- */
+/** Carga recursos dinámicamente cuando se selecciona un espacio
+  y los muestra con checkboxes para que el docente pueda seleccionarlos */
 
 document.addEventListener('DOMContentLoaded', function() {
     const espacioSelect = document.getElementById('nombre_salon');
@@ -18,13 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const idEspacio = this.value;
         
         if (!idEspacio) {
-            // Si no hay espacio seleccionado, ocultar recursos
+            // Si no hay espacio seleccionado, oculta recursos
             recursosContainer.style.display = 'none';
             recursosList.innerHTML = '';
             return;
         }
 
-        // Hacer petición para obtener recursos del espacio
+        // Hace petición para obtener recursos del espacio
         fetch(`../funciones/obtener_recursos.php?id_espacio=${idEspacio}`)
             .then(response => {
                 if (!response.ok) {
@@ -33,10 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.json();
             })
             .then(recursos => {
-                // Limpiar lista anterior
+                
+                // Limpia lista anterior
                 recursosList.innerHTML = '';
 
                 if (recursos.length === 0) {
+                    
                     // No hay recursos disponibles
                     recursosList.innerHTML = `
                         <div class="alert alert-info mb-0">
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
 
-                // Crear checkboxes para cada recurso
+                // Crea checkboxes para cada recurso
                 recursos.forEach(recurso => {
                     const div = document.createElement('div');
                     div.className = 'form-check mb-2';
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     recursosList.appendChild(div);
                 });
 
-                // Mostrar el contenedor de recursos
+                // Mostra el contenedor de recursos
                 recursosContainer.style.display = 'block';
             })
             .catch(error => {
@@ -95,6 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     });
 
-    // Ocultar recursos al inicio
+    // Oculta recursos al inicio
     recursosContainer.style.display = 'none';
 });

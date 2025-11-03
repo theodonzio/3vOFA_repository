@@ -1,4 +1,3 @@
-// scroll-top.js
 // Funcionalidad del botón para volver arriba
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -6,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (!btn) return;
 
-    // Mostrar/ocultar botón según scroll
+    // Muestra/oculta botón según scroll
     window.addEventListener('scroll', () => {
         if (window.scrollY > 500) {
             btn.style.opacity = '1';
