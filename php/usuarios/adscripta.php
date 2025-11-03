@@ -96,7 +96,7 @@ include '../funciones/limpiar_reservas_antiguas.php';
     </div>
 </div>
 
-<div class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
+<div id="HeroAsignaturas" class="hero hero-imagen text-white py-5 d-flex align-items-center justify-content-center" 
      style="background-image: url('https://images.unsplash.com/photo-1587691592099-24045742c181?q=80&w=2073&auto=format&fit=crop');">
     <div class="hero-overlay"></div>
     <div class="container text-center hero-content">
