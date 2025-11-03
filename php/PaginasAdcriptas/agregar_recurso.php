@@ -13,9 +13,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nombre_recurso = trim($_POST['nombre_recurso']);
     $tipo = trim($_POST['tipo']);
 
-    // Validar campos requeridos
     if (!empty($nombre_recurso)) {
-        // Insertar el nuevo recurso
+        // Verificar duplicado
+        $check_sql = "SELECT COUNT(*) FROM recurso WHERE nombre_recurso = ?";
+        $check_stmt = $conn->prepare($check_sql);
+        $check_stmt->bind_param("s", $nombre_recurso);
+        $check_stmt->execute();
+        $check_stmt->bind_result($count);
+        $check_stmt->fetch();
+        $check_stmt->close();
+
+        if ($count > 0) {
+            header("Location: ../usuarios/adscripta.php?add=duplicate");
+            exit;
+        }
+
+        // Insertar nuevo recurso
         $sql = "INSERT INTO recurso (nombre_recurso, tipo) VALUES (?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $nombre_recurso, $tipo);

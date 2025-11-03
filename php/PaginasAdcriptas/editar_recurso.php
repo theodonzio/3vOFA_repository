@@ -8,28 +8,42 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
     exit;
 }
 
-// Verificar que los datos se hayan enviado
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $id_recurso = $_POST['id_recurso'];
+    $id_recurso = intval($_POST['id_recurso']);
     $nombre_recurso = trim($_POST['nombre_recurso']);
     $tipo = trim($_POST['tipo']);
-    $estado = trim($_POST['estado']);
-    $id_espacio = $_POST['id_espacio'];
 
-    // Preparar y ejecutar la actualización
-    $sql = "UPDATE recurso 
-            SET nombre_recurso = ?, tipo = ?, estado = ?, id_espacio = ?
-            WHERE id_recurso = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssii", $nombre_recurso, $tipo, $estado, $id_espacio, $id_recurso);
+    if (!empty($nombre_recurso)) {
+        // Verificar si el nombre ya existe en otro recurso
+        $check_sql = "SELECT COUNT(*) FROM recurso WHERE nombre_recurso = ? AND id_recurso != ?";
+        $check_stmt = $conn->prepare($check_sql);
+        $check_stmt->bind_param("si", $nombre_recurso, $id_recurso);
+        $check_stmt->execute();
+        $check_stmt->bind_result($count);
+        $check_stmt->fetch();
+        $check_stmt->close();
 
-    if ($stmt->execute()) {
-        header("Location: recursos.php?edit=success");
+        if ($count > 0) {
+            header("Location: recursos.php?edit=duplicate");
+            exit;
+        }
+
+        // Actualizar
+        $sql = "UPDATE recurso SET nombre_recurso = ?, tipo = ? WHERE id_recurso = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssi", $nombre_recurso, $tipo, $id_recurso);
+
+        if ($stmt->execute()) {
+            header("Location: recursos.php?edit=success");
+            exit;
+        } else {
+            echo "Error al editar el recurso: " . $conn->error;
+        }
+
+        $stmt->close();
     } else {
-        echo "Error al actualizar el recurso: " . $conn->error;
+        echo "El campo 'nombre_recurso' es obligatorio.";
     }
-
-    $stmt->close();
 }
 
 $conn->close();

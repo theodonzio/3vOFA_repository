@@ -76,6 +76,9 @@ $result = $conn->query($sql);
   <?php if (isset($_GET['delete']) && $_GET['delete'] === 'success'): ?>
     <div class="alert alert-success">Recurso eliminado correctamente.</div>
   <?php endif; ?>
+  <?php if (isset($_GET['edit']) && $_GET['edit'] === 'duplicate'): ?>
+    <div class="alert alert-danger">Ya existe un recurso con ese nombre.</div>
+  <?php endif; ?>
 </div>
 
 <!-- Tabla Recursos -->
@@ -90,8 +93,6 @@ $result = $conn->query($sql);
                 <th data-traducible="ID">ID</th>
                 <th data-traducible="Nombre">Nombre</th>
                 <th data-traducible="Tipo">Tipo</th>
-                <th data-traducible="Estado">Estado</th>
-                <th data-traducible="ID Espacio">ID Espacio</th>
                 <th data-traducible="Acciones">Acciones</th>
               </tr>
             </thead>
@@ -101,8 +102,6 @@ $result = $conn->query($sql);
                   <td><?= htmlspecialchars($row['id_recurso']) ?></td>
                   <td><?= htmlspecialchars($row['nombre_recurso']) ?></td>
                   <td><?= htmlspecialchars($row['tipo'] ?: '—') ?></td>
-                  <td><?= htmlspecialchars($row['estado'] ?: '—') ?></td>
-                  <td><?= htmlspecialchars($row['id_espacio'] ?: '—') ?></td>
                   <td>
                     <!-- Botón Editar -->
                     <button class="btn btn-warning btn-sm me-1" 
@@ -123,48 +122,37 @@ $result = $conn->query($sql);
                 </tr>
 
                 <!-- Modal Editar Recurso -->
-<div class="modal fade" id="editarRecursoModal<?= $row['id_recurso'] ?>" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <form action="editar_recurso.php" method="POST">
-        <div class="modal-header">
-          <h5 class="modal-title" data-traducible="Editar Recurso">Editar Recurso #<?= htmlspecialchars($row['id_recurso']) ?></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" name="id_recurso" value="<?= htmlspecialchars($row['id_recurso']) ?>">
-          
-          <div class="mb-3">
-            <label class="form-label" data-traducible="Nombre">Nombre</label>
-            <input type="text" name="nombre_recurso" class="form-control" value="<?= htmlspecialchars($row['nombre_recurso']) ?>" required>
-          </div>
+                <div class="modal fade" id="editarRecursoModal<?= $row['id_recurso'] ?>" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <form action="editar_recurso.php" method="POST">
+                        <div class="modal-header">
+                          <h5 class="modal-title" data-traducible="Editar Recurso">Editar Recurso #<?= htmlspecialchars($row['id_recurso']) ?></h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                          <input type="hidden" name="id_recurso" value="<?= htmlspecialchars($row['id_recurso']) ?>">
+                          
+                          <div class="mb-3">
+                            <label class="form-label" data-traducible="Nombre">Nombre</label>
+                            <input type="text" name="nombre_recurso" class="form-control" value="<?= htmlspecialchars($row['nombre_recurso']) ?>" required>
+                          </div>
 
-          <div class="mb-3">
-            <label class="form-label" data-traducible="Tipo">Tipo</label>
-            <input type="text" name="tipo" class="form-control" value="<?= htmlspecialchars($row['tipo']) ?>">
-          </div>
+                          <div class="mb-3">
+                            <label class="form-label" data-traducible="Tipo">Tipo</label>
+                            <input type="text" name="tipo" class="form-control" value="<?= htmlspecialchars($row['tipo']) ?>">
+                          </div>
+                        </div>
 
-          <div class="mb-3">
-            <label class="form-label" data-traducible="Estado">Estado</label>
-            <input type="text" name="estado" class="form-control" value="<?= htmlspecialchars($row['estado']) ?>">
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label" data-traducible="ID Espacio">ID Espacio (FK)</label>
-            <input type="number" name="id_espacio" class="form-control" value="<?= htmlspecialchars($row['id_espacio']) ?>">
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
-          <button type="submit" class="btn btn-primary" data-traducible="Guardar cambios">Guardar cambios</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+                          <button type="submit" class="btn btn-primary" data-traducible="Guardar cambios">Guardar cambios</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
                 <!-- /Modal Editar -->
-
               <?php endwhile; ?>
             </tbody>
           </table>
