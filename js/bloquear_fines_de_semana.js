@@ -24,23 +24,4 @@ document.addEventListener('DOMContentLoaded', function () {
     const mm = String(hoy.getMonth() + 1).padStart(2, '0');
     const dd = String(hoy.getDate()).padStart(2, '0');
     inputFecha.min = `${yyyy}-${mm}-${dd}`;
-
-    // 👇 "Hack" visual para ocultar sábados y domingos en el calendario (solo Chrome / Edge)
-    inputFecha.addEventListener('click', () => {
-        // Esperar a que se abra el calendario (no hay API oficial)
-        setTimeout(() => {
-            const estilo = document.createElement('style');
-            estilo.innerHTML = `
-                /* Ocultar fines de semana en el selector de fecha */
-                ::-webkit-datetime-edit-fields-wrapper {
-                    background-color: white !important;
-                }
-                /* No hay forma estándar de ocultar días, pero algunos navegadores aplican filtros */
-                input[type="date"]::-webkit-calendar-picker-indicator {
-                    filter: hue-rotate(180deg) brightness(0.7);
-                }
-            `;
-            document.head.appendChild(estilo);
-        }, 100);
-    });
 });
