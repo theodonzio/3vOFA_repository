@@ -119,13 +119,15 @@ $result = $conn->query($sql);
                     </button>
 
                     <!-- Botón Eliminar -->
-                    <a href="eliminar_docente.php?id=<?= urlencode($row['id_usuario']) ?>" 
-                       class="btn btn-danger btn-sm"
-                       onclick="return confirm('¿Seguro que deseas eliminar al docente <?= addslashes(htmlspecialchars($row['nombre'] . ' ' . $row['apellido'])) ?>?');"
-                       data-bs-toggle="tooltip"
-                       data-bs-placement="top">
-                      <i class="bi bi-trash"></i>
-                    </a>
+<button 
+  class="btn btn-danger btn-sm eliminar-docente" 
+  data-id="<?= htmlspecialchars($row['id_usuario']) ?>" 
+  data-nombre="<?= htmlspecialchars($row['nombre'] . ' ' . $row['apellido']) ?>"
+  title="Eliminar"
+  data-bs-toggle="tooltip"
+  data-bs-placement="top">
+  <i class="bi bi-trash"></i>
+</button>
                   </td>
                 </tr>
 
@@ -282,7 +284,38 @@ $result = $conn->query($sql);
       });
     }
   });
+
+  // Confirmación con SweetAlert antes de eliminar un docente
+document.querySelectorAll('.eliminar-docente').forEach(boton => {
+  boton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const id = boton.dataset.id;
+    const nombre = boton.dataset.nombre;
+    const isDarkMode = document.body.classList.contains('oscuro');
+
+    Swal.fire({
+      title: '¿Eliminar docente?',
+      text: `Se eliminará a ${nombre} del sistema.`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#6c757d',
+      background: isDarkMode ? '#2c2c2c' : '#fff',
+      color: isDarkMode ? '#f5f5f5' : '#212529'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Redirige al archivo de eliminación con el ID correspondiente
+        window.location.href = `eliminar_docente.php?id=${id}`;
+      }
+    });
+  });
+});
+
 </script>
+
 
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
