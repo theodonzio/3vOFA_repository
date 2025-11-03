@@ -14,9 +14,9 @@ include '../tools/headers/header_estudiante.php';
     <div class="mb-4">
         <i class="bi bi-calendar-week icon-calendar-main"></i>
     </div>
-    <h1 class="display-4 fw-bold text-primary mb-3" id="tituloGrupo">Cargando...</h1>
-    <p class="lead text-muted mb-4" id="subtituloGrupo">Aquí verás tu horario académico</p>
-    <div id="watch" class="reloj text-center mt-2 fs-4 fw-semibold text-primary"></div>
+    <h1 class="display-4 fw-bold text-primary mb-3" id="tituloGrupo" data-traducible="Cargando...">Cargando...</h1>
+    <p class="lead text-muted mb-4" id="subtituloGrupo" data-traducible="Aquí verás tu horario académico">Aquí verás tu horario académico</p>
+    <div id="watch" class="reloj text-center mt-2 fs-4 fw-semibold text-primary" data-traducible="Reloj"></div>
 </div>
 
 <div class="container my-5">
@@ -25,12 +25,12 @@ include '../tools/headers/header_estudiante.php';
       <table class="table table-bordered text-center align-middle table-hover mb-0">
         <thead class="table-primary">
           <tr>
-            <th style="width: 15%;">Hora</th>
-            <th>Lunes</th>
-            <th>Martes</th>
-            <th>Miércoles</th>
-            <th>Jueves</th>
-            <th>Viernes</th>
+            <th style="width: 15%;" data-traducible="Hora">Hora</th>
+            <th data-traducible="Lunes">Lunes</th>
+            <th data-traducible="Martes">Martes</th>
+            <th data-traducible="Miércoles">Miércoles</th>
+            <th data-traducible="Jueves">Jueves</th>
+            <th data-traducible="Viernes">Viernes</th>
           </tr>
         </thead>
         <tbody id="cuerpoTabla"></tbody>
@@ -39,8 +39,7 @@ include '../tools/headers/header_estudiante.php';
   </div>
 
   <div id="mensajeVacio" class="text-center py-5">
-    <i class="bi bi-calendar-event display-1 text-muted mb-3"></i>
-    <p class="fs-5 text-muted">Selecciona un grupo para ver tu horario</p>
+    <p class="fs-5 text-muted" data-traducible="Selecciona un grupo para ver tu horario">Selecciona un grupo para ver tu horario</p>
   </div>
 </div>
 

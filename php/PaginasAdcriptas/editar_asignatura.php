@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="mb-3">
         <label class="form-label" data-traducible="Docente">Docente</label>
         <select name="id_docente" class="form-select" required>
-          <option value="">Seleccione un docente</option>
+          <option value="" data-traducible="Seleccione un docente">Seleccione un docente</option>
           <?php foreach ($docentes as $doc): ?>
             <option value="<?= $doc['id_usuario'] ?>" <?= $doc['id_usuario'] == $asignatura['id_docente'] ? 'selected' : '' ?>>
               <?= htmlspecialchars($doc['nombre'].' '.$doc['apellido']) ?>
@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="mb-4">
         <label class="form-label" data-traducible="Grupo">Grupo</label>
         <select name="id_grupo" class="form-select" required>
-          <option value="">Seleccione un grupo</option>
+          <option value="" data-traducible="Seleccione un grupo">Seleccione un grupo</option>
           <?php foreach ($grupos as $g): ?>
             <option value="<?= $g['id_grupo'] ?>" <?= $g['id_grupo'] == $asignatura['id_grupo'] ? 'selected' : '' ?>>
               <?= htmlspecialchars($g['nombre_grupo']) ?>

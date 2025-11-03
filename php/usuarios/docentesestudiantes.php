@@ -46,11 +46,11 @@ $stmt->close();
     <div class="alert alert-info text-center">
         <h4 class="mb-2">
             <i class="bi bi-people-fill me-2"></i>
-            <strong>Grupo:</strong> <?= htmlspecialchars($grupo_info['nombre_grupo'] ?? 'N/A') ?>
+            <strong data-traducible="Grupo:">Grupo:</strong> <?= htmlspecialchars($grupo_info['nombre_grupo'] ?? 'N/A') ?>
         </h4>
         <p class="mb-0">
-            <strong>Curso:</strong> <?= htmlspecialchars($grupo_info['nombre_curso'] ?? 'N/A') ?> | 
-            <strong>Turno:</strong> <?= htmlspecialchars($grupo_info['nombre_turno'] ?? 'N/A') ?>
+            <strong data-traducible="Curso:">Curso:</strong> <?= htmlspecialchars($grupo_info['nombre_curso'] ?? 'N/A') ?> | 
+            <strong data-traducible="Turno:">Turno:</strong> <?= htmlspecialchars($grupo_info['nombre_turno'] ?? 'N/A') ?>
         </p>
     </div>
 </div>

@@ -70,13 +70,13 @@ $id_docente = $_SESSION['id_usuario'];
                             ?>
                         </select>
                     </div>
-                    
+                
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label fw-semibold" data-traducible="Fecha">
                                 <i class="bi bi-calendar-event me-2"></i>Fecha
                             </label>
-                            <input type="date" name="fecha_reserva" class="form-control form-control-lg" required>
+                                <input type="date" name="fecha_reserva" id="fecha_reserva" class="form-control form-control-lg" required>
                         </div>
                         
                         <div class="col-md-6 mb-3">
@@ -138,6 +138,8 @@ $id_docente = $_SESSION['id_usuario'];
 <script src="../../js/notificaciones-docente.js"></script>
 <script src="../../js/recursos-reserva.js"></script>
 <script src="../../js/timeout.js"></script>
+<script src="../../js/bloquear_fines_de_semana.js"></script>
+
 
 </body>
 </html>

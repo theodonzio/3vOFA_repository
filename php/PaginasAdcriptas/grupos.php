@@ -57,7 +57,7 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
 <body>
 
 <!-- Hero Grupos -->
-<div class="hero-grupos text-white py-5 d-flex align-items-center justify-content-center">
+<div class="hero-grupos text-white py-5 d-flex align-items-center justify-content-center hero">
   <div class="hero-overlay"></div>
 
   <div class="container text-center hero-content">
@@ -133,70 +133,70 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
                 </tr>
 
                 <!-- Modal Editar por cada grupo -->
-                <div class="modal fade" id="editarGrupoModal<?= $row['id_grupo'] ?>" tabindex="-1" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <form action="editar_grupo.php" method="POST">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Editar Grupo #<?= htmlspecialchars($row['id_grupo']) ?></h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                        </div>
-                        <div class="modal-body">
-                          <input type="hidden" name="id_grupo" value="<?= htmlspecialchars($row['id_grupo']) ?>">
+<div class="modal fade" id="editarGrupoModal<?= $row['id_grupo'] ?>" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="editar_grupo.php" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" data-traducible="Editar Grupo">Editar Grupo #<?= htmlspecialchars($row['id_grupo']) ?></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id_grupo" value="<?= htmlspecialchars($row['id_grupo']) ?>">
 
-                          <div class="mb-3">
-                            <label class="form-label" data-traducible="Nombre">Nombre</label>
-                            <input type="text" name="nombre_grupo" class="form-control" value="<?= htmlspecialchars($row['nombre_grupo']) ?>" required>
-                          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Nombre">Nombre</label>
+            <input type="text" name="nombre_grupo" class="form-control" value="<?= htmlspecialchars($row['nombre_grupo']) ?>" required>
+          </div>
 
-                          <div class="mb-3">
-                            <label class="form-label" data-traducible="Año">Año</label>
-                            <input type="number" name="anio_curso" class="form-control" min="0" value="<?= htmlspecialchars($row['anio_curso']) ?>">
-                          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Año">Año</label>
+            <input type="number" name="anio_curso" class="form-control" min="0" value="<?= htmlspecialchars($row['anio_curso']) ?>">
+          </div>
 
-                          <div class="mb-3">
-                            <label class="form-label" data-traducible="Curso">Curso</label>
-                            <select name="id_curso" class="form-select">
-                              <option value="">-- Seleccionar curso --</option>
-                              <?php
-                              if ($cursos && $cursos->num_rows > 0) {
-                                  $cursos->data_seek(0);
-                                  while ($c = $cursos->fetch_assoc()) {
-                                      $sel = ($row['id_curso'] == $c['id_curso']) ? 'selected' : '';
-                                      echo '<option value="' . htmlspecialchars($c['id_curso']) . "\" $sel>" . htmlspecialchars($c['nombre_curso']) . '</option>';
-                                  }
-                                  $cursos->data_seek(0);
-                              }
-                              ?>
-                            </select>
-                          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Curso">Curso</label>
+            <select name="id_curso" class="form-select">
+              <option value="" data-traducible="-- Seleccionar curso --">-- Seleccionar curso --</option>
+              <?php
+              if ($cursos && $cursos->num_rows > 0) {
+                  $cursos->data_seek(0);
+                  while ($c = $cursos->fetch_assoc()) {
+                      $sel = ($row['id_curso'] == $c['id_curso']) ? 'selected' : '';
+                      echo '<option value="' . htmlspecialchars($c['id_curso']) . "\" $sel>" . htmlspecialchars($c['nombre_curso']) . '</option>';
+                  }
+                  $cursos->data_seek(0);
+              }
+              ?>
+            </select>
+          </div>
 
-                          <div class="mb-3">
-                            <label class="form-label" data-traducible="Turno">Turno</label>
-                            <select name="id_turno" class="form-select">
-                              <option value="">-- Seleccionar turno --</option>
-                              <?php
-                              if ($turnos && $turnos->num_rows > 0) {
-                                  $turnos->data_seek(0);
-                                  while ($t = $turnos->fetch_assoc()) {
-                                      $sel = ($row['id_turno'] == $t['id_turno']) ? 'selected' : '';
-                                      echo '<option value="' . htmlspecialchars($t['id_turno']) . "\" $sel>" . htmlspecialchars($t['nombre_turno']) . '</option>';
-                                  }
-                                  $turnos->data_seek(0);
-                              }
-                              ?>
-                            </select>
-                          </div>
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Turno">Turno</label>
+            <select name="id_turno" class="form-select">
+              <option value="" data-traducible="-- Seleccionar turno --">-- Seleccionar turno --</option>
+              <?php
+              if ($turnos && $turnos->num_rows > 0) {
+                  $turnos->data_seek(0);
+                  while ($t = $turnos->fetch_assoc()) {
+                      $sel = ($row['id_turno'] == $t['id_turno']) ? 'selected' : '';
+                      echo '<option value="' . htmlspecialchars($t['id_turno']) . "\" $sel>" . htmlspecialchars($t['nombre_turno']) . '</option>';
+                  }
+                  $turnos->data_seek(0);
+              }
+              ?>
+            </select>
+          </div>
 
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                          <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-primary" data-traducible="Guardar cambios">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
                 <!-- /Modal Editar -->
 
               <?php endwhile; ?>

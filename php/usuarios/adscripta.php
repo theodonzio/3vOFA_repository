@@ -136,9 +136,9 @@ include '../funciones/limpiar_reservas_antiguas.php';
 </div>
 
 
-<!-- ============================================ -->
-<!-- MODAL AGREGAR RECURSO ACTUALIZADO -->
-<!-- ============================================ -->
+
+<!-- MODAL AGREGAR RECURSO -->
+
 <div class="modal fade" id="agregarRecursoModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">

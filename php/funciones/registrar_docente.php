@@ -5,28 +5,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // --- Sanitizar y normalizar entradas ---
     $nombre = trim($_POST['nombre']);
     $apellido = trim($_POST['apellido']);
-    $cedula = trim($_POST['cedula']);
+    $cedula = preg_replace('/\D+/', '', $_POST['cedula']); // eliminar puntos o guiones
     $email = trim($_POST['email']);
     $contrasena = $_POST['contrasena'];
     $id_rol = $_POST['id_rol']; // siempre 2 (docente)
 
-    // --- Validaciones ---
+    // --- Normalizar nombres ---
     $nombre = ucfirst(strtolower($nombre));
     $apellido = ucfirst(strtolower($apellido));
 
-    // Validar formato de cédula
+    // --- Validar formato numérico de cédula ---
     if (!preg_match('/^\d{8}$/', $cedula)) {
         header("Location: ../usuarios/adscripta.php?docente=cedula_invalida");
         exit;
     }
 
-    // Validar contraseña
+    // --- Validar dígito verificador de la cédula ---
+    $factores = [2, 9, 8, 7, 6, 3, 4];
+    $suma = 0;
+    for ($i = 0; $i < 7; $i++) {
+        $suma += $cedula[$i] * $factores[$i];
+    }
+    $dv = (10 - ($suma % 10)) % 10;
+
+    if ($cedula[7] != $dv) {
+        header("Location: ../usuarios/adscripta.php?docente=cedula_dv_invalido");
+        exit;
+    }
+
+    // --- Validar contraseña (mínimo 6, letras y números) ---
     if (!preg_match('/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+=-]{6,}$/', $contrasena)) {
         header("Location: ../usuarios/adscripta.php?docente=contrasena_invalida");
         exit;
     }
 
-    // --- Verificar duplicados (cedula o email) ---
+    // --- Verificar duplicados (cédula o email) ---
     $check = $conn->prepare("SELECT id_usuario FROM usuario WHERE cedula = ? OR email = ?");
     $check->bind_param("ss", $cedula, $email);
     $check->execute();

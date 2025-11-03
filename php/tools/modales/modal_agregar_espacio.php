@@ -58,7 +58,7 @@
               endwhile;
             else:
             ?>
-              <p class="text-muted" data-traducible="No hay recursos disponibles">No hay recursos disponibles. Por favor, agregue recursos primero.</p>
+              <p class="text-muted" data-traducible="No hay recursos disponibles. Por favor, agregue recursos primero.">No hay recursos disponibles. Por favor, agregue recursos primero.</p>
             <?php endif; ?>
           </div>
         </div>

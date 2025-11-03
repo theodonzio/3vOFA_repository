@@ -11,19 +11,19 @@
         <div class="modal-body p-4">
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Nombre del Grupo">Nombre del Grupo</label>
-            <input type="text" name="nombre_grupo" class="form-control" placeholder="Ej: 1A" required>
-            <small class="text-muted">Ejemplo: 1A, 2B, 3MD</small>
+            <input type="text" name="nombre_grupo" class="form-control" placeholder="Ej: 1A" data-traducible="Ej: 1A" required>
+            <small class="text-muted" data-traducible="Ejemplo: 1A, 2B, 3MD">Ejemplo: 1A, 2B, 3MD</small>
           </div>
 
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Año del Curso">Año del Curso</label>
-            <input type="number" name="anio_curso" class="form-control" placeholder="Ej: 1" required min="1" max="6">
+            <input type="number" name="anio_curso" class="form-control" placeholder="Ej: 1" data-traducible="Ej: 1" required min="1" max="6">
           </div>
 
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Curso">Curso</label>
             <select name="id_curso" class="form-select" required>
-              <option value="">Seleccionar curso...</option>
+              <option value="" data-traducible="Seleccionar curso...">Seleccionar curso...</option>
               <?php
               if (!isset($conn)) {
                 include '../login/conexion_bd.php';
@@ -39,7 +39,7 @@
           <div class="mb-3">
             <label class="form-label fw-semibold" data-traducible="Turno">Turno</label>
             <select name="id_turno" class="form-select" required>
-              <option value="">Seleccionar turno...</option>
+              <option value="" data-traducible="Seleccionar turno...">Seleccionar turno...</option>
               <?php
               $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_turno");
               while ($t = $turnos->fetch_assoc()) {

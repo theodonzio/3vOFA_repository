@@ -130,29 +130,29 @@ $result = $conn->query($sql);
                 </tr>
 
                 <!-- Modal Editar -->
-                <div class="modal fade" id="editarAsignaturaModal<?= $row['id_asignatura'] ?>" tabindex="-1" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                      <form action="editar_asignatura.php" method="POST">
-                        <div class="modal-header">
-                          <h5 class="modal-title">Editar Asignatura #<?= htmlspecialchars($row['id_asignatura']) ?></h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                        </div>
-                        <div class="modal-body">
-                          <input type="hidden" name="id_asignatura" value="<?= htmlspecialchars($row['id_asignatura']) ?>">
-                          <div class="mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" name="nombre_asignatura" class="form-control" value="<?= htmlspecialchars($row['nombre_asignatura']) ?>" required>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                          <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+<div class="modal fade" id="editarAsignaturaModal<?= $row['id_asignatura'] ?>" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="editar_asignatura.php" method="POST">
+        <div class="modal-header">
+          <h5 class="modal-title" data-traducible="Editar Asignatura">Editar Asignatura #<?= htmlspecialchars($row['id_asignatura']) ?></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="id_asignatura" value="<?= htmlspecialchars($row['id_asignatura']) ?>">
+          <div class="mb-3">
+            <label class="form-label" data-traducible="Nombre">Nombre</label>
+            <input type="text" name="nombre_asignatura" class="form-control" value="<?= htmlspecialchars($row['nombre_asignatura']) ?>" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-traducible="Cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-primary" data-traducible="Guardar cambios">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
                 <!-- /Modal Editar -->
               <?php endwhile; ?>
             </tbody>
