@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Verificar sesión
+// Verifica sesión
 if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
     header("Location: ../../index.php?login=" . (!isset($_SESSION['id_usuario']) ? 'required' : 'unauthorized'));
     exit;
@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
 include '../tools/head.php';
 include '../login/conexion_bd.php';
 
-// Verificar si se pasó una asignatura válida
+// Verifica si se pasó una asignatura válida
 if (!isset($_GET['id'])) {
     header("Location: asignaturas.php");
     exit;
@@ -18,7 +18,7 @@ if (!isset($_GET['id'])) {
 
 $id_asignatura = intval($_GET['id']);
 
-// Obtener información de la asignatura
+// Obtiene información de la asignatura
 $stmt = $conn->prepare("
     SELECT a.id_asignatura, a.nombre_asignatura, ga.id_docente, ga.id_grupo
     FROM asignatura a
@@ -35,26 +35,26 @@ if (!$asignatura) {
     exit;
 }
 
-// Obtener todos los docentes
+// Obtiene todos los docentes
 $docentes_result = $conn->query("SELECT id_usuario, nombre, apellido FROM usuario WHERE id_rol = 2 ORDER BY nombre ASC");
 $docentes = $docentes_result->fetch_all(MYSQLI_ASSOC);
 
-// Obtener todos los grupos
+// Obtiene todos los grupos
 $grupos_result = $conn->query("SELECT id_grupo, nombre_grupo FROM grupo ORDER BY nombre_grupo ASC");
 $grupos = $grupos_result->fetch_all(MYSQLI_ASSOC);
 
-// Procesar el formulario si se envía
+// Procesa el formulario si se envía
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre_asignatura = trim($_POST['nombre_asignatura']);
     $id_docente = intval($_POST['id_docente']);
     $id_grupo = intval($_POST['id_grupo']);
 
-    // Actualizar tabla asignatura
+    // Actualiza tabla asignatura
     $updateAsignatura = $conn->prepare("UPDATE asignatura SET nombre_asignatura = ? WHERE id_asignatura = ?");
     $updateAsignatura->bind_param("si", $nombre_asignatura, $id_asignatura);
     $updateAsignatura->execute();
 
-    // Actualizar relación grupo_asignatura
+    // Actualiza relación grupo_asignatura
     $updateRelacion = $conn->prepare("
         UPDATE grupo_asignatura 
         SET id_docente = ?, id_grupo = ?

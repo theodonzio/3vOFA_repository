@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Verificar sesión (mismo comportamiento que en los otros archivos)
+// Verifica sesión (mismo comportamiento que en los otros archivos)
 if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
     header("Location: ../../index.php?login=" . (!isset($_SESSION['id_usuario']) ? 'required' : 'unauthorized'));
     exit;
@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
 include '../tools/head.php';
 include '../login/conexion_bd.php';
 
-// Obtener todos los docentes (id_rol = 2)
+// Obtiene todos los docentes (id_rol = 2)
 $sql = "SELECT id_usuario, nombre, apellido, cedula, email FROM usuario WHERE id_rol = 2 ORDER BY id_usuario ASC";
 $result = $conn->query($sql);
 ?>
@@ -230,7 +230,7 @@ $result = $conn->query($sql);
       });
     }
 
-    // Error: Cédula inválida (formato)
+    // Error: Cédula inválida 
     if (params.get('edit') === 'cedula_invalida') {
       Swal.fire({
         icon: 'error',

@@ -2,7 +2,7 @@
 session_start();
 include '../login/conexion_bd.php';
 
-// Verificar sesión (solo adscripta - rol 1)
+// Verifica sesión (solo adscripta - rol 1)
 if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
     header("Location: ../../index.php?login=" . (!isset($_SESSION['id_usuario']) ? 'required' : 'unauthorized'));
     exit;
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $tipo = trim($_POST['tipo']);
 
     if (!empty($nombre_recurso)) {
-        // Verificar duplicado
+        // Verifica duplicado
         $check_sql = "SELECT COUNT(*) FROM recurso WHERE nombre_recurso = ?";
         $check_stmt = $conn->prepare($check_sql);
         $check_stmt->bind_param("s", $nombre_recurso);
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit;
         }
 
-        // Insertar nuevo recurso
+        // Inserta nuevo recurso
         $sql = "INSERT INTO recurso (nombre_recurso, tipo) VALUES (?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $nombre_recurso, $tipo);

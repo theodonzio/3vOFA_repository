@@ -10,7 +10,7 @@ include '../login/conexion_bd.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Eliminar asignatura con prepared statement
+    // Elimina asignatura con prepared statement
     $sql = "DELETE FROM asignatura WHERE id_asignatura = ?";
     if ($stmt = $conn->prepare($sql)) {
         $stmt->bind_param("i", $id);

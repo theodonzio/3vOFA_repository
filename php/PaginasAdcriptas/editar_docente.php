@@ -20,13 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_usuario'])) {
         exit;
     }
 
-    // --- Validar formato numérico de cédula (8 dígitos) ---
+    // --- Valida formato numérico de cédula (8 dígitos) ---
     if (!preg_match('/^\d{8}$/', $cedula)) {
         header("Location: docentes.php?edit=cedula_invalida");
         exit;
     }
 
-    // --- Validar dígito verificador de la cédula ---
+    // --- Valida dígito verificador de la cédula ---
     $factores = [2, 9, 8, 7, 6, 3, 4];
     $suma = 0;
     for ($i = 0; $i < 7; $i++) {
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_usuario'])) {
         exit;
     }
 
-    // --- Verificar duplicados (cédula o email) excluyendo el usuario actual ---
+    // --- Verifica duplicados (cédula o email) excluyendo el usuario actual ---
     $check = $conn->prepare("SELECT id_usuario FROM usuario WHERE (cedula = ? OR email = ?) AND id_usuario != ?");
     $check->bind_param("ssi", $cedula, $email, $id);
     $check->execute();
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_usuario'])) {
     }
     $check->close();
 
-    // Actualizar docente
+    // Actualiza docente
     $sql = "UPDATE usuario 
             SET nombre = ?, apellido = ?, cedula = ?, email = ? 
             WHERE id_usuario = ? AND id_rol = 2";

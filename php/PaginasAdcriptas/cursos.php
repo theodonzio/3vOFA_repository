@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Verificar sesión
+// Verifica sesión
 if (!isset($_SESSION['id_usuario']) || $_SESSION['id_rol'] != 1) {
     header("Location: ../../index.php?login=" . (!isset($_SESSION['id_usuario']) ? 'required' : 'unauthorized'));
     exit;
