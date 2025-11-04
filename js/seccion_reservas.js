@@ -15,22 +15,22 @@ document.addEventListener('DOMContentLoaded', function() {
             const dark = isDarkMode();
 
             Swal.fire({
-                title: '¿Aprobar esta reserva?',
+                title: obtenerTraduccion('¿Aprobar esta reserva?'),
                 html: `
                     <div class="text-start">
-                        <p><strong>Docente:</strong> ${docente}</p>
-                        <p><strong>Salón:</strong> ${salon}</p>
-                        <p><strong>Fecha:</strong> ${fecha}</p>
-                        <p><strong>Horario:</strong> ${horario}</p>
-                        <p><strong>Recursos:</strong> ${recursos}</p>
+                        <p><strong>${obtenerTraduccion('Docente:')}</strong> ${docente}</p>
+                        <p><strong>${obtenerTraduccion('Salón:')}</strong> ${salon}</p>
+                        <p><strong>${obtenerTraduccion('Fecha:')}</strong> ${fecha}</p>
+                        <p><strong>${obtenerTraduccion('Horario:')}</strong> ${horario}</p>
+                        <p><strong>${obtenerTraduccion('Recursos:')}</strong> ${recursos}</p>
                     </div>
                 `,
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#198754',
                 cancelButtonColor: '#6c757d',
-                confirmButtonText: '<i class="bi bi-check-lg"></i> Sí, aprobar',
-                cancelButtonText: '<i class="bi bi-x-lg"></i> Cancelar',
+                confirmButtonText: `<i class="bi bi-check-lg"></i> ${obtenerTraduccion('Sí, aprobar')}`,
+                cancelButtonText: `<i class="bi bi-x-lg"></i> ${obtenerTraduccion('Cancelar')}`,
                 background: dark ? '#2c2c2c' : '#fff',
                 color: dark ? '#f5f5f5' : '#212529'
             }).then((result) => {
@@ -53,23 +53,23 @@ document.addEventListener('DOMContentLoaded', function() {
             const dark = isDarkMode();
 
             Swal.fire({
-                title: '¿Rechazar esta reserva?',
+                title: obtenerTraduccion('¿Rechazar esta reserva?'),
                 html: `
                     <div class="text-start">
-                        <p><strong>Docente:</strong> ${docente}</p>
-                        <p><strong>Salón:</strong> ${salon}</p>
-                        <p><strong>Fecha:</strong> ${fecha}</p>
-                        <p><strong>Horario:</strong> ${horario}</p>
-                        <p><strong>Recursos:</strong> ${recursos}</p>
-                        <p class="text-danger mt-3"><small><i class="bi bi-exclamation-triangle"></i> Esta acción no se puede deshacer.</small></p>
+                        <p><strong>${obtenerTraduccion('Docente:')}</strong> ${docente}</p>
+                        <p><strong>${obtenerTraduccion('Salón:')}</strong> ${salon}</p>
+                        <p><strong>${obtenerTraduccion('Fecha:')}</strong> ${fecha}</p>
+                        <p><strong>${obtenerTraduccion('Horario:')}</strong> ${horario}</p>
+                        <p><strong>${obtenerTraduccion('Recursos:')}</strong> ${recursos}</p>
+                        <p class="text-danger mt-3"><small><i class="bi bi-exclamation-triangle"></i> ${obtenerTraduccion('Esta acción no se puede deshacer.')}</small></p>
                     </div>
                 `,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#dc3545',
                 cancelButtonColor: '#6c757d',
-                confirmButtonText: '<i class="bi bi-trash"></i> Sí, rechazar',
-                cancelButtonText: '<i class="bi bi-x-lg"></i> Cancelar',
+                confirmButtonText: `<i class="bi bi-trash"></i> ${obtenerTraduccion('Sí, rechazar')}`,
+                cancelButtonText: `<i class="bi bi-x-lg"></i> ${obtenerTraduccion('Cancelar')}`,
                 background: dark ? '#2c2c2c' : '#fff',
                 color: dark ? '#f5f5f5' : '#212529'
             }).then((result) => {

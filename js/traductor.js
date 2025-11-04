@@ -25,7 +25,6 @@ const diccionario = {
 "Elige tu grupo": { en: "Choose your group", es: "Elige tu grupo" },
 "Cancelar": { en: "Cancel", es: "Cancelar" },
 
-
 // Adscripta.php y Docentes.php
 "Sistema de Gestión OFA": { en: "OFA Management System", es: "Sistema de Gestión OFA" },
 "Panel exclusivo para Adscripta": { en: "Exclusive Panel for Adscripta", es: "Panel exclusivo para Adscripta" },
@@ -92,7 +91,6 @@ const diccionario = {
 "Editar Docente #":{en:"Edit Teacher", es:"Editar Docente"},
 "Desde aquí puedes agregar, visualizar y administrar los horarios del sistema":{en: "From here you can add, view, and manage the system schedules.", es:"Desde aquí puedes agregar, visualizar y administrar los horarios del sistema"},
 "Agregar Horario":{en: "Add Schedule",es: "Agregar Horario"},
-
 
 // Gestión de Horarios 
 "Horarios disponibles":{en:"Available times", es:"Horarios disponibles"},
@@ -219,7 +217,6 @@ const diccionario = {
 "Selecciona un grupo para ver tu horario": { en: "Select a group to see your schedule", es: "Selecciona un grupo para ver tu horario" },
 "Evento del calendario": { en: "Calendar Event", es: "Evento del calendario" },
 
-
 // Recursos
 "Recursos": { en: "Resources", es: "Recursos" },
 "Desde aquí puedes agregar nuevos Recursos al sistema": { en: "From here you can add new resources to the system", es: "Desde aquí puedes agregar nuevos Recursos al sistema" },
@@ -233,7 +230,6 @@ const diccionario = {
 "Ej: Audiovisual": { en: "Ex: Audiovisual", es: "Ej: Audiovisual" },
 "Nombre descriptivo del recurso": { en: "Descriptive name of the resource", es: "Nombre descriptivo del recurso" },
 "Categoría del recurso (Audiovisual, Informático, Climatización, etc.)": { en: "Resource category (Audiovisual, Computer, Air Conditioning, etc.)", es: "Categoría del recurso (Audiovisual, Informático, Climatización, etc.)" },
-
 
 "Ver Asignaturas": { en: "View Subjects", es: "Ver Asignaturas" },
 
@@ -270,7 +266,6 @@ const diccionario = {
 "Año": { en: "Year", es: "Año" },
 "ID Espacio": { en: "ID Space", es: "ID Espacio" },
 
-
 // Editar Asignatura
 "Editar Asignatura": { en: "Edit Subject", es: "Editar Asignatura" },
 "Modifica los datos de la asignatura seleccionada": { en: "Modify the data of the selected subject", es: "Modifica los datos de la asignatura seleccionada" },
@@ -283,14 +278,11 @@ const diccionario = {
 "Editar Docente": { en: "Edit Teacher", es: "Editar Docente" },
 "Editar Recurso": { en: "Edit Resource", es: "Editar Recurso" },
 "Guardar cambios": { en: "Save changes", es: "Guardar cambios" },
-"Año": { en: "Year", es: "Año" },
 "-- Seleccionar curso --": { en: "-- Select course --", es: "-- Seleccionar curso --" },
 "-- Seleccionar turno --": { en: "-- Select shift --", es: "-- Seleccionar turno --" },
-"ID Espacio": { en: "Space ID", es: "ID Espacio" },
 
 // Textos de asignaturas.php adicionales
 "No hay asignaturas registradas": { en: "No subjects registered", es: "No hay asignaturas registradas" },
-"Acciones": { en: "Actions", es: "Acciones" },
 
 // Textos de recursos.php adicionales
 "Lista de Recursos Registrados": { en: "List of Registered Resources", es: "Lista de Recursos Registrados" },
@@ -400,6 +392,58 @@ const diccionario = {
 "Acceso no autorizado": { en: "Unauthorized access", es: "Acceso no autorizado" },
 "No tienes permisos para acceder a esa página.": { en: "You do not have permission to access that page.", es: "No tienes permisos para acceder a esa página." },
 
+// SweetAlert - Confirmaciones de eliminación
+"¿Eliminar asignatura?": { en: "Delete subject?", es: "¿Eliminar asignatura?" },
+"Se eliminará del sistema.": { en: "It will be deleted from the system.", es: "Se eliminará del sistema." },
+"Sí, eliminar": { en: "Yes, delete", es: "Sí, eliminar" },
+"¿Eliminar curso?": { en: "Delete course?", es: "¿Eliminar curso?" },
+"Se eliminará el curso del sistema.": { en: "The course will be deleted from the system.", es: "Se eliminará el curso del sistema." },
+"¿Eliminar grupo?": { en: "Delete group?", es: "¿Eliminar grupo?" },
+"Se eliminará el grupo del sistema.": { en: "The group will be deleted from the system.", es: "Se eliminará el grupo del sistema." },
+"¿Eliminar recurso?": { en: "Delete resource?", es: "¿Eliminar recurso?" },
+"Se eliminará el recurso del sistema.": { en: "The resource will be deleted from the system.", es: "Se eliminará el recurso del sistema." },
+"¿Eliminar docente?": { en: "Delete teacher?", es: "¿Eliminar docente?" },
+"Se eliminará a del sistema.": { en: "Will be deleted from the system.", es: "Se eliminará a del sistema." },
+
+// SweetAlert - Mensajes de éxito
+"Asignatura eliminada correctamente": { en: "Subject deleted successfully", es: "Asignatura eliminada correctamente" },
+"Asignatura actualizada correctamente": { en: "Subject updated successfully", es: "Asignatura actualizada correctamente" },
+"Asignatura agregada correctamente": { en: "Subject added successfully", es: "Asignatura agregada correctamente" },
+"Curso eliminado correctamente": { en: "Course deleted successfully", es: "Curso eliminado correctamente" },
+"Curso actualizado correctamente": { en: "Course updated successfully", es: "Curso actualizado correctamente" },
+"¡Docente actualizado!": { en: "Teacher updated!", es: "¡Docente actualizado!" },
+"Los datos del docente se actualizaron correctamente.": { en: "Teacher data was updated successfully.", es: "Los datos del docente se actualizaron correctamente." },
+"¡Docente eliminado!": { en: "Teacher deleted!", es: "¡Docente eliminado!" },
+"El docente fue eliminado del sistema correctamente.": { en: "The teacher was successfully removed from the system.", es: "El docente fue eliminado del sistema correctamente." },
+"La cédula debe tener exactamente 8 dígitos numéricos sin puntos ni guiones.": { en: "The ID must have exactly 8 numeric digits without periods or hyphens.", es: "La cédula debe tener exactamente 8 dígitos numéricos sin puntos ni guiones." },
+"La cédula ingresada no es válida. El dígito verificador no coincide.": { en: "The entered ID is not valid. The verification digit does not match.", es: "La cédula ingresada no es válida. El dígito verificador no coincide." },
+"Ya existe otro docente con esa cédula o correo electrónico.": { en: "Another teacher with that ID or email already exists.", es: "Ya existe otro docente con esa cédula o correo electrónico." },
+"Error": { en: "Error", es: "Error" },
+"Ocurrió un error al procesar la operación. Intenta nuevamente.": { en: "An error occurred while processing the operation. Try again.", es: "Ocurrió un error al procesar la operación. Intenta nuevamente." },
+"Grupo eliminado correctamente": { en: "Group deleted successfully", es: "Grupo eliminado correctamente" },
+"Grupo actualizado correctamente": { en: "Group updated successfully", es: "Grupo actualizado correctamente" },
+"Recurso eliminado correctamente": { en: "Resource deleted successfully", es: "Recurso eliminado correctamente" },
+"Recurso actualizado correctamente": { en: "Resource updated successfully", es: "Recurso actualizado correctamente" },
+"Ya existe un recurso con ese nombre": { en: "A resource with that name already exists", es: "Ya existe un recurso con ese nombre" },
+"Recurso agregado correctamente": { en: "Resource added successfully", es: "Recurso agregado correctamente" },
+
+//Mas sweets alerts
+"del sistema": { en: "from the system", es: "del sistema" },
+"Se eliminará": { en: "Will be deleted", es: "Se eliminará" },
+"Se eliminará el curso": { en: "The course will be deleted", es: "Se eliminará el curso" },
+"Se eliminará el grupo": { en: "The group will be deleted", es: "Se eliminará el grupo" },
+"Se eliminará el recurso": { en: "The resource will be deleted", es: "Se eliminará el recurso" },
+"Se eliminará a": { en: "Will remove", es: "Se eliminará a" },
+
+// Sección Reservas - SweetAlerts
+"¿Aprobar esta reserva?": { en: "Approve this reservation?", es: "¿Aprobar esta reserva?" },
+"¿Rechazar esta reserva?": { en: "Reject this reservation?", es: "¿Rechazar esta reserva?" },
+"Docente:": { en: "Teacher:", es: "Docente:" },
+"Recursos:": { en: "Resources:", es: "Recursos:" },
+"Sí, aprobar": { en: "Yes, approve", es: "Sí, aprobar" },
+"Sí, rechazar": { en: "Yes, reject", es: "Sí, rechazar" },
+"Esta acción no se puede deshacer.": { en: "This action cannot be undone.", es: "Esta acción no se puede deshacer." }
+
 };  
 
 
@@ -420,7 +464,7 @@ function traducir(idioma) {
   localStorage.setItem('idioma', idioma);
 }
 
-// Función para obtener traducción programática (para usar en JavaScript)
+// Función para obtener traducción 
 function obtenerTraduccion(texto) {
   const idioma = localStorage.getItem('idioma') || 'es';
   return diccionario[texto] && diccionario[texto][idioma] 

@@ -172,88 +172,11 @@ $result = $conn->query($sql);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
-<script src="../../js/recursos.js"></script>
+<script src="../../js/notificaciones-recursos.js"></script>
 <script src="../../../js/timeout.js"></script>
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const isDarkMode = document.body.classList.contains('oscuro');
-
-  // 🔸 Confirmación para eliminar recurso
-  document.querySelectorAll('.eliminar-recurso').forEach(boton => {
-    boton.addEventListener('click', (e) => {
-      e.preventDefault();
-      const id = boton.dataset.id;
-      const nombre = boton.dataset.nombre;
-
-      Swal.fire({
-        title: '¿Eliminar recurso?',
-        text: `Se eliminará el recurso "${nombre}" del sistema.`,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, eliminar',
-        cancelButtonText: 'Cancelar',
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#6c757d',
-        background: isDarkMode ? '#2c2c2c' : '#fff',
-        color: isDarkMode ? '#f5f5f5' : '#212529'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.location.href = `eliminar_recurso.php?id=${id}`;
-        }
-      });
-    });
-  });
-
-  // 🔸 SweetAlerts automáticos de resultado (por URL)
-  const urlParams = new URLSearchParams(window.location.search);
-
-  if (urlParams.get('delete') === 'success') {
-    Swal.fire({
-      icon: 'success',
-      title: 'Recurso eliminado correctamente',
-      showConfirmButton: false,
-      timer: 1800,
-      background: isDarkMode ? '#2c2c2c' : '#fff',
-      color: isDarkMode ? '#f5f5f5' : '#212529'
-    });
-  }
-
-  if (urlParams.get('edit') === 'success') {
-    Swal.fire({
-      icon: 'success',
-      title: 'Recurso actualizado correctamente',
-      showConfirmButton: false,
-      timer: 1800,
-      background: isDarkMode ? '#2c2c2c' : '#fff',
-      color: isDarkMode ? '#f5f5f5' : '#212529'
-    });
-  }
-
-  if (urlParams.get('edit') === 'duplicate') {
-    Swal.fire({
-      icon: 'error',
-      title: 'Ya existe un recurso con ese nombre',
-      showConfirmButton: true,
-      background: isDarkMode ? '#2c2c2c' : '#fff',
-      color: isDarkMode ? '#f5f5f5' : '#212529'
-    });
-  }
-
-  if (urlParams.get('add') === 'success') {
-    Swal.fire({
-      icon: 'success',
-      title: 'Recurso agregado correctamente',
-      showConfirmButton: false,
-      timer: 1800,
-      background: isDarkMode ? '#2c2c2c' : '#fff',
-      color: isDarkMode ? '#f5f5f5' : '#212529'
-    });
-  }
-});
-</script>
 <?php include '../tools/footer.php'; ?>
 <?php $conn->close(); ?>
 

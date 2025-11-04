@@ -172,67 +172,11 @@ $result = $conn->query($sql);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../js/modoClaroOscuro.js"></script>
 <script src="../../js/traductor.js"></script>
+<script src="../../js/notificaciones-curso.js"></script>
 <script src="../../../js/timeout.js"></script>
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Confirmación con SweetAlert para eliminar cursos
-  document.querySelectorAll('.eliminar-curso').forEach(boton => {
-    boton.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      const id = boton.dataset.id;
-      const nombre = boton.dataset.nombre;
-      const isDarkMode = document.body.classList.contains('oscuro');
-
-      Swal.fire({
-        title: '¿Eliminar curso?',
-        text: `Se eliminará el curso "${nombre}" del sistema.`,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, eliminar',
-        cancelButtonText: 'Cancelar',
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#6c757d',
-        background: isDarkMode ? '#2c2c2c' : '#fff',
-        color: isDarkMode ? '#f5f5f5' : '#212529'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.location.href = `eliminar_curso.php?id=${id}`;
-        }
-      });
-    });
-  });
-
-  // Mensajes de éxito con SweetAlert
-  const urlParams = new URLSearchParams(window.location.search);
-  const isDarkMode = document.body.classList.contains('oscuro');
-
-  if (urlParams.get('delete') === 'success') {
-    Swal.fire({
-      icon: 'success',
-      title: 'Curso eliminado correctamente',
-      showConfirmButton: false,
-      timer: 1800,
-      background: isDarkMode ? '#2c2c2c' : '#fff',
-      color: isDarkMode ? '#f5f5f5' : '#212529'
-    });
-  }
-
-  if (urlParams.get('edit') === 'success') {
-    Swal.fire({
-      icon: 'success',
-      title: 'Curso actualizado correctamente',
-      showConfirmButton: false,
-      timer: 1800,
-      background: isDarkMode ? '#2c2c2c' : '#fff',
-      color: isDarkMode ? '#f5f5f5' : '#212529'
-    });
-  }
-});
-</script>
 <?php include '../tools/footer.php'; ?>
 <?php $conn->close(); ?>
 
