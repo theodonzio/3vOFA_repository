@@ -15,13 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         Swal.fire({
             icon: 'success',
-            title: 'Inicio de sesión correcto',
-            text: 'Bienvenido/a al sistema.',
+            title: obtenerTraduccion('Inicio de sesión correcto'),
+            text: obtenerTraduccion('Bienvenido/a al sistema.'),
             timer: 1800,
             showConfirmButton: false,
             ...swalConfig
         }).then(() => {
-            
             // Redirigir según rol
             if (rol === '1') {
                 window.location.href = 'usuarios/adscripta.php';
@@ -37,9 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (urlParams.has('login') && urlParams.get('login') === 'error_pass') {
         Swal.fire({
             icon: 'error',
-            title: 'Contraseña incorrecta',
-            text: 'Verifica tu contraseña e inténtalo de nuevo.',
-            confirmButtonText: 'Intentar de nuevo',
+            title: obtenerTraduccion('Contraseña incorrecta'),
+            text: obtenerTraduccion('Verifica tu contraseña e inténtalo de nuevo.'),
+            confirmButtonText: obtenerTraduccion('Intentar de nuevo'),
             ...swalConfig
         });
     }
@@ -48,9 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (urlParams.has('login') && urlParams.get('login') === 'error_user') {
         Swal.fire({
             icon: 'warning',
-            title: 'Usuario no encontrado',
-            text: 'No existe una cuenta con ese correo o cédula.',
-            confirmButtonText: 'OK',
+            title: obtenerTraduccion('Usuario no encontrado'),
+            text: obtenerTraduccion('No existe una cuenta con ese correo o cédula.'),
+            confirmButtonText: obtenerTraduccion('OK'),
             ...swalConfig
         });
     }
@@ -59,9 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (urlParams.has('login') && urlParams.get('login') === 'required') {
         Swal.fire({
             icon: 'warning',
-            title: 'Inicia sesión primero',
-            text: 'Debes iniciar sesión para acceder al sistema.',
-            confirmButtonText: 'Entendido',
+            title: obtenerTraduccion('Inicia sesión primero'),
+            text: obtenerTraduccion('Debes iniciar sesión para acceder al sistema.'),
+            confirmButtonText: obtenerTraduccion('Entendido'),
             ...swalConfig
         });
     }
@@ -70,14 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (urlParams.has('login') && urlParams.get('login') === 'unauthorized') {
         Swal.fire({
             icon: 'error',
-            title: 'Acceso no autorizado',
-            text: 'No tienes permisos para acceder a esa página.',
-            confirmButtonText: 'OK',
+            title: obtenerTraduccion('Acceso no autorizado'),
+            text: obtenerTraduccion('No tienes permisos para acceder a esa página.'),
+            confirmButtonText: obtenerTraduccion('OK'),
             ...swalConfig
         });
     }
 
-    // Limpiar URL después de mostrar notificación
     if (urlParams.has('login')) {
         window.history.replaceState({}, document.title, window.location.pathname);
     }

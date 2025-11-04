@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tipo === 'success') {
             Swal.fire({
                 icon: 'success',
-                title: '¡Curso agregado!',
-                text: 'El nuevo curso ha sido registrado exitosamente en el sistema.',
+                title: obtenerTraduccion('¡Curso agregado!'),
+                text: obtenerTraduccion('El nuevo curso ha sido registrado exitosamente en el sistema.'),
                 timer: 2500,
                 showConfirmButton: true,
                 ...swalConfig
@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (tipo === 'error') {
             Swal.fire({
                 icon: 'error',
-                title: 'Error al registrar',
-                text: 'No se pudo agregar el curso. Por favor, intenta nuevamente.',
+                title: obtenerTraduccion('Error al registrar'),
+                text: obtenerTraduccion('No se pudo agregar el curso. Por favor, intenta nuevamente.'),
                 confirmButtonColor: '#dc3545',
                 ...swalConfig
             });
@@ -44,21 +44,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         switch (tipo) {
             case 'success':
-                titulo = '¡Docente registrado!';
-                mensaje = 'El docente ha sido agregado correctamente al sistema.';
+                titulo = obtenerTraduccion('¡Docente registrado!');
+                mensaje = obtenerTraduccion('El docente ha sido agregado correctamente al sistema.');
                 icono = 'success';
                 break;
             case 'cedula_invalida':
-                titulo = 'Cédula inválida';
-                mensaje = 'La cédula debe tener exactamente 8 números sin puntos ni guiones.';
+                titulo = obtenerTraduccion('Cédula inválida');
+                mensaje = obtenerTraduccion('La cédula debe tener exactamente 8 números sin puntos ni guiones.');
                 break;
             case 'contrasena_invalida':
-                titulo = 'Contraseña inválida';
-                mensaje = 'La contraseña debe tener al menos 6 caracteres, incluyendo letras y números.';
+                titulo = obtenerTraduccion('Contraseña inválida');
+                mensaje = obtenerTraduccion('La contraseña debe tener al menos 6 caracteres, incluyendo letras y números.');
                 break;
             case 'error':
-                titulo = 'Error al registrar';
-                mensaje = 'Ocurrió un error al registrar el docente. Por favor, intenta nuevamente.';
+                titulo = obtenerTraduccion('Error al registrar');
+                mensaje = obtenerTraduccion('Ocurrió un error al registrar el docente. Por favor, intenta nuevamente.');
                 break;
         }
 
@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tipo === 'success') {
             Swal.fire({
                 icon: 'success',
-                title: '¡Espacio agregado!',
-                text: 'El nuevo espacio ha sido registrado correctamente en el sistema.',
+                title: obtenerTraduccion('¡Espacio agregado!'),
+                text: obtenerTraduccion('El nuevo espacio ha sido registrado correctamente en el sistema.'),
                 timer: 2500,
                 showConfirmButton: true,
                 ...swalConfig
@@ -89,16 +89,16 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (tipo === 'error') {
             Swal.fire({
                 icon: 'error',
-                title: 'Error al registrar',
-                text: 'No se pudo agregar el espacio. Por favor, intenta nuevamente.',
+                title: obtenerTraduccion('Error al registrar'),
+                text: obtenerTraduccion('No se pudo agregar el espacio. Por favor, intenta nuevamente.'),
                 confirmButtonColor: '#dc3545',
                 ...swalConfig
             });
         } else if (tipo === 'duplicado') {
             Swal.fire({
                 icon: 'warning',
-                title: 'Espacio duplicado',
-                text: 'Ya existe un espacio con esas características en el sistema.',
+                title: obtenerTraduccion('Espacio duplicado'),
+                text: obtenerTraduccion('Ya existe un espacio con esas características en el sistema.'),
                 confirmButtonColor: '#ffc107',
                 ...swalConfig
             });
@@ -112,8 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tipo === 'success') {
             Swal.fire({
                 icon: 'success',
-                title: '¡Grupo agregado!',
-                text: 'El nuevo grupo ha sido creado exitosamente.',
+                title: obtenerTraduccion('¡Grupo agregado!'),
+                text: obtenerTraduccion('El nuevo grupo ha sido creado exitosamente.'),
                 timer: 2500,
                 showConfirmButton: true,
                 ...swalConfig
@@ -121,8 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (tipo === 'error') {
             Swal.fire({
                 icon: 'error',
-                title: 'Error al crear grupo',
-                text: 'No se pudo agregar el grupo. Verifica los datos e intenta nuevamente.',
+                title: obtenerTraduccion('Error al crear grupo'),
+                text: obtenerTraduccion('No se pudo agregar el grupo. Verifica los datos e intenta nuevamente.'),
                 confirmButtonColor: '#dc3545',
                 ...swalConfig
             });
@@ -136,8 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tipo === 'success') {
             Swal.fire({
                 icon: 'success',
-                title: '¡Asignatura agregada!',
-                text: 'La asignatura ha sido registrada correctamente.',
+                title: obtenerTraduccion('¡Asignatura agregada!'),
+                text: obtenerTraduccion('La asignatura ha sido registrada correctamente.'),
                 timer: 2500,
                 showConfirmButton: true,
                 ...swalConfig
@@ -145,16 +145,16 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (tipo === 'duplicado') {
             Swal.fire({
                 icon: 'warning',
-                title: 'Asignatura duplicada',
-                text: 'Esta asignatura ya está asignada a este grupo con este docente.',
+                title: obtenerTraduccion('Asignatura duplicada'),
+                text: obtenerTraduccion('Esta asignatura ya está asignada a este grupo con este docente.'),
                 confirmButtonColor: '#ffc107',
                 ...swalConfig
             });
         } else if (tipo === 'error') {
             Swal.fire({
                 icon: 'error',
-                title: 'Error al agregar asignatura',
-                text: 'No se pudo registrar la asignatura. Intenta nuevamente.',
+                title: obtenerTraduccion('Error al agregar asignatura'),
+                text: obtenerTraduccion('No se pudo registrar la asignatura. Intenta nuevamente.'),
                 confirmButtonColor: '#dc3545',
                 ...swalConfig
             });
@@ -168,8 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tipo === 'success') {
             Swal.fire({
                 icon: 'success',
-                title: '¡Horario guardado!',
-                text: 'El horario ha sido actualizado correctamente.',
+                title: obtenerTraduccion('¡Horario guardado!'),
+                text: obtenerTraduccion('El horario ha sido actualizado correctamente.'),
                 timer: 2500,
                 showConfirmButton: true,
                 ...swalConfig
@@ -177,8 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (tipo === 'eliminado') {
             Swal.fire({
                 icon: 'success',
-                title: '¡Horario eliminado!',
-                text: 'El horario ha sido eliminado del sistema.',
+                title: obtenerTraduccion('¡Horario eliminado!'),
+                text: obtenerTraduccion('El horario ha sido eliminado del sistema.'),
                 timer: 2500,
                 showConfirmButton: true,
                 ...swalConfig
@@ -186,8 +186,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (tipo === 'error') {
             Swal.fire({
                 icon: 'error',
-                title: 'Error con el horario',
-                text: 'No se pudo procesar la operación. Intenta nuevamente.',
+                title: obtenerTraduccion('Error con el horario'),
+                text: obtenerTraduccion('No se pudo procesar la operación. Intenta nuevamente.'),
                 confirmButtonColor: '#dc3545',
                 ...swalConfig
             });
@@ -198,12 +198,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Notificación de acción sobre Reserva
     if (urlParams.has('reserva_action')) {
         const tipo = urlParams.get('reserva_action');
-        const mensaje = urlParams.get('mensaje') || 'Acción completada';
+        const mensaje = urlParams.get('mensaje') || obtenerTraduccion('Acción completada');
         
         if (tipo === 'success') {
             Swal.fire({
                 icon: 'success',
-                title: '¡Éxito!',
+                title: obtenerTraduccion('¡Éxito!'),
                 text: mensaje,
                 timer: 2500,
                 showConfirmButton: true,
@@ -212,10 +212,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (tipo === 'error') {
             Swal.fire({
                 icon: 'error',
-                title: 'Error',
+                title: obtenerTraduccion('Error'),
                 html: `
                     <p>${mensaje}</p>
-                    <small class="text-muted">Si el problema persiste, contacta al administrador.</small>
+                    <small class="text-muted">${obtenerTraduccion('Si el problema persiste, contacta al administrador.')}</small>
                 `,
                 confirmButtonColor: '#dc3545',
                 ...swalConfig
@@ -226,10 +226,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Notificación genérica de éxito
     if (urlParams.has('success')) {
-        const mensaje = urlParams.get('mensaje') || 'Operación completada exitosamente';
+        const mensaje = urlParams.get('mensaje') || obtenerTraduccion('Operación completada exitosamente');
         Swal.fire({
             icon: 'success',
-            title: '¡Éxito!',
+            title: obtenerTraduccion('¡Éxito!'),
             text: mensaje,
             timer: 2500,
             showConfirmButton: true,
@@ -240,10 +240,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Notificación genérica de error
     if (urlParams.has('error')) {
-        const mensaje = urlParams.get('mensaje') || 'Ocurrió un error al procesar la operación';
+        const mensaje = urlParams.get('mensaje') || obtenerTraduccion('Ocurrió un error al procesar la operación');
         Swal.fire({
             icon: 'error',
-            title: 'Error',
+            title: obtenerTraduccion('Error'),
             text: mensaje,
             confirmButtonColor: '#dc3545',
             ...swalConfig
@@ -251,140 +251,141 @@ document.addEventListener('DOMContentLoaded', () => {
         window.history.replaceState({}, document.title, window.location.pathname);
     }
 });
-  document.addEventListener("DOMContentLoaded", () => {
+
+document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
 
     // Si el horario se agregó correctamente
     if (params.get("success") === "horario") {
-      Swal.fire({
-        title: "¡Horario agregado!",
-        text: "El nuevo horario fue guardado exitosamente.",
-        icon: "success",
-        confirmButtonText: "Aceptar",
-        confirmButtonColor: "#3085d6",
-        timer: 2500,
-        timerProgressBar: true
-      }).then(() => {
-        // Limpia el parámetro de la URL
-        const newURL = window.location.origin + window.location.pathname;
-        window.history.replaceState({}, document.title, newURL);
-      });
+        Swal.fire({
+            title: obtenerTraduccion('¡Horario agregado!'),
+            text: obtenerTraduccion('El nuevo horario fue guardado exitosamente.'),
+            icon: "success",
+            confirmButtonText: obtenerTraduccion('Aceptar'),
+            confirmButtonColor: "#3085d6",
+            timer: 2500,
+            timerProgressBar: true
+        }).then(() => {
+            // Limpia el parámetro de la URL
+            const newURL = window.location.origin + window.location.pathname;
+            window.history.replaceState({}, document.title, newURL);
+        });
     }
 
     // Si hubo un error al agregar
     if (params.get("error") === "horario") {
-      Swal.fire({
-        title: "Error",
-        text: "No se pudo agregar el horario. Intenta nuevamente.",
-        icon: "error",
-        confirmButtonText: "Aceptar",
-        confirmButtonColor: "#d33"
-      }).then(() => {
+        Swal.fire({
+            title: obtenerTraduccion('Error'),
+            text: obtenerTraduccion('No se pudo agregar el horario. Intenta nuevamente.'),
+            icon: "error",
+            confirmButtonText: obtenerTraduccion('Aceptar'),
+            confirmButtonColor: "#d33"
+        }).then(() => {
+            const newURL = window.location.origin + window.location.pathname;
+            window.history.replaceState({}, document.title, newURL);
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Cuando se agrega un recurso con éxito
+    if (urlParams.has('add') && urlParams.get('add') === 'success') {
+        Swal.fire({
+            icon: 'success',
+            title: obtenerTraduccion('¡Recurso agregado!'),
+            text: obtenerTraduccion('El recurso se registró correctamente en el sistema.'),
+            confirmButtonText: obtenerTraduccion('Aceptar'),
+            confirmButtonColor: '#0d6efd',
+            background: '#fefefe',
+            color: '#333',
+        }).then(() => {
+            // Eliminar el parámetro de la URL sin recargar
+            const url = new URL(window.location);
+            url.searchParams.delete('add');
+            window.history.replaceState({}, document.title, url);
+        });
+    }
+
+    // Si hay error al agregar
+    if (urlParams.has('add') && urlParams.get('add') === 'error') {
+        Swal.fire({
+            icon: 'error',
+            title: obtenerTraduccion('Error'),
+            text: obtenerTraduccion('Hubo un problema al registrar el recurso. Intenta nuevamente.'),
+            confirmButtonText: obtenerTraduccion('Cerrar'),
+            confirmButtonColor: '#dc3545',
+        }).then(() => {
+            const url = new URL(window.location);
+            url.searchParams.delete('add');
+            window.history.replaceState({}, document.title, url);
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const docente = params.get("docente");
+
+    if (docente === "success") {
+        Swal.fire({
+            icon: "success",
+            title: obtenerTraduccion('¡Docente registrado!'),
+            text: obtenerTraduccion('El nuevo docente fue agregado exitosamente.'),
+            confirmButtonColor: "#3085d6",
+            timer: 2500,
+            timerProgressBar: true
+        });
+    }
+
+    if (docente === "duplicado") {
+        Swal.fire({
+            icon: "warning",
+            title: obtenerTraduccion('Datos duplicados'),
+            text: obtenerTraduccion('Ya existe un usuario con esa cédula o correo electrónico.'),
+            confirmButtonColor: "#f0ad4e"
+        });
+    }
+
+    if (docente === "cedula_invalida") {
+        Swal.fire({
+            icon: "error",
+            title: obtenerTraduccion('Cédula inválida'),
+            text: obtenerTraduccion('La cédula debe tener exactamente 8 dígitos numéricos.'),
+            confirmButtonColor: "#d33"
+        });
+    }
+
+    if (docente === "contrasena_invalida") {
+        Swal.fire({
+            icon: "error",
+            title: obtenerTraduccion('Contraseña inválida'),
+            text: obtenerTraduccion('Debe tener al menos 6 caracteres, incluyendo letras y números.'),
+            confirmButtonColor: "#d33"
+        });
+    }
+
+    if (docente === "cedula_dv_invalido") {
+        Swal.fire({
+            icon: "error",
+            title: obtenerTraduccion('Cédula inválida'),
+            text: obtenerTraduccion('La cédula ingresada no es válida'),
+            confirmButtonColor: "#d33"
+        });
+    }
+
+    if (docente === "error") {
+        Swal.fire({
+            icon: "error",
+            title: obtenerTraduccion('Error al registrar'),
+            text: obtenerTraduccion('Ocurrió un problema al intentar guardar el docente.'),
+            confirmButtonColor: "#d33"
+        });
+    }
+
+    if (docente) {
         const newURL = window.location.origin + window.location.pathname;
         window.history.replaceState({}, document.title, newURL);
-      });
     }
-  });
-document.addEventListener('DOMContentLoaded', function () {
-  const urlParams = new URLSearchParams(window.location.search);
-
-  // Cuando se agrega un recurso con éxito
-  if (urlParams.has('add') && urlParams.get('add') === 'success') {
-    Swal.fire({
-      icon: 'success',
-      title: '¡Recurso agregado!',
-      text: 'El recurso se registró correctamente en el sistema.',
-      confirmButtonText: 'Aceptar',
-      confirmButtonColor: '#0d6efd',
-      background: '#fefefe',
-      color: '#333',
-    }).then(() => {
-      
-      // Eliminar el parámetro de la URL sin recargar
-      const url = new URL(window.location);
-      url.searchParams.delete('add');
-      window.history.replaceState({}, document.title, url);
-    });
-  }
-
-  // Si hay error al agregar
-  if (urlParams.has('add') && urlParams.get('add') === 'error') {
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'Hubo un problema al registrar el recurso. Intenta nuevamente.',
-      confirmButtonText: 'Cerrar',
-      confirmButtonColor: '#dc3545',
-    }).then(() => {
-      const url = new URL(window.location);
-      url.searchParams.delete('add');
-      window.history.replaceState({}, document.title, url);
-    });
-  }
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const docente = params.get("docente");
-
-  if (docente === "success") {
-    Swal.fire({
-      icon: "success",
-      title: "¡Docente registrado!",
-      text: "El nuevo docente fue agregado exitosamente.",
-      confirmButtonColor: "#3085d6",
-      timer: 2500,
-      timerProgressBar: true
-    });
-  }
-
-  if (docente === "duplicado") {
-    Swal.fire({
-      icon: "warning",
-      title: "Datos duplicados",
-      text: "Ya existe un usuario con esa cédula o correo electrónico.",
-      confirmButtonColor: "#f0ad4e"
-    });
-  }
-
-  if (docente === "cedula_invalida") {
-    Swal.fire({
-      icon: "error",
-      title: "Cédula inválida",
-      text: "La cédula debe tener exactamente 8 dígitos numéricos.",
-      confirmButtonColor: "#d33"
-    });
-  }
-
-  if (docente === "contrasena_invalida") {
-    Swal.fire({
-      icon: "error",
-      title: "Contraseña inválida",
-      text: "Debe tener al menos 6 caracteres, incluyendo letras y números.",
-      confirmButtonColor: "#d33"
-    });
-  }
-
- if (docente === "cedula_dv_invalido") {
-    Swal.fire({
-      icon: "error",
-      title: "Cédula inválida",
-      text: "La cédula ingresada no es válida",
-      confirmButtonColor: "#d33"
-    });
-  }
-
-  if (docente === "error") {
-    Swal.fire({
-      icon: "error",
-      title: "Error al registrar",
-      text: "Ocurrió un problema al intentar guardar el docente.",
-      confirmButtonColor: "#d33"
-    });
-  }
-
-  // Limpia el parámetro de la URL después de mostrar el alerta
-  if (docente) {
-    const newURL = window.location.origin + window.location.pathname;
-    window.history.replaceState({}, document.title, newURL);
-  }
 });

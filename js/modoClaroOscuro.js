@@ -16,10 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Ruta base dinámica
   const basePath = isSubfolder ? '../../' : '../';
 
-  console.log('Ruta actual:', currentPath);
-  console.log('¿Es subcarpeta?:', isSubfolder);
-  console.log('Base path:', basePath);
-
   function aplicarModo(modo) {
     if (modo === 'oscuro') {
       cuerpo.classList.add('oscuro');

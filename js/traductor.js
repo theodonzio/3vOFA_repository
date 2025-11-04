@@ -311,6 +311,95 @@ const diccionario = {
 "Solo se muestran tus clases asignadas": { en: "Only your assigned classes are shown", es: "Solo se muestran tus clases asignadas" },
 "Selecciona un grupo para ver tus horarios": { en: "Select a group to view your schedules", es: "Selecciona un grupo para ver tus horarios" },
 
+// Notificaciones - Cursos
+"¡Curso agregado!": { en: "Course added!", es: "¡Curso agregado!" },
+"El nuevo curso ha sido registrado exitosamente en el sistema.": { en: "The new course has been successfully registered in the system.", es: "El nuevo curso ha sido registrado exitosamente en el sistema." },
+"Error al registrar": { en: "Registration Error", es: "Error al registrar" },
+"No se pudo agregar el curso. Por favor, intenta nuevamente.": { en: "Could not add the course. Please try again.", es: "No se pudo agregar el curso. Por favor, intenta nuevamente." },
+
+// Notificaciones - Docentes
+"¡Docente registrado!": { en: "Teacher registered!", es: "¡Docente registrado!" },
+"El docente ha sido agregado correctamente al sistema.": { en: "The teacher has been successfully added to the system.", es: "El docente ha sido agregado correctamente al sistema." },
+"Cédula inválida": { en: "Invalid ID", es: "Cédula inválida" },
+"La cédula debe tener exactamente 8 números sin puntos ni guiones.": { en: "The ID must have exactly 8 numbers without periods or hyphens.", es: "La cédula debe tener exactamente 8 números sin puntos ni guiones." },
+"Contraseña inválida": { en: "Invalid Password", es: "Contraseña inválida" },
+"La contraseña debe tener al menos 6 caracteres, incluyendo letras y números.": { en: "Password must be at least 6 characters, including letters and numbers.", es: "La contraseña debe tener al menos 6 caracteres, incluyendo letras y números." },
+"Ocurrió un error al registrar el docente. Por favor, intenta nuevamente.": { en: "An error occurred while registering the teacher. Please try again.", es: "Ocurrió un error al registrar el docente. Por favor, intenta nuevamente." },
+"El nuevo docente fue agregado exitosamente.": { en: "The new teacher was successfully added.", es: "El nuevo docente fue agregado exitosamente." },
+"Datos duplicados": { en: "Duplicate Data", es: "Datos duplicados" },
+"Ya existe un usuario con esa cédula o correo electrónico.": { en: "A user with that ID or email already exists.", es: "Ya existe un usuario con esa cédula o correo electrónico." },
+"La cédula debe tener exactamente 8 dígitos numéricos.": { en: "The ID must have exactly 8 numeric digits.", es: "La cédula debe tener exactamente 8 dígitos numéricos." },
+"Debe tener al menos 6 caracteres, incluyendo letras y números.": { en: "Must be at least 6 characters, including letters and numbers.", es: "Debe tener al menos 6 caracteres, incluyendo letras y números." },
+"La cédula ingresada no es válida": { en: "The entered ID is not valid", es: "La cédula ingresada no es válida" },
+"Ocurrió un problema al intentar guardar el docente.": { en: "A problem occurred while trying to save the teacher.", es: "Ocurrió un problema al intentar guardar el docente." },
+
+// Notificaciones - Espacios
+"¡Espacio agregado!": { en: "Space added!", es: "¡Espacio agregado!" },
+"El nuevo espacio ha sido registrado correctamente en el sistema.": { en: "The new space has been successfully registered in the system.", es: "El nuevo espacio ha sido registrado correctamente en el sistema." },
+"No se pudo agregar el espacio. Por favor, intenta nuevamente.": { en: "Could not add the space. Please try again.", es: "No se pudo agregar el espacio. Por favor, intenta nuevamente." },
+"Espacio duplicado": { en: "Duplicate Space", es: "Espacio duplicado" },
+"Ya existe un espacio con esas características en el sistema.": { en: "A space with those characteristics already exists in the system.", es: "Ya existe un espacio con esas características en el sistema." },
+
+// Notificaciones - Grupos
+"¡Grupo agregado!": { en: "Group added!", es: "¡Grupo agregado!" },
+"El nuevo grupo ha sido creado exitosamente.": { en: "The new group has been successfully created.", es: "El nuevo grupo ha sido creado exitosamente." },
+"Error al crear grupo": { en: "Error creating group", es: "Error al crear grupo" },
+"No se pudo agregar el grupo. Verifica los datos e intenta nuevamente.": { en: "Could not add the group. Check the data and try again.", es: "No se pudo agregar el grupo. Verifica los datos e intenta nuevamente." },
+
+// Notificaciones - Asignaturas
+"¡Asignatura agregada!": { en: "Subject added!", es: "¡Asignatura agregada!" },
+"La asignatura ha sido registrada correctamente.": { en: "The subject has been successfully registered.", es: "La asignatura ha sido registrada correctamente." },
+"Asignatura duplicada": { en: "Duplicate Subject", es: "Asignatura duplicada" },
+"Esta asignatura ya está asignada a este grupo con este docente.": { en: "This subject is already assigned to this group with this teacher.", es: "Esta asignatura ya está asignada a este grupo con este docente." },
+"Error al agregar asignatura": { en: "Error adding subject", es: "Error al agregar asignatura" },
+"No se pudo registrar la asignatura. Intenta nuevamente.": { en: "Could not register the subject. Try again.", es: "No se pudo registrar la asignatura. Intenta nuevamente." },
+
+// Notificaciones - Horarios
+"¡Horario guardado!": { en: "Schedule saved!", es: "¡Horario guardado!" },
+"El horario ha sido actualizado correctamente.": { en: "The schedule has been successfully updated.", es: "El horario ha sido actualizado correctamente." },
+"¡Horario eliminado!": { en: "Schedule deleted!", es: "¡Horario eliminado!" },
+"El horario ha sido eliminado del sistema.": { en: "The schedule has been removed from the system.", es: "El horario ha sido eliminado del sistema." },
+"Error con el horario": { en: "Error with schedule", es: "Error con el horario" },
+"No se pudo procesar la operación. Intenta nuevamente.": { en: "Could not process the operation. Try again.", es: "No se pudo procesar la operación. Intenta nuevamente." },
+"¡Horario agregado!": { en: "Schedule added!", es: "¡Horario agregado!" },
+"El nuevo horario fue guardado exitosamente.": { en: "The new schedule was successfully saved.", es: "El nuevo horario fue guardado exitosamente." },
+"No se pudo agregar el horario. Intenta nuevamente.": { en: "Could not add the schedule. Try again.", es: "No se pudo agregar el horario. Intenta nuevamente." },
+
+// Notificaciones - Reservas
+"¡Éxito!": { en: "Success!", es: "¡Éxito!" },
+"Acción completada": { en: "Action completed", es: "Acción completada" },
+"Si el problema persiste, contacta al administrador.": { en: "If the problem persists, contact the administrator.", es: "Si el problema persiste, contacta al administrador." },
+"Operación completada exitosamente": { en: "Operation completed successfully", es: "Operación completada exitosamente" },
+"Ocurrió un error al procesar la operación": { en: "An error occurred while processing the operation", es: "Ocurrió un error al procesar la operación" },
+"¡Reserva realizada!": { en: "Reservation made!", es: "¡Reserva realizada!" },
+"Tu reserva fue registrada correctamente.": { en: "Your reservation was successfully registered.", es: "Tu reserva fue registrada correctamente." },
+"Fecha u hora inválida": { en: "Invalid date or time", es: "Fecha u hora inválida" },
+"No puedes reservar en una fecha u hora pasada.": { en: "You cannot book on a past date or time.", es: "No puedes reservar en una fecha u hora pasada." },
+"Error al reservar": { en: "Error making reservation", es: "Error al reservar" },
+"Ocurrió un error al registrar tu reserva. Intenta nuevamente.": { en: "An error occurred while registering your reservation. Try again.", es: "Ocurrió un error al registrar tu reserva. Intenta nuevamente." },
+
+// Notificaciones - Recursos
+"¡Recurso agregado!": { en: "Resource added!", es: "¡Recurso agregado!" },
+"El recurso se registró correctamente en el sistema.": { en: "The resource was successfully registered in the system.", es: "El recurso se registró correctamente en el sistema." },
+"Aceptar": { en: "Accept", es: "Aceptar" },
+"Cerrar": { en: "Close", es: "Cerrar" },
+"Hubo un problema al registrar el recurso. Intenta nuevamente.": { en: "There was a problem registering the resource. Try again.", es: "Hubo un problema al registrar el recurso. Intenta nuevamente." },
+
+// Notificaciones - Login
+"Inicio de sesión correcto": { en: "Successful login", es: "Inicio de sesión correcto" },
+"Bienvenido/a al sistema.": { en: "Welcome to the system.", es: "Bienvenido/a al sistema." },
+"Contraseña incorrecta": { en: "Incorrect password", es: "Contraseña incorrecta" },
+"Verifica tu contraseña e inténtalo de nuevo.": { en: "Check your password and try again.", es: "Verifica tu contraseña e inténtalo de nuevo." },
+"Intentar de nuevo": { en: "Try again", es: "Intentar de nuevo" },
+"Usuario no encontrado": { en: "User not found", es: "Usuario no encontrado" },
+"No existe una cuenta con ese correo o cédula.": { en: "There is no account with that email or ID.", es: "No existe una cuenta con ese correo o cédula." },
+"OK": { en: "OK", es: "OK" },
+"Inicia sesión primero": { en: "Login first", es: "Inicia sesión primero" },
+"Debes iniciar sesión para acceder al sistema.": { en: "You must login to access the system.", es: "Debes iniciar sesión para acceder al sistema." },
+"Entendido": { en: "Understood", es: "Entendido" },
+"Acceso no autorizado": { en: "Unauthorized access", es: "Acceso no autorizado" },
+"No tienes permisos para acceder a esa página.": { en: "You do not have permission to access that page.", es: "No tienes permisos para acceder a esa página." },
+
 };  
 
 
@@ -329,6 +418,14 @@ function traducir(idioma) {
     }
   });
   localStorage.setItem('idioma', idioma);
+}
+
+// Función para obtener traducción programática (para usar en JavaScript)
+function obtenerTraduccion(texto) {
+  const idioma = localStorage.getItem('idioma') || 'es';
+  return diccionario[texto] && diccionario[texto][idioma] 
+    ? diccionario[texto][idioma] 
+    : texto;
 }
 
 // Carga idioma guardado al iniciar
