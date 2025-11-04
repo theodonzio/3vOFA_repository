@@ -104,19 +104,6 @@ const diccionario = {
 "Viernes": { en: "Friday", es: "Viernes" },
 "Guardar Cambios": { en: "Save Changes", es: "Guardar Cambios" },
 
-// Nombres de Horarios 
-"1era": { en: "1st Hour", es: "1era" },
-"2da": { en: "2nd Hour", es: "2da" },
-"3era": { en: "3rd Hour", es: "3era" },
-"4ta": { en: "4th Hour", es: "4ta" },
-"5ta": { en: "5th Hour", es: "5ta" },
-"6ta": { en: "6th Hour", es: "6ta" },
-"7ma": { en: "7th Hour", es: "7ma" },
-"8va": { en: "8th Hour", es: "8va" },
-"9na": { en: "9th Hour", es: "9na" },
-"10ma": { en: "10th Hour", es: "10ma" },
-"11va": { en: "11th Hour", es: "11va" },
-
 // Modal Agregar Espacio
 "Nº de Espacio": { en: "Room Number", es: "Nº de Espacio" },
 "Ej: 2": { en: "Ex: 2", es: "Ej: 2" },
@@ -442,8 +429,47 @@ const diccionario = {
 "Recursos:": { en: "Resources:", es: "Recursos:" },
 "Sí, aprobar": { en: "Yes, approve", es: "Sí, aprobar" },
 "Sí, rechazar": { en: "Yes, reject", es: "Sí, rechazar" },
-"Esta acción no se puede deshacer.": { en: "This action cannot be undone.", es: "Esta acción no se puede deshacer." }
+"Esta acción no se puede deshacer.": { en: "This action cannot be undone.", es: "Esta acción no se puede deshacer." },
 
+
+// Timeout/Inactividad
+"Advertencia de Inactividad": { en: "⏰ Inactivity Warning", es: "⏰ Advertencia de Inactividad" },
+"Tu sesión expirará en": { en: "Your session will expire in", es: "Tu sesión expirará en" },
+"minuto": { en: "minute", es: "minuto" },
+"minutos": { en: "minutes", es: "minutos" },
+"por inactividad": { en: "due to inactivity", es: "por inactividad" },
+"Realiza cualquier acción para continuar en el sistema": { en: "Perform any action to continue in the system", es: "Realiza cualquier acción para continuar en el sistema" },
+"Continuar": { en: "Continue", es: "Continuar" },
+"Sesión Expirada": { en: "Session Expired", es: "Sesión Expirada" },
+"Tu sesión ha finalizado por": { en: "Your session has ended due to", es: "Tu sesión ha finalizado por" },
+"inactividad": { en: "inactivity", es: "inactividad" },
+"Por tu seguridad, debes iniciar sesión nuevamente": { en: "For your security, you must log in again", es: "Por tu seguridad, debes iniciar sesión nuevamente" },
+"Ir a Login": { en: "Go to Login", es: "Ir a Login" },
+
+// Modal Agregar Curso - SweetAlerts
+"Todos seleccionados": { en: "All selected", es: "Todos seleccionados" },
+"Todos deseleccionados": { en: "All deselected", es: "Todos deseleccionados" },
+"No hay horarios seleccionados": { en: "No schedules selected", es: "No hay horarios seleccionados" },
+"Selecciona al menos un horario para eliminar": { en: "Select at least one schedule to delete", es: "Selecciona al menos un horario para eliminar" },
+"¿Eliminar horarios?": { en: "Delete schedules?", es: "¿Eliminar horarios?" },
+"Se eliminarán": { en: "Will be deleted", es: "Se eliminarán" },
+"horario(s) seleccionado(s)": { en: "selected schedule(s)", es: "horario(s) seleccionado(s)" },
+"ADVERTENCIA: Esto afectará a todos los cursos que usen estos horarios.": { en: "WARNING: This will affect all courses that use these schedules.", es: "ADVERTENCIA: Esto afectará a todos los cursos que usen estos horarios." },
+"Eliminando...": { en: "Deleting...", es: "Eliminando..." },
+"Eliminado": { en: "Deleted", es: "Eliminado" },
+"Horarios eliminados correctamente": { en: "Schedules deleted successfully", es: "Horarios eliminados correctamente" },
+"No se pudieron eliminar los horarios": { en: "Could not delete schedules", es: "No se pudieron eliminar los horarios" },
+"Editar Horario": { en: "Edit Schedule", es: "Editar Horario" },
+"Nombre del horario": { en: "Schedule name", es: "Nombre del horario" },
+"Hora de inicio": { en: "Start time", es: "Hora de inicio" },
+"Hora de fin": { en: "End time", es: "Hora de fin" },
+"Guardar": { en: "Save", es: "Guardar" },
+"Guardando...": { en: "Saving...", es: "Guardando..." },
+"Guardado": { en: "Saved", es: "Guardado" },
+"Horario actualizado correctamente": { en: "Schedule updated successfully", es: "Horario actualizado correctamente" },
+"No se pudo actualizar el horario": { en: "Could not update schedule", es: "No se pudo actualizar el horario" },
+"El nombre del horario es obligatorio": { en: "Schedule name is required", es: "El nombre del horario es obligatorio" },
+"Las horas de inicio y fin son obligatorias": { en: "Start and end times are required", es: "Las horas de inicio y fin son obligatorias" }
 };  
 
 

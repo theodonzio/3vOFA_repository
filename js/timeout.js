@@ -1,8 +1,3 @@
-/**
- * Sistema de cierre de sesión por inactividad
- * Cierra la sesión después de 15 minutos sin actividad
- */
-
 (function() {
   'use strict';
 
@@ -15,9 +10,9 @@
   let lastActivityTime = Date.now();
   let warningShown = false;
 
-  /**
-   * Eventos que resetean el temporizador de inactividad
-   */
+  
+   //Eventos que resetean el temporizador de inactividad
+   
   const activityEvents = [
     'mousedown',
     'mousemove',
@@ -28,9 +23,9 @@
     'keypress'
   ];
 
-  /**
-   * Registra actividad del usuario
-   */
+  
+   //Registra actividad del usuario
+   
   function registerActivity() {
     lastActivityTime = Date.now();
     warningShown = false;
@@ -38,9 +33,9 @@
     startInactivityTimer();
   }
 
-  /**
-   * Limpia todos los temporizadores
-   */
+  
+   //Limpia todos los temporizadores
+   
   function clearAllTimers() {
     if (inactivityTimer) {
       clearTimeout(inactivityTimer);
@@ -50,9 +45,9 @@
     }
   }
 
-  /**
-   * Inicia el temporizador de inactividad
-   */
+  
+   //Inicia el temporizador de inactividad
+   
   function startInactivityTimer() {
     // Temporizador para mostrar advertencia
     warningTimer = setTimeout(showWarning, WARNING_TIME);
@@ -61,9 +56,8 @@
     inactivityTimer = setTimeout(endSession, INACTIVITY_TIME);
   }
 
-  /**
-   * Muestra advertencia de sesión por expirar
-   */
+  //Muestra advertencia de sesión por expirar
+   
   function showWarning() {
     if (warningShown) return;
     warningShown = true;
@@ -71,13 +65,14 @@
     const isDarkMode = document.body.classList.contains('oscuro');
 
     Swal.fire({
-      title: '⏰ Advertencia de Inactividad',
-      html: '<p>Tu sesión expirará en <strong>1 minuto</strong> por inactividad.</p><p><small>Realiza cualquier acción para continuar en el sistema.</small></p>',
+      title: obtenerTraduccion('Advertencia de Inactividad'),
+      html: `<p>${obtenerTraduccion('Tu sesión expirará en')} <strong>1 ${obtenerTraduccion('minuto')}</strong> ${obtenerTraduccion('por inactividad')}.</p>
+             <p><small>${obtenerTraduccion('Realiza cualquier acción para continuar en el sistema')}.</small></p>`,
       icon: 'warning',
       allowOutsideClick: false,
       allowEscapeKey: false,
       showConfirmButton: true,
-      confirmButtonText: 'Continuar',
+      confirmButtonText: obtenerTraduccion('Continuar'),
       confirmButtonColor: '#ffc107',
       background: isDarkMode ? '#2c2c2c' : '#fff',
       color: isDarkMode ? '#f5f5f5' : '#212529',
@@ -93,20 +88,21 @@
     });
   }
 
-  /**
-   * Cierra sesión por inactividad
-   */
+ 
+   //Cierra sesión por inactividad
+  
   function endSession() {
     const isDarkMode = document.body.classList.contains('oscuro');
 
     Swal.fire({
-      title: 'Sesión Expirada',
-      html: '<p>Tu sesión ha finalizado por <strong>inactividad (15 minutos)</strong>.</p><p><small>Por tu seguridad, debes iniciar sesión nuevamente.</small></p>',
+      title: obtenerTraduccion('Sesión Expirada'),
+      html: `<p>${obtenerTraduccion('Tu sesión ha finalizado por')} <strong>${obtenerTraduccion('inactividad')} (15 ${obtenerTraduccion('minutos')})</strong>.</p>
+             <p><small>${obtenerTraduccion('Por tu seguridad, debes iniciar sesión nuevamente')}.</small></p>`,
       icon: 'info',
       allowOutsideClick: false,
       allowEscapeKey: false,
       showConfirmButton: true,
-      confirmButtonText: 'Ir a Login',
+      confirmButtonText: obtenerTraduccion('Ir a Login'),
       confirmButtonColor: '#0d6efd',
       background: isDarkMode ? '#2c2c2c' : '#fff',
       color: isDarkMode ? '#f5f5f5' : '#212529'
@@ -116,9 +112,9 @@
     });
   }
 
-  /**
-   * Inicializa el sistema
-   */
+ 
+   //Inicializa el sistema
+   
   function init() {
     // Solo ejecuta si estamos en una página autenticada
     if (!isUserLoggedIn()) {
@@ -136,10 +132,10 @@
     console.log('✓ Sistema de inactividad inicializado (15 minutos)');
   }
 
-  /**
-   * Verifica si el usuario está autenticado
-   * Comprueba si existe el elemento de header autenticado
-   */
+  
+   //Verifica si el usuario está autenticado
+   //Comprueba si existe el elemento de header autenticado
+   
   function isUserLoggedIn() {
     // Verifica si existen headers de usuario autenticado
     const headerAdscripta = document.querySelector('#header_nav');
@@ -149,9 +145,7 @@
     return headerAdscripta || headerDocente || headerEstudiante;
   }
 
-  /**
-   * Limpia eventos al descargar
-   */
+  //Limpia eventos al descargar
   window.addEventListener('beforeunload', () => {
     clearAllTimers();
     activityEvents.forEach(event => {
@@ -173,4 +167,4 @@
     showWarning: showWarning
   };
 
-})();
+})(); 

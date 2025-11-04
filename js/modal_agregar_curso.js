@@ -111,6 +111,15 @@ document.addEventListener('DOMContentLoaded', function() {
       const inicio = this.dataset.inicio;
       const fin = this.dataset.fin;
 
+      // Cerrar el modal de Bootstrap antes de abrir SweetAlert
+      const modalBootstrap = bootstrap.Modal.getInstance(document.getElementById('agregarCursoModal'));
+      if (modalBootstrap) {
+        modalBootstrap.hide();
+      }
+
+      // Esperar un poco para que el modal se cierre completamente
+      await new Promise(resolve => setTimeout(resolve, 300));
+
       const { value: formValues } = await Swal.fire({
         title: 'Editar Horario',
         html: `
@@ -132,12 +141,37 @@ document.addEventListener('DOMContentLoaded', function() {
         confirmButtonText: 'Guardar',
         cancelButtonText: 'Cancelar',
         confirmButtonColor: '#198754',
+        cancelButtonColor: '#6c757d',
+        didOpen: () => {
+          // Asegurar que el input pueda recibir focus
+          const inputNombre = document.getElementById('swal-nombre');
+          if (inputNombre) {
+            setTimeout(() => {
+              inputNombre.focus();
+              inputNombre.select();
+            }, 100);
+          }
+        },
         preConfirm: () => {
+          const nombreInput = document.getElementById('swal-nombre').value.trim();
+          const inicioInput = document.getElementById('swal-inicio').value;
+          const finInput = document.getElementById('swal-fin').value;
+
+          // Validaciones
+          if (!nombreInput) {
+            Swal.showValidationMessage('El nombre del horario es obligatorio');
+            return false;
+          }
+          if (!inicioInput || !finInput) {
+            Swal.showValidationMessage('Las horas de inicio y fin son obligatorias');
+            return false;
+          }
+
           return {
             id_horario: id,
-            nombre_horario: document.getElementById('swal-nombre').value,
-            hora_inicio: document.getElementById('swal-inicio').value,
-            hora_fin: document.getElementById('swal-fin').value
+            nombre_horario: nombreInput,
+            hora_inicio: inicioInput,
+            hora_fin: finInput
           }
         }
       });
@@ -164,23 +198,52 @@ document.addEventListener('DOMContentLoaded', function() {
             body: formData
           });
 
-          Swal.fire({
-            icon: 'success',
-            title: 'Guardado',
-            text: 'Horario actualizado correctamente',
-            confirmButtonColor: '#198754'
-          }).then(() => {
-            location.reload();
-          });
+          // Verificar si la respuesta es JSON
+          const contentType = response.headers.get('content-type');
+          let resultado;
+
+          if (contentType && contentType.includes('application/json')) {
+            resultado = await response.json();
+            
+            if (resultado.success) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Guardado',
+                text: resultado.mensaje || 'Horario actualizado correctamente',
+                confirmButtonColor: '#198754'
+              }).then(() => {
+                location.reload();
+              });
+            } else {
+              throw new Error(resultado.error || 'Error al actualizar el horario');
+            }
+          } else {
+            // Si no es JSON, asumir que es una redirección exitosa (código antiguo)
+            Swal.fire({
+              icon: 'success',
+              title: 'Guardado',
+              text: 'Horario actualizado correctamente',
+              confirmButtonColor: '#198754'
+            }).then(() => {
+              location.reload();
+            });
+          }
 
         } catch (error) {
           console.error('Error:', error);
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'No se pudo actualizar el horario',
+            text: error.message || 'No se pudo actualizar el horario',
             confirmButtonColor: '#dc3545'
           });
+        }
+      } else {
+        // Si se canceló, volver a abrir el modal de Bootstrap
+        const modalElement = document.getElementById('agregarCursoModal');
+        if (modalElement) {
+          const modalBootstrap = new bootstrap.Modal(modalElement);
+          modalBootstrap.show();
         }
       }
     });
