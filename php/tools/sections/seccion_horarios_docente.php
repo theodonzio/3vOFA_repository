@@ -67,7 +67,7 @@ $id_docente_actual = $_SESSION['id_usuario'];
                             </option>";
                   }
               } else {
-                  echo "<option value='' disabled>No estás asignado a ningún grupo</option>";
+                  echo "<option value='' disabled data-traducible='No estás asignado a ningún grupo'>No estás asignado a ningún grupo</option>";
               }
               
               $stmt->close();
@@ -78,7 +78,7 @@ $id_docente_actual = $_SESSION['id_usuario'];
         <!-- Muestra asignaturas del docente en este grupo -->
         <div id="asignaturasDocente" class="mt-3" style="display: none;">
           <div class="alert alert-success mb-0">
-            <strong><i class="bi bi-book me-2"></i>Tus asignaturas en este grupo:</strong>
+            <strong><i class="bi bi-book me-2"></i><span data-traducible="Tus asignaturas en este grupo:">Tus asignaturas en este grupo:</span></strong>
             <p id="listadoAsignaturas" class="mb-0 mt-2"></p>
           </div>
         </div>
@@ -89,17 +89,17 @@ $id_docente_actual = $_SESSION['id_usuario'];
   <!-- Estado de carga -->
   <div id="estadoCargaDocente" class="text-center" style="display: none;">
     <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Cargando...</span>
+      <span class="visually-hidden" data-traducible="Cargando...">Cargando...</span>
     </div>
-    <p class="mt-2">Cargando horarios...</p>
+    <p class="mt-2" data-traducible="Cargando horarios...">Cargando horarios...</p>
   </div>
 
   <!-- Tabla de Horarios -->
   <div id="contenedorTablaHorariosDocente" style="display: none;">
     <div class="alert alert-info mb-3">
       <i class="bi bi-info-circle me-2"></i>
-      <strong>Grupo:</strong> <span id="infoGrupoDocente"></span> | 
-      <strong>Curso:</strong> <span id="infoCursoDocente"></span>
+      <strong data-traducible="Grupo:">Grupo:</strong> <span id="infoGrupoDocente"></span> | 
+      <strong data-traducible="Curso:">Curso:</strong> <span id="infoCursoDocente"></span>
     </div>
 
     <div class="table-responsive shadow rounded">
@@ -123,7 +123,7 @@ $id_docente_actual = $_SESSION['id_usuario'];
     <div class="mt-3 text-center">
       <small class="text-muted">
         <i class="bi bi-info-circle me-1"></i>
-        Solo se muestran tus clases asignadas
+        <span data-traducible="Solo se muestran tus clases asignadas">Solo se muestran tus clases asignadas</span>
       </small>
     </div>
   </div>

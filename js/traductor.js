@@ -55,6 +55,7 @@ const diccionario = {
 "Proyector": { en: "Projector", es: "Proyector" },
 "Alargue": { en: "Extension Cord", es: "Alargue" },
 "Reservas Realizadas por los Docentes": { en: "Reservations Made by Teachers", es: "Reservas Realizadas por los Docentes" },
+"Recursos solicitados:": { en: "Resources requested:", es: "Recursos solicitados:" },
 "Salón:": { en: "Room:", es: "Salón:" },
 "Fecha:": { en: "Date:", es: "Fecha:" },
 "Horario:": { en: "Schedule:", es: "Horario:" },
@@ -94,6 +95,7 @@ const diccionario = {
 
 
 // Gestión de Horarios 
+"Horarios disponibles":{en:"Available times", es:"Horarios disponibles"},
 "Gestión de Horarios por Grupo": { en: "Schedule Management by Group", es: "Gestión de Horarios por Grupo" },
 "Seleccionar grupo:": { en: "Select group:", es: "Seleccionar grupo:" },
 "Hora": { en: "Time", es: "Hora" },
@@ -102,7 +104,6 @@ const diccionario = {
 "Miércoles": { en: "Wednesday", es: "Miércoles" },
 "Jueves": { en: "Thursday", es: "Jueves" },
 "Viernes": { en: "Friday", es: "Viernes" },
-"-- Vacío --": { en: "-- Empty --", es: "-- Vacío --" },
 "Guardar Cambios": { en: "Save Changes", es: "Guardar Cambios" },
 
 // Nombres de Horarios 
@@ -230,6 +231,9 @@ const diccionario = {
 "Ej: Proyector": { en: "Ex: Projector", es: "Ej: Proyector" },
 "Tipo": { en: "Type", es: "Tipo" },
 "Ej: Audiovisual": { en: "Ex: Audiovisual", es: "Ej: Audiovisual" },
+"Nombre descriptivo del recurso": { en: "Descriptive name of the resource", es: "Nombre descriptivo del recurso" },
+"Categoría del recurso (Audiovisual, Informático, Climatización, etc.)": { en: "Resource category (Audiovisual, Computer, Air Conditioning, etc.)", es: "Categoría del recurso (Audiovisual, Informático, Climatización, etc.)" },
+
 
 "Ver Asignaturas": { en: "View Subjects", es: "Ver Asignaturas" },
 
@@ -297,6 +301,15 @@ const diccionario = {
 "Grupo:": { en: "Group:", es: "Grupo:" },
 "Curso:": { en: "Course:", es: "Curso:" },
 "Turno:": { en: "Shift:", es: "Turno:" },
+
+// Horarios Docente
+"Mis Horarios": { en: "My Schedule", es: "Mis Horarios" },
+"Selecciona un grupo para ver tu horario de clases": { en: "Select a group to view your class schedule", es: "Selecciona un grupo para ver tu horario de clases" },
+"No estás asignado a ningún grupo": { en: "You are not assigned to any group", es: "No estás asignado a ningún grupo" },
+"Tus asignaturas en este grupo:": { en: "Your subjects in this group:", es: "Tus asignaturas en este grupo:" },
+"Cargando horarios...": { en: "Loading schedules...", es: "Cargando horarios..." },
+"Solo se muestran tus clases asignadas": { en: "Only your assigned classes are shown", es: "Solo se muestran tus clases asignadas" },
+"Selecciona un grupo para ver tus horarios": { en: "Select a group to view your schedules", es: "Selecciona un grupo para ver tus horarios" },
 
 };  
 

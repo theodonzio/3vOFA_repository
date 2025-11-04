@@ -162,9 +162,7 @@
       }
     }
 
-    /**
-     * Construye tabla de horarios con selects
-     */
+    /*Construye tabla de horarios con selects*/
     function construirTabla() {
       console.log(`Construyendo tabla con ${horariosPermitidos.length} horarios`);
       console.log('Horarios:', horariosPermitidos);
@@ -328,9 +326,7 @@
       }
     }
 
-    /**
-     * Guarda cambios en el servidor
-     */
+    
     async function guardarCambios() {
       const idGrupo = grupoSelect.value;
       

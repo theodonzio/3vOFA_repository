@@ -170,7 +170,7 @@ include '../funciones/limpiar_reservas_antiguas.php';
               placeholder="Ej: Proyector"
               data-traducible="Ej: Proyector"
               required>
-            <small class="text-muted">Nombre descriptivo del recurso</small>
+            <small class="text-muted" data-traducible="Nombre descriptivo del recurso">Nombre descriptivo del recurso</small>
           </div>
 
           <div class="mb-3">
@@ -184,7 +184,7 @@ include '../funciones/limpiar_reservas_antiguas.php';
               placeholder="Ej: Audiovisual"
               data-traducible="Ej: Audiovisual"
               required>
-            <small class="text-muted">Categoría del recurso (Audiovisual, Informático, Climatización, etc.)</small>
+            <small class="text-muted" data-traducible="Categoría del recurso (Audiovisual, Informático, Climatización, etc.)">Categoría del recurso (Audiovisual, Informático, Climatización, etc.)</small>
           </div>
         </div>
 

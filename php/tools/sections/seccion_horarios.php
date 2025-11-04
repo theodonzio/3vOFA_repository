@@ -51,9 +51,9 @@
   <div id="contenedorTablaHorarios" style="display: none;">
     <div class="alert alert-info mb-3">
       <i class="bi bi-info-circle me-2"></i>
-      <strong>Grupo:</strong> <span id="infoGrupo"></span> | 
-      <strong>Horarios disponibles:</strong> <span id="cantidadHorarios"></span> | 
-      <strong>Asignaturas:</strong> <span id="cantidadAsignaturas"></span>
+      <strong data-traducible="Grupo">Grupo:</strong> <span id="infoGrupo"></span> | 
+      <strong data-traducible="Horarios disponibles">Horarios disponibles:</strong> <span id="cantidadHorarios"></span> | 
+      <strong data-traducible="Asignaturas">Asignaturas:</strong> <span id="cantidadAsignaturas"></span>
     </div>
 
     <div class="table-responsive">
