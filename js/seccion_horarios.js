@@ -284,65 +284,64 @@
     }
 
     /**
-     * Limpia todos los horarios
-     */
-    function limpiarTodo() {
-      if (typeof Swal !== 'undefined') {
-        Swal.fire({
-          title: '¿Estás seguro?',
-          text: 'Se limpiarán todos los horarios asignados',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#d33',
-          cancelButtonColor: '#6c757d',
-          confirmButtonText: 'Sí, limpiar',
-          cancelButtonText: 'Cancelar'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            tablaBody.querySelectorAll('select').forEach(select => {
-              select.value = '';
-            });
-
-            Swal.fire({
-              icon: 'success',
-              title: 'Limpiado',
-              text: 'Los horarios se han limpiado correctamente',
-              timer: 2000,
-              showConfirmButton: false
-            });
-
-            console.log('Horarios limpiados');
-          }
+ * Limpia todos los horarios
+ */
+function limpiarTodo() {
+  if (typeof Swal !== 'undefined') {
+    Swal.fire({
+      title: obtenerTraduccion('¿Estás seguro?'),
+      text: obtenerTraduccion('Se limpiarán todos los horarios asignados'),
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#6c757d',
+      confirmButtonText: obtenerTraduccion('Sí, limpiar'),
+      cancelButtonText: obtenerTraduccion('Cancelar')
+    }).then((result) => {
+      if (result.isConfirmed) {
+        tablaBody.querySelectorAll('select').forEach(select => {
+          select.value = '';
         });
-      } else {
-        // Fallback si SweetAlert2 no está disponible
-        if (confirm('¿Estás seguro? Se limpiarán todos los horarios asignados')) {
-          tablaBody.querySelectorAll('select').forEach(select => {
-            select.value = '';
-          });
-          alert('Los horarios se han limpiado correctamente');
-          console.log('Horarios limpiados');
-        }
-      }
-    }
 
-    
-    async function guardarCambios() {
-      const idGrupo = grupoSelect.value;
-      
-      if (!idGrupo) {
-        if (typeof Swal !== 'undefined') {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Atención',
-            text: 'Seleccioná un grupo primero',
-            confirmButtonColor: '#ffc107'
-          });
-        } else {
-          alert('Seleccioná un grupo primero');
-        }
-        return;
+        Swal.fire({
+          icon: 'success',
+          title: obtenerTraduccion('Limpiado'),
+          text: obtenerTraduccion('Los horarios se han limpiado correctamente'),
+          timer: 2000,
+          showConfirmButton: false
+        });
+
+        console.log('Horarios limpiados');
       }
+    });
+  } else {
+    // Fallback si SweetAlert2 no está disponible
+    if (confirm(obtenerTraduccion('¿Estás seguro?') + ' ' + obtenerTraduccion('Se limpiarán todos los horarios asignados'))) {
+      tablaBody.querySelectorAll('select').forEach(select => {
+        select.value = '';
+      });
+      alert(obtenerTraduccion('Los horarios se han limpiado correctamente'));
+      console.log('Horarios limpiados');
+    }
+  }
+}
+
+async function guardarCambios() {
+  const idGrupo = grupoSelect.value;
+  
+  if (!idGrupo) {
+    if (typeof Swal !== 'undefined') {
+      Swal.fire({
+        icon: 'warning',
+        title: obtenerTraduccion('Atención'),
+        text: obtenerTraduccion('Seleccioná un grupo primero'),
+        confirmButtonColor: '#ffc107'
+      });
+    } else {
+      alert(obtenerTraduccion('Seleccioná un grupo primero'));
+    }
+    return;
+  }
 
       // Recopila todos los datos
       const datos = [];
@@ -359,59 +358,58 @@
       // Añade estado de carga al botón
       guardarBtn.classList.add('loading');
       guardarBtn.disabled = true;
+try {
+    const response = await fetch('../funciones/guardar_horario.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id_grupo: idGrupo,
+        horarios: datos
+      })
+    });
 
-      try {
-        const response = await fetch('../funciones/guardar_horario.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            id_grupo: idGrupo,
-            horarios: datos
-          })
-        });
-
-        const text = await response.text();
-        console.log('Respuesta servidor:', text);
-        
-        let resultado;
-        try {
-          resultado = JSON.parse(text);
-        } catch (e) {
-          throw new Error('Respuesta inválida del servidor');
-        }
-
-        if (typeof Swal !== 'undefined') {
-          Swal.fire({
-            icon: resultado.icono || 'success',
-            title: resultado.titulo || 'Éxito',
-            text: resultado.mensaje || 'Cambios guardados correctamente',
-            confirmButtonColor: resultado.icono === 'success' ? '#198754' : '#dc3545'
-          });
-        } else {
-          alert(resultado.mensaje || 'Cambios guardados correctamente');
-        }
-
-      } catch (error) {
-        console.error('Error al guardar:', error);
-        
-        if (typeof Swal !== 'undefined') {
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'No se pudieron guardar los cambios',
-            confirmButtonColor: '#dc3545'
-          });
-        } else {
-          alert('Error: No se pudieron guardar los cambios');
-        }
-      } finally {
-        // Remueve estado de carga del botón
-        guardarBtn.classList.remove('loading');
-        guardarBtn.disabled = false;
-      }
+    const text = await response.text();
+    console.log('Respuesta servidor:', text);
+    
+    let resultado;
+    try {
+      resultado = JSON.parse(text);
+    } catch (e) {
+      throw new Error('Respuesta inválida del servidor');
     }
+
+    if (typeof Swal !== 'undefined') {
+      Swal.fire({
+        icon: resultado.icono || 'success',
+        title: obtenerTraduccion(resultado.titulo || 'Éxito'),
+        text: obtenerTraduccion(resultado.mensaje || 'Cambios guardados correctamente'),
+        confirmButtonColor: resultado.icono === 'success' ? '#198754' : '#dc3545'
+      });
+    } else {
+      alert(obtenerTraduccion(resultado.mensaje || 'Cambios guardados correctamente'));
+    }
+
+  } catch (error) {
+    console.error('Error al guardar:', error);
+    
+    if (typeof Swal !== 'undefined') {
+      Swal.fire({
+        icon: 'error',
+        title: obtenerTraduccion('Error'),
+        text: obtenerTraduccion('No se pudieron guardar los cambios'),
+        confirmButtonColor: '#dc3545'
+      });
+    } else {
+      alert(obtenerTraduccion('Error: No se pudieron guardar los cambios'));
+    }
+  } finally {
+    // Remueve estado de carga del botón
+    guardarBtn.classList.remove('loading');
+    guardarBtn.disabled = false;
+  }
+}
 
     console.log('✓ Gestión de horarios inicializada correctamente');
   }

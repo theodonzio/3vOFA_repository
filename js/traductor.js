@@ -469,7 +469,27 @@ const diccionario = {
 "Horario actualizado correctamente": { en: "Schedule updated successfully", es: "Horario actualizado correctamente" },
 "No se pudo actualizar el horario": { en: "Could not update schedule", es: "No se pudo actualizar el horario" },
 "El nombre del horario es obligatorio": { en: "Schedule name is required", es: "El nombre del horario es obligatorio" },
-"Las horas de inicio y fin son obligatorias": { en: "Start and end times are required", es: "Las horas de inicio y fin son obligatorias" }
+"Las horas de inicio y fin son obligatorias": { en: "Start and end times are required", es: "Las horas de inicio y fin son obligatorias" },
+
+
+// SweetAlert - (seccion_horarios.js)
+"¿Estás seguro?": { en: "Are you sure?", es: "¿Estás seguro?" },
+"Se limpiarán todos los horarios asignados": { en: "All assigned schedules will be cleared", es: "Se limpiarán todos los horarios asignados" },
+"Sí, limpiar": { en: "Yes, clear", es: "Sí, limpiar" },
+"Limpiado": { en: "Cleared", es: "Limpiado" },
+"Los horarios se han limpiado correctamente": { en: "Schedules have been cleared successfully", es: "Los horarios se han limpiado correctamente" },
+"Atención": { en: "Attention", es: "Atención" },
+"Seleccioná un grupo primero": { en: "Select a group first", es: "Seleccioná un grupo primero" },
+"Éxito": { en: "Success", es: "Éxito" },
+"Cambios guardados correctamente": { en: "Changes saved successfully", es: "Cambios guardados correctamente" },
+"No se pudieron guardar los cambios": { en: "Could not save changes", es: "No se pudieron guardar los cambios" },
+
+// SweetAlert - (bloquear_fines_de_semana.js)
+"Día no disponible": { en: "Day not available", es: "Día no disponible" },
+"No se pueden realizar reservas los días sábado o domingo.": { en: "Reservations cannot be made on Saturdays or Sundays.",  es: "No se pueden realizar reservas los días sábado o domingo." },
+"Horarios guardados correctamente": { en: "Schedules saved correctly", es: "Horarios guardados correctamente" },
+
+
 };  
 
 
