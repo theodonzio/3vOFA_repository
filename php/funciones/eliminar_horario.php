@@ -50,7 +50,7 @@ try {
         $eliminados = $conn->affected_rows;
         echo json_encode([
             "titulo" => "Eliminado", 
-            "mensaje" => "Se eliminaron $eliminados horario(s) correctamente.", 
+            "mensaje" => "Se eliminaron los horario(s) correctamente.", 
             "icono" => "success"
         ]);
     } else {

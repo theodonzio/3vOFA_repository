@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     Swal.fire({
       icon: 'success',
-      title: 'Todos seleccionados',
+      title: obtenerTraduccion('Todos seleccionados'),
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     Swal.fire({
       icon: 'info',
-      title: 'Todos deseleccionados',
+      title: obtenerTraduccion('Todos deseleccionados'),
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
@@ -39,30 +39,30 @@ document.addEventListener('DOMContentLoaded', function() {
     if (seleccionados.length === 0) {
       Swal.fire({
         icon: 'warning',
-        title: 'No hay horarios seleccionados',
-        text: 'Selecciona al menos un horario para eliminar',
+        title: obtenerTraduccion('No hay horarios seleccionados'),
+        text: obtenerTraduccion('Selecciona al menos un horario para eliminar'),
         confirmButtonColor: '#ffc107'
       });
       return;
     }
 
     const result = await Swal.fire({
-      title: '¿Eliminar horarios?',
-      html: `Se eliminarán <strong>${seleccionados.length}</strong> horario(s) seleccionado(s).<br><br>
-             <small class="text-danger">ADVERTENCIA: Esto afectará a todos los cursos que usen estos horarios.</small>`,
+      title: obtenerTraduccion('¿Eliminar horarios?'),
+      html: `${obtenerTraduccion('Se eliminarán')} <strong>${seleccionados.length}</strong> ${obtenerTraduccion('horario(s) seleccionado(s)')}.<br><br>
+             <small class="text-danger">${obtenerTraduccion('ADVERTENCIA: Esto afectará a todos los cursos que usen estos horarios.')}</small>`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#6c757d',
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar'
+      confirmButtonText: obtenerTraduccion('Sí, eliminar'),
+      cancelButtonText: obtenerTraduccion('Cancelar')
     });
 
     if (!result.isConfirmed) return;
 
     // Muestra loading
     Swal.fire({
-      title: 'Eliminando...',
+      title: obtenerTraduccion('Eliminando...'),
       allowOutsideClick: false,
       didOpen: () => {
         Swal.showLoading();
@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
       Swal.fire({
         icon: resultado.icono || 'success',
-        title: resultado.titulo || 'Eliminado',
-        text: resultado.mensaje || 'Horarios eliminados correctamente',
+        title: obtenerTraduccion(resultado.titulo || 'Eliminado'),
+        text: obtenerTraduccion(resultado.mensaje || 'Horarios eliminados correctamente'),
         confirmButtonColor: resultado.icono === 'success' ? '#198754' : '#dc3545'
       }).then(() => {
         if (resultado.icono === 'success') {
@@ -93,8 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error('Error:', error);
       Swal.fire({
         icon: 'error',
-        title: 'Error',
-        text: 'No se pudieron eliminar los horarios',
+        title: obtenerTraduccion('Error'),
+        text: obtenerTraduccion('No se pudieron eliminar los horarios'),
         confirmButtonColor: '#dc3545'
       });
     }
@@ -121,25 +121,25 @@ document.addEventListener('DOMContentLoaded', function() {
       await new Promise(resolve => setTimeout(resolve, 300));
 
       const { value: formValues } = await Swal.fire({
-        title: 'Editar Horario',
+        title: obtenerTraduccion('Editar Horario'),
         html: `
           <div class="mb-3 text-start">
-            <label class="form-label fw-semibold">Nombre del horario</label>
+            <label class="form-label fw-semibold">${obtenerTraduccion('Nombre del horario')}</label>
             <input type="text" id="swal-nombre" class="form-control" value="${nombre}">
           </div>
           <div class="mb-3 text-start">
-            <label class="form-label fw-semibold">Hora de inicio</label>
+            <label class="form-label fw-semibold">${obtenerTraduccion('Hora de inicio')}</label>
             <input type="time" id="swal-inicio" class="form-control" value="${inicio}">
           </div>
           <div class="mb-3 text-start">
-            <label class="form-label fw-semibold">Hora de fin</label>
+            <label class="form-label fw-semibold">${obtenerTraduccion('Hora de fin')}</label>
             <input type="time" id="swal-fin" class="form-control" value="${fin}">
           </div>
         `,
         focusConfirm: false,
         showCancelButton: true,
-        confirmButtonText: 'Guardar',
-        cancelButtonText: 'Cancelar',
+        confirmButtonText: obtenerTraduccion('Guardar'),
+        cancelButtonText: obtenerTraduccion('Cancelar'),
         confirmButtonColor: '#198754',
         cancelButtonColor: '#6c757d',
         didOpen: () => {
@@ -159,11 +159,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
           // Validaciones
           if (!nombreInput) {
-            Swal.showValidationMessage('El nombre del horario es obligatorio');
+            Swal.showValidationMessage(obtenerTraduccion('El nombre del horario es obligatorio'));
             return false;
           }
           if (!inicioInput || !finInput) {
-            Swal.showValidationMessage('Las horas de inicio y fin son obligatorias');
+            Swal.showValidationMessage(obtenerTraduccion('Las horas de inicio y fin son obligatorias'));
             return false;
           }
 
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (formValues) {
         // Muestra loading
         Swal.fire({
-          title: 'Guardando...',
+          title: obtenerTraduccion('Guardando...'),
           allowOutsideClick: false,
           didOpen: () => {
             Swal.showLoading();
@@ -208,21 +208,21 @@ document.addEventListener('DOMContentLoaded', function() {
             if (resultado.success) {
               Swal.fire({
                 icon: 'success',
-                title: 'Guardado',
-                text: resultado.mensaje || 'Horario actualizado correctamente',
+                title: obtenerTraduccion('Guardado'),
+                text: obtenerTraduccion(resultado.mensaje || 'Horario actualizado correctamente'),
                 confirmButtonColor: '#198754'
               }).then(() => {
                 location.reload();
               });
             } else {
-              throw new Error(resultado.error || 'Error al actualizar el horario');
+              throw new Error(resultado.error || obtenerTraduccion('Error al actualizar el horario'));
             }
           } else {
             // Si no es JSON, asumir que es una redirección exitosa (código antiguo)
             Swal.fire({
               icon: 'success',
-              title: 'Guardado',
-              text: 'Horario actualizado correctamente',
+              title: obtenerTraduccion('Guardado'),
+              text: obtenerTraduccion('Horario actualizado correctamente'),
               confirmButtonColor: '#198754'
             }).then(() => {
               location.reload();
@@ -233,8 +233,8 @@ document.addEventListener('DOMContentLoaded', function() {
           console.error('Error:', error);
           Swal.fire({
             icon: 'error',
-            title: 'Error',
-            text: error.message || 'No se pudo actualizar el horario',
+            title: obtenerTraduccion('Error'),
+            text: error.message || obtenerTraduccion('No se pudo actualizar el horario'),
             confirmButtonColor: '#dc3545'
           });
         }

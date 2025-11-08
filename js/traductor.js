@@ -488,7 +488,37 @@ const diccionario = {
 "Día no disponible": { en: "Day not available", es: "Día no disponible" },
 "No se pueden realizar reservas los días sábado o domingo.": { en: "Reservations cannot be made on Saturdays or Sundays.",  es: "No se pueden realizar reservas los días sábado o domingo." },
 "Horarios guardados correctamente": { en: "Schedules saved correctly", es: "Horarios guardados correctamente" },
+"No tienes clases asignadas en este grupo": { en: "You have no classes assigned in this group", es: "No tienes clases asignadas en este grupo" },
 
+// En el objeto diccionario, agrega estas entradas:
+
+"Todos seleccionados": { en: "All selected", es: "Todos seleccionados" },
+"Todos deseleccionados": { en: "All deselected", es: "Todos deseleccionados" },
+"No hay horarios seleccionados": { en: "No schedules selected", es: "No hay horarios seleccionados" },
+"Selecciona al menos un horario para eliminar": { en: "Select at least one schedule to delete", es: "Selecciona al menos un horario para eliminar" },
+"horario(s) seleccionado(s)": { en: "selected schedule(s)", es: "horario(s) seleccionado(s)" },
+"Eliminando...": { en: "Deleting...", es: "Eliminando..." },
+"Eliminado": { en: "Deleted", es: "Eliminado" },
+"Horarios eliminados correctamente": { en: "Schedules deleted successfully", es: "Horarios eliminados correctamente" },
+"No se pudieron eliminar los horarios": { en: "Could not delete schedules", es: "No se pudieron eliminar los horarios" },
+"El nombre del horario es obligatorio": { en: "Schedule name is required", es: "El nombre del horario es obligatorio" },
+"Las horas de inicio y fin son obligatorias": { en: "Start and end times are required", es: "Las horas de inicio y fin son obligatorias" },
+"Guardando...": { en: "Saving...", es: "Guardando..." },
+"Guardado": { en: "Saved", es: "Guardado" },
+"Horario actualizado correctamente": { en: "Schedule updated successfully", es: "Horario actualizado correctamente" },
+"Error al actualizar el horario": { en: "Error updating schedule", es: "Error al actualizar el horario" },
+"No se pudo actualizar el horario": { en: "Could not update schedule", es: "No se pudo actualizar el horario" },
+"No tienes clases asignadas en este grupo": { en: "You have no classes assigned in this group", es: "No tienes clases asignadas en este grupo" },
+"Error al cargar información del grupo": { en: "Error loading group information", es: "Error al cargar información del grupo" },
+"Error al cargar horarios": { en: "Error loading schedules", es: "Error al cargar horarios" },
+"Este grupo no tiene horarios asignados": { en: "This group has no schedules assigned", es: "Este grupo no tiene horarios asignados" },
+
+// Agrega estas al diccionario en traductor.js:
+"No se recibieron horarios para eliminar.": { en: "No schedules received to delete.", es: "No se recibieron horarios para eliminar." },
+"IDs de horarios inválidos.": { en: "Invalid schedule IDs.", es: "IDs de horarios inválidos." },
+"No se pueden eliminar horarios que están asignados a cursos. Primero desasígnalos de los cursos.": {  en: "Cannot delete schedules that are assigned to courses. First unassign them from the courses.",  es: "No se pueden eliminar horarios que están asignados a cursos. Primero desasígnalos de los cursos." },
+"Se eliminaron los horario(s) correctamente.": { en: "Schedules deleted successfully.", es: "Se eliminaron los horario(s) correctamente." },
+"Error al eliminar los horarios:": { en: "Error deleting schedules:", es: "Error al eliminar los horarios:" },
 
 };  
 

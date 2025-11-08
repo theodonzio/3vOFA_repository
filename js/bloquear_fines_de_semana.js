@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (dia === 0 || dia === 6) {
             Swal.fire({
                 icon: 'warning',
-                title: 'Día no disponible',
-                text: 'No se pueden realizar reservas los días sábado o domingo.',
+                title: obtenerTraduccion('Día no disponible'),
+                text: obtenerTraduccion('No se pueden realizar reservas los días sábado o domingo.'),
                 confirmButtonColor: '#f0ad4e'
             });
             this.value = ''; // Limpia la fecha seleccionada

@@ -174,7 +174,7 @@
           <tr>
             <td colspan="6" class="text-center py-5">
               <i class="bi bi-info-circle fs-1 text-muted d-block mb-3"></i>
-              <p class="text-muted">No tienes clases asignadas en este grupo</p>
+              <p class="text-muted">${obtenerTraduccion('No tienes clases asignadas en este grupo')}</p>
             </td>
           </tr>
         `;
