@@ -20,9 +20,9 @@ $result = $conn->query($sql);
 <header>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <div class="logo">
-        <img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra">
-        
+           <div class="logo me-auto">
+        <a href="../../php/index.php"><img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra"></a>
+      </div>
         <div class="dropdown">
           <img 
             src="../../img/icons/config_icon(black).png"
@@ -43,7 +43,6 @@ $result = $conn->query($sql);
           </ul>
         </div>
       </div>
-    </div>
   </nav>
 </header>
 

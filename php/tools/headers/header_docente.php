@@ -4,8 +4,8 @@
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid d-flex align-items-center" id="header_nav">
       
-      <div class="logo me-auto">
-          <img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra">
+           <div class="logo me-auto">
+        <a href="../../php/index.php"><img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra"></a>
       </div>
 
       <!-- Botón toggler -->
