@@ -1,4 +1,3 @@
-/** Script para cargar y mostrar horarios del estudiante */
 
 console.log('=== PÁGINA ESTUDIANTE CARGADA ===');
 

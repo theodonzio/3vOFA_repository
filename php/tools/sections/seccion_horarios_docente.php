@@ -86,14 +86,6 @@ $id_docente_actual = $_SESSION['id_usuario'];
     </div>
   </div>
 
-  <!-- Estado de carga -->
-  <div id="estadoCargaDocente" class="text-center" style="display: none;">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden" data-traducible="Cargando...">Cargando...</span>
-    </div>
-    <p class="mt-2" data-traducible="Cargando horarios...">Cargando horarios...</p>
-  </div>
-
   <!-- Tabla de Horarios -->
   <div id="contenedorTablaHorariosDocente" style="display: none;">
     <div class="alert alert-info mb-3">

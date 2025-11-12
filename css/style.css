@@ -2771,3 +2771,7 @@ body.oscuro .swal2-range input {
     color: #f5f5f5 !important;
     border-color: #555 !important;
 }
+
+.modal-backdrop {
+    display: none;
+}

@@ -39,14 +39,6 @@
     </div>
   </div>
 
-  <!-- Estado de carga -->
-  <div id="estadoCarga" class="text-center" style="display: none;">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Cargando...</span>
-    </div>
-    <p class="mt-2">Cargando horarios...</p>
-  </div>
-
   <!-- Tabla de Horarios -->
   <div id="contenedorTablaHorarios" style="display: none;">
     <div class="alert alert-info mb-3">

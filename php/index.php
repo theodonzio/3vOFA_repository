@@ -15,9 +15,7 @@
             src="../img/icons/config_icon(black).png"
             class="theme_icon_mode dropdown-toggle"
             id="boton-tema"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+            data-bs-toggle="dropdown">
 
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="boton-tema">
             <li><h6 class="dropdown-header" data-traducible="Tema">Tema</h6></li>

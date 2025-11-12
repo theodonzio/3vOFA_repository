@@ -134,7 +134,7 @@ $result = $conn->query($sql);
 <div class="modal fade" id="editarAsignaturaModal<?= $row['id_asignatura'] ?>" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <form action="editar_asignatura.php" method="POST">
+      <form action="editar_asignatura.php?id=<?= $row['id_asignatura'] ?>" method="POST">
         <div class="modal-header">
           <h5 class="modal-title" data-traducible="Editar Asignatura">Editar Asignatura #<?= htmlspecialchars($row['id_asignatura']) ?></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
