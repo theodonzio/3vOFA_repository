@@ -72,8 +72,8 @@ $stmt->close();
                 WHERE ga.id_grupo = ?
                 GROUP BY u.id_usuario, u.nombre, u.apellido, u.email
                 ORDER BY u.apellido, u.nombre";
-        
-        $stmt = $conn->prepare($sql);
+
+$stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id_grupo);
         $stmt->execute();
         $result = $stmt->get_result();
