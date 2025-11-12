@@ -31,7 +31,6 @@ $result = $conn->query($sql);
     <div class="container-fluid">
            <div class="logo me-auto">
         <a href="../../php/index.php"><img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra"></a>
-      </div>
 
         <div class="dropdown">
           <img 
@@ -51,6 +50,7 @@ $result = $conn->query($sql);
             <li><a class="dropdown-item" href="#" id="lenguaje-en" data-traducible="Inglés">Inglés</a></li>
           </ul>
         </div>
+      </div>
       </div>
   </nav>
 </header>

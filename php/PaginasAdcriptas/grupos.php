@@ -31,7 +31,6 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
     <div class="container-fluid">
            <div class="logo me-auto">
         <a href="../../php/index.php"><img src="../../img/ofalogos/fulltextnegativo.png" id="logo-barra"></a>
-      </div>
         <div class="dropdown">
           <img 
             src="../img/icons/config_icon(black).png"
@@ -50,6 +49,7 @@ $turnos = $conn->query("SELECT id_turno, nombre_turno FROM turno ORDER BY id_tur
             <li><a class="dropdown-item" href="#" id="lenguaje-en" data-traducible="Inglés">Inglés</a></li>
           </ul>
         </div>
+      </div>
       </div>
   </nav>
 </header>
