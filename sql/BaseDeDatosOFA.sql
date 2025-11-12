@@ -117,7 +117,6 @@ CREATE TABLE `rol` (
 INSERT INTO `rol` (`id_rol`, `nombre_rol`, `descripcion`) VALUES
 (1, 'Adscripta', 'Administrador del sistema con acceso total'),
 (2, 'Docente', 'Profesor del instituto que puede hacer reservas'),
-(3, 'Estudiante', 'Alumno matriculado que visualiza horarios');
 
 -- Estructura de tabla para la tabla `turno`
 
